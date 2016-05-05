@@ -89,7 +89,7 @@ float GFMCPPro_flcb(
         int                  inCounter,
         void *               inRefcon) {
 
-    mcp_pro->_flcb();
+    mcp_pro->flcb();
 
     return -1.f;
 

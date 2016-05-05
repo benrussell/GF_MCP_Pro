@@ -11,13 +11,8 @@
 #include "XPDataref.h"
 
 
-
-#include "GFMCPPro_7Seg.h"
-
-
 #include "GFMCPPro_Buttons.h"
-
-
+#include "GFMCPPro_7Seg.h"
 #include "GFMCPPro_LEDS.h"
 
 
@@ -31,12 +26,6 @@
 
 
 // hid_write channels.
-#define MCP_CRS_LEFT 3
-#define MCP_IAS 5
-#define MCP_HDG 7
-#define MCP_ALT 9
-#define MCP_VS 11
-#define MCP_CRS_RIGHT 13
 
 #define MCP_BTNS 15
 
@@ -48,15 +37,13 @@
 
 class GFMCPPro {
 private:
-
     hid_device *_handle;
 
     int _open_usb_dev();
     int _close_usb_dev();
 
 
-    void _create_xp_datarefs();
-
+    GFMCPPro_Buttons *_gf_mcp_pro_buttons;
 
     GFMCPPro_LEDS *_gf_mcp_pro_leds;
     GFMCPPro_7Seg *_gf_mcp_pro_7seg;
@@ -71,11 +58,9 @@ public:
     void Connect();
     void Disconnect();
 
-    void _flcb();
 
 
-
-
+    void flcb();
 
 
 };

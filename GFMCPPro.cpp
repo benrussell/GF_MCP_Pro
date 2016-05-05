@@ -17,19 +17,23 @@
 
 GFMCPPro::GFMCPPro() {
 
+    _gf_mcp_pro_buttons = new GFMCPPro_Buttons();
+
     _gf_mcp_pro_leds = new GFMCPPro_LEDS();
     _gf_mcp_pro_7seg = new GFMCPPro_7Seg();
 
 }
 
 
+
 GFMCPPro::~GFMCPPro() {
+
+    delete( _gf_mcp_pro_buttons );
 
     delete( _gf_mcp_pro_leds );
     delete( _gf_mcp_pro_7seg );
 
 }
-
 
 
 
@@ -40,6 +44,7 @@ void GFMCPPro::Connect() {
 }
 
 
+
 void GFMCPPro::Disconnect() {
 
     this->_close_usb_dev();
@@ -48,20 +53,9 @@ void GFMCPPro::Disconnect() {
 
 
 
-
-void GFMCPPro::_create_xp_datarefs() {
-
-
-}
-
-
-
-
-
 int GFMCPPro::_close_usb_dev() {
 
     hid_close( _handle );
-
     return 0;
 
 }
@@ -79,8 +73,6 @@ int GFMCPPro::_open_usb_dev() {
 
         return 0;
     }
-
-
 
 
 
@@ -115,82 +107,13 @@ int GFMCPPro::_open_usb_dev() {
 
 
 
-void GFMCPPro::_flcb() {
+void GFMCPPro::flcb() {
 
-
-    //_gf_mcp_pro_buttons->update();
-
-
+    _gf_mcp_pro_buttons->update();
 
     _gf_mcp_pro_leds->update();
 
     _gf_mcp_pro_7seg->update();
-
-
-
-#if 0
-    char *buf;
-    int buf_size;
-    int res;
-    int handle;
-    int hdg;
-
-
-
-    memset(buf, 0, buf_size);
-
-// Read requested state
-    res = hid_read(handle, buf, 16);
-    if (res < 0) {
-        printf("Unable to read()\n");
-
-    } else {
-
-// Print out the returned buffer.
-        for (int i = 0; i < res; i++) {
-            printf("% 4d    ", buf[i]);
-//printf("%d  % 4d    ", i, buf[i]);
-
-        }
-
-        if (res > 0) {
-//a report has been rxd and dumped, we should put a new line
-            printf("\n");
-        }
-
-
-//parse the report fields.
-
-
-//parse for CRS_RIGHT knob
-        if (buf[3] == 1 || buf[3] == 2) {
-            hdg++;
-
-        } else if (buf[3] == 14 || buf[3] == 15) {
-            hdg--;
-
-        }
-
-
-
-//VNAV button pressed
-        if (buf[7] && 1) {
-//turn VNAV led ON
-
-            if (flag_vnav) {
-//turn off
-                flag_vnav = 0;
-            } else {
-//turn on
-                flag_vnav = 1;
-            }
-
-
-        }
-
-
-    } //checking for packet read
-#endif
 
 }
 

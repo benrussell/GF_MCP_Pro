@@ -60,8 +60,7 @@ XPDataref::XPDataref(char *dref_name, int element_count) {
 
     _element_count = element_count;
 
-    _dref =
-            XPLMRegisterDataAccessor(
+    _dref = XPLMRegisterDataAccessor(
                     dref_name, //name
                     xplmType_Data, //type
                     1, //writable
