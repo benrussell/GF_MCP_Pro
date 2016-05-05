@@ -34,21 +34,33 @@
 
 
 
+#include <hidapi.h>
 
 
 class GFMCPPro {
-public:
+private:
 
-    GFMCPPro();
+    hid_device *handle;
+
 
     int _open_usb_dev();
-
-    void _flcb();
-
+    int _close_usb_dev();
 
     void _init_led_flags();
     void _create_xp_commands();
     void _create_xp_datarefs();
+
+public:
+
+    GFMCPPro();
+
+    void Connect();
+    void Disconnect();
+
+
+    void _flcb();
+
+
 
 
 
@@ -70,6 +82,8 @@ public:
 
     XPCommand _cmd_crs_right_inc;
     XPCommand _cmd_crs_right_dec;
+
+
 
 
 

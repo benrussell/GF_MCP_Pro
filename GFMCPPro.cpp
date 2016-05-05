@@ -8,7 +8,6 @@
 
 #include <string.h>
 
-#include <hidapi.h>
 
 
 
@@ -21,9 +20,6 @@
 
 GFMCPPro::GFMCPPro() {
 
-    this->_open_usb_dev();
-
-
 
     this->_init_led_flags();
 
@@ -32,10 +28,30 @@ GFMCPPro::GFMCPPro() {
     this->_create_xp_commands();
 
 
+}
 
 
+void GFMCPPro::Connect() {
+
+    this->_init_led_flags();
+
+    this->_open_usb_dev();
 
 }
+
+
+void GFMCPPro::Disconnect() {
+
+    this->_init_led_flags();
+
+    this->_close_usb_dev();
+
+}
+
+
+
+
+
 
 
 
@@ -94,26 +110,34 @@ void GFMCPPro::_create_xp_commands() {
     // Create commands..
     // Need both ..._inc and ..._dec versions of thes
 
-    _cmd_crs_left_inc = XPCommand("goflight/mcp_pro/crs_left_inc");
-    _cmd_crs_left_dec = XPCommand("goflight/mcp_pro/crs_left_dec");
+    _cmd_crs_left_inc = XPCommand("goflight/mcp_pro/crs_left_inc","");
+    _cmd_crs_left_dec = XPCommand("goflight/mcp_pro/crs_left_dec","");
 
-    _cmd_ias_mach_inc = XPCommand("goflight/mcp_pro/ias_mach_inc");
-    _cmd_ias_mach_dec = XPCommand("goflight/mcp_pro/ias_mach_dec");
+    _cmd_ias_mach_inc = XPCommand("goflight/mcp_pro/ias_mach_inc","");
+    _cmd_ias_mach_dec = XPCommand("goflight/mcp_pro/ias_mach_dec","");
 
-    _cmd_heading_inc = XPCommand("goflight/mcp_pro/heading_inc");
-    _cmd_heading_dec = XPCommand("goflight/mcp_pro/heading_dec");
+    _cmd_heading_inc = XPCommand("goflight/mcp_pro/heading_inc","");
+    _cmd_heading_dec = XPCommand("goflight/mcp_pro/heading_dec","");
 
-    _cmd_altitude_inc = XPCommand("goflight/mcp_pro/altitude_inc");
-    _cmd_altitude_dec = XPCommand("goflight/mcp_pro/altitude_dec");
+    _cmd_altitude_inc = XPCommand("goflight/mcp_pro/altitude_inc","");
+    _cmd_altitude_dec = XPCommand("goflight/mcp_pro/altitude_dec","");
 
-    _cmd_vert_speed_inc = XPCommand("goflight/mcp_pro/vert_speed_inc");
-    _cmd_vert_speed_dec = XPCommand("goflight/mcp_pro/vert_speed_dec");
+    _cmd_vert_speed_inc = XPCommand("goflight/mcp_pro/vert_speed_inc","");
+    _cmd_vert_speed_dec = XPCommand("goflight/mcp_pro/vert_speed_dec","");
 
-    _cmd_crs_right_inc = XPCommand("goflight/mcp_pro/crs_right_inc");
-    _cmd_crs_right_dec = XPCommand("goflight/mcp_pro/crs_right_dec");
+    _cmd_crs_right_inc = XPCommand("goflight/mcp_pro/crs_right_inc","");
+    _cmd_crs_right_dec = XPCommand("goflight/mcp_pro/crs_right_dec","");
 
 }
 
+
+
+
+int GFMCPPro::_close_usb_dev() {
+
+    hid_close( handle );
+
+}
 
 
 
@@ -122,7 +146,7 @@ int GFMCPPro::_open_usb_dev() {
     int res; //ops results.
 
 
-    hid_device *handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL );
+    handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL );
     if( handle == 0 ){
         XPLMDebugString("GF_MCP_Pro: Device not available.\n");
 

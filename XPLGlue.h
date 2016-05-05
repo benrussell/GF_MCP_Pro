@@ -10,8 +10,14 @@
 
 #include <XPLMUtilities.h>
 
+#include <XPLMProcessing.h>
+
 
 #include "GFMCPPro.h"
+
+#include "XPCommand.h"
+
+#include "XPDataref.h"
 
 
 
@@ -43,6 +49,17 @@ PLUGIN_API void XPluginReceiveMessage(
 
 
 
+// FLCB
+float GFMCPPro_flcb(
+        float                inElapsedSinceLastCall,
+        float                inElapsedTimeSinceLastFlightLoop,
+        int                  inCounter,
+        void *               inRefcon);
+
+
+int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
+                            XPLMCommandPhase     inPhase,
+                            void *               inRefcon);
 
 
 #endif //GF_MCP_PRO_XPLGLUE_H

@@ -10,8 +10,6 @@
 
 
 
-
-
 #include "GFMCPPro.h"
 
 GFMCPPro *mcp_pro;
@@ -28,10 +26,14 @@ PLUGIN_API int XPluginStart(
     sprintf( outDesc, "GoFlight MCP Pro Driver" );
 
 
+    mcp_pro = new GFMCPPro();
+
+    XPLMRegisterFlightLoopCallback( GFMCPPro_flcb, -1.f, NULL );
 
 
     return 1;
 }
+
 
 
 PLUGIN_API void XPluginStop(void){
@@ -42,13 +44,10 @@ PLUGIN_API void XPluginStop(void){
 
 
 
-
 PLUGIN_API int XPluginEnable(void) {
 
-
-    mcp_pro = new GFMCPPro();
-
-
+    XPLMDebugString("GF_MCP_Pro: Connecting to USB device..\n");
+    mcp_pro->Connect();
 
 
     return 1; //allow start.
@@ -56,14 +55,12 @@ PLUGIN_API int XPluginEnable(void) {
 
 
 
-
 PLUGIN_API void XPluginDisable(void) {
 
+    XPLMDebugString("GF_MCP_Pro: Disconnecting from USB device.\n");
+    mcp_pro->Disconnect();
 
 }
-
-
-
 
 
 
@@ -72,16 +69,9 @@ PLUGIN_API void XPluginReceiveMessage(
         intptr_t        inMessage,
         void *      inParam){
 
-
+    //no msg support yet
 
 }
-
-
-
-
-
-
-
 
 
 
@@ -89,4 +79,30 @@ PLUGIN_API void XPluginReceiveMessage(
 
 
 
+float GFMCPPro_flcb(
+        float                inElapsedSinceLastCall,
+        float                inElapsedTimeSinceLastFlightLoop,
+        int                  inCounter,
+        void *               inRefcon) {
+
+    mcp_pro->_flcb();
+
+    return -1.f;
+
+}
+
+
+
+int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
+                            XPLMCommandPhase     inPhase,
+                            void *               inRefcon) {
+
+    XPCommand *cmd = (XPCommand*)inRefcon;
+
+    char caTmp[1024];
+    snprintf( caTmp, 1024, "GF MCP Pro: cmdHandler: %s\n", cmd->_name.c_str() );
+
+}
+
 // eof
+
