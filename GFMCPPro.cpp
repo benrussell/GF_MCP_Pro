@@ -74,6 +74,12 @@ int GFMCPPro::_open_usb_dev() {
         return 0;
     }
 
+    //Push the usb device handle into sub modules so they can write via GFUtils
+    _gf_mcp_pro_buttons->_handle = _handle;
+    _gf_mcp_pro_leds->_handle = _handle;
+    _gf_mcp_pro_7seg->_handle = _handle;
+
+
 
 
     // Human ID string data buffers.
