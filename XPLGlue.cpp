@@ -10,6 +10,11 @@
 
 
 
+#include <hidapi.h>
+
+
+
+
 PLUGIN_API int XPluginStart(
         char *		outName,
         char *		outSig,
@@ -37,6 +42,43 @@ PLUGIN_API void XPluginStop(void){
 
 
 PLUGIN_API int XPluginEnable(void) {
+
+
+    int res; //ops results.
+
+
+    hid_device *handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL );
+    if( handle == 0 ){
+        printf("dev busy: sudo?\n");
+        exit(0);
+    }
+
+
+
+
+
+    // Human ID string data buffers.
+    #define MAX_STR 255
+    wchar_t wstr[MAX_STR];
+
+
+    // Read the Manufacturer String
+    res = hid_get_manufacturer_string(handle, wstr, MAX_STR);
+    printf("Maker: %ls\n", wstr);
+
+    // Read the Product String
+    res = hid_get_product_string(handle, wstr, MAX_STR);
+    printf("Product: %ls\n", wstr);
+
+    // Read the Serial Number String
+    res = hid_get_serial_number_string(handle, wstr, MAX_STR);
+    printf("Serial: %ls", wstr);
+    printf("\n");
+
+
+
+
+
 
     return 1; //allow start.
 }
