@@ -69,7 +69,7 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
 
 
 
-void GFUtils::set_leds( hid_device *handle, unsigned char *values ){
+void GFUtils::set_leds( hid_device *handle, unsigned char target, unsigned char *values ){
 
     unsigned char a,b,c;
     a = values[0];
@@ -81,7 +81,7 @@ void GFUtils::set_leds( hid_device *handle, unsigned char *values ){
 
 
     memset( buf, 0, buf_size );
-    buf[0] = MCP_BTNS;
+    buf[0] = target;
 
     buf[1] = 0;
 
