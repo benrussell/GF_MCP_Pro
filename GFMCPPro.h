@@ -6,6 +6,9 @@
 #define GF_MCP_PRO_GFMCPPRO_H
 
 
+// XPlane Utils
+#include "XPCommand.h"
+#include "XPDataref.h"
 
 
 
@@ -35,6 +38,48 @@
 
 class GFMCPPro {
 public:
+
+    GFMCPPro();
+
+    int _open_usb_dev();
+
+    void _flcb();
+
+
+    void _init_led_flags();
+    void _create_xp_commands();
+    void _create_xp_datarefs();
+
+
+
+
+    XPCommand _cmd_crs_left_inc;
+    XPCommand _cmd_crs_left_dec;
+
+    XPCommand _cmd_ias_mach_inc;
+    XPCommand _cmd_ias_mach_dec;
+
+    XPCommand _cmd_heading_inc;
+    XPCommand _cmd_heading_dec;
+
+    XPCommand _cmd_altitude_inc;
+    XPCommand _cmd_altitude_dec;
+
+    XPCommand _cmd_vert_speed_inc;
+    XPCommand _cmd_vert_speed_dec;
+
+    XPCommand _cmd_crs_right_inc;
+    XPCommand _cmd_crs_right_dec;
+
+
+
+
+
+
+
+
+
+
     //LED top row
     int _led_vnav;
     int _led_lnav;
@@ -80,6 +125,10 @@ public:
         return ret; //FIXME
 
     };
+
+
+
+
 
 
 };

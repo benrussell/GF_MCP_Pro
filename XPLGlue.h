@@ -6,12 +6,9 @@
 #define GF_MCP_PRO_XPLGLUE_H
 
 
-
 #include <XPLMDefs.h>
 
-
 #include <XPLMUtilities.h>
-
 
 
 #include "GFMCPPro.h"
