@@ -9,34 +9,19 @@ GFMCPPro_LEDS::GFMCPPro_LEDS() {
 
     // Create datarefs..
 
-    _dref_leds_vnav = XPDataref("goflight/mcp_pro/leds/vnav");
-    _dref_leds_lnav = XPDataref("goflight/mcp_pro/leds/lnav");
-    _dref_leds_ap_cmd_a = XPDataref("goflight/mcp_pro/leds/ap_cmd_a");
-    _dref_leds_ap_cmd_b = XPDataref("goflight/mcp_pro/leds/ap_cmd_b");
-    _dref_leds_at_arm = XPDataref("goflight/mcp_pro/leds/at_arm");
-    _dref_leds_vor_loc = XPDataref("goflight/mcp_pro/leds/vor_loc");
+    _dref_leds_vnav = XPDataref( (char*)GFMCPPro_LEDS::label_vnav  );
+    _dref_leds_lnav = XPDataref( (char*)GFMCPPro_LEDS::label_lnav );
+    _dref_leds_ap_cmd_a = XPDataref( (char*)GFMCPPro_LEDS::label_ap_cmd_a );
+    _dref_leds_ap_cmd_b = XPDataref( (char*)GFMCPPro_LEDS::label_ap_cmd_b );
+    _dref_leds_at_arm = XPDataref( (char*)GFMCPPro_LEDS::label_at_arm );
+    _dref_leds_vor_loc = XPDataref( (char*)GFMCPPro_LEDS::label_vor_loc );
 
-
-
-}
-
-
-
-
-
-void GFMCPPro_LEDS::_init_led_flags() {
-
-    _led_vnav = 0;
-    _led_lnav = 0;
-    _led_ap_cmd_a = 0;
-    _led_ap_cmd_b = 0;
-    _led_at_arm = 0;
-    _led_vor_loc = 0;
 
     _led_ap_a_cws = 0;
     _led_ap_b_cws = 0;
     _led_l_side_fd = 0;
     _led_n1 = 0;
+
 
     _led_speed = 0;
     _led_lvl_chg = 0;
@@ -46,7 +31,13 @@ void GFMCPPro_LEDS::_init_led_flags() {
     _led_vs = 0;
     _led_r_side_fd = 0;
 
+
 }
+
+
+
+
+
 
 
 

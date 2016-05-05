@@ -12,7 +12,7 @@
 
 
 
-#include "GFMCPPro_7Seg.h
+#include "GFMCPPro_7Seg.h"
 #include "GFMCPPro_Buttons.h"
 #include "GFMCPPro_LEDS.h"
 
