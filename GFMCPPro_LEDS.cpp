@@ -54,11 +54,8 @@ GFMCPPro_LEDS::GFMCPPro_LEDS() {
 
 void GFMCPPro_LEDS::update(){
 
-    // hid write?
-
     unsigned char tmp[3];
-    this->get_led_blob( tmp );
-
+    this->_get_led_blob( tmp );
 
     //GFUtils::set_leds(  ); //FIXME
 
@@ -69,7 +66,7 @@ void GFMCPPro_LEDS::update(){
 
 
 //supposed to generate the LED state flags
-void GFMCPPro_LEDS::get_led_blob( unsigned char ret[3] ){
+void GFMCPPro_LEDS::_get_led_blob( unsigned char ret[3] ){
 
     // bit field reconstruction
 

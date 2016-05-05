@@ -6,6 +6,8 @@
 #define GF_MCP_PRO_GFMCPPRO_LEDS_H
 
 
+#include <hidapi.h>
+
 #include "XPDataref.h"
 
 
@@ -35,19 +37,18 @@ private:
 
 
 
+    //get blob for export to hware unit
+    void _get_led_blob( unsigned char ret[3] );
+
+
+
 public:
     GFMCPPro_LEDS();
-
-
-    void _init_led_flags();
-
 
     void update();
 
 
-
-    //get blob for export to hware unit
-     void get_led_blob( unsigned char ret[3] );
+    hid_device* _handle;
 
 
     //LED top row
