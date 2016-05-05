@@ -42,6 +42,10 @@ public:
     void _init_led_flags();
 
 
+    void update();
+
+
+
     //get blob for export to hware unit
      void get_led_blob( unsigned char ret[3] );
 

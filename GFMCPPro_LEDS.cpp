@@ -4,6 +4,8 @@
 
 #include "GFMCPPro_LEDS.h"
 
+#include "GFUtils.h"
+
 
 GFMCPPro_LEDS::GFMCPPro_LEDS() {
 
@@ -49,6 +51,19 @@ GFMCPPro_LEDS::GFMCPPro_LEDS() {
 
 
 
+
+void GFMCPPro_LEDS::update(){
+
+    // hid write?
+
+    unsigned char tmp[3];
+    this->get_led_blob( tmp );
+
+
+    //GFUtils::set_leds(  ); //FIXME
+
+
+}
 
 
 
