@@ -7,6 +7,15 @@
 #include <XPLMUtilities.h>
 
 
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+
+
+
 XPDataref::XPDataref() {
 }
 
@@ -16,13 +25,49 @@ XPDataref::XPDataref(char *dref_name) {
 
     _name = std::string( dref_name );
 
+    _element_count = -1;
+
     _dref =
             XPLMRegisterDataAccessor(
                     dref_name, //name
-                    xplmType_Int | xplmType_Data, //type
+                    xplmType_Int, //type
                     1, //writable
 
                     XPDataref::xp_getDatai,	XPDataref::xp_setDatai,
+                    NULL, NULL, //floats
+                    NULL, NULL, //doubles
+
+                    NULL, NULL, //integer vectors
+                    NULL, NULL, //float vectors
+
+                    NULL, NULL, //float vectors
+                    //XPDataref::xp_getBytes, XPDataref::xp_setBytes, //byte vectors
+
+
+                    (void *)this, //read refcon
+                    (void *)this  //write refcon
+            );
+
+}
+
+
+
+XPDataref::XPDataref(char *dref_name, int element_count) {
+
+    XPLMDebugString("GF_MCP_Pro: Create dref array..\n");
+
+    _name = std::string( dref_name );
+
+    _element_count = element_count;
+
+    _dref =
+            XPLMRegisterDataAccessor(
+                    dref_name, //name
+                    xplmType_Data, //type
+                    1, //writable
+
+                    //XPDataref::xp_getDatai,	XPDataref::xp_setDatai,
+                    NULL, NULL, //integer
                     NULL, NULL, //floats
                     NULL, NULL, //doubles
 
@@ -38,20 +83,28 @@ XPDataref::XPDataref(char *dref_name) {
 }
 
 
+
+
+
+
+
+
+
+
+
 int XPDataref::xp_getDatai(void *inRefcon) {
     //get
+    XPDataref *tmp = (XPDataref*)inRefcon;
 
-    return 0;
+    return tmp->int_value;
 }
 
 
 void XPDataref::xp_setDatai(void * inRefcon, int inValue){
     //set
+    XPDataref *tmp = (XPDataref*)inRefcon;
 
-    XPDataref *dref = (XPDataref*)inRefcon;
-
-
-
+    tmp->int_value = inValue;
 
 }
 
@@ -65,7 +118,17 @@ int XPDataref::xp_getBytes(
         int inMax
 ){
 
-    return 0;
+    XPDataref *tmp = (XPDataref*)inRefcon;
+
+    int max_byte_offset = inOffset+inMax;
+    if( max_byte_offset > XPDataref::_blob_size ){
+        // overflow..
+    }
+
+    //memset( outValues, tmp->_blob, inMax );
+
+
+    return tmp->_element_count;
 }
 
 void XPDataref::xp_setBytes(
@@ -74,5 +137,19 @@ void XPDataref::xp_setBytes(
         int inOffset,
         int inCount
 ){
+
+    XPDataref *tmp = (XPDataref*)inRefcon;
+
+    int max_byte_offset = inOffset+inCount;
+    if( max_byte_offset > XPDataref::_blob_size ){
+        //do nothing
+        return;
+    }
+
+    unsigned char* blob_ptr = tmp->_blob + inOffset;
+
+
+    memcpy( (void*)blob_ptr, inValues, inCount );
+
 
 }
