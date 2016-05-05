@@ -6,6 +6,33 @@
 #define GF_MCP_PRO_GFMCPPRO_H
 
 
+
+
+
+
+// USB ID tags.
+#define USB_GOFLIGHT 0x09f3
+
+// Device type
+#define USB_GOFLIGHT__MCP_PRO 0x0064
+
+
+
+// hid_write channels.
+#define MCP_CRS_LEFT 3
+#define MCP_IAS 5
+#define MCP_HDG 7
+#define MCP_ALT 9
+#define MCP_VS 11
+#define MCP_CRS_RIGHT 13
+
+#define MCP_BTNS 15
+
+
+
+
+
+
 class GFMCPPro {
 public:
     //LED top row
@@ -50,7 +77,7 @@ public:
 
 
 
-        return ret;
+        return ret; //FIXME
 
     };
 
