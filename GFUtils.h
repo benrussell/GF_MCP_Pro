@@ -34,52 +34,16 @@
 
 
 
-#define neg_sign = 0x40;
-
-static const unsigned char gaTransTblDigits[] =
-        {
-                0x3F, // '0'
-                0x06, // '1'
-                0x5B, // '2'
-                0x4F, // '3'
-                0x66, // '4'
-                0x6D, // '5'
-                0x7D, // '6'
-                0x07, // '7'
-                0x7F, // '8'
-                0x67  // '9'
-        };
-
-
-
-
-
-unsigned char  get_trans_index( unsigned char target ){
-
-    //printf("target  in: %c/%i\n", target,target);
-
-    //translate human text into decimal data by using the ascii table offset.
-    unsigned char ret = target - 48;
-
-    //out chars may be invisible in a terminal
-    //printf("target out: %c/%i\n", ret,ret);
-
-    return ret;
-
-}
-
-
-
-
-
 
 
 class GFUtils {
 public:
-    void set3f( hid_device* handle, unsigned char target, int value );
-    void set5f( hid_device* handle, unsigned char target, int value );
+    void set3f( hid_device* handle, unsigned char target, unsigned char *value );
+    void set5f( hid_device* handle, unsigned char target, unsigned char *value );
 
-    void set_leds( hid_device* handle, unsigned char *text );
+    void set_leds( hid_device* handle, unsigned char *values );
+
+    unsigned char translateCharTo7Seg( unsigned char raw );
 
 };
 

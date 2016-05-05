@@ -6,40 +6,30 @@
 
 
 
-
 //USB tmp buffer
 #define buf_size 16
 
 
 
 //use this for MCP_CRS_LEFT || MCP_CRS_RIGHT || MCP_HDG
-void GFUtils::set3f( hid_device *handle, unsigned char target, int value ){
+void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *value ){
 
     int res;
-
-    char caTmp[4];
-    snprintf( caTmp, 4, "%03d", value );
-    //printf( "set3f string:(%s)\n", caTmp);
-
 
     unsigned char buf[buf_size];
 
     memset( buf, 0, buf_size );
     buf[0] = target; //MCP_CRS_LEFT;
 
-    buf[1] = gaTransTblDigits[ get_trans_index( caTmp[0] ) ];
-    buf[2] = gaTransTblDigits[ get_trans_index( caTmp[1] ) ];
-    buf[3] = gaTransTblDigits[ get_trans_index( caTmp[2] ) ];
-
-
+    buf[1] = this->translateCharTo7Seg( value[0] );
+    buf[2] = this->translateCharTo7Seg( value[1] );
+    buf[3] = this->translateCharTo7Seg( value[2] );
 
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
     res = hid_write( handle, buf, 8 );
     if (res < 0)
-        printf("Unable to write..\n");
-
-
+        printf("Unable to write 3f..\n");
 
 }
 
@@ -50,34 +40,26 @@ void GFUtils::set3f( hid_device *handle, unsigned char target, int value ){
 
 
 // MCP_IAS || MCP_ALT || MCP_VS
-void GFUtils::set5f( hid_device *handle, unsigned char target, int value ){
+void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *value ){
 
     int res;
-
-    char caTmp[8];
-    snprintf( caTmp, 8, "%05d", value );
-    //printf( "set5f string:(%s)\n", caTmp);
-
 
     unsigned char buf[buf_size];
 
     memset( buf, 0, buf_size );
     buf[0] = target; //MCP_CRS_LEFT;
 
-    buf[1] = gaTransTblDigits[ get_trans_index( caTmp[0] ) ];
-    buf[2] = gaTransTblDigits[ get_trans_index( caTmp[1] ) ];
-    buf[3] = gaTransTblDigits[ get_trans_index( caTmp[2] ) ];
-    buf[4] = gaTransTblDigits[ get_trans_index( caTmp[3] ) ];
-    buf[5] = gaTransTblDigits[ get_trans_index( caTmp[4] ) ];
-
-
+    buf[1] = this->translateCharTo7Seg( value[0] );
+    buf[2] = this->translateCharTo7Seg( value[1] );
+    buf[3] = this->translateCharTo7Seg( value[2] );
+    buf[4] = this->translateCharTo7Seg( value[3] );
+    buf[5] = this->translateCharTo7Seg( value[4] );
 
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
     res = hid_write( handle, buf, 8 );
     if (res < 0)
-        printf("Unable to write..\n");
-
+        printf("Unable to write 5f..\n");
 
 
 }
@@ -87,12 +69,12 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, int value ){
 
 
 
-void GFUtils::set_leds( hid_device *handle, unsigned char *text ){
+void GFUtils::set_leds( hid_device *handle, unsigned char *values ){
 
     unsigned char a,b,c;
-    a = text[0];
-    b = text[1];
-    c = text[2];
+    a = values[0];
+    b = values[1];
+    c = values[2];
 
 
     unsigned char buf[buf_size];
@@ -113,3 +95,59 @@ void GFUtils::set_leds( hid_device *handle, unsigned char *text ){
     hid_write( handle, buf, 16 );
 
 }
+
+
+
+
+
+
+
+unsigned char GFUtils::translateCharTo7Seg( unsigned char raw ) {
+
+    unsigned char ret=0;
+
+    //translation table for 7 seg LCD's
+    static const unsigned char gaTransTblDigits[] =
+            {
+                    0x3F, // '0'
+                    0x06, // '1'
+                    0x5B, // '2'
+                    0x4F, // '3'
+                    0x66, // '4'
+                    0x6D, // '5'
+                    0x7D, // '6'
+                    0x07, // '7'
+                    0x7F, // '8'
+                    0x67  // '9'
+            };
+
+
+    switch( raw ){
+        case '-':
+            ret = 0x40;
+            break;
+
+        case ' ':
+            ret = 0;
+            break;
+
+        default:
+            int target = raw - 48;
+            if( target < 0 ){ target=0; }
+            ret = gaTransTblDigits[ target ];
+            break;
+
+    } //switch(..)
+
+
+
+    return  ret;
+
+
+} //unsigned char GFUtils::translateCharTo7Seg( unsigned char raw )
+
+
+
+
+
+//eof
