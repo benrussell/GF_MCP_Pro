@@ -8,6 +8,7 @@
 
 class XPDataref {
 public:
+    XPDataref();
     XPDataref( char* dref_name );
 };
 

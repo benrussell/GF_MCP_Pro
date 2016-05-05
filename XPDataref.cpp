@@ -6,6 +6,10 @@
 
 #include <XPLMUtilities.h>
 
+
+XPDataref::XPDataref() {
+}
+
 XPDataref::XPDataref(char *dref_name) {
 
     XPLMDebugString("GF_MCP_Pro: Create dref..\n");
