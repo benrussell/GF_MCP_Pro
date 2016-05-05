@@ -6,7 +6,36 @@
 #define GF_MCP_PRO_GFMCPPRO_BUTTONS_H
 
 
+#include "XPCommand.h"
+
+
+const char* crs_left_inc = "goflight/mcp_pro/crs_left_inc";
+
+
+
 class GFMCPPro_Buttons {
+public:
+
+    GFMCPPro_Buttons();
+
+    XPCommand _cmd_crs_left_inc;
+    XPCommand _cmd_crs_left_dec;
+
+    XPCommand _cmd_ias_mach_inc;
+    XPCommand _cmd_ias_mach_dec;
+
+    XPCommand _cmd_heading_inc;
+    XPCommand _cmd_heading_dec;
+
+    XPCommand _cmd_altitude_inc;
+    XPCommand _cmd_altitude_dec;
+
+    XPCommand _cmd_vert_speed_inc;
+    XPCommand _cmd_vert_speed_dec;
+
+    XPCommand _cmd_crs_right_inc;
+    XPCommand _cmd_crs_right_dec;
+
 
 };
 

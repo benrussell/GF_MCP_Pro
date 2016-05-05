@@ -9,22 +9,15 @@
 #include <string.h>
 
 
-
-
 #include "XPDataref.h"
 #include "XPCommand.h"
 
 
 
 
-
 GFMCPPro::GFMCPPro() {
 
-    //this->_init_led_flags();
 
-    this->_create_xp_datarefs();
-
-    this->_create_xp_commands();
 
 
 }
@@ -32,16 +25,12 @@ GFMCPPro::GFMCPPro() {
 
 void GFMCPPro::Connect() {
 
-    //this->_init_led_flags();
-
     this->_open_usb_dev();
 
 }
 
 
 void GFMCPPro::Disconnect() {
-
-    //this->_init_led_flags();
 
     this->_close_usb_dev();
 
@@ -65,41 +54,12 @@ void GFMCPPro::_create_xp_datarefs() {
 
 
 
-const char* crs_left_inc = "goflight/mcp_pro/crs_left_inc";
-
-
-
-void GFMCPPro::_create_xp_commands() {
-
-    // Create commands..
-    // Need both ..._inc and ..._dec versions of thes
-
-    _cmd_crs_left_inc = XPCommand( (char*)crs_left_inc,"" );
-    _cmd_crs_left_dec = XPCommand("goflight/mcp_pro/crs_left_dec","");
-
-    _cmd_ias_mach_inc = XPCommand("goflight/mcp_pro/ias_mach_inc","");
-    _cmd_ias_mach_dec = XPCommand("goflight/mcp_pro/ias_mach_dec","");
-
-    _cmd_heading_inc = XPCommand("goflight/mcp_pro/heading_inc","");
-    _cmd_heading_dec = XPCommand("goflight/mcp_pro/heading_dec","");
-
-    _cmd_altitude_inc = XPCommand("goflight/mcp_pro/altitude_inc","");
-    _cmd_altitude_dec = XPCommand("goflight/mcp_pro/altitude_dec","");
-
-    _cmd_vert_speed_inc = XPCommand("goflight/mcp_pro/vert_speed_inc","");
-    _cmd_vert_speed_dec = XPCommand("goflight/mcp_pro/vert_speed_dec","");
-
-    _cmd_crs_right_inc = XPCommand("goflight/mcp_pro/crs_right_inc","");
-    _cmd_crs_right_dec = XPCommand(  "goflight/mcp_pro/crs_right_dec","");
-
-}
-
-
-
 
 int GFMCPPro::_close_usb_dev() {
 
     hid_close( handle );
+
+    return 0;
 
 }
 
@@ -140,7 +100,7 @@ int GFMCPPro::_open_usb_dev() {
     printf("\n");
 
 
-
+    return 1;
 
 }
 

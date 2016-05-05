@@ -25,6 +25,8 @@ public:
 
     static const int _blob_size = 8;
 
+
+
 private:
 
     int int_value;

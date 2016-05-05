@@ -20,6 +20,18 @@ private:
     const char* label_at_arm = "goflight/mcp_pro/leds/at_arm";
     const char* label_vor_loc = "goflight/mcp_pro/leds/vor_loc";
 
+    const char* label_ap_a_cws = "goflight/mcp_pro/leds/ap_a_cws";
+    const char* label_ap_b_cws = "goflight/mcp_pro/leds/ap_b_cws";
+    const char* label_l_side_fd = "goflight/mcp_pro/leds/l_side_fd";
+    const char* label_n1 = "goflight/mcp_pro/leds/n1";
+
+    const char* label_speed = "goflight/mcp_pro/leds/speed";
+    const char* label_lvl_chg = "goflight/mcp_pro/leds/lvl_chg";
+    const char* label_hdg_sel = "goflight/mcp_pro/leds/hdg_sel";
+    const char* label_app = "goflight/mcp_pro/leds/app";
+    const char* label_alt_hld = "goflight/mcp_pro/leds/alt_hld";
+    const char* label_vs = "goflight/mcp_pro/leds/vs";
+    const char* label_r_side_fd = "goflight/mcp_pro/leds/r_side_fd";
 
 
 
@@ -34,8 +46,6 @@ public:
     unsigned char* get_led_blob();
 
 
-
-
     //LED top row
     XPDataref _dref_leds_vnav;
     XPDataref _dref_leds_lnav;
@@ -47,42 +57,26 @@ public:
     XPDataref _dref_leds_vor_loc;
 
 
-
-
+    //LED mid row
+    //?
     XPDataref _dref_leds_ap_a_cws;
     XPDataref _dref_leds_ap_b_cws;
+    //?
+    //?
+    //?
     XPDataref _dref_leds_l_side_fd;
     XPDataref _dref_leds_n1;
 
-    //LED mid row
-    //?
-    int _led_ap_a_cws;
-    int _led_ap_b_cws;
-    //?
-    //?
-    //?
-    int _led_l_side_fd;
-    int _led_n1;
 
-
-
+    //LED bottom row
     XPDataref _dref_leds_speed;
     XPDataref _dref_leds_lvl_chg;
     XPDataref _dref_leds_hdg_sel;
     XPDataref _dref_leds_app;
     XPDataref _dref_leds_alt_hld;
     XPDataref _dref_leds_vs;
-    XPDataref _dref_leds_r_side_fd;
-
-    //LED bottom row
-    int _led_speed;
-    int _led_lvl_chg;
-    int _led_hdg_sel;
-    int _led_app;
-    int _led_alt_hld;
-    int _led_vs;
     //?
-    int _led_r_side_fd;
+    XPDataref _dref_leds_r_side_fd;
 
 
 };
