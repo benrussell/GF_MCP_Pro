@@ -33,14 +33,14 @@ public:
 
     hid_device* _handle;
 
-
+private:
     // USB Endpoint Targets
-    unsigned char target_crs_left   = 3;
-    unsigned char target_ias        = 5;
-    unsigned char target_hdg        = 7;
-    unsigned char target_alt        = 9;
-    unsigned char target_vs         = 11;
-    unsigned char target_crs_right  = 13;
+    const unsigned char target_crs_left   = 3;
+    const unsigned char target_ias        = 5;
+    const unsigned char target_hdg        = 7;
+    const unsigned char target_alt        = 9;
+    const unsigned char target_vs         = 11;
+    const unsigned char target_crs_right  = 13;
 
 
 

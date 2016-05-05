@@ -40,6 +40,9 @@ PLUGIN_API void XPluginStop(void){
 
     XPLMDebugString("GF_MCP_Pro: XPluginStrop\n");
 
+
+    delete( mcp_pro );
+
 }
 
 
@@ -51,6 +54,7 @@ PLUGIN_API int XPluginEnable(void) {
 
 
     return 1; //allow start.
+
 }
 
 
@@ -101,6 +105,10 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
 
     char caTmp[1024];
     snprintf( caTmp, 1024, "GF MCP Pro: cmdHandler: %s\n", cmd->_name.c_str() );
+
+
+
+    return 0;
 
 }
 

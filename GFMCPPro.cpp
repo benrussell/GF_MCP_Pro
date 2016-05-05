@@ -118,6 +118,10 @@ int GFMCPPro::_open_usb_dev() {
 void GFMCPPro::_flcb() {
 
 
+    //_gf_mcp_pro_buttons->update();
+
+
+
     _gf_mcp_pro_leds->update();
 
     _gf_mcp_pro_7seg->update();
