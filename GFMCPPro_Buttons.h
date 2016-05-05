@@ -9,7 +9,6 @@
 #include "XPCommand.h"
 
 
-const char* crs_left_inc = "goflight/mcp_pro/crs_left_inc";
 
 
 
