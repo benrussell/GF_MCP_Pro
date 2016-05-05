@@ -96,7 +96,7 @@ int XPDataref::xp_getDatai(void *inRefcon) {
     //get
     XPDataref *tmp = (XPDataref*)inRefcon;
 
-    return tmp->int_value;
+    return tmp->_int_value;
 }
 
 
@@ -104,7 +104,7 @@ void XPDataref::xp_setDatai(void * inRefcon, int inValue){
     //set
     XPDataref *tmp = (XPDataref*)inRefcon;
 
-    tmp->int_value = inValue;
+    tmp->_int_value = inValue;
 
 }
 

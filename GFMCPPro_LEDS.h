@@ -43,7 +43,7 @@ public:
 
 
     //get blob for export to hware unit
-    unsigned char* get_led_blob();
+     void get_led_blob( unsigned char ret[3] );
 
 
     //LED top row
