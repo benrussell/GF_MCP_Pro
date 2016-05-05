@@ -73,6 +73,15 @@ public:
 
 
 
+    XPDataref _dref_leds_vnav;
+    XPDataref _dref_leds_lnav;
+    XPDataref _dref_leds_ap_cmd_a;
+    XPDataref _dref_leds_ap_cmd_b;
+    XPDataref _dref_leds_at_arm;
+    XPDataref _dref_leds_vor_loc;
+
+
+
 
 
 
@@ -113,18 +122,8 @@ public:
     int _led_r_side_fd;
 
 
-    unsigned char* get_led_blob(){
 
-        unsigned char ret[3];
-        ret[0] = 1;
-        ret[1] = 4;
-        ret[2] = 8;
-
-
-
-        return ret; //FIXME
-
-    };
+    unsigned char* get_led_blob();
 
 
 

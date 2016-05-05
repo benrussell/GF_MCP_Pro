@@ -68,13 +68,13 @@ void GFMCPPro::_init_led_flags() {
 
 void GFMCPPro::_create_xp_datarefs() {
     // Create datarefs..
-    
-     XPDataref("goflight/mcp_pro/leds/vnav");
-     XPDataref("goflight/mcp_pro/leds/lnav");
-     XPDataref("goflight/mcp_pro/leds/ap_cmd_a");
-     XPDataref("goflight/mcp_pro/leds/ap_cmd_b");
-     XPDataref("goflight/mcp_pro/leds/at_arm");
-     XPDataref("goflight/mcp_pro/leds/vor_loc");
+
+    _dref_leds_vnav = XPDataref("goflight/mcp_pro/leds/vnav");
+    _dref_leds_lnav = XPDataref("goflight/mcp_pro/leds/lnav");
+    _dref_leds_ap_cmd_a = XPDataref("goflight/mcp_pro/leds/ap_cmd_a");
+    _dref_leds_ap_cmd_b = XPDataref("goflight/mcp_pro/leds/ap_cmd_b");
+    _dref_leds_at_arm = XPDataref("goflight/mcp_pro/leds/at_arm");
+    _dref_leds_vor_loc = XPDataref("goflight/mcp_pro/leds/vor_loc");
 
      /*
      XPDataref("goflight/mcp_pro/7seg/crs_left[3]");
@@ -229,3 +229,17 @@ void GFMCPPro::_flcb() {
 #endif
 
 }
+
+
+
+
+unsigned char* GFMCPPro::get_led_blob(){
+
+    unsigned char ret[3];
+    ret[0] = 1;
+    ret[1] = 4;
+    ret[2] = 8;
+
+    return ret; //FIXME
+
+};
