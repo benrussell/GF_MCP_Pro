@@ -6,8 +6,9 @@
 #define GF_MCP_PRO_GFMCPPRO_BUTTONS_H
 
 
-#include "XPCommand.h"
+#include <hidapi.h>
 
+#include "XPCommand.h"
 
 
 
@@ -34,6 +35,15 @@ public:
 
     XPCommand _cmd_crs_right_inc;
     XPCommand _cmd_crs_right_dec;
+
+
+    void update();
+
+
+
+    hid_device* _handle;
+
+
 
 
 };
