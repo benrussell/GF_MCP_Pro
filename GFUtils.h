@@ -19,12 +19,12 @@
 
 class GFUtils {
 public:
-    void set3f( hid_device* handle, unsigned char target, unsigned char *value );
-    void set5f( hid_device* handle, unsigned char target, unsigned char *value );
+    static void set3f( hid_device* handle, unsigned char target, unsigned char *value );
+    static void set5f( hid_device* handle, unsigned char target, unsigned char *value );
 
-    void set_leds( hid_device* handle, unsigned char target, unsigned char *values );
+    static void set_leds( hid_device* handle, unsigned char target, unsigned char *values );
 
-    unsigned char translateCharTo7Seg( unsigned char raw );
+    static unsigned char translateCharTo7Seg( unsigned char raw );
 
 };
 

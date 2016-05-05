@@ -21,9 +21,9 @@ void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *va
     memset( buf, 0, buf_size );
     buf[0] = target; //MCP_CRS_LEFT;
 
-    buf[1] = this->translateCharTo7Seg( value[0] );
-    buf[2] = this->translateCharTo7Seg( value[1] );
-    buf[3] = this->translateCharTo7Seg( value[2] );
+    buf[1] = GFUtils::translateCharTo7Seg( value[0] );
+    buf[2] = GFUtils::translateCharTo7Seg( value[1] );
+    buf[3] = GFUtils::translateCharTo7Seg( value[2] );
 
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
@@ -49,11 +49,11 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
     memset( buf, 0, buf_size );
     buf[0] = target; //MCP_CRS_LEFT;
 
-    buf[1] = this->translateCharTo7Seg( value[0] );
-    buf[2] = this->translateCharTo7Seg( value[1] );
-    buf[3] = this->translateCharTo7Seg( value[2] );
-    buf[4] = this->translateCharTo7Seg( value[3] );
-    buf[5] = this->translateCharTo7Seg( value[4] );
+    buf[1] = GFUtils::translateCharTo7Seg( value[0] );
+    buf[2] = GFUtils::translateCharTo7Seg( value[1] );
+    buf[3] = GFUtils::translateCharTo7Seg( value[2] );
+    buf[4] = GFUtils::translateCharTo7Seg( value[3] );
+    buf[5] = GFUtils::translateCharTo7Seg( value[4] );
 
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
