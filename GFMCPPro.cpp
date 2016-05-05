@@ -20,8 +20,7 @@
 
 GFMCPPro::GFMCPPro() {
 
-
-    this->_init_led_flags();
+    //this->_init_led_flags();
 
     this->_create_xp_datarefs();
 
@@ -33,7 +32,7 @@ GFMCPPro::GFMCPPro() {
 
 void GFMCPPro::Connect() {
 
-    this->_init_led_flags();
+    //this->_init_led_flags();
 
     this->_open_usb_dev();
 
@@ -42,7 +41,7 @@ void GFMCPPro::Connect() {
 
 void GFMCPPro::Disconnect() {
 
-    this->_init_led_flags();
+    //this->_init_led_flags();
 
     this->_close_usb_dev();
 
@@ -51,46 +50,7 @@ void GFMCPPro::Disconnect() {
 
 
 
-
-
-
-
-void GFMCPPro::_init_led_flags() {
-
-    _led_vnav = 0;
-    _led_lnav = 0;
-    _led_ap_cmd_a = 0;
-    _led_ap_cmd_b = 0;
-    _led_at_arm = 0;
-    _led_vor_loc = 0;
-
-    _led_ap_a_cws = 0;
-    _led_ap_b_cws = 0;
-    _led_l_side_fd = 0;
-    _led_n1 = 0;
-
-    _led_speed = 0;
-    _led_lvl_chg = 0;
-    _led_hdg_sel = 0;
-    _led_app = 0;
-    _led_alt_hld = 0;
-    _led_vs = 0;
-    _led_r_side_fd = 0;
-
-}
-
-
-
-
 void GFMCPPro::_create_xp_datarefs() {
-    // Create datarefs..
-
-    _dref_leds_vnav = XPDataref("goflight/mcp_pro/leds/vnav");
-    _dref_leds_lnav = XPDataref("goflight/mcp_pro/leds/lnav");
-    _dref_leds_ap_cmd_a = XPDataref("goflight/mcp_pro/leds/ap_cmd_a");
-    _dref_leds_ap_cmd_b = XPDataref("goflight/mcp_pro/leds/ap_cmd_b");
-    _dref_leds_at_arm = XPDataref("goflight/mcp_pro/leds/at_arm");
-    _dref_leds_vor_loc = XPDataref("goflight/mcp_pro/leds/vor_loc");
 
      /*
      XPDataref("goflight/mcp_pro/7seg/crs_left[3]");
@@ -105,12 +65,16 @@ void GFMCPPro::_create_xp_datarefs() {
 
 
 
+const char* crs_left_inc = "goflight/mcp_pro/crs_left_inc";
+
+
+
 void GFMCPPro::_create_xp_commands() {
 
     // Create commands..
     // Need both ..._inc and ..._dec versions of thes
 
-    _cmd_crs_left_inc = XPCommand("goflight/mcp_pro/crs_left_inc","");
+    _cmd_crs_left_inc = XPCommand( (char*)crs_left_inc,"" );
     _cmd_crs_left_dec = XPCommand("goflight/mcp_pro/crs_left_dec","");
 
     _cmd_ias_mach_inc = XPCommand("goflight/mcp_pro/ias_mach_inc","");
@@ -126,7 +90,7 @@ void GFMCPPro::_create_xp_commands() {
     _cmd_vert_speed_dec = XPCommand("goflight/mcp_pro/vert_speed_dec","");
 
     _cmd_crs_right_inc = XPCommand("goflight/mcp_pro/crs_right_inc","");
-    _cmd_crs_right_dec = XPCommand("goflight/mcp_pro/crs_right_dec","");
+    _cmd_crs_right_dec = XPCommand(  "goflight/mcp_pro/crs_right_dec","");
 
 }
 
@@ -255,15 +219,3 @@ void GFMCPPro::_flcb() {
 }
 
 
-
-
-unsigned char* GFMCPPro::get_led_blob(){
-
-    unsigned char ret[3];
-    ret[0] = 1;
-    ret[1] = 4;
-    ret[2] = 8;
-
-    return ret; //FIXME
-
-};

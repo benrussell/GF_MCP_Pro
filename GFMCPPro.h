@@ -12,6 +12,12 @@
 
 
 
+#include "GFMCPPro_7Seg.h
+#include "GFMCPPro_Buttons.h"
+#include "GFMCPPro_LEDS.h"
+
+
+
 
 // USB ID tags.
 #define USB_GOFLIGHT 0x09f3
@@ -42,13 +48,12 @@ private:
 
     hid_device *handle;
 
-
     int _open_usb_dev();
     int _close_usb_dev();
 
-    void _init_led_flags();
     void _create_xp_commands();
     void _create_xp_datarefs();
+
 
 public:
 
@@ -57,12 +62,7 @@ public:
     void Connect();
     void Disconnect();
 
-
     void _flcb();
-
-
-
-
 
 
     XPCommand _cmd_crs_left_inc;
@@ -82,64 +82,6 @@ public:
 
     XPCommand _cmd_crs_right_inc;
     XPCommand _cmd_crs_right_dec;
-
-
-
-
-
-    XPDataref _dref_leds_vnav;
-    XPDataref _dref_leds_lnav;
-    XPDataref _dref_leds_ap_cmd_a;
-    XPDataref _dref_leds_ap_cmd_b;
-    XPDataref _dref_leds_at_arm;
-    XPDataref _dref_leds_vor_loc;
-
-
-
-
-
-
-
-
-
-
-    //LED top row
-    int _led_vnav;
-    int _led_lnav;
-    int _led_ap_cmd_a;
-    int _led_ap_cmd_b;
-    int _led_at_arm;
-    //?
-    //?
-    int _led_vor_loc;
-
-
-    //LED mid row
-    //?
-    int _led_ap_a_cws;
-    int _led_ap_b_cws;
-    //?
-    //?
-    //?
-    int _led_l_side_fd;
-    int _led_n1;
-
-
-    //LED bottom row
-    int _led_speed;
-    int _led_lvl_chg;
-    int _led_hdg_sel;
-    int _led_app;
-    int _led_alt_hld;
-    int _led_vs;
-    //?
-    int _led_r_side_fd;
-
-
-
-    unsigned char* get_led_blob();
-
-
 
 
 
