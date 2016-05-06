@@ -7,14 +7,29 @@
 
 GFMCPPro_7Seg::GFMCPPro_7Seg(){
 
-    _dref_crs_left      = GFDataref( (char*)GFMCPPro_7Seg::label_crs_left,   3);
-    _dref_ias_mach      = GFDataref( (char*)GFMCPPro_7Seg::label_ias_mach,   5);
-    _dref_heading       = GFDataref( (char*)GFMCPPro_7Seg::label_heading,    3);
-    _dref_altitude      = GFDataref( (char*)GFMCPPro_7Seg::label_altitude,   5);
-    _dref_vert_speed    = GFDataref( (char*)GFMCPPro_7Seg::label_vert_speed, 5);
-    _dref_crs_right     = GFDataref( (char*)GFMCPPro_7Seg::label_crs_right,  3);
+    _dref_crs_left      = new GFDataref( (char*)GFMCPPro_7Seg::label_crs_left,   3);
+    _dref_ias_mach      = new GFDataref( (char*)GFMCPPro_7Seg::label_ias_mach,   5);
+    _dref_heading       = new GFDataref( (char*)GFMCPPro_7Seg::label_heading,    3);
+    _dref_altitude      = new GFDataref( (char*)GFMCPPro_7Seg::label_altitude,   5);
+    _dref_vert_speed    = new GFDataref( (char*)GFMCPPro_7Seg::label_vert_speed, 5);
+    _dref_crs_right     = new GFDataref( (char*)GFMCPPro_7Seg::label_crs_right,  3);
 
 }
+
+
+GFMCPPro_7Seg::~GFMCPPro_7Seg() {
+
+	delete(_dref_crs_left);
+	delete(_dref_ias_mach);
+	delete(_dref_heading);
+	delete(_dref_altitude);
+	delete(_dref_vert_speed);
+	delete(_dref_crs_right);
+
+}
+
+
+
 
 
 

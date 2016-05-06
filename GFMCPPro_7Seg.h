@@ -18,17 +18,17 @@
 class GFMCPPro_7Seg {
 public:
     GFMCPPro_7Seg();
-    //~GFMCPPro_7Seg();
+    ~GFMCPPro_7Seg();
 
     void update();
 
     // 7 Seg byte arrays.
-    GFDataref _dref_crs_left;
-    GFDataref _dref_ias_mach;
-    GFDataref _dref_heading;
-    GFDataref _dref_altitude;
-    GFDataref _dref_vert_speed;
-    GFDataref _dref_crs_right;
+    GFDataref* _dref_crs_left;
+    GFDataref* _dref_ias_mach;
+    GFDataref* _dref_heading;
+    GFDataref* _dref_altitude;
+    GFDataref* _dref_vert_speed;
+    GFDataref* _dref_crs_right;
 
 
     hid_device* _handle;
