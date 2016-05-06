@@ -90,24 +90,56 @@ private:
 
 
 
+    const char* _label_no_description = "No description.";
 
-    const char* label_crs_left_inc = "goflight/mcp_pro/emit/crs_left_inc";
-    const char* label_crs_left_dec = "goflight/mcp_pro/emit/crs_left_dec";
 
-    const char* label_ias_mach_inc = "goflight/mcp_pro/emit/ias_mach_inc";
-    const char* label_ias_mach_dec = "goflight/mcp_pro/emit/ias_mach_dec";
+    const char* _label_btn_speed        = "goflight/mcp_pro/emit/btn_speed";
+    const char* _label_btn_lvl_chg      = "goflight/mcp_pro/emit/btn_lvl_chg";
+    const char* _label_btn_hgd_sel      = "goflight/mcp_pro/emit/btn_hgd_sel";
+    const char* _label_btn_app          = "goflight/mcp_pro/emit/btn_app";
+    const char* _label_btn_alt_hld      = "goflight/mcp_pro/emit/btn_alt_hld";
+    const char* _label_btn_vs           = "goflight/mcp_pro/emit/btn_vs";
+    const char* _label_btn_ap_disengage = "goflight/mcp_pro/emit/btn_ap_disengage";
+    const char* _label_btn_fd_right     = "goflight/mcp_pro/emit/btn_fd_right";
 
-    const char* label_heading_inc = "goflight/mcp_pro/emit/heading_inc";
-    const char* label_heading_dec = "goflight/mcp_pro/emit/heading_dec";
+    const char* _label_btn_alt_inv      = "goflight/mcp_pro/emit/btn_alt_inv";
+    const char* _label_btn_cws_a        = "goflight/mcp_pro/emit/btn_cws_a";
+    const char* _label_btn_cws_b        = "goflight/mcp_pro/emit/btn_cws_b";
+    const char* _label_btn_ias_dial     = "goflight/mcp_pro/emit/btn_ias_dial";
+    const char* _label_btn_hdg_dial     = "goflight/mcp_pro/emit/btn_hdg_dial";
+    const char* _label_btn_alt_dial     = "goflight/mcp_pro/emit/btn_alt_dial";
+    const char* _label_btn_fd_left      = "goflight/mcp_pro/emit/btn_fd_left";
+    const char* _label_btn_n1           = "goflight/mcp_pro/emit/btn_n1";
 
-    const char* label_altitude_inc = "goflight/mcp_pro/emit/altitude_inc";
-    const char* label_altitude_dec = "goflight/mcp_pro/emit/altitude_dec";
+    const char* _label_btn_vnav         = "goflight/mcp_pro/emit/btn_vnav";
+    const char* _label_btn_lnav         = "goflight/mcp_pro/emit/btn_lnav";
+    const char* _label_btn_cmd_a        = "goflight/mcp_pro/emit/btn_cmd_a";
+    const char* _label_btn_cmd_b        = "goflight/mcp_pro/emit/btn_cmd_b";
+    const char* _label_btn_at_arm       = "goflight/mcp_pro/emit/btn_at_arm";
+    const char* _label_btn_co           = "goflight/mcp_pro/emit/btn_co";
+    const char* _label_btn_spd_intv     = "goflight/mcp_pro/emit/btn_spd_intv";
+    const char* _label_btn_vor_loc      = "goflight/mcp_pro/emit/btn_vor_loc";
 
-    const char* label_vert_speed_inc = "goflight/mcp_pro/emit/vert_speed_inc";
-    const char* label_vert_speed_dec = "goflight/mcp_pro/emit/vert_speed_dec";
 
-    const char* label_crs_right_inc = "goflight/mcp_pro/emit/crs_right_inc";
-    const char* label_crs_right_dec = "goflight/mcp_pro/emit/crs_right_dec";
+
+
+    const char* _label_crs_left_inc     = "goflight/mcp_pro/emit/crs_left_inc";
+    const char* _label_crs_left_dec     = "goflight/mcp_pro/emit/crs_left_dec";
+
+    const char* _label_ias_mach_inc     = "goflight/mcp_pro/emit/ias_mach_inc";
+    const char* _label_ias_mach_dec     = "goflight/mcp_pro/emit/ias_mach_dec";
+
+    const char* _label_heading_inc      = "goflight/mcp_pro/emit/heading_inc";
+    const char* _label_heading_dec      = "goflight/mcp_pro/emit/heading_dec";
+
+    const char* _label_altitude_inc     = "goflight/mcp_pro/emit/altitude_inc";
+    const char* _label_altitude_dec     = "goflight/mcp_pro/emit/altitude_dec";
+
+    const char* _label_vert_speed_inc   = "goflight/mcp_pro/emit/vert_speed_inc";
+    const char* _label_vert_speed_dec   = "goflight/mcp_pro/emit/vert_speed_dec";
+
+    const char* _label_crs_right_inc    = "goflight/mcp_pro/emit/crs_right_inc";
+    const char* _label_crs_right_dec    = "goflight/mcp_pro/emit/crs_right_dec";
 
 
 

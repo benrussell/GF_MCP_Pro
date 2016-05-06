@@ -10,35 +10,62 @@
 
 
 
-const char* label_no_description = "No description.";
 
 
 
 
 GFMCPPro_Buttons::GFMCPPro_Buttons(){
-    // Create commands..
-    // Need both ..._inc and ..._dec versions of thes
 
-    _btn_crs_left_inc = GFCommand( (char*)GFMCPPro_Buttons::label_crs_left_inc, (char*)label_no_description );
-    _btn_crs_left_dec = GFCommand( (char*)GFMCPPro_Buttons::label_crs_left_dec, (char*)label_no_description );
+    // Create commands for buttons and switches.
+    _btn_Speed              = GFCommand( (char*)_label_btn_speed, (char*)_label_no_description );
+    _btn_LVL_CHG            = GFCommand( (char*)_label_btn_lvl_chg, (char*)_label_no_description );
+    _btn_HDG_SEL            = GFCommand( (char*)_label_btn_hgd_sel, (char*)_label_no_description );
+    _btn_APP                = GFCommand( (char*)_label_btn_app, (char*)_label_no_description );
+    _btn_ALT_HLD            = GFCommand( (char*)_label_btn_alt_hld, (char*)_label_no_description );
+    _btn_VS                 = GFCommand( (char*)_label_btn_vs, (char*)_label_no_description );
+    _btn_AP_Disengage       = GFCommand( (char*)_label_btn_ap_disengage, (char*)_label_no_description );
+    _btn_FD_Right           = GFCommand( (char*)_label_btn_fd_right, (char*)_label_no_description );
 
-    _btn_ias_mach_inc = GFCommand( (char*)GFMCPPro_Buttons::label_ias_mach_inc, (char*)label_no_description );
-    _btn_ias_mach_dec = GFCommand( (char*)GFMCPPro_Buttons::label_ias_mach_dec, (char*)label_no_description );
+    _btn_ALT_INV            = GFCommand( (char*)_label_btn_alt_inv, (char*)_label_no_description );
+    _btn_CWS_A              = GFCommand( (char*)_label_btn_cws_a, (char*)_label_no_description );
+    _btn_CWS_B              = GFCommand( (char*)_label_btn_cws_b, (char*)_label_no_description );
+    _btn_IAS_Dial           = GFCommand( (char*)_label_btn_ias_dial, (char*)_label_no_description );
+    _btn_HDG_Dial           = GFCommand( (char*)_label_btn_hdg_dial, (char*)_label_no_description );
+    _btn_ALT_Dial           = GFCommand( (char*)_label_btn_alt_dial, (char*)_label_no_description );
+    _btn_FD_Left            = GFCommand( (char*)_label_btn_fd_left, (char*)_label_no_description );
+    _btn_N1                 = GFCommand( (char*)_label_btn_n1, (char*)_label_no_description );
 
-    _btn_heading_inc = GFCommand( (char*)GFMCPPro_Buttons::label_heading_inc, (char*)label_no_description );
-    _btn_heading_dec = GFCommand( (char*)GFMCPPro_Buttons::label_heading_dec, (char*)label_no_description );
+    _btn_VNAV               = GFCommand( (char*)_label_btn_vnav, (char*)_label_no_description );
+    _btn_LNAV               = GFCommand( (char*)_label_btn_lnav, (char*)_label_no_description );
+    _btn_CMD_A              = GFCommand( (char*)_label_btn_cmd_a, (char*)_label_no_description );
+    _btn_CMD_B              = GFCommand( (char*)_label_btn_cmd_b, (char*)_label_no_description );
+    _btn_AT_Arm             = GFCommand( (char*)_label_btn_at_arm, (char*)_label_no_description );
+    _btn_CO                 = GFCommand( (char*)_label_btn_co, (char*)_label_no_description );
+    _btn_SPD_INTV           = GFCommand( (char*)_label_btn_spd_intv, (char*)_label_no_description );
+    _btn_VOR_LOC            = GFCommand( (char*)_label_btn_vor_loc, (char*)_label_no_description );
 
-    _btn_altitude_inc = GFCommand( (char*)GFMCPPro_Buttons::label_altitude_inc, (char*)label_no_description );
-    _btn_altitude_dec = GFCommand( (char*)GFMCPPro_Buttons::label_altitude_dec, (char*)label_no_description );
 
-    _btn_vert_speed_inc = GFCommand( (char*)GFMCPPro_Buttons::label_vert_speed_inc, (char*)label_no_description );
-    _btn_vert_speed_dec = GFCommand( (char*)GFMCPPro_Buttons::label_vert_speed_dec, (char*)label_no_description );
 
-    _btn_crs_right_inc = GFCommand( (char*)GFMCPPro_Buttons::label_crs_right_inc, (char*)label_no_description );
-    _btn_crs_right_dec = GFCommand( (char*)GFMCPPro_Buttons::label_crs_right_dec, (char*)label_no_description );
+    // Create commands for Scroll Wheels and Rotary Knobs.
+    _btn_crs_left_inc = GFCommand( (char*)_label_crs_left_inc, (char*)_label_no_description );
+    _btn_crs_left_dec = GFCommand( (char*)_label_crs_left_dec, (char*)_label_no_description );
+
+    _btn_ias_mach_inc = GFCommand( (char*)_label_ias_mach_inc, (char*)_label_no_description );
+    _btn_ias_mach_dec = GFCommand( (char*)_label_ias_mach_dec, (char*)_label_no_description );
+
+    _btn_heading_inc = GFCommand( (char*)_label_heading_inc, (char*)_label_no_description );
+    _btn_heading_dec = GFCommand( (char*)_label_heading_dec, (char*)_label_no_description );
+
+    _btn_altitude_inc = GFCommand( (char*)_label_altitude_inc, (char*)_label_no_description );
+    _btn_altitude_dec = GFCommand( (char*)_label_altitude_dec, (char*)_label_no_description );
+
+    _btn_vert_speed_inc = GFCommand( (char*)_label_vert_speed_inc, (char*)_label_no_description );
+    _btn_vert_speed_dec = GFCommand( (char*)_label_vert_speed_dec, (char*)_label_no_description );
+
+    _btn_crs_right_inc = GFCommand( (char*)_label_crs_right_inc, (char*)_label_no_description );
+    _btn_crs_right_dec = GFCommand( (char*)_label_crs_right_dec, (char*)_label_no_description );
 
 }
-
 
 
 
@@ -47,7 +74,6 @@ void GFMCPPro_Buttons::update() {
     _read_usb();
 
 }
-
 
 
 
@@ -68,7 +94,7 @@ void GFMCPPro_Buttons::_read_usb() {
 
     } else {
 
-        _dump_button_packet( res, buf );
+        //_dump_button_packet( res, buf );
         _proc_buttons( res, buf );
 
     } //checking for packet read
@@ -77,9 +103,7 @@ void GFMCPPro_Buttons::_read_usb() {
 
 
 
-
 void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
-
 
     // Channel
     // packet, value
@@ -114,9 +138,6 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     buf[3] & 16 ? _btn_altitude_dec.Begin()          : _btn_altitude_dec.Stop();
 
 
-
-
-
     // ------------------ Buttons ----------------
 
     // Packet 5
@@ -129,7 +150,6 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     // V/S              32
     // AP Disengage     64
     // FD Right         128
-
     buf[5] & 1 ? _btn_Speed.Begin()            : _btn_Speed.Stop();
     buf[5] & 2 ? _btn_LVL_CHG.Begin()          : _btn_LVL_CHG.Stop();
     buf[5] & 4 ? _btn_HDG_SEL.Begin()          : _btn_HDG_SEL.Stop();
@@ -138,8 +158,6 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     buf[5] & 32 ? _btn_VS.Begin()              : _btn_VS.Stop();
     buf[5] & 64 ? _btn_AP_Disengage.Begin()    : _btn_AP_Disengage.Stop();
     buf[5] & 128 ? _btn_FD_Right.Begin()       : _btn_FD_Right.Stop();
-
-
 
     // Packet 6
     // --------------------
@@ -151,19 +169,14 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     // ALT Dial         32
     // FD Left          64
     // N1               128
-
     buf[6] & 1 ? _btn_ALT_INV.Begin()          : _btn_ALT_INV.Stop();
     buf[6] & 2 ? _btn_CWS_A.Begin()            : _btn_CWS_A.Stop();
     buf[6] & 4 ? _btn_CWS_B.Begin()            : _btn_CWS_B.Stop();
-
-    buf[6] & 8 ? _btn_IAS_Dial.Begin()         : _btn_IAS_Dial.Stop();
-    buf[6] & 16 ? _btn_HDG_Dial.Begin()        : _btn_HDG_Dial.Stop();
-    buf[6] & 32 ? _btn_ALT_Dial.Begin()        : _btn_ALT_Dial.Stop();
-
+    buf[6] & 8 ? _btn_IAS_Dial.Begin()         : _btn_IAS_Dial.Stop(); // -- Dial --
+    buf[6] & 16 ? _btn_HDG_Dial.Begin()        : _btn_HDG_Dial.Stop(); // -- Dial --
+    buf[6] & 32 ? _btn_ALT_Dial.Begin()        : _btn_ALT_Dial.Stop(); // -- Dial --
     buf[6] & 64 ? _btn_FD_Left.Begin()         : _btn_FD_Left.Stop();
     buf[6] & 128 ? _btn_N1.Begin()             : _btn_N1.Stop();
-
-
 
     // Packet 7
     // --------------------
@@ -175,7 +188,6 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     // C/O              32
     // SPD INTV         64
     // VOR LOC          128
-
     buf[7] & 1 ? _btn_VNAV.Begin()             : _btn_VNAV.Stop();
     buf[7] & 2 ? _btn_LNAV.Begin()             : _btn_LNAV.Stop();
     buf[7] & 4 ? _btn_CMD_A.Begin()            : _btn_CMD_A.Stop();
@@ -184,7 +196,6 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     buf[7] & 32 ? _btn_CO.Begin()              : _btn_CO.Stop();
     buf[7] & 64 ? _btn_SPD_INTV.Begin()        : _btn_SPD_INTV.Stop();
     buf[7] & 128 ? _btn_VOR_LOC.Begin()        : _btn_VOR_LOC.Stop();
-
 
 
 
@@ -204,9 +215,6 @@ void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
     }
 
 }
-
-
-
 
 
 
