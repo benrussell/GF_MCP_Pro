@@ -14,6 +14,7 @@
 
 
 
+std::vector<std::string*> GFDataref::_deferred_DRE_registration_pool;
 
 
 GFDataref::GFDataref(char *dref_name) {
@@ -22,12 +23,9 @@ GFDataref::GFDataref(char *dref_name) {
 	snprintf( caTmp, 1024, "GF_MCP_Pro: Create dref:(%s)\n", dref_name );
 	XPLMDebugString( caTmp );
 
-
 	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
 
-
     _name = std::string( dref_name );
-
 
     _element_count = -1;
 
@@ -62,6 +60,7 @@ GFDataref::GFDataref(char *dref_name, int element_count) {
 	snprintf( caTmp, 1024, "GF_MCP_Pro: Create dref:(%s[%i])\n", dref_name, element_count );
 	XPLMDebugString( caTmp );
 
+	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
 
     _name = std::string( dref_name );
 
