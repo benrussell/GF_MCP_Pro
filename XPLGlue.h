@@ -39,14 +39,14 @@ PLUGIN_API void XPluginReceiveMessage(
 
 
 // FLCB
-float GFMCPPro_flcb(
+extern float GFMCPPro_flcb(
         float                inElapsedSinceLastCall,
         float                inElapsedTimeSinceLastFlightLoop,
         int                  inCounter,
         void *               inRefcon);
 
 
-int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
+extern int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
                             XPLMCommandPhase     inPhase,
                             void *               inRefcon);
 
