@@ -57,7 +57,7 @@ GFDataref::GFDataref(char *dref_name, int element_count) {
 	char caTmp[1024];
 	snprintf( caTmp, 1024, "GF_MCP_Pro: Create dref:(%s[%i])\n", dref_name, element_count );
 	XPLMDebugString( caTmp );
-	
+
 
     _name = std::string( dref_name );
 

@@ -27,9 +27,9 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GF MCP Pro v0.0.2";
+	const char* name = "GoFlight MCP Pro v0.0.2";
 	const char* sig = "goflightinc.com/mcp_pro";
-	const char* desc = "GoFlight MCP Pro (2016.05.07)";
+	const char* desc = "Built: 2016.05.07";
 
     sprintf( outName, name );
     sprintf( outSig, sig );
@@ -50,7 +50,6 @@ PLUGIN_API void XPluginStop(void){
 
     XPLMDebugString("GF_MCP_Pro: XPluginStrop\n");
 
-
     delete( mcp_pro );
 
 }
@@ -61,7 +60,6 @@ PLUGIN_API int XPluginEnable(void) {
 
     XPLMDebugString("GF_MCP_Pro: Connecting to USB device..\n");
     mcp_pro->Connect();
-
 
     return 1; //allow start.
 
