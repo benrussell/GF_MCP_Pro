@@ -9,7 +9,7 @@
 #include <hidapi.h>
 
 
-#include "XPDataref.h"
+#include "GFDataref.h"
 
 #include "GFUtils.h"
 
@@ -23,12 +23,12 @@ public:
     void update();
 
     // 7 Seg byte arrays.
-    XPDataref _dref_crs_left;
-    XPDataref _dref_ias_mach;
-    XPDataref _dref_heading;
-    XPDataref _dref_altitude;
-    XPDataref _dref_vert_speed;
-    XPDataref _dref_crs_right;
+    GFDataref _dref_crs_left;
+    GFDataref _dref_ias_mach;
+    GFDataref _dref_heading;
+    GFDataref _dref_altitude;
+    GFDataref _dref_vert_speed;
+    GFDataref _dref_crs_right;
 
 
     hid_device* _handle;

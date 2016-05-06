@@ -101,7 +101,7 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
                             XPLMCommandPhase     inPhase,
                             void *               inRefcon) {
 
-    XPCommand *cmd = (XPCommand*)inRefcon;
+    GFCommand *cmd = (GFCommand*)inRefcon;
 
     char caTmp[1024];
     snprintf( caTmp, 1024, "GF MCP Pro: cmdHandler: %s\n", cmd->_name.c_str() );

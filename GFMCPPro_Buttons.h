@@ -8,7 +8,7 @@
 
 #include <hidapi.h>
 
-#include "XPCommand.h"
+#include "GFCommand.h"
 
 
 
@@ -21,55 +21,55 @@ public:
 
     // ---- Buttons and Switches ----
     // Packet 5
-    XPCommand _btn_Speed;
-    XPCommand _btn_LVL_CHG;
-    XPCommand _btn_HDG_SEL;
-    XPCommand _btn_APP;
-    XPCommand _btn_ALT_HLD;
-    XPCommand _btn_VS;
-    XPCommand _btn_AP_Disengage;
-    XPCommand _btn_FD_Right;
+    GFCommand _btn_Speed;
+    GFCommand _btn_LVL_CHG;
+    GFCommand _btn_HDG_SEL;
+    GFCommand _btn_APP;
+    GFCommand _btn_ALT_HLD;
+    GFCommand _btn_VS;
+    GFCommand _btn_AP_Disengage;
+    GFCommand _btn_FD_Right;
 
     // Packet 6
-    XPCommand _btn_ALT_INV;
-    XPCommand _btn_CWS_A;
-    XPCommand _btn_CWS_B;
-    XPCommand _btn_IAS_Dial;
-    XPCommand _btn_HDG_Dial;
-    XPCommand _btn_ALT_Dial;
-    XPCommand _btn_FD_Left;
-    XPCommand _btn_N1;
+    GFCommand _btn_ALT_INV;
+    GFCommand _btn_CWS_A;
+    GFCommand _btn_CWS_B;
+    GFCommand _btn_IAS_Dial;
+    GFCommand _btn_HDG_Dial;
+    GFCommand _btn_ALT_Dial;
+    GFCommand _btn_FD_Left;
+    GFCommand _btn_N1;
 
     // Packet 7
-    XPCommand _btn_VNAV;
-    XPCommand _btn_LNAV;
-    XPCommand _btn_CMD_A;
-    XPCommand _btn_CMD_B;
-    XPCommand _btn_AT_Arm;
-    XPCommand _btn_CO;
-    XPCommand _btn_SPD_INTV;
-    XPCommand _btn_VOR_LOC;
+    GFCommand _btn_VNAV;
+    GFCommand _btn_LNAV;
+    GFCommand _btn_CMD_A;
+    GFCommand _btn_CMD_B;
+    GFCommand _btn_AT_Arm;
+    GFCommand _btn_CO;
+    GFCommand _btn_SPD_INTV;
+    GFCommand _btn_VOR_LOC;
 
 
 
     // ---- Scroll Wheels and Rotaries ----
-    XPCommand _btn_crs_left_inc;
-    XPCommand _btn_crs_left_dec;
+    GFCommand _btn_crs_left_inc;
+    GFCommand _btn_crs_left_dec;
 
-    XPCommand _btn_ias_mach_inc;
-    XPCommand _btn_ias_mach_dec;
+    GFCommand _btn_ias_mach_inc;
+    GFCommand _btn_ias_mach_dec;
 
-    XPCommand _btn_heading_inc;
-    XPCommand _btn_heading_dec;
+    GFCommand _btn_heading_inc;
+    GFCommand _btn_heading_dec;
 
-    XPCommand _btn_altitude_inc;
-    XPCommand _btn_altitude_dec;
+    GFCommand _btn_altitude_inc;
+    GFCommand _btn_altitude_dec;
 
-    XPCommand _btn_vert_speed_inc;
-    XPCommand _btn_vert_speed_dec;
+    GFCommand _btn_vert_speed_inc;
+    GFCommand _btn_vert_speed_dec;
 
-    XPCommand _btn_crs_right_inc;
-    XPCommand _btn_crs_right_dec;
+    GFCommand _btn_crs_right_inc;
+    GFCommand _btn_crs_right_dec;
     // -----------------------------------
 
 

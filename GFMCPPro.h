@@ -7,8 +7,8 @@
 
 
 // XPlane Utils
-#include "XPCommand.h"
-#include "XPDataref.h"
+#include "GFCommand.h"
+#include "GFDataref.h"
 
 
 #include "GFMCPPro_Buttons.h"

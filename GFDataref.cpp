@@ -2,7 +2,7 @@
 // Created by Ben on 5/05/2016.
 //
 
-#include "XPDataref.h"
+#include "GFDataref.h"
 
 #include <XPLMUtilities.h>
 
@@ -16,10 +16,7 @@
 
 
 
-XPDataref::XPDataref() {
-}
-
-XPDataref::XPDataref(char *dref_name) {
+GFDataref::GFDataref(char *dref_name) {
 
     XPLMDebugString("GF_MCP_Pro: Create dref..\n");
 
@@ -33,7 +30,7 @@ XPDataref::XPDataref(char *dref_name) {
                     xplmType_Int, //type
                     1, //writable
 
-                    XPDataref::xp_getDatai,	XPDataref::xp_setDatai,
+                    GFDataref::xp_getDatai,	GFDataref::xp_setDatai,
                     NULL, NULL, //floats
                     NULL, NULL, //doubles
 
@@ -41,7 +38,7 @@ XPDataref::XPDataref(char *dref_name) {
                     NULL, NULL, //float vectors
 
                     NULL, NULL, //float vectors
-                    //XPDataref::xp_getBytes, XPDataref::xp_setBytes, //byte vectors
+                    //GFDataref::xp_getBytes, GFDataref::xp_setBytes, //byte vectors
 
 
                     (void *)this, //read refcon
@@ -52,7 +49,7 @@ XPDataref::XPDataref(char *dref_name) {
 
 
 
-XPDataref::XPDataref(char *dref_name, int element_count) {
+GFDataref::GFDataref(char *dref_name, int element_count) {
 
     XPLMDebugString("GF_MCP_Pro: Create dref array..\n");
 
@@ -65,7 +62,7 @@ XPDataref::XPDataref(char *dref_name, int element_count) {
                     xplmType_Data, //type
                     1, //writable
 
-                    //XPDataref::xp_getDatai,	XPDataref::xp_setDatai,
+                    //GFDataref::xp_getDatai,	GFDataref::xp_setDatai,
                     NULL, NULL, //integer
                     NULL, NULL, //floats
                     NULL, NULL, //doubles
@@ -73,7 +70,7 @@ XPDataref::XPDataref(char *dref_name, int element_count) {
                     NULL, NULL, //integer vectors
                     NULL, NULL, //float vectors
 
-                    XPDataref::xp_getBytes, XPDataref::xp_setBytes, //byte vectors
+                    GFDataref::xp_getBytes, GFDataref::xp_setBytes, //byte vectors
 
                     (void *)this, //read refcon
                     (void *)this  //write refcon
@@ -91,17 +88,17 @@ XPDataref::XPDataref(char *dref_name, int element_count) {
 
 
 
-int XPDataref::xp_getDatai(void *inRefcon) {
+int GFDataref::xp_getDatai(void *inRefcon) {
     //get
-    XPDataref *tmp = (XPDataref*)inRefcon;
+    GFDataref *tmp = (GFDataref*)inRefcon;
 
     return tmp->_int_value;
 }
 
 
-void XPDataref::xp_setDatai(void * inRefcon, int inValue){
+void GFDataref::xp_setDatai(void * inRefcon, int inValue){
     //set
-    XPDataref *tmp = (XPDataref*)inRefcon;
+    GFDataref *tmp = (GFDataref*)inRefcon;
 
     tmp->_int_value = inValue;
 
@@ -110,17 +107,17 @@ void XPDataref::xp_setDatai(void * inRefcon, int inValue){
 
 
 
-int XPDataref::xp_getBytes(
+int GFDataref::xp_getBytes(
         void* inRefcon,
         void* outValues, /* Can be NULL */
         int inOffset,
         int inMax
 ){
 
-    XPDataref *tmp = (XPDataref*)inRefcon;
+    GFDataref *tmp = (GFDataref*)inRefcon;
 
     int max_byte_offset = inOffset+inMax;
-    if( max_byte_offset > XPDataref::_blob_size ){
+    if( max_byte_offset > GFDataref::_blob_size ){
         // overflow..
     }
 
@@ -130,17 +127,17 @@ int XPDataref::xp_getBytes(
     return tmp->_element_count;
 }
 
-void XPDataref::xp_setBytes(
+void GFDataref::xp_setBytes(
         void* inRefcon,
         void* inValues, /* Can be NULL */
         int inOffset,
         int inCount
 ){
 
-    XPDataref *tmp = (XPDataref*)inRefcon;
+    GFDataref *tmp = (GFDataref*)inRefcon;
 
     int max_byte_offset = inOffset+inCount;
-    if( max_byte_offset > XPDataref::_blob_size ){
+    if( max_byte_offset > GFDataref::_blob_size ){
         //do nothing
         return;
     }

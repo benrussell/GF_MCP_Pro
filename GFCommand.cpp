@@ -2,16 +2,16 @@
 // Created by Ben on 5/05/2016.
 //
 
-#include "XPCommand.h"
+#include "GFCommand.h"
 
 #include "XPLGlue.h"
 
 
-XPCommand::XPCommand() {
+GFCommand::GFCommand() {
     XPLMDebugString("GF_MCP_Pro: Create command.. default\n");
 }
 
-XPCommand::XPCommand(char *cmd_name, char* cmd_description) {
+GFCommand::GFCommand(char *cmd_name, char* cmd_description) {
 
     XPLMDebugString("GF_MCP_Pro: Create command..\n");
 
@@ -29,13 +29,13 @@ XPCommand::XPCommand(char *cmd_name, char* cmd_description) {
 }
 
 
-void XPCommand::Begin() {
+void GFCommand::Begin() {
     XPLMCommandBegin( _cmd );
     _cmd_active = 1;
 }
 
 
-void XPCommand::Stop() {
+void GFCommand::Stop() {
     if( _cmd_active ) {
         XPLMCommandEnd(_cmd);
         _cmd_active = 0;

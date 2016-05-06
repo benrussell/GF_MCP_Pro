@@ -8,7 +8,7 @@
 
 #include <hidapi.h>
 
-#include "XPDataref.h"
+#include "GFDataref.h"
 
 
 class GFMCPPro_LEDS {
@@ -52,36 +52,36 @@ public:
 
 
     //LED top row
-    XPDataref _dref_leds_vnav;
-    XPDataref _dref_leds_lnav;
-    XPDataref _dref_leds_ap_cmd_a;
-    XPDataref _dref_leds_ap_cmd_b;
-    XPDataref _dref_leds_at_arm;
+    GFDataref _dref_leds_vnav;
+    GFDataref _dref_leds_lnav;
+    GFDataref _dref_leds_ap_cmd_a;
+    GFDataref _dref_leds_ap_cmd_b;
+    GFDataref _dref_leds_at_arm;
     //?
     //?
-    XPDataref _dref_leds_vor_loc;
+    GFDataref _dref_leds_vor_loc;
 
 
     //LED mid row
     //?
-    XPDataref _dref_leds_ap_a_cws;
-    XPDataref _dref_leds_ap_b_cws;
+    GFDataref _dref_leds_ap_a_cws;
+    GFDataref _dref_leds_ap_b_cws;
     //?
     //?
     //?
-    XPDataref _dref_leds_l_side_fd;
-    XPDataref _dref_leds_n1;
+    GFDataref _dref_leds_l_side_fd;
+    GFDataref _dref_leds_n1;
 
 
     //LED bottom row
-    XPDataref _dref_leds_speed;
-    XPDataref _dref_leds_lvl_chg;
-    XPDataref _dref_leds_hdg_sel;
-    XPDataref _dref_leds_app;
-    XPDataref _dref_leds_alt_hld;
-    XPDataref _dref_leds_vs;
+    GFDataref _dref_leds_speed;
+    GFDataref _dref_leds_lvl_chg;
+    GFDataref _dref_leds_hdg_sel;
+    GFDataref _dref_leds_app;
+    GFDataref _dref_leds_alt_hld;
+    GFDataref _dref_leds_vs;
     //?
-    XPDataref _dref_leds_r_side_fd;
+    GFDataref _dref_leds_r_side_fd;
 
 
 };

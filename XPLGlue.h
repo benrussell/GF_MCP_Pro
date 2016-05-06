@@ -15,9 +15,9 @@
 
 #include "GFMCPPro.h"
 
-#include "XPCommand.h"
+#include "GFCommand.h"
 
-#include "XPDataref.h"
+#include "GFDataref.h"
 
 
 

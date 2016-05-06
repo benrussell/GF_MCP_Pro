@@ -2,8 +2,8 @@
 // Created by Ben on 5/05/2016.
 //
 
-#ifndef GF_MCP_PRO_XPDATAREF_H
-#define GF_MCP_PRO_XPDATAREF_H
+#ifndef GF_MCP_PRO_GFDataref_H
+#define GF_MCP_PRO_GFDataref_H
 
 
 #include <XPLMDataAccess.h>
@@ -12,11 +12,11 @@
 #include <string>
 
 
-class XPDataref {
+class GFDataref {
 public:
-    XPDataref();
-    XPDataref( char* dref_name );
-    XPDataref( char* dref_name, int element_count );
+    GFDataref();
+    GFDataref( char* dref_name );
+    GFDataref( char* dref_name, int element_count );
 
     XPLMDataRef _dref;
 
@@ -57,4 +57,4 @@ private:
 };
 
 
-#endif //GF_MCP_PRO_XPDATAREF_H
+#endif //GF_MCP_PRO_GFDataref_H
