@@ -6,11 +6,7 @@
 #define GF_MCP_PRO_GFCommand_H
 
 
-
 #include <XPLMUtilities.h>
-
-#include "GFCommand.h"
-
 
 #include <string>
 

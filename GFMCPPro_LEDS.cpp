@@ -17,18 +17,18 @@ GFMCPPro_LEDS::GFMCPPro_LEDS() {
     _dref_leds_ap_cmd_a     = GFDataref( (char*)GFMCPPro_LEDS::label_ap_cmd_a );
     _dref_leds_ap_cmd_b     = GFDataref( (char*)GFMCPPro_LEDS::label_ap_cmd_b );
     _dref_leds_at_arm       = GFDataref( (char*)GFMCPPro_LEDS::label_at_arm );
-    //
-    //
+    // blank bit
+    // blank bit
     _dref_leds_vor_loc      = GFDataref( (char*)GFMCPPro_LEDS::label_vor_loc );
 
 
     // Mid Row
-    //
+    // blank bit
     _dref_leds_ap_a_cws     = GFDataref( (char*)GFMCPPro_LEDS::label_ap_a_cws  );
     _dref_leds_ap_b_cws     = GFDataref( (char*)GFMCPPro_LEDS::label_ap_b_cws );
-    //
-    //
-    //
+    // blank bit
+    // blank bit
+    // blank bit
     _dref_leds_l_side_fd    = GFDataref( (char*)GFMCPPro_LEDS::label_l_side_fd );
     _dref_leds_n1           = GFDataref( (char*)GFMCPPro_LEDS::label_n1 );
 
@@ -40,7 +40,7 @@ GFMCPPro_LEDS::GFMCPPro_LEDS() {
     _dref_leds_app          = GFDataref( (char*)GFMCPPro_LEDS::label_app );
     _dref_leds_alt_hld      = GFDataref( (char*)GFMCPPro_LEDS::label_alt_hld  );
     _dref_leds_vs           = GFDataref( (char*)GFMCPPro_LEDS::label_vs );
-    //
+    // blank bit
     _dref_leds_r_side_fd    = GFDataref( (char*)GFMCPPro_LEDS::label_r_side_fd  );
 
 

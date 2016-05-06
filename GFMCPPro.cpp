@@ -20,6 +20,7 @@ GFMCPPro::GFMCPPro() {
     _gf_mcp_pro_buttons = new GFMCPPro_Buttons();
 
     _gf_mcp_pro_leds = new GFMCPPro_LEDS();
+
     _gf_mcp_pro_7seg = new GFMCPPro_7Seg();
 
 }
@@ -31,6 +32,7 @@ GFMCPPro::~GFMCPPro() {
     delete( _gf_mcp_pro_buttons );
 
     delete( _gf_mcp_pro_leds );
+
     delete( _gf_mcp_pro_7seg );
 
 }
@@ -59,7 +61,6 @@ int GFMCPPro::_close_usb_dev() {
     return 0;
 
 }
-
 
 
 int GFMCPPro::_open_usb_dev() {

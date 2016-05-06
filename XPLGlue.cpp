@@ -4,13 +4,19 @@
 
 #include "XPLGlue.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
+
+#include <XPLMUtilities.h>
+
+#include <XPLMProcessing.h>
 
 
 #include "GFMCPPro.h"
+
+#include "GFCommand.h"
+
+
+
 
 GFMCPPro *mcp_pro;
 

@@ -7,18 +7,7 @@
 
 
 #include <XPLMDefs.h>
-
 #include <XPLMUtilities.h>
-
-#include <XPLMProcessing.h>
-
-
-#include "GFMCPPro.h"
-
-#include "GFCommand.h"
-
-#include "GFDataref.h"
-
 
 
 class XPLGlue {
