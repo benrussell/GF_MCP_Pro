@@ -9,7 +9,6 @@
 
 
 
-const char* crs_left_inc = "goflight/mcp_pro/crs_left_inc";
 
 const char* label_no_description = "No description.";
 
@@ -86,6 +85,28 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
 
     // Channel
     // packet, value
+
+
+    // Packet 1
+    bx = 1;
+    // --------------------
+    // HDG
+    // CRS Left
+
+    // Packet 2
+    bx = 2;
+    // --------------------
+    // VS
+    // IAS
+
+    // Packet 3
+    bx = 3;
+    // --------------------
+    // CRS Right
+    // ALT
+
+
+
 
     // Packet 5
     bx=5;

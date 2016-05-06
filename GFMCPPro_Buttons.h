@@ -52,11 +52,6 @@ public:
 
 
 
-
-
-
-
-
     // ---- Scroll Wheels and Rotaries ----
     XPCommand _btn_crs_left_inc;
     XPCommand _btn_crs_left_dec;
@@ -80,7 +75,6 @@ public:
 
 
 
-
     void update();
 
     hid_device* _handle;
@@ -93,6 +87,11 @@ private:
     void _proc_buttons( int res, unsigned char* buf );
 
     void _dump_button_packet( int res, unsigned char* buf );
+
+
+
+
+
 
 
 
