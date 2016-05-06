@@ -91,10 +91,6 @@ private:
 
 
 
-
-
-
-
     const char* label_crs_left_inc = "goflight/mcp_pro/emit/crs_left_inc";
     const char* label_crs_left_dec = "goflight/mcp_pro/emit/crs_left_dec";
 
