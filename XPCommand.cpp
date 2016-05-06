@@ -27,3 +27,17 @@ XPCommand::XPCommand(char *cmd_name, char* cmd_description) {
                                 (void *)this);
 
 }
+
+
+void XPCommand::Begin() {
+    XPLMCommandBegin( _cmd );
+    _cmd_active = 1;
+}
+
+
+void XPCommand::Stop() {
+    if( _cmd_active ) {
+        XPLMCommandEnd(_cmd);
+        _cmd_active = 0;
+    }
+}

@@ -18,6 +18,27 @@ public:
 
     GFMCPPro_Buttons();
 
+
+    // ---- Buttons and Switches ----
+    // Packet 5
+    XPCommand _btn_Speed;
+    XPCommand _btn_LVL_CHG;
+    XPCommand _btn_HDG_SEL;
+    XPCommand _btn_APP;
+    XPCommand _btn_ALT_HLD;
+    XPCommand _btn_VS;
+    XPCommand _btn_AP_Disengage;
+    XPCommand _btn_FD_Right;
+
+
+
+
+
+
+
+
+
+    // ---- Scroll Wheels and Rotaries ----
     XPCommand _btn_crs_left_inc;
     XPCommand _btn_crs_left_dec;
 
@@ -35,6 +56,10 @@ public:
 
     XPCommand _btn_crs_right_inc;
     XPCommand _btn_crs_right_dec;
+    // -----------------------------------
+
+
+
 
 
     void update();
@@ -46,9 +71,10 @@ private:
 
     void _read_usb();
 
-    void _proc_button_packet( int res, unsigned char* buf );
+    void _proc_buttons( int res, unsigned char* buf );
 
     void _dump_button_packet( int res, unsigned char* buf );
+
 
 
     const char* label_crs_left_inc = "goflight/mcp_pro/emit/crs_left_inc";

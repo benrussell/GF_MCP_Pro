@@ -19,7 +19,7 @@
 class XPCommand {
 private:
     XPLMCommandRef _cmd;
-
+    int _cmd_active; //held high
 
 public:
     XPCommand();
@@ -27,6 +27,10 @@ public:
 
     std::string _name;
     std::string _description;
+
+
+    void Begin();
+    void Stop();
 
 
 };
