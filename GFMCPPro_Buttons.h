@@ -30,6 +30,25 @@ public:
     XPCommand _btn_AP_Disengage;
     XPCommand _btn_FD_Right;
 
+    // Packet 6
+    XPCommand _btn_ALT_INV;
+    XPCommand _btn_CWS_A;
+    XPCommand _btn_CWS_B;
+    XPCommand _btn_IAS_Dial;
+    XPCommand _btn_HDG_Dial;
+    XPCommand _btn_ALT_Dial;
+    XPCommand _btn_FD_Left;
+    XPCommand _btn_N1;
+
+    // Packet 7
+    XPCommand _btn_VNAV;
+    XPCommand _btn_LNAV;
+    XPCommand _btn_CMD_A;
+    XPCommand _btn_CMD_B;
+    XPCommand _btn_AT_Arm;
+    XPCommand _btn_CO;
+    XPCommand _btn_SPD_INTV;
+    XPCommand _btn_VOR_LOC;
 
 
 

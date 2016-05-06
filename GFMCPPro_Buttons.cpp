@@ -84,11 +84,11 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     //packet to inspect
     int bx=0;
 
-
     // Channel
     // packet, value
 
     // Packet 5
+    bx=5;
     // --------------------
     // Speed            1
     // LVL CHG          2
@@ -99,72 +99,19 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     // AP Disengage     64
     // FD Right         128
 
-    bx=5;
-
-    if( buf[bx] & 1 ){
-        //Speed
-        _btn_Speed.Begin();
-    }else{
-        _btn_Speed.Stop();
-    }
-
-    if( buf[bx] & 2 ){
-        //LVL CHG
-        _btn_LVL_CHG.Begin();
-    }else{
-        _btn_LVL_CHG.Stop();
-    }
-
-    if( buf[bx] & 4 ){
-        //HDG SEL
-        _btn_HDG_SEL.Begin();
-    }else{
-        _btn_HDG_SEL.Stop();
-    }
-
-    if( buf[bx] & 8 ){
-        //APP
-        _btn_APP.Begin();
-    }else{
-        _btn_APP.Stop();
-    }
-
-    if( buf[bx] & 16 ){
-        //ALT HLD
-        _btn_ALT_HLD.Begin();
-    }else{
-        _btn_ALT_HLD.Stop();
-    }
-
-    if( buf[bx] & 32 ){
-        //VS
-        _btn_VS.Begin();
-    }else{
-        _btn_VS.Stop();
-    }
-
-    if( buf[bx] & 64 ){
-        //AP Disengage
-        _btn_AP_Disengage.Begin();
-    }else{
-        _btn_AP_Disengage.Stop();
-    }
-
-    if( buf[bx] & 128 ){
-        //FD Right
-        _btn_FD_Right.Begin();
-    }else{
-        _btn_FD_Right.Stop();
-    }
-
-
-
-
-
+    buf[bx] & 1 ? _btn_Speed.Begin()            : _btn_Speed.Stop();
+    buf[bx] & 2 ? _btn_LVL_CHG.Begin()          : _btn_LVL_CHG.Stop();
+    buf[bx] & 4 ? _btn_HDG_SEL.Begin()          : _btn_HDG_SEL.Stop();
+    buf[bx] & 8 ? _btn_APP.Begin()              : _btn_APP.Stop();
+    buf[bx] & 16 ? _btn_ALT_HLD.Begin()         : _btn_ALT_HLD.Stop();
+    buf[bx] & 32 ? _btn_VS.Begin()              : _btn_VS.Stop();
+    buf[bx] & 64 ? _btn_AP_Disengage.Begin()    : _btn_AP_Disengage.Stop();
+    buf[bx] & 128 ? _btn_FD_Right.Begin()       : _btn_FD_Right.Stop();
 
 
 
     // Packet 6
+    bx = 6;
     // --------------------
     // ALT INV          1
     // CWS A            2
@@ -175,7 +122,21 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     // FD Left          64
     // N1               128
 
+    buf[bx] & 1 ? _btn_ALT_INV.Begin()          : _btn_ALT_INV.Stop();
+    buf[bx] & 2 ? _btn_CWS_A.Begin()            : _btn_CWS_A.Stop();
+    buf[bx] & 4 ? _btn_CWS_B.Begin()            : _btn_CWS_B.Stop();
+
+    buf[bx] & 8 ? _btn_IAS_Dial.Begin()         : _btn_IAS_Dial.Stop();
+    buf[bx] & 16 ? _btn_HDG_Dial.Begin()        : _btn_HDG_Dial.Stop();
+    buf[bx] & 32 ? _btn_ALT_Dial.Begin()        : _btn_ALT_Dial.Stop();
+
+    buf[bx] & 64 ? _btn_FD_Left.Begin()         : _btn_FD_Left.Stop();
+    buf[bx] & 128 ? _btn_N1.Begin()             : _btn_N1.Stop();
+
+
+
     // Packet 7
+    bx = 7;
     // --------------------
     // VNAV             1
     // LNAV             2
@@ -186,8 +147,14 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     // SPD INTV         64
     // VOR LOC          128
 
-
-
+    buf[bx] & 1 ? _btn_VNAV.Begin()             : _btn_VNAV.Stop();
+    buf[bx] & 2 ? _btn_LNAV.Begin()             : _btn_LNAV.Stop();
+    buf[bx] & 4 ? _btn_CMD_A.Begin()            : _btn_CMD_A.Stop();
+    buf[bx] & 8 ? _btn_CMD_B.Begin()            : _btn_CMD_B.Stop();
+    buf[bx] & 16 ? _btn_AT_Arm.Begin()          : _btn_AT_Arm.Stop();
+    buf[bx] & 32 ? _btn_CO.Begin()              : _btn_CO.Stop();
+    buf[bx] & 64 ? _btn_SPD_INTV.Begin()        : _btn_SPD_INTV.Stop();
+    buf[bx] & 128 ? _btn_VOR_LOC.Begin()        : _btn_VOR_LOC.Stop();
 
 
 
@@ -201,7 +168,6 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
         //hdg--;
 
     }
-
 
 } //_proc_button_packet
 
