@@ -27,9 +27,13 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-    sprintf( outName, "GF MCP Pro v0.0.1" );
-    sprintf( outSig, "goflight.com/mcp_pro" );
-    sprintf( outDesc, "GoFlight MCP Pro Driver" );
+	const char* name = "GF MCP Pro v0.0.2";
+	const char* sig = "goflightinc.com/mcp_pro";
+	const char* desc = "GoFlight MCP Pro (2016.05.07)";
+
+    sprintf( outName, name );
+    sprintf( outSig, sig );
+    sprintf( outDesc, desc );
 
 
     mcp_pro = new GFMCPPro();
