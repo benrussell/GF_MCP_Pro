@@ -43,7 +43,12 @@ public:
 
 
 private:
+
     void _read_usb();
+
+    void _proc_button_packet( int res, unsigned char* buf );
+
+    void _dump_button_packet( int res, unsigned char* buf );
 
 
     const char* label_crs_left_inc = "goflight/mcp_pro/emit/crs_left_inc";
@@ -63,8 +68,6 @@ private:
 
     const char* label_crs_right_inc = "goflight/mcp_pro/emit/crs_right_inc";
     const char* label_crs_right_dec = "goflight/mcp_pro/emit/crs_right_dec";
-
-
 
 
 

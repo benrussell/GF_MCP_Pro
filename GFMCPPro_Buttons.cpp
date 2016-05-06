@@ -50,6 +50,8 @@ void GFMCPPro_Buttons::update() {
 }
 
 
+
+
 void GFMCPPro_Buttons::_read_usb() {
 
     const int buf_size=16;
@@ -60,60 +62,75 @@ void GFMCPPro_Buttons::_read_usb() {
 
     memset(buf, 0, buf_size);
 
-// Read requested state
+    // Read requested state
     res = hid_read( _handle, buf, buf_size);
     if (res < 0) {
         XPLMDebugString("GF MCP Pro: USB Read Failed.\n");
 
     } else {
 
+        _dump_button_packet( res, buf );
+        _proc_button_packet( res, buf );
 
-        // Print out the returned buffer.
-        for (int i = 0; i < res; i++) {
-            printf("% 4d    ", buf[i]);
-        }
-        //if a report has been rxd and dumped, we should put a new line
-        if (res > 0) {
-            printf("\n");
-        }
+    } //checking for packet read
+
+} // read_usb()
 
 
 
 
-//parse for CRS_RIGHT knob
-        if (buf[3] == 1 || buf[3] == 2) {
-            //hdg++;
+void GFMCPPro_Buttons::_proc_button_packet( int res, unsigned char* buf ){
 
-        } else if (buf[3] == 14 || buf[3] == 15) {
-            //hdg--;
+    //parse for CRS_RIGHT knob
+    if (buf[3] == 1 || buf[3] == 2) {
+        //hdg++;
 
-        }
+    } else if (buf[3] == 14 || buf[3] == 15) {
+        //hdg--;
+
+    }
 
 
-
-
-        /*
+    /*
 
 //VNAV button pressed
-        if (buf[7] && 1) {
+    if (buf[7] && 1) {
 //turn VNAV led ON
 
-            if (flag_vnav) {
+        if (flag_vnav) {
 //turn off
-                flag_vnav = 0;
-            } else {
+            flag_vnav = 0;
+        } else {
 //turn on
-                flag_vnav = 1;
-            }
-
-
+            flag_vnav = 1;
         }
+
+
+    }
 
 */
 
 
+}
 
-    } //checking for packet read
 
 
-} // read_usb()
+void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
+
+    // Print out the returned buffer.
+    for (int i = 0; i < res; i++) {
+        printf("% 4d    ", buf[i]);
+    }
+    //if a report has been rxd and dumped, we should put a new line
+    if (res > 0) {
+        printf("\n");
+    }
+
+}
+
+
+
+
+
+
+// eof
