@@ -36,31 +36,26 @@
 
 
 class GFMCPPro {
-private:
-    hid_device *_handle;
-
-    int _open_usb_dev();
-    int _close_usb_dev();
-
-
-    GFMCPPro_Buttons *_gf_mcp_pro_buttons;
-
-    GFMCPPro_LEDS *_gf_mcp_pro_leds;
-    GFMCPPro_7Seg *_gf_mcp_pro_7seg;
-
-
-
 public:
-
     GFMCPPro();
     ~GFMCPPro();
 
     void Connect();
     void Disconnect();
 
-
-
     void flcb();
+
+
+private:
+	hid_device *_handle;
+
+	int _open_usb_dev();
+	int _close_usb_dev();
+
+	GFMCPPro_Buttons *_gf_mcp_pro_buttons;
+
+	GFMCPPro_LEDS *_gf_mcp_pro_leds;
+	GFMCPPro_7Seg *_gf_mcp_pro_7seg;
 
 
 };
