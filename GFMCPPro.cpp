@@ -58,9 +58,14 @@ void GFMCPPro::Disconnect() {
 int GFMCPPro::_close_usb_dev() {
 
     hid_close( _handle );
+
+    _handle = NULL;
+
+
     return 0;
 
 }
+
 
 
 int GFMCPPro::_open_usb_dev() {
@@ -110,18 +115,22 @@ int GFMCPPro::_open_usb_dev() {
 
 
 
-
-
-
-
 void GFMCPPro::flcb() {
 
-    _gf_mcp_pro_buttons->update();
+    if( _handle == NULL ) {
+        //_handle is null, ignore!
+        //TODO: set dref to 0 to indicate disconnect?
 
-    _gf_mcp_pro_leds->update();
+    }else {
+        _gf_mcp_pro_buttons->update();
 
-    _gf_mcp_pro_7seg->update();
+        _gf_mcp_pro_leds->update();
+
+        _gf_mcp_pro_7seg->update();
+
+    }
 
 }
 
 
+// eof
