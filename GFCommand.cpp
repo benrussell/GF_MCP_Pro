@@ -24,7 +24,8 @@ GFCommand::GFCommand(char *cmd_name, char* cmd_description) {
     XPLMRegisterCommandHandler( _cmd,              // in Command name
                                 GFMCPPro_cmdHandler,       // in Handler
                                 1,                      // Receive input before plugin windows.
-                                (void *)this);
+                                (void *)this
+								);
 
 }
 
