@@ -366,7 +366,7 @@ int main( int argc, char* argv ){
             
 
 				//VNAV button pressed            
-            	if( buf[7] && 1 ){
+            	if( buf[7] & 1 ){
             		//turn VNAV led ON
             		
             		if( flag_vnav ){
