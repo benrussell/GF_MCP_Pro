@@ -8,8 +8,8 @@
 
 #include <XPLMDataAccess.h>
 
-
 #include <string>
+#include <vector>
 
 
 class GFDataref {
@@ -27,6 +27,9 @@ public:
 
     int _int_value;
     unsigned char _blob[8];
+
+
+	static std::vector<std::string*> _deferred_DRE_registration_pool;
 
 
 private:
