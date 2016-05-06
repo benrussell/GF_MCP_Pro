@@ -46,23 +46,23 @@ private:
     void _read_usb();
 
 
-    const char* label_crs_left_inc = "goflight/mcp_pro/crs_left_inc";
-    const char* label_crs_left_dec = "goflight/mcp_pro/crs_left_dec";
+    const char* label_crs_left_inc = "goflight/mcp_pro/emit/crs_left_inc";
+    const char* label_crs_left_dec = "goflight/mcp_pro/emit/crs_left_dec";
 
-    const char* label_ias_mach_inc = "goflight/mcp_pro/ias_mach_inc";
-    const char* label_ias_mach_dec = "goflight/mcp_pro/ias_mach_dec";
+    const char* label_ias_mach_inc = "goflight/mcp_pro/emit/ias_mach_inc";
+    const char* label_ias_mach_dec = "goflight/mcp_pro/emit/ias_mach_dec";
 
-    const char* label_heading_inc = "goflight/mcp_pro/heading_inc";
-    const char* label_heading_dec = "goflight/mcp_pro/heading_dec";
+    const char* label_heading_inc = "goflight/mcp_pro/emit/heading_inc";
+    const char* label_heading_dec = "goflight/mcp_pro/emit/heading_dec";
 
-    const char* label_altitude_inc = "goflight/mcp_pro/altitude_inc";
-    const char* label_altitude_dec = "goflight/mcp_pro/altitude_dec";
+    const char* label_altitude_inc = "goflight/mcp_pro/emit/altitude_inc";
+    const char* label_altitude_dec = "goflight/mcp_pro/emit/altitude_dec";
 
-    const char* label_vert_speed_inc = "goflight/mcp_pro/vert_speed_inc";
-    const char* label_vert_speed_dec = "goflight/mcp_pro/vert_speed_dec";
+    const char* label_vert_speed_inc = "goflight/mcp_pro/emit/vert_speed_inc";
+    const char* label_vert_speed_dec = "goflight/mcp_pro/emit/vert_speed_dec";
 
-    const char* label_crs_right_inc = "goflight/mcp_pro/crs_right_inc";
-    const char* label_crs_right_dec = "goflight/mcp_pro/crs_right_dec";
+    const char* label_crs_right_inc = "goflight/mcp_pro/emit/crs_right_inc";
+    const char* label_crs_right_dec = "goflight/mcp_pro/emit/crs_right_dec";
 
 
 
