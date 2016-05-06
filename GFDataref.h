@@ -14,12 +14,11 @@
 
 class GFDataref {
 public:
-    GFDataref();
+    //GFDataref();
     GFDataref( char* dref_name );
     GFDataref( char* dref_name, int element_count );
 
     XPLMDataRef _dref;
-
 
     std::string _name;
 

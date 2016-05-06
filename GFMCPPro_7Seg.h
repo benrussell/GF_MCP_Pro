@@ -18,7 +18,7 @@
 class GFMCPPro_7Seg {
 public:
     GFMCPPro_7Seg();
-    ~GFMCPPro_7Seg();
+    //~GFMCPPro_7Seg();
 
     void update();
 
