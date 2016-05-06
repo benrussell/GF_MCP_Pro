@@ -20,23 +20,23 @@ GFMCPPro_Buttons::GFMCPPro_Buttons(){
     // Create commands..
     // Need both ..._inc and ..._dec versions of thes
 
-    _cmd_crs_left_inc = XPCommand( (char*)GFMCPPro_Buttons::label_crs_left_inc, (char*)label_no_description );
-    _cmd_crs_left_dec = XPCommand( (char*)GFMCPPro_Buttons::label_crs_left_dec, (char*)label_no_description );
+    _btn_crs_left_inc = XPCommand( (char*)GFMCPPro_Buttons::label_crs_left_inc, (char*)label_no_description );
+    _btn_crs_left_dec = XPCommand( (char*)GFMCPPro_Buttons::label_crs_left_dec, (char*)label_no_description );
 
-    _cmd_ias_mach_inc = XPCommand( (char*)GFMCPPro_Buttons::label_ias_mach_inc, (char*)label_no_description );
-    _cmd_ias_mach_dec = XPCommand( (char*)GFMCPPro_Buttons::label_ias_mach_dec, (char*)label_no_description );
+    _btn_ias_mach_inc = XPCommand( (char*)GFMCPPro_Buttons::label_ias_mach_inc, (char*)label_no_description );
+    _btn_ias_mach_dec = XPCommand( (char*)GFMCPPro_Buttons::label_ias_mach_dec, (char*)label_no_description );
 
-    _cmd_heading_inc = XPCommand( (char*)GFMCPPro_Buttons::label_heading_inc, (char*)label_no_description );
-    _cmd_heading_dec = XPCommand( (char*)GFMCPPro_Buttons::label_heading_dec, (char*)label_no_description );
+    _btn_heading_inc = XPCommand( (char*)GFMCPPro_Buttons::label_heading_inc, (char*)label_no_description );
+    _btn_heading_dec = XPCommand( (char*)GFMCPPro_Buttons::label_heading_dec, (char*)label_no_description );
 
-    _cmd_altitude_inc = XPCommand( (char*)GFMCPPro_Buttons::label_altitude_inc, (char*)label_no_description );
-    _cmd_altitude_dec = XPCommand( (char*)GFMCPPro_Buttons::label_altitude_dec, (char*)label_no_description );
+    _btn_altitude_inc = XPCommand( (char*)GFMCPPro_Buttons::label_altitude_inc, (char*)label_no_description );
+    _btn_altitude_dec = XPCommand( (char*)GFMCPPro_Buttons::label_altitude_dec, (char*)label_no_description );
 
-    _cmd_vert_speed_inc = XPCommand( (char*)GFMCPPro_Buttons::label_vert_speed_inc, (char*)label_no_description );
-    _cmd_vert_speed_dec = XPCommand( (char*)GFMCPPro_Buttons::label_vert_speed_dec, (char*)label_no_description );
+    _btn_vert_speed_inc = XPCommand( (char*)GFMCPPro_Buttons::label_vert_speed_inc, (char*)label_no_description );
+    _btn_vert_speed_dec = XPCommand( (char*)GFMCPPro_Buttons::label_vert_speed_dec, (char*)label_no_description );
 
-    _cmd_crs_right_inc = XPCommand( (char*)GFMCPPro_Buttons::label_crs_right_inc, (char*)label_no_description );
-    _cmd_crs_right_dec = XPCommand( (char*)GFMCPPro_Buttons::label_crs_right_dec, (char*)label_no_description );
+    _btn_crs_right_inc = XPCommand( (char*)GFMCPPro_Buttons::label_crs_right_inc, (char*)label_no_description );
+    _btn_crs_right_dec = XPCommand( (char*)GFMCPPro_Buttons::label_crs_right_dec, (char*)label_no_description );
 
 }
 
