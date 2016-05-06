@@ -7,13 +7,12 @@
 #include "XPLGlue.h"
 
 
-GFCommand::GFCommand() {
-    XPLMDebugString("GF_MCP_Pro: Create command.. default\n");
-}
-
 GFCommand::GFCommand(char *cmd_name, char* cmd_description) {
 
-    XPLMDebugString("GF_MCP_Pro: Create command..\n");
+	char caTmp[1024];
+	snprintf( caTmp, 1024, "GF_MCP_Pro: Create cmd:(%s)\n", cmd_name );
+    XPLMDebugString( caTmp );
+
 
     _name = std::string( cmd_name );
     _description = std::string( cmd_description );

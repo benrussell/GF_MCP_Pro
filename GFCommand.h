@@ -18,7 +18,6 @@ private:
     int _cmd_active; //held high
 
 public:
-    GFCommand();
     GFCommand( char* cmd_name, char* cmd_description );
 
     std::string _name;
