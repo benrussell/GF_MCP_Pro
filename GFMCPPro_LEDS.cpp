@@ -91,27 +91,27 @@ void GFMCPPro_LEDS::_get_led_blob( unsigned char ret[3] ){
 
     // Construct bit field for bottom row --------------------
     if( _dref_leds_speed->_int_value )
-        ret[2] = ret[2] | a;
+        ret[0] = ret[0] | a;
 
     if( _dref_leds_lvl_chg->_int_value )
-        ret[2] = ret[2] | b;
+        ret[0] = ret[0] | b;
 
     if( _dref_leds_hdg_sel->_int_value )
-        ret[2] = ret[2] | c;
+        ret[0] = ret[0] | c;
 
     if( _dref_leds_app->_int_value )
-        ret[2] = ret[2] | d;
+        ret[0] = ret[0] | d;
 
     if( _dref_leds_alt_hld->_int_value )
-        ret[2] = ret[2] | e;
+        ret[0] = ret[0] | e;
 
     if( _dref_leds_vs->_int_value )
-        ret[2] = ret[2] | f;
+        ret[0] = ret[0] | f;
 
     //blank bit: g
 
     if( _dref_leds_r_side_fd->_int_value )
-        ret[2] = ret[2] | h;
+        ret[0] = ret[0] | h;
 
 
 
@@ -144,26 +144,26 @@ void GFMCPPro_LEDS::_get_led_blob( unsigned char ret[3] ){
     //blank bit: a
 
     if( _dref_leds_vnav->_int_value )
-        ret[0] = ret[0] | a;
+        ret[2] = ret[2] | a;
 
     if( _dref_leds_lnav->_int_value )
-        ret[0] = ret[0] | b;
+        ret[2] = ret[2] | b;
 
     if( _dref_leds_ap_cmd_a->_int_value )
-        ret[0] = ret[0] | c;
+        ret[2] = ret[2] | c;
 
     if( _dref_leds_ap_cmd_b->_int_value )
-        ret[0] = ret[0] | d;
+        ret[2] = ret[2] | d;
 
     if( _dref_leds_at_arm->_int_value )
-        ret[0] = ret[0] | e;
+        ret[2] = ret[2] | e;
 
     //blank bit: f
 
     //blank bit: g
 
     if( _dref_leds_vor_loc->_int_value )
-        ret[0] = ret[0] | h;
+        ret[2] = ret[2] | h;
 
 
 

@@ -113,7 +113,7 @@ int GFMCPPro::_open_usb_dev() {
 	snprintf(caTmp, 1024, "GF_MCP_Pro: Serial: %ls\n", wstr);
 	XPLMDebugString( caTmp );
 
-	
+
 
     return 1;
 
