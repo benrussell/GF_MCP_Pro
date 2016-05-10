@@ -29,69 +29,7 @@ void GFMCPPro_7Seg::write(){
 //write dataref state to 7 seg LED's
 void GFMCPPro_7Seg::_write_state(){
 
-
 	unsigned char caTmp[16];
-
-	//write a full set of 8's to the display buffer.
-	snprintf( (char*)caTmp, 16, "88888" );
-
-
-	//CRS Left
-	GFUtils::set3f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_crs_left,
-			caTmp
-	);
-
-
-	//IAS Mach
-	GFUtils::set5f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_ias,
-			caTmp
-	);
-
-
-	//Heading
-	GFUtils::set3f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_hdg,
-			caTmp
-	);
-
-
-	//Altitude
-	GFUtils::set5f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_alt,
-			caTmp
-	);
-
-
-	//Vert Speed
-	GFUtils::set5f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_vs,
-			caTmp
-	);
-
-
-	//CRS Right
-	GFUtils::set3f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_crs_right,
-			caTmp
-	);
-
-}
-
-
-//write light test data to 7 seg LED's
-void GFMCPPro_7Seg::_write_light_test(){
-
-
-	unsigned char caTmp[16];
-
 
 	//CRS Left
 	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_left->_int_value );
@@ -140,6 +78,64 @@ void GFMCPPro_7Seg::_write_light_test(){
 
 	//CRS Right
 	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_right->_int_value );
+	GFUtils::set3f(
+			_handle,
+			GFMCPPro_7Seg::_usb_report_crs_right,
+			caTmp
+	);
+
+}
+
+
+//write light test data to 7 seg LED's
+void GFMCPPro_7Seg::_write_light_test(){
+
+	unsigned char caTmp[16];
+
+	//write a full set of 8's to the display buffer.
+	snprintf( (char*)caTmp, 16, "88888" );
+
+	//CRS Left
+	GFUtils::set3f(
+			_handle,
+			GFMCPPro_7Seg::_usb_report_crs_left,
+			caTmp
+	);
+
+
+	//IAS Mach
+	GFUtils::set5f(
+			_handle,
+			GFMCPPro_7Seg::_usb_report_ias,
+			caTmp
+	);
+
+
+	//Heading
+	GFUtils::set3f(
+			_handle,
+			GFMCPPro_7Seg::_usb_report_hdg,
+			caTmp
+	);
+
+
+	//Altitude
+	GFUtils::set5f(
+			_handle,
+			GFMCPPro_7Seg::_usb_report_alt,
+			caTmp
+	);
+
+
+	//Vert Speed
+	GFUtils::set5f(
+			_handle,
+			GFMCPPro_7Seg::_usb_report_vs,
+			caTmp
+	);
+
+
+	//CRS Right
 	GFUtils::set3f(
 			_handle,
 			GFMCPPro_7Seg::_usb_report_crs_right,

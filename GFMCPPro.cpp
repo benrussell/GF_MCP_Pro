@@ -41,7 +41,26 @@ GFMCPPro::~GFMCPPro() {
 void GFMCPPro::Connect() {
 
 	XPLMDebugString("GF_MCP_Pro: Connecting to USB device..\n");
-    this->_open_usb_dev();
+    int res = this->_open_usb_dev();
+
+	if( 0 == res ){
+		//open failed.
+		XPLMDebugString("GF_MCP_Pro: Device not available.\n");
+		XPLMSpeakString("There was an error connecting to the MCP unit.");
+
+		return;
+	}
+
+
+	XPLMDebugString("GF_MCP_Pro: Connected.\n");
+
+
+	//update menu item with a check mark
+	XPLMCheckMenuItem(
+			_mnu_root, //XPLMMenuID
+			0, //menu id number
+			xplm_Menu_Checked //XPLMMenuCheck * flag state
+	);
 
 }
 
@@ -66,7 +85,7 @@ void GFMCPPro::Disconnect() {
 int GFMCPPro::_close_usb_dev() {
 
     hid_close( _handle );
-    _handle = NULL;
+    _handle = 0;
 
     return 0;
 
@@ -78,23 +97,10 @@ int GFMCPPro::_open_usb_dev() {
 
     int res; //ops results.
 
-
     _handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL );
     if( _handle == 0 ){
-        XPLMDebugString("GF_MCP_Pro: Device not available.\n");
-		XPLMSpeakString("There was an error connecting to the MCP unit.");
-
         return 0;
     }
-
-	XPLMDebugString("GF_MCP_Pro: Connected.\n");
-
-	XPLMCheckMenuItem(
-			_mnu_root, //XPLMMenuID
-			0, //menu id number
-			xplm_Menu_Checked //XPLMMenuCheck * flag state
-	);
-
 
 	hid_set_nonblocking(_handle, 1);
 
@@ -102,7 +108,6 @@ int GFMCPPro::_open_usb_dev() {
     _mcp_buttons->_handle = _handle;
     _mcp_leds->_handle = _handle;
     _mcp_7seg->_handle = _handle;
-
 
 
 
@@ -128,7 +133,6 @@ int GFMCPPro::_open_usb_dev() {
 	XPLMDebugString( caTmp );
 
 
-
     return 1;
 
 }
@@ -137,7 +141,7 @@ int GFMCPPro::_open_usb_dev() {
 
 void GFMCPPro::flcb() {
 
-    if( _handle == NULL ) {
+    if( _handle == 0 ) {
         //_handle is null, ignore!
         //TODO: set dref to 0 to indicate disconnect?
 
@@ -222,20 +226,20 @@ void GFMCPPro::menuHandler(
 
 	if( sLabel == "mnu_connected" ){
 
-		XPLMMenuCheck* current_state;
+		XPLMMenuCheck current_state = xplm_Menu_Checked;
 
 		XPLMCheckMenuItemState(
 				_mnu_root, //XPLMMenuID
 				0, //menu id number
-				current_state  //XPLMMenuCheck * flag state
+				&current_state  //XPLMMenuCheck * flag state
 			);
 
 
-		if( xplm_Menu_Checked == *current_state ){
+		if( xplm_Menu_Checked == current_state ){
 			//disconnect.
 			Disconnect();
 
-		}else if( xplm_Menu_Unchecked == *current_state ) {
+		}else if( xplm_Menu_Unchecked == current_state ) {
 			//connect.
 			Connect();
 

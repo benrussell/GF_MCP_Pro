@@ -19,7 +19,6 @@ GFMCPPro_State::GFMCPPro_State() {
 
 
 
-
 	// ------- 7 Segs --------
 
 	_dref_crs_left      = new GFDataref( (char*)GFMCPPro_State::label_crs_left,   3);
