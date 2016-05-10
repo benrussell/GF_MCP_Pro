@@ -147,15 +147,13 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 }
 
 int GFMCPPro_Buttons::_action_altitude_dec(){
-
-
-
+	_mcp_state->_dref_altitude->_int_value--;
 	return 0;
 }
 
 
 int GFMCPPro_Buttons::_action_altitude_inc(){
-
+	_mcp_state->_dref_altitude->_int_value++;
 	return 0;
 }
 

@@ -16,12 +16,11 @@
 
 class GFMCPPro_LEDS {
 public:
-    GFMCPPro_LEDS();
 
 	//called by parent.
     void update();
 
-	//set by parents.
+	//set by parent.
 	GFMCPPro_State* _mcp_state;
     hid_device* _handle;
 

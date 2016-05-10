@@ -6,12 +6,6 @@
 
 #include "GFUtils.h"
 
-GFMCPPro_LEDS::GFMCPPro_LEDS(){
-
-}
-
-
-
 
 
 void GFMCPPro_LEDS::update(){
@@ -23,7 +17,6 @@ void GFMCPPro_LEDS::update(){
 
 
 }
-
 
 
 

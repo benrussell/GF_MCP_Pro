@@ -11,8 +11,27 @@
 
 class GFMCPPro_State {
 public:
-
 	GFMCPPro_State();
+	~GFMCPPro_State();
+
+
+	// --------- 7 Seg displays ------------
+
+	// 7 Seg byte arrays.
+	GFDataref* _dref_crs_left;
+	GFDataref* _dref_ias_mach;
+	GFDataref* _dref_heading;
+	GFDataref* _dref_altitude;
+	GFDataref* _dref_vert_speed;
+	GFDataref* _dref_crs_right;
+
+
+
+
+
+
+
+	// -------- Lights and buttons ---------
 
 
 	//LED top row
@@ -52,6 +71,22 @@ public:
 
 
 private:
+
+	// --------- 7 Seg ---------
+
+	const char* label_crs_left      = "goflight/mcp_pro/7seg/crs_left";
+	const char* label_ias_mach      = "goflight/mcp_pro/7seg/ias_mach";
+	const char* label_heading       = "goflight/mcp_pro/7seg/heading";
+	const char* label_altitude      = "goflight/mcp_pro/7seg/altitude";
+	const char* label_vert_speed    = "goflight/mcp_pro/7seg/vert_speed";
+	const char* label_crs_right     = "goflight/mcp_pro/7seg/crs_right";
+
+
+
+
+
+	// ------ Lights and buttons ---------
+
 	//dataref names
 	const char* label_vnav          = "goflight/mcp_pro/leds/vnav";
 	const char* label_lnav          = "goflight/mcp_pro/leds/lnav";

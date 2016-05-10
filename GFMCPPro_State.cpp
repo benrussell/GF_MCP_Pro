@@ -11,6 +11,21 @@ GFMCPPro_State::GFMCPPro_State() {
 
 	// Create datarefs..
 
+	// ------- 7 Segs --------
+
+	_dref_crs_left      = new GFDataref( (char*)GFMCPPro_State::label_crs_left,   3);
+	_dref_ias_mach      = new GFDataref( (char*)GFMCPPro_State::label_ias_mach,   5);
+	_dref_heading       = new GFDataref( (char*)GFMCPPro_State::label_heading,    3);
+	_dref_altitude      = new GFDataref( (char*)GFMCPPro_State::label_altitude,   5);
+	_dref_vert_speed    = new GFDataref( (char*)GFMCPPro_State::label_vert_speed, 5);
+	_dref_crs_right     = new GFDataref( (char*)GFMCPPro_State::label_crs_right,  3);
+
+
+
+
+
+	// ------- Lights and buttons --------
+
 	// Top Row
 	_dref_leds_vnav         = new GFDataref( (char*)GFMCPPro_State::label_vnav  );
 	_dref_leds_lnav         = new GFDataref( (char*)GFMCPPro_State::label_lnav );
@@ -42,5 +57,27 @@ GFMCPPro_State::GFMCPPro_State() {
 	_dref_leds_vs           = new GFDataref( (char*)GFMCPPro_State::label_vs );
 	// blank bit
 	_dref_leds_r_side_fd    = new GFDataref( (char*)GFMCPPro_State::label_r_side_fd  );
+
+}
+
+
+GFMCPPro_State::~GFMCPPro_State() {
+
+	// 7 seg cleanup
+	delete(_dref_crs_left);
+	delete(_dref_ias_mach);
+	delete(_dref_heading);
+	delete(_dref_altitude);
+	delete(_dref_vert_speed);
+	delete(_dref_crs_right);
+
+
+
+
+	// buttons and lights cleanup
+
+	//FIXME: no cleanup...
+
+
 
 }
