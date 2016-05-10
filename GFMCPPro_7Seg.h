@@ -31,6 +31,9 @@ private:
 
 	GFMCPPro_State* _mcp_state;
 
+	void _write_state();
+	void _write_light_test();
+
 
 	// USB Endpoint Targets
     const unsigned char _usb_report_crs_left   = 3;
