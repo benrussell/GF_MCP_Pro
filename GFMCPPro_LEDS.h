@@ -22,12 +22,13 @@ public:
     void write();
 
 	//set by parent.
-	GFMCPPro_State* _mcp_state;
-    hid_device* _handle;
+	hid_device* _handle;
 
 private:
 	//get blob for export to hware unit
 	void _get_led_blob( unsigned char ret[3] );
+
+	GFMCPPro_State* _mcp_state;
 
 
 };

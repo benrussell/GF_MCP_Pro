@@ -24,13 +24,15 @@ public:
     void write();
 
 	//set by parent.
-	GFMCPPro_State* _mcp_state;
-    hid_device* _handle;
+	hid_device* _handle;
 
 
 private:
 
-    // USB Endpoint Targets
+	GFMCPPro_State* _mcp_state;
+
+
+	// USB Endpoint Targets
     const unsigned char _usb_report_crs_left   = 3;
     const unsigned char _usb_report_ias        = 5;
     const unsigned char _usb_report_hdg        = 7;
