@@ -61,8 +61,7 @@ PLUGIN_API void XPluginStop(void){
 
 PLUGIN_API int XPluginEnable(void) {
 
-    XPLMDebugString("GF_MCP_Pro: Connecting to USB device..\n");
-    mcp_pro->Connect();
+    //mcp_pro->Connect();
 
     return 1; //allow start.
 
@@ -72,8 +71,7 @@ PLUGIN_API int XPluginEnable(void) {
 
 PLUGIN_API void XPluginDisable(void) {
 
-    XPLMDebugString("GF_MCP_Pro: Disconnecting from USB device.\n");
-    mcp_pro->Disconnect();
+    //mcp_pro->Disconnect();
 
 }
 

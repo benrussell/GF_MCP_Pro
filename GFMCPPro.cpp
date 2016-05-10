@@ -37,6 +37,7 @@ GFMCPPro::~GFMCPPro() {
 
 void GFMCPPro::Connect() {
 
+	XPLMDebugString("GF_MCP_Pro: Connecting to USB device..\n");
     this->_open_usb_dev();
 
 }
@@ -45,6 +46,7 @@ void GFMCPPro::Connect() {
 
 void GFMCPPro::Disconnect() {
 
+	XPLMDebugString("GF_MCP_Pro: Disconnecting from USB device.\n");
     this->_close_usb_dev();
 
 	XPLMCheckMenuItem(
