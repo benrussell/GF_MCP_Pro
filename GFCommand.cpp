@@ -41,3 +41,22 @@ void GFCommand::Stop() {
         _cmd_active = 0;
     }
 }
+
+
+
+// --- Action handlers ---
+
+
+// what do we actually do when this item is running.
+void GFCommand::_Action_Start(){
+	XPLMDebugString("GFCommand: _Action_Start() default.\n");
+}
+void GFCommand::_Action_Hold(){
+	XPLMDebugString("GFCommand: _Action_Hold() default.\n");
+}
+void GFCommand::_Action_Stop(){
+	XPLMDebugString("GFCommand: _Action_Stop() default.\n");
+}
+
+
+// eof

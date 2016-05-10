@@ -29,7 +29,7 @@ include_directories( ${HID_API_FOLDER} ${INC_XPLANE_SDK} )
 
 
 
-set(SOURCE_FILES hid.c XPLGlue.cpp XPLGlue.h GFUtils.cpp GFUtils.h GFMCPPro.cpp GFMCPPro.h GFDataref.cpp GFDataref.h GFCommand.cpp GFCommand.h GFMCPPro_LEDS.cpp GFMCPPro_LEDS.h GFMCPPro_Buttons.cpp GFMCPPro_Buttons.h GFMCPPro_7Seg.cpp GFMCPPro_7Seg.h)
+set(SOURCE_FILES hid.c XPLGlue.cpp XPLGlue.h GFUtils.cpp GFUtils.h GFMCPPro.cpp GFMCPPro.h GFDataref.cpp GFDataref.h GFCommand.cpp GFCommand.h GFMCPPro_LEDS.cpp GFMCPPro_LEDS.h GFMCPPro_Buttons.cpp GFMCPPro_Buttons.h GFMCPPro_7Seg.cpp GFMCPPro_7Seg.h GFMCPPro_Commands.cpp GFMCPPro_Commands.h)
 
 
 
