@@ -11,6 +11,15 @@ GFMCPPro_State::GFMCPPro_State() {
 
 	// Create datarefs..
 
+	// Control override.
+	_dref_mcp_override     = new GFDataref( (char*)GFMCPPro_State::label_override  );
+
+	// Light test
+	_dref_mcp_light_test   = new GFDataref( (char*)GFMCPPro_State::label_light_test  );
+
+
+
+
 	// ------- 7 Segs --------
 
 	_dref_crs_left      = new GFDataref( (char*)GFMCPPro_State::label_crs_left,   3);

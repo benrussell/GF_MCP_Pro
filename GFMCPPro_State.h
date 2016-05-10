@@ -15,6 +15,12 @@ public:
 	~GFMCPPro_State();
 
 
+
+	GFDataref* _dref_mcp_override;
+	GFDataref* _dref_mcp_light_test;
+
+
+
 	// --------- 7 Seg displays ------------
 
 	// 7 Seg byte arrays.
@@ -28,11 +34,7 @@ public:
 
 
 
-
-
-
 	// -------- Lights and buttons ---------
-
 
 	//LED top row
 	GFDataref* _dref_leds_vnav;
@@ -71,6 +73,13 @@ public:
 
 
 private:
+
+
+	const char* label_override      = "goflight/mcp_pro/override";
+	const char* label_light_test    = "goflight/mcp_pro/light_test";
+
+
+
 
 	// --------- 7 Seg ---------
 
