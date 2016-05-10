@@ -18,20 +18,16 @@ class GFMCPPro_LEDS {
 public:
     GFMCPPro_LEDS();
 
+	//called by parent.
     void update();
 
-
+	//set by parents.
 	GFMCPPro_State* _mcp_state;
-
-
     hid_device* _handle;
 
-
+private:
 	//get blob for export to hware unit
 	void _get_led_blob( unsigned char ret[3] );
-
-
-
 
 
 };
