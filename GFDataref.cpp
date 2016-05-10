@@ -122,6 +122,7 @@ void GFDataref::xp_setDatai(void * inRefcon, int inValue){
 
 
 
+
 int GFDataref::xp_getBytes(
         void* inRefcon,
         void* outValues, /* Can be NULL */
@@ -134,13 +135,16 @@ int GFDataref::xp_getBytes(
     int max_byte_offset = inOffset+inMax;
     if( max_byte_offset > GFDataref::_blob_size ){
         // overflow..
+		XPLMDebugString("GF_MCP_Pro: byte-dataref read for OOB data. Aborted.\n");
+		return 0;
     }
 
-    //memset( outValues, tmp->_blob, inMax );
-
+    memcpy( outValues, tmp->_blob+inOffset, (size_t)inMax );
 
     return tmp->_element_count;
 }
+
+
 
 void GFDataref::xp_setBytes(
         void* inRefcon,
@@ -154,13 +158,10 @@ void GFDataref::xp_setBytes(
     int max_byte_offset = inOffset+inCount;
     if( max_byte_offset > GFDataref::_blob_size ){
         //do nothing
+		XPLMDebugString("GF_MCP_Pro: byte-dataref write for OOB data. Aborted.\n");
         return;
     }
 
-    unsigned char* blob_ptr = tmp->_blob + inOffset;
-
-
-    memcpy( (void*)blob_ptr, inValues, inCount );
-
+    memcpy( tmp->_blob + inOffset, inValues, (size_t)inCount );
 
 }
