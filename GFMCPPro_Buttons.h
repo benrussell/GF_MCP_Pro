@@ -10,8 +10,7 @@
 
 #include "GFCommand.h"
 
-#include "GFMCPPro_7Seg.h"
-#include "GFMCPPro_LEDS.h"
+#include "GFMCPPro_State.h"
 
 
 
@@ -22,13 +21,12 @@ public:
 	~GFMCPPro_Buttons();
 
 
-	GFMCPPro_7Seg* _7seg;
-	GFMCPPro_LEDS* _leds;
-
+	GFMCPPro_State* _mcp_state;
 
 
 	void update();
 
+	//need USB handle for read ops
 	hid_device* _handle;
 
 

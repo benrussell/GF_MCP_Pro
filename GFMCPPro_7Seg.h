@@ -13,12 +13,15 @@
 
 #include "GFUtils.h"
 
+#include "GFMCPPro_State.h"
 
 
 class GFMCPPro_7Seg {
 public:
     GFMCPPro_7Seg();
     ~GFMCPPro_7Seg();
+
+	GFMCPPro_State* _mcp_state;
 
     void update();
 
