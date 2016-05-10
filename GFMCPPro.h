@@ -16,6 +16,7 @@
 
 #include "GFMCPPro_Buttons.h"
 
+#include "GFMCPPro_State.h"
 
 
 
@@ -50,10 +51,13 @@ private:
 	int _open_usb_dev();
 	int _close_usb_dev();
 
-	GFMCPPro_Buttons *_gf_mcp_pro_buttons;
 
-	GFMCPPro_LEDS *_gf_mcp_pro_leds;
-	GFMCPPro_7Seg *_gf_mcp_pro_7seg;
+	GFMCPPro_State* _mcp_state;
+
+	GFMCPPro_Buttons* _mcp_buttons;
+
+	GFMCPPro_LEDS* _mcp_leds;
+	GFMCPPro_7Seg* _mcp_7seg;
 
 
 };

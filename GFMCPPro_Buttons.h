@@ -16,8 +16,7 @@
 
 class GFMCPPro_Buttons {
 public:
-
-    GFMCPPro_Buttons();
+    GFMCPPro_Buttons( GFMCPPro_State* state );
 	~GFMCPPro_Buttons();
 
 

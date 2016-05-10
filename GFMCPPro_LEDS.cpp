@@ -6,6 +6,12 @@
 
 #include "GFUtils.h"
 
+GFMCPPro_LEDS::GFMCPPro_LEDS( GFMCPPro_State* state ){
+
+	_mcp_state = state;
+
+}
+
 
 
 void GFMCPPro_LEDS::update(){

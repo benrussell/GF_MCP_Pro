@@ -18,6 +18,7 @@
 
 class GFMCPPro_7Seg {
 public:
+	GFMCPPro_7Seg( GFMCPPro_State* state );
 
 	//called by parent.
     void update();
@@ -30,12 +31,12 @@ public:
 private:
 
     // USB Endpoint Targets
-    const unsigned char target_crs_left   = 3;
-    const unsigned char target_ias        = 5;
-    const unsigned char target_hdg        = 7;
-    const unsigned char target_alt        = 9;
-    const unsigned char target_vs         = 11;
-    const unsigned char target_crs_right  = 13;
+    const unsigned char _usb_report_crs_left   = 3;
+    const unsigned char _usb_report_ias        = 5;
+    const unsigned char _usb_report_hdg        = 7;
+    const unsigned char _usb_report_alt        = 9;
+    const unsigned char _usb_report_vs         = 11;
+    const unsigned char _usb_report_crs_right  = 13;
 
 
 };

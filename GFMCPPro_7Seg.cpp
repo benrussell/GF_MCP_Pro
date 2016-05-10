@@ -4,6 +4,13 @@
 
 #include "GFMCPPro_7Seg.h"
 
+GFMCPPro_7Seg::GFMCPPro_7Seg( GFMCPPro_State* state ){
+
+	_mcp_state = state;
+
+}
+
+
 
 void GFMCPPro_7Seg::update(){
 
@@ -14,7 +21,7 @@ void GFMCPPro_7Seg::update(){
     //CRS Left
     GFUtils::set3f(
             _handle,
-            GFMCPPro_7Seg::target_crs_left,
+            GFMCPPro_7Seg::_usb_report_crs_left,
             caTmp
             );
 
@@ -22,7 +29,7 @@ void GFMCPPro_7Seg::update(){
     //IAS Mach
     GFUtils::set5f(
             _handle,
-            GFMCPPro_7Seg::target_ias,
+            GFMCPPro_7Seg::_usb_report_ias,
             caTmp
     );
 
@@ -30,7 +37,7 @@ void GFMCPPro_7Seg::update(){
     //Heading
     GFUtils::set3f(
             _handle,
-            GFMCPPro_7Seg::target_hdg,
+            GFMCPPro_7Seg::_usb_report_hdg,
             caTmp
     );
 
@@ -38,7 +45,7 @@ void GFMCPPro_7Seg::update(){
     //Altitude
     GFUtils::set5f(
             _handle,
-            GFMCPPro_7Seg::target_alt,
+            GFMCPPro_7Seg::_usb_report_alt,
             caTmp
     );
 
@@ -46,7 +53,7 @@ void GFMCPPro_7Seg::update(){
     //Vert Speed
     GFUtils::set5f(
             _handle,
-            GFMCPPro_7Seg::target_vs,
+            GFMCPPro_7Seg::_usb_report_vs,
             caTmp
     );
 
@@ -54,7 +61,7 @@ void GFMCPPro_7Seg::update(){
     //CRS Right
     GFUtils::set3f(
             _handle,
-            GFMCPPro_7Seg::target_crs_right,
+            GFMCPPro_7Seg::_usb_report_crs_right,
             caTmp
     );
 

@@ -13,11 +13,14 @@
 
 GFMCPPro::GFMCPPro() {
 
-	_gf_mcp_pro_leds = new GFMCPPro_LEDS();
+	_mcp_state = new GFMCPPro_State();
 
-	_gf_mcp_pro_7seg = new GFMCPPro_7Seg();
 
-    _gf_mcp_pro_buttons = new GFMCPPro_Buttons();
+	_mcp_leds = new GFMCPPro_LEDS( _mcp_state );
+
+	_mcp_7seg = new GFMCPPro_7Seg( _mcp_state );
+
+    _mcp_buttons = new GFMCPPro_Buttons( _mcp_state );
 
 
 
@@ -28,11 +31,12 @@ GFMCPPro::GFMCPPro() {
 
 GFMCPPro::~GFMCPPro() {
 
-    delete( _gf_mcp_pro_buttons );
+    delete( _mcp_buttons );
+    delete( _mcp_leds );
+    delete( _mcp_7seg );
 
-    delete( _gf_mcp_pro_leds );
+	delete( _mcp_state );
 
-    delete( _gf_mcp_pro_7seg );
 
 }
 
@@ -57,9 +61,7 @@ void GFMCPPro::Disconnect() {
 int GFMCPPro::_close_usb_dev() {
 
     hid_close( _handle );
-
     _handle = NULL;
-
 
     return 0;
 
@@ -84,9 +86,9 @@ int GFMCPPro::_open_usb_dev() {
 	hid_set_nonblocking(_handle, 1);
 
     //Push the usb device handle into sub modules so they can write via GFUtils
-    _gf_mcp_pro_buttons->_handle = _handle;
-    _gf_mcp_pro_leds->_handle = _handle;
-    _gf_mcp_pro_7seg->_handle = _handle;
+    _mcp_buttons->_handle = _handle;
+    _mcp_leds->_handle = _handle;
+    _mcp_7seg->_handle = _handle;
 
 
 
@@ -127,11 +129,9 @@ void GFMCPPro::flcb() {
         //TODO: set dref to 0 to indicate disconnect?
 
     }else {
-        _gf_mcp_pro_buttons->update();
-
-        _gf_mcp_pro_leds->update();
-
-        _gf_mcp_pro_7seg->update();
+        _mcp_buttons->update();
+        _mcp_leds->update();
+        _mcp_7seg->update();
 
     }
 

@@ -16,6 +16,7 @@
 
 class GFMCPPro_LEDS {
 public:
+	GFMCPPro_LEDS( GFMCPPro_State* state );
 
 	//called by parent.
     void update();

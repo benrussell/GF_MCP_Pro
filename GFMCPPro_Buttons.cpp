@@ -9,7 +9,9 @@
 
 
 
-GFMCPPro_Buttons::GFMCPPro_Buttons(){
+GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
+
+	_mcp_state = state;
 
     // Create commands for buttons and switches.
     _btn_Speed              = new GFCommand( (char*)_label_btn_speed, (char*)_label_no_description, (void*)this );
