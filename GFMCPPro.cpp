@@ -47,6 +47,13 @@ void GFMCPPro::Disconnect() {
 
     this->_close_usb_dev();
 
+	XPLMCheckMenuItem(
+			_mnu_root, //XPLMMenuID
+			0, //menu id number
+			xplm_Menu_Unchecked //XPLMMenuCheck * flag state
+	);
+
+
 }
 
 
@@ -70,11 +77,19 @@ int GFMCPPro::_open_usb_dev() {
     _handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL );
     if( _handle == 0 ){
         XPLMDebugString("GF_MCP_Pro: Device not available.\n");
+		XPLMSpeakString("There was an error connecting to the MCP unit.");
 
         return 0;
     }
 
 	XPLMDebugString("GF_MCP_Pro: Connected.\n");
+
+	XPLMCheckMenuItem(
+			_mnu_root, //XPLMMenuID
+			0, //menu id number
+			xplm_Menu_Checked //XPLMMenuCheck * flag state
+	);
+
 
 	hid_set_nonblocking(_handle, 1);
 
@@ -165,8 +180,14 @@ void GFMCPPro::_create_xp_root_menu() {
 	XPLMAppendMenuItem(
 			_mnu_root,
 			"Connected",
-			(void *) "mnu_gf_connected", //item ref
+			(void *) "mnu_connected", //item ref
 			1 //force english
+	);
+
+	XPLMCheckMenuItem(
+			_mnu_root, //XPLMMenuID
+			0, //menu id number
+			xplm_Menu_Unchecked //XPLMMenuCheck * flag state
 	);
 
 
@@ -190,22 +211,33 @@ void GFMCPPro::menuHandler(
 		void *               inMenuRef,
 		void *               inItemRef){
 
-	// YAY.
 
-	// ok now we have some fun.
-
-	//mnu_gf_connected
+	std::string sLabel = std::string( (char*)inItemRef );
 
 
-	/*
+	if( sLabel == "mnu_connected" ){
+
+		XPLMMenuCheck* current_state;
+
+		XPLMCheckMenuItemState(
+				_mnu_root, //XPLMMenuID
+				0, //menu id number
+				current_state  //XPLMMenuCheck * flag state
+			);
 
 
-	 XPLMCheckMenuItemState(
-                                   XPLMMenuID           inMenu,
-                                   int                  index,
-                                   XPLMMenuCheck *      outCheck);
+		if( xplm_Menu_Checked == *current_state ){
+			//disconnect.
+			Disconnect();
 
-	 */
+		}else if( xplm_Menu_Unchecked == *current_state ) {
+			//connect.
+			Connect();
+
+		}
+
+
+	}
 
 
 
