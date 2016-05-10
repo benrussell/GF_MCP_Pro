@@ -19,6 +19,9 @@ GFMCPPro::GFMCPPro() {
 	_mcp_7seg = new GFMCPPro_7Seg( _mcp_state );
     _mcp_buttons = new GFMCPPro_Buttons( _mcp_state );
 
+
+	_create_xp_root_menu();
+
 }
 
 

@@ -4,6 +4,9 @@
 
 #include "GFMCPPro_7Seg.h"
 
+#include <string.h>
+
+
 GFMCPPro_7Seg::GFMCPPro_7Seg( GFMCPPro_State* state ){
 
 	_mcp_state = state;
@@ -18,19 +21,17 @@ void GFMCPPro_7Seg::write(){
     unsigned char caTmp[16];
 
 
-
-	//FIXME: no data is pulled into caTmp from state.
-
-
-    //CRS Left
-    GFUtils::set3f(
+	//CRS Left
+	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_left->_int_value );
+	GFUtils::set3f(
             _handle,
             GFMCPPro_7Seg::_usb_report_crs_left,
-            caTmp
+			caTmp
             );
 
 
     //IAS Mach
+	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_ias_mach->_int_value );
     GFUtils::set5f(
             _handle,
             GFMCPPro_7Seg::_usb_report_ias,
@@ -39,7 +40,8 @@ void GFMCPPro_7Seg::write(){
 
 
     //Heading
-    GFUtils::set3f(
+	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_heading->_int_value );
+	GFUtils::set3f(
             _handle,
             GFMCPPro_7Seg::_usb_report_hdg,
             caTmp
@@ -47,7 +49,8 @@ void GFMCPPro_7Seg::write(){
 
 
     //Altitude
-    GFUtils::set5f(
+	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_altitude->_int_value );
+	GFUtils::set5f(
             _handle,
             GFMCPPro_7Seg::_usb_report_alt,
             caTmp
@@ -55,7 +58,8 @@ void GFMCPPro_7Seg::write(){
 
 
     //Vert Speed
-    GFUtils::set5f(
+	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_vert_speed->_int_value );
+	GFUtils::set5f(
             _handle,
             GFMCPPro_7Seg::_usb_report_vs,
             caTmp
@@ -63,7 +67,8 @@ void GFMCPPro_7Seg::write(){
 
 
     //CRS Right
-    GFUtils::set3f(
+	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_right->_int_value );
+	GFUtils::set3f(
             _handle,
             GFMCPPro_7Seg::_usb_report_crs_right,
             caTmp
