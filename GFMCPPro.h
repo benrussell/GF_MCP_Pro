@@ -11,9 +11,11 @@
 #include "GFDataref.h"
 
 
-#include "GFMCPPro_Buttons.h"
 #include "GFMCPPro_7Seg.h"
 #include "GFMCPPro_LEDS.h"
+
+#include "GFMCPPro_Buttons.h"
+
 
 
 
@@ -24,10 +26,6 @@
 #define USB_GOFLIGHT__MCP_PRO 0x0064
 
 
-
-// hid_write channels.
-
-#define MCP_BTNS 15
 
 
 

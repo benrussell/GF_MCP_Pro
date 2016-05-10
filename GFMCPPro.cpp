@@ -9,19 +9,21 @@
 #include <string.h>
 
 
-#include "GFDataref.h"
-#include "GFCommand.h"
-
-
 
 
 GFMCPPro::GFMCPPro() {
 
+	_gf_mcp_pro_leds = new GFMCPPro_LEDS();
+
+	_gf_mcp_pro_7seg = new GFMCPPro_7Seg();
+
+
     _gf_mcp_pro_buttons = new GFMCPPro_Buttons();
+	_gf_mcp_pro_buttons->_leds = _gf_mcp_pro_leds;
+	_gf_mcp_pro_buttons->_7seg = _gf_mcp_pro_7seg;
 
-    _gf_mcp_pro_leds = new GFMCPPro_LEDS();
 
-    _gf_mcp_pro_7seg = new GFMCPPro_7Seg();
+
 
 }
 

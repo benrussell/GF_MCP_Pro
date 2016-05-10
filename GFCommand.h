@@ -18,7 +18,7 @@ private:
     int _cmd_active; //held high while the hardware button is down, returns to low when we get a release event from USB HID
 
 public:
-    GFCommand( char* cmd_name, char* cmd_description );
+    GFCommand( char* cmd_name, char* cmd_description, void* _button_router );
 
     std::string _name;
     std::string _description;
@@ -32,6 +32,8 @@ public:
 	virtual void _Action_Hold();
 	virtual void _Action_Stop();
 
+
+	void* _button_router;
 
 };
 

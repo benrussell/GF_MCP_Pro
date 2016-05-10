@@ -10,6 +10,8 @@
 
 #include "GFCommand.h"
 
+#include "GFMCPPro_7Seg.h"
+#include "GFMCPPro_LEDS.h"
 
 
 
@@ -18,6 +20,24 @@ public:
 
     GFMCPPro_Buttons();
 	~GFMCPPro_Buttons();
+
+
+	GFMCPPro_7Seg* _7seg;
+	GFMCPPro_LEDS* _leds;
+
+
+
+	void update();
+
+	hid_device* _handle;
+
+
+	//consume and act on sim-command actions in an MCP specific manner.
+	int  xp_cmd_action_handler(
+			XPLMCommandRef        inCommand,
+			XPLMCommandPhase     inPhase,
+			GFCommand*               cmd);
+
 
 
 
@@ -77,9 +97,6 @@ public:
 
 
 
-    void update();
-
-    hid_device* _handle;
 
 
 private:
@@ -136,6 +153,10 @@ private:
 
     const char* _label_altitude_inc     = "goflight/mcp_pro/emit/altitude_inc";
     const char* _label_altitude_dec     = "goflight/mcp_pro/emit/altitude_dec";
+
+	int _action_altitude_dec();
+	int _action_altitude_inc();
+
 
     const char* _label_vert_speed_inc   = "goflight/mcp_pro/emit/vert_speed_inc";
     const char* _label_vert_speed_dec   = "goflight/mcp_pro/emit/vert_speed_dec";
