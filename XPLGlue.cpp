@@ -25,7 +25,7 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GoFlight MCP Pro v0.0.4";
+	const char* name = "GoFlight MCP Pro v0.0.65";
 	const char* sig = "goflightinc.com/mcp_pro";
 	const char* desc = "Built: 2016.05.07.1529";
 
@@ -151,6 +151,26 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
 
 
 }
+
+
+
+
+void GFMCPPro_menuHandler(
+		void *               inMenuRef,
+		void *               inItemRef) {
+
+	//push menu clicks into the mcp_pro instance.
+	mcp_pro->menuHandler( inMenuRef, inItemRef );
+
+}
+
+
+
+
+
+
+
+
 
 // eof
 

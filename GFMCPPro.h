@@ -6,6 +6,9 @@
 #define GF_MCP_PRO_GFMCPPRO_H
 
 
+#include <XPLMMenus.h>
+
+
 // XPlane Utils
 #include "GFCommand.h"
 #include "GFDataref.h"
@@ -17,6 +20,9 @@
 #include "GFMCPPro_Buttons.h"
 
 #include "GFMCPPro_State.h"
+
+
+#include "XPLGlue.h"
 
 
 
@@ -44,12 +50,24 @@ public:
 
     void flcb();
 
+	void menuHandler(
+			void *               inMenuRef,
+			void *               inItemRef);
 
 private:
 	hid_device *_handle;
 
 	int _open_usb_dev();
 	int _close_usb_dev();
+
+
+
+	//boring little menu item to make it easier to mess with connection state.
+	void _create_xp_root_menu();
+	XPLMMenuID _mnu_root;
+
+	XPLMMenuID _mnu_connected_state;
+
 
 
 	GFMCPPro_State* _mcp_state;

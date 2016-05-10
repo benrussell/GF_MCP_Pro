@@ -15,15 +15,9 @@ GFMCPPro::GFMCPPro() {
 
 	_mcp_state = new GFMCPPro_State();
 
-
 	_mcp_leds = new GFMCPPro_LEDS( _mcp_state );
-
 	_mcp_7seg = new GFMCPPro_7Seg( _mcp_state );
-
     _mcp_buttons = new GFMCPPro_Buttons( _mcp_state );
-
-
-
 
 }
 
@@ -36,7 +30,6 @@ GFMCPPro::~GFMCPPro() {
     delete( _mcp_7seg );
 
 	delete( _mcp_state );
-
 
 }
 
@@ -142,6 +135,79 @@ void GFMCPPro::flcb() {
         _mcp_7seg->write();
 
     }
+
+}
+
+
+
+
+
+
+
+
+
+void GFMCPPro::_create_xp_root_menu() {
+
+	//GZDebugString("Creating menus..\n");
+
+
+	_mnu_root = XPLMCreateMenu(
+			"GoFlight MCP Pro",
+			NULL, //parent menu item - plugins menu
+			1, //index value - auto assigned.
+			GFMCPPro_menuHandler,
+			0
+	);
+
+
+
+	//id:0
+	XPLMAppendMenuItem(
+			_mnu_root,
+			"Connected",
+			(void *) "mnu_gf_connected", //item ref
+			1 //force english
+	);
+
+
+
+	/*
+	//id:1
+	XPLMAppendMenuItem(
+			_mnu_root,
+			"blank",
+			(void *) "mnu_gf_", //item ref
+			1 //force english
+	);
+	*/
+
+
+}
+
+
+
+void GFMCPPro::menuHandler(
+		void *               inMenuRef,
+		void *               inItemRef){
+
+	// YAY.
+
+	// ok now we have some fun.
+
+	//mnu_gf_connected
+
+
+	/*
+
+
+	 XPLMCheckMenuItemState(
+                                   XPLMMenuID           inMenu,
+                                   int                  index,
+                                   XPLMMenuCheck *      outCheck);
+
+	 */
+
+
 
 }
 

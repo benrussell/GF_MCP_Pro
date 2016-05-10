@@ -51,4 +51,9 @@ extern int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
                             void *               inRefcon);
 
 
+extern void GFMCPPro_menuHandler(
+		void *               inMenuRef,
+		void *               inItemRef);
+
+
 #endif //GF_MCP_PRO_XPLGLUE_H
