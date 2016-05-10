@@ -29,6 +29,8 @@ GFDataref::GFDataref(char *dref_name) {
 
     _element_count = -1;
 
+	_int_value = 0;
+
     _dref =
             XPLMRegisterDataAccessor(
                     dref_name, //name
@@ -66,7 +68,9 @@ GFDataref::GFDataref(char *dref_name, int element_count) {
 
     _element_count = element_count;
 
-    _dref = XPLMRegisterDataAccessor(
+	_int_value = 0;
+
+	_dref = XPLMRegisterDataAccessor(
                     dref_name, //name
                     xplmType_Data, //type
                     1, //writable
