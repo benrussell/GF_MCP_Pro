@@ -21,7 +21,7 @@ public:
 	GFMCPPro_7Seg( GFMCPPro_State* state );
 
 	//called by parent.
-    void update();
+    void write();
 
 	//set by parent.
 	GFMCPPro_State* _mcp_state;

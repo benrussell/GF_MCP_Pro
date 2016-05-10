@@ -121,7 +121,7 @@ GFMCPPro_Buttons::~GFMCPPro_Buttons(){
 
 
 
-void GFMCPPro_Buttons::update() {
+void GFMCPPro_Buttons::read() {
 
     _read_usb();
 

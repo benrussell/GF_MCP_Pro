@@ -101,17 +101,17 @@ int GFMCPPro::_open_usb_dev() {
 
     // Read the Manufacturer String
     res = hid_get_manufacturer_string(_handle, wstr, MAX_STR);
-    snprintf(caTmp, 1024, "GF_MCP_Pro: Maker: %ls\n", wstr);
+    snprintf(caTmp, 1024, "GF_MCP_Pro: Maker: (%ls)\n", wstr);
 	XPLMDebugString( caTmp );
 
     // Read the Product String
     res = hid_get_product_string(_handle, wstr, MAX_STR);
-	snprintf(caTmp, 1024, "GF_MCP_Pro: Product: %ls\n", wstr);
+	snprintf(caTmp, 1024, "GF_MCP_Pro: Product: (%ls)\n", wstr);
 	XPLMDebugString( caTmp );
 
     // Read the Serial Number String
     res = hid_get_serial_number_string(_handle, wstr, MAX_STR);
-	snprintf(caTmp, 1024, "GF_MCP_Pro: Serial: %ls\n", wstr);
+	snprintf(caTmp, 1024, "GF_MCP_Pro: Serial: (%ls)\n", wstr);
 	XPLMDebugString( caTmp );
 
 
@@ -129,9 +129,17 @@ void GFMCPPro::flcb() {
         //TODO: set dref to 0 to indicate disconnect?
 
     }else {
-        _mcp_buttons->update();
-        _mcp_leds->update();
-        _mcp_7seg->update();
+
+		// all state is stored in x-p datarefs.
+		// any external state changes are automatically in the dataref storage already.
+		// no ops needed to update/interchange.
+
+		//buttons and dials affect state changes, read them in before updating the displays
+		_mcp_buttons->read();
+
+		//all state changes are now effective, push current to hardware.
+        _mcp_leds->write();
+        _mcp_7seg->write();
 
     }
 

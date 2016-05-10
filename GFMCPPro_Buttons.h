@@ -23,7 +23,7 @@ public:
 	GFMCPPro_State* _mcp_state;
 
 
-	void update();
+	void read();
 
 	//need USB handle for read ops
 	hid_device* _handle;

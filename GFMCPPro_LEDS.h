@@ -19,7 +19,7 @@ public:
 	GFMCPPro_LEDS( GFMCPPro_State* state );
 
 	//called by parent.
-    void update();
+    void write();
 
 	//set by parent.
 	GFMCPPro_State* _mcp_state;

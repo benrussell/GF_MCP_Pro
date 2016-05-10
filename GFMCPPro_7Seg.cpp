@@ -12,10 +12,14 @@ GFMCPPro_7Seg::GFMCPPro_7Seg( GFMCPPro_State* state ){
 
 
 
-void GFMCPPro_7Seg::update(){
+void GFMCPPro_7Seg::write(){
 
 
     unsigned char caTmp[16];
+
+
+
+	//FIXME: no data is pulled into caTmp from state.
 
 
     //CRS Left
