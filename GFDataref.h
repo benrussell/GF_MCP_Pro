@@ -18,7 +18,9 @@ public:
     GFDataref( char* dref_name, int element_count );
 
 
+	//stores a handle to the registered custom dref.
     XPLMDataRef _dref;
+
 
     std::string _name;
 

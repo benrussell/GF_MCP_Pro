@@ -37,14 +37,14 @@ GFDataref::GFDataref(char *dref_name) {
                     xplmType_Int, //type
                     1, //writable
 
-                    GFDataref::xp_getDatai,	GFDataref::xp_setDatai,
+                    GFDataref::xp_getDatai,	GFDataref::xp_setDatai, //integer
                     NULL, NULL, //floats
                     NULL, NULL, //doubles
 
                     NULL, NULL, //integer vectors
                     NULL, NULL, //float vectors
 
-                    NULL, NULL, //float vectors
+                    NULL, NULL, //byte vectors
                     //GFDataref::xp_getBytes, GFDataref::xp_setBytes, //byte vectors
 
 
@@ -69,6 +69,8 @@ GFDataref::GFDataref(char *dref_name, int element_count) {
     _element_count = element_count;
 
 	_int_value = 0;
+
+	snprintf( (char*)_blob, 8, "88888" );
 
 	_dref = XPLMRegisterDataAccessor(
                     dref_name, //name
