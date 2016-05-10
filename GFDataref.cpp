@@ -132,14 +132,15 @@ int GFDataref::xp_getBytes(
 
     GFDataref *tmp = (GFDataref*)inRefcon;
 
-    int max_byte_offset = inOffset+inMax;
-    if( max_byte_offset > GFDataref::_blob_size ){
+	size_t bytes_to_copy = (size_t)GFDataref::_blob_size - inOffset;
+
+    if( inOffset > GFDataref::_blob_size ){
         // overflow..
 		XPLMDebugString("GF_MCP_Pro: byte-dataref read for OOB data. Aborted.\n");
 		return 0;
     }
 
-    memcpy( outValues, tmp->_blob+inOffset, (size_t)inMax );
+    memcpy( outValues, tmp->_blob+inOffset, bytes_to_copy );
 
     return tmp->_element_count;
 }
