@@ -48,7 +48,7 @@ IF(CMAKE_SYSTEM_NAME STREQUAL Windows)
             XPLM_64.lib
             XPWidgets_64.lib
             hid.lib
-
+            setupapi.lib
             )
 
     #set( CMAKE_SHARED_LINKER_FLAGS "-v" )
