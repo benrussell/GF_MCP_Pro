@@ -643,7 +643,7 @@ void GFMCPPro_Buttons::_read_usb() {
     } else {
 
         //_dump_button_packet( res, buf );
-        _proc_buttons( res, buf );
+        _proc_hid_packet( res, buf );
 
     } //checking for packet read
 
@@ -654,44 +654,65 @@ void GFMCPPro_Buttons::_read_usb() {
 
 
 
+void GFMCPPro_Buttons::_proc_hid_packet( int res, unsigned char* buf ) {
+
+	// All knob events come through on channels 1,2,3.
+	if( buf[1] || buf[2] || buf[3] ){
+		// ------------------ Knobs ----------------
+		_proc_knobs( res, buf );
+
+	}else{
+		// ------------------ Buttons ----------------
+		_proc_buttons( res, buf );
+
+	}
+
+}
+
+
+void GFMCPPro_Buttons::_proc_knobs( int res, unsigned char* buf ) {
+
+	// Channel
+	// packet, value
+
+	// Packet 1
+	// --------------------
+	// HDG
+	buf[1] & 14 ? _btn_heading_inc->Begin()         : _btn_heading_inc->Stop();
+	buf[1] & 1 ? _btn_heading_dec->Begin()          : _btn_heading_dec->Stop();
+	// CRS Left
+	buf[1] & 224 ? _btn_crs_left_inc->Begin()       : _btn_crs_left_inc->Stop();
+	buf[1] & 16 ? _btn_crs_left_dec->Begin()        : _btn_crs_left_dec->Stop();
+
+	// Packet 2
+	// --------------------
+	// VS
+	buf[2] & 14 ? _btn_vert_speed_inc->Begin()         : _btn_vert_speed_inc->Stop();
+	buf[2] & 1 ? _btn_vert_speed_dec->Begin()          : _btn_vert_speed_dec->Stop();
+	// IAS
+	buf[2] & 224 ? _btn_ias_mach_inc->Begin()           : _btn_ias_mach_inc->Stop();
+	buf[2] & 16 ? _btn_ias_mach_dec->Begin()            : _btn_ias_mach_dec->Stop();
+
+	// Packet 3
+	// --------------------
+	// CRS Right
+	buf[3] & 14 ? _btn_crs_right_inc->Begin()         : _btn_crs_right_inc->Stop();
+	buf[3] & 1 ? _btn_crs_right_dec->Begin()          : _btn_crs_right_dec->Stop();
+	// ALT
+	buf[3] & 224 ? _btn_altitude_inc->Begin()         : _btn_altitude_inc->Stop();
+	buf[3] & 16 ? _btn_altitude_dec->Begin()          : _btn_altitude_dec->Stop();
+
+}
+
+
+
 void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
 
-    // Channel
-    // packet, value
-
-    // ------------------ Knobs ----------------
-
-    // Packet 1
-    // --------------------
-    // HDG
-    buf[1] & 14 ? _btn_heading_inc->Begin()         : _btn_heading_inc->Stop();
-    buf[1] & 1 ? _btn_heading_dec->Begin()          : _btn_heading_dec->Stop();
-    // CRS Left
-    buf[1] & 224 ? _btn_crs_left_inc->Begin()       : _btn_crs_left_inc->Stop();
-    buf[1] & 16 ? _btn_crs_left_dec->Begin()        : _btn_crs_left_dec->Stop();
-
-    // Packet 2
-    // --------------------
-    // VS
-    buf[2] & 14 ? _btn_vert_speed_inc->Begin()         : _btn_vert_speed_inc->Stop();
-    buf[2] & 1 ? _btn_vert_speed_dec->Begin()          : _btn_vert_speed_dec->Stop();
-    // IAS
-    buf[2] & 224 ? _btn_ias_mach_inc->Begin()           : _btn_ias_mach_inc->Stop();
-    buf[2] & 16 ? _btn_ias_mach_dec->Begin()            : _btn_ias_mach_dec->Stop();
-
-    // Packet 3
-    // --------------------
-    // CRS Right
-    buf[3] & 14 ? _btn_crs_right_inc->Begin()         : _btn_crs_right_inc->Stop();
-    buf[3] & 1 ? _btn_crs_right_dec->Begin()          : _btn_crs_right_dec->Stop();
-    // ALT
-    buf[3] & 224 ? _btn_altitude_inc->Begin()         : _btn_altitude_inc->Stop();
-    buf[3] & 16 ? _btn_altitude_dec->Begin()          : _btn_altitude_dec->Stop();
+	// Channel
+	// packet, value
 
 
-    // ------------------ Buttons ----------------
-
-    // Packet 5
+	// Packet 5
     // --------------------
     // Speed            1
     // LVL CHG          2

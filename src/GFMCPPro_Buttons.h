@@ -54,7 +54,10 @@ private:
 
 	void _read_usb();
 
-    void _proc_buttons( int res, unsigned char* buf );
+	void _proc_hid_packet( int res, unsigned char* buf );
+	void _proc_buttons( int res, unsigned char* buf );
+	void _proc_knobs( int res, unsigned char* buf );
+
 
     void _dump_button_packet( int res, unsigned char* buf );
 
