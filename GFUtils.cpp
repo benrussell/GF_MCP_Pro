@@ -4,6 +4,9 @@
 
 #include "GFUtils.h"
 
+#include <string>
+
+#include <XPLMUtilities.h>
 
 
 //USB tmp buffer
@@ -145,6 +148,18 @@ unsigned char GFUtils::translateCharTo7Seg( unsigned char raw ) {
 
 
 } //unsigned char GFUtils::translateCharTo7Seg( unsigned char raw )
+
+
+
+
+
+void GFUtils::Log( const char *message ) {
+
+	//FIXME: per product #define for plugin name?
+	std::string sMessage = "GF_MCP_Pro Mac64: " + std::string(message);
+	XPLMDebugString( sMessage.c_str() );
+
+}
 
 
 

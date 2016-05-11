@@ -25,9 +25,9 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GoFlight MCP Pro v0.0.82";
+	const char* name = "GoFlight MCP Pro v0.0.86";
 	const char* sig = "goflightinc.com/mcp_pro";
-	const char* desc = "Built: 2016.05.11.0946";
+	const char* desc = "Built: 2016.05.11.1248";
 
     sprintf( outName, "%s", name );
     sprintf( outSig, "%s", sig );
@@ -36,7 +36,7 @@ PLUGIN_API int XPluginStart(
 
 	char caTmp[1024];
 	snprintf( caTmp, 1024, "%s - %s\n", name, desc );
-	XPLMDebugString( caTmp );
+	GFUtils::Log( caTmp );
 
 
     mcp_pro = new GFMCPPro();
@@ -51,7 +51,7 @@ PLUGIN_API int XPluginStart(
 
 PLUGIN_API void XPluginStop(void){
 
-    XPLMDebugString("GF_MCP_Pro: XPluginStrop\n");
+	GFUtils::Log("XPluginStrop\n");
 
     delete( mcp_pro );
 
@@ -103,7 +103,7 @@ float GFMCPPro_flcb(
 	if( do_deferred_init ){
 
 		// ---- Run through our list of datarefs and inform DRE ---
-		XPLMDebugString("GF_MCP_Pro: Registering datarefs with DRE..\n");
+		GFUtils::Log("Registering datarefs with DRE..\n");
 
 		//modified to use broadcast message so we can send to DRE and DRT with one call
 		const int MSG_ADD_DATAREF = 0x01000000;
@@ -140,8 +140,8 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
 
 #if 1
 	char caTmp[1024];
-	snprintf( caTmp, 1024, "GF_MCP_Pro: phase:%i cmdHandler: %s\n", inPhase, cmd->_name.c_str() );
-	XPLMDebugString( caTmp );
+	snprintf( caTmp, 1024, "phase:%i cmdHandler: %s\n", inPhase, cmd->_name.c_str() );
+	GFUtils::Log( caTmp );
 #endif
 
 

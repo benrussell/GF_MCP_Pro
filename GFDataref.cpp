@@ -6,11 +6,9 @@
 
 #include <XPLMUtilities.h>
 
+#include "GFUtils.h"
 
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 
 
@@ -20,8 +18,8 @@ std::vector<std::string*> GFDataref::_deferred_DRE_registration_pool;
 GFDataref::GFDataref(char *dref_name) {
 
 	char caTmp[1024];
-	snprintf( caTmp, 1024, "GF_MCP_Pro: Create dref:(%s)\n", dref_name );
-	XPLMDebugString( caTmp );
+	snprintf( caTmp, 1024, "Create dref:(%s)\n", dref_name );
+	GFUtils::Log( caTmp );
 
 	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
 
@@ -59,8 +57,8 @@ GFDataref::GFDataref(char *dref_name) {
 GFDataref::GFDataref(char *dref_name, int element_count) {
 
 	char caTmp[1024];
-	snprintf( caTmp, 1024, "GF_MCP_Pro: Create dref:(%s[%i])\n", dref_name, element_count );
-	XPLMDebugString( caTmp );
+	snprintf( caTmp, 1024, "Create dref:(%s[%i])\n", dref_name, element_count );
+	GFUtils::Log( caTmp );
 
 	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
 
@@ -136,7 +134,8 @@ int GFDataref::xp_getBytes(
 
     if( inOffset > GFDataref::_blob_size ){
         // overflow..
-		XPLMDebugString("GF_MCP_Pro: byte-dataref read for OOB data. Aborted.\n");
+		GFUtils::Log("byte-dataref read for OOB data. Aborted.\n");
+
 		return 0;
     }
 
@@ -159,7 +158,7 @@ void GFDataref::xp_setBytes(
     int max_byte_offset = inOffset+inCount;
     if( max_byte_offset > GFDataref::_blob_size ){
         //do nothing
-		XPLMDebugString("GF_MCP_Pro: byte-dataref write for OOB data. Aborted.\n");
+		GFUtils::Log("byte-dataref write for OOB data. Aborted.\n");
         return;
     }
 

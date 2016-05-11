@@ -4,6 +4,7 @@
 
 #include "GFMCPPro_Buttons.h"
 
+#include "GFUtils.h"
 
 #include <stdlib.h>
 #include <hidapi.h>
@@ -203,8 +204,8 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 	}else{
 
 		char caTmp[1024];
-		snprintf( caTmp, 1024, "GF_MCP_Pro: Undefined action for cmd string:(%s)\n", cmd->_name.c_str() );
-		XPLMDebugString( caTmp );
+		snprintf( caTmp, 1024, "Undefined action for cmd string:(%s)\n", cmd->_name.c_str() );
+		GFUtils::Log( caTmp );
 
 	}
 
@@ -619,19 +620,16 @@ int GFMCPPro_Buttons::_action_crs_right_inc( GFMCPPro_State* mcp_state ){
 void GFMCPPro_Buttons::_read_usb() {
 
     const int buf_size=16;
-    //unsigned char buf[buf_size];
+    unsigned char buf[buf_size];
+	//unsigned char* buf = (unsigned char*)calloc( buf_size, 1 );
 
-	unsigned char* buf = (unsigned char*)calloc( buf_size, 1 );
-
-    int res;
+	memset(buf, 0, buf_size);
 
 
-    memset(buf, 0, buf_size);
-
-    // Read requested state
-    res = hid_read( _handle, buf, buf_size);
+	// Read hardware state
+	int res = hid_read( _handle, buf, buf_size);
     if (res < 0) {
-        XPLMDebugString("GF MCP Pro: USB Read Failed.\n");
+		GFUtils::Log("USB Read Failed.\n");
 
     } else {
 
@@ -640,7 +638,8 @@ void GFMCPPro_Buttons::_read_usb() {
 
     } //checking for packet read
 
-	free( buf );
+
+	//free( buf );
 
 } // read_usb()
 

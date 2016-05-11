@@ -41,19 +41,19 @@ GFMCPPro::~GFMCPPro() {
 
 void GFMCPPro::Connect() {
 
-	XPLMDebugString("GF_MCP_Pro: Connecting to USB device..\n");
+	GFUtils::Log("Connecting to USB device..\n");
     int res = this->_open_usb_dev();
 
 	if( 0 == res ){
 		//open failed.
-		XPLMDebugString("GF_MCP_Pro: Device not available.\n");
+		GFUtils::Log("Device not available.\n");
 		XPLMSpeakString("There was an error connecting to the MCP unit.");
 
 		return;
 	}
 
 
-	XPLMDebugString("GF_MCP_Pro: Connected.\n");
+	GFUtils::Log("Connected.\n");
 
 
 	//update menu item with a check mark
@@ -69,7 +69,7 @@ void GFMCPPro::Connect() {
 
 void GFMCPPro::Disconnect() {
 
-	XPLMDebugString("GF_MCP_Pro: Disconnecting from USB device.\n");
+	GFUtils::Log("Disconnecting from USB device.\n");
     this->_close_usb_dev();
 
 	XPLMCheckMenuItem(
@@ -120,18 +120,18 @@ int GFMCPPro::_open_usb_dev() {
 
     // Read the Manufacturer String
     res = hid_get_manufacturer_string(_handle, wstr, MAX_STR);
-    snprintf(caTmp, 1024, "GF_MCP_Pro: Maker: (%ls)\n", wstr);
-	XPLMDebugString( caTmp );
+    snprintf(caTmp, 1024, "Manufacturer: (%ls)\n", wstr);
+	GFUtils::Log( caTmp );
 
     // Read the Product String
     res = hid_get_product_string(_handle, wstr, MAX_STR);
-	snprintf(caTmp, 1024, "GF_MCP_Pro: Product: (%ls)\n", wstr);
-	XPLMDebugString( caTmp );
+	snprintf(caTmp, 1024, "Product Name: (%ls)\n", wstr);
+	GFUtils::Log( caTmp );
 
     // Read the Serial Number String
     res = hid_get_serial_number_string(_handle, wstr, MAX_STR);
-	snprintf(caTmp, 1024, "GF_MCP_Pro: Serial: (%ls)\n", wstr);
-	XPLMDebugString( caTmp );
+	snprintf(caTmp, 1024, "    Serial #: (%ls)\n", wstr);
+	GFUtils::Log( caTmp );
 
 
     return 1;

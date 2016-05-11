@@ -26,6 +26,9 @@ public:
 
     static unsigned char translateCharTo7Seg( unsigned char raw );
 
+
+	static void Log( const char* message );
+
 };
 
 
