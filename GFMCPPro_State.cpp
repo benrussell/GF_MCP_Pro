@@ -37,8 +37,8 @@ GFMCPPro_State::GFMCPPro_State() {
 	// Top Row
 	_dref_leds_vnav         = new GFDataref( (char*)GFMCPPro_State::label_vnav  );
 	_dref_leds_lnav         = new GFDataref( (char*)GFMCPPro_State::label_lnav );
-	_dref_leds_ap_cmd_a     = new GFDataref( (char*)GFMCPPro_State::label_ap_cmd_a );
-	_dref_leds_ap_cmd_b     = new GFDataref( (char*)GFMCPPro_State::label_ap_cmd_b );
+	_dref_leds_cmd_a     = new GFDataref( (char*)GFMCPPro_State::label_cmd_a );
+	_dref_leds_cmd_b     = new GFDataref( (char*)GFMCPPro_State::label_cmd_b );
 	_dref_leds_at_arm       = new GFDataref( (char*)GFMCPPro_State::label_at_arm );
 	// blank bit
 	// blank bit
@@ -47,12 +47,12 @@ GFMCPPro_State::GFMCPPro_State() {
 
 	// Mid Row
 	// blank bit
-	_dref_leds_ap_a_cws     = new GFDataref( (char*)GFMCPPro_State::label_ap_a_cws  );
-	_dref_leds_ap_b_cws     = new GFDataref( (char*)GFMCPPro_State::label_ap_b_cws );
+	_dref_leds_cws_a     = new GFDataref( (char*)GFMCPPro_State::label_cws_a  );
+	_dref_leds_cws_b     = new GFDataref( (char*)GFMCPPro_State::label_cws_b );
 	// blank bit
 	// blank bit
 	// blank bit
-	_dref_leds_l_side_fd    = new GFDataref( (char*)GFMCPPro_State::label_l_side_fd );
+	_dref_leds_fd_left    = new GFDataref( (char*)GFMCPPro_State::label_fd_left );
 	_dref_leds_n1           = new GFDataref( (char*)GFMCPPro_State::label_n1 );
 
 
@@ -64,7 +64,7 @@ GFMCPPro_State::GFMCPPro_State() {
 	_dref_leds_alt_hld      = new GFDataref( (char*)GFMCPPro_State::label_alt_hld  );
 	_dref_leds_vs           = new GFDataref( (char*)GFMCPPro_State::label_vs );
 	// blank bit
-	_dref_leds_r_side_fd    = new GFDataref( (char*)GFMCPPro_State::label_r_side_fd  );
+	_dref_leds_fd_right    = new GFDataref( (char*)GFMCPPro_State::label_fd_right  );
 
 }
 

@@ -138,7 +138,7 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
 	GFMCPPro_Buttons *btn_router = (GFMCPPro_Buttons*)cmd->_button_router;
 
 
-#if 0
+#if 1
 	char caTmp[1024];
 	snprintf( caTmp, 1024, "GF_MCP_Pro: phase:%i cmdHandler: %s\n", inPhase, cmd->_name.c_str() );
 	XPLMDebugString( caTmp );

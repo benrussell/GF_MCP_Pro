@@ -18,62 +18,97 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 
     // Create commands for buttons and switches.
     _btn_Speed              = new GFCommand( (char*)_label_btn_speed.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_LVL_CHG            = new GFCommand( (char*)_label_btn_lvl_chg.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_HDG_SEL            = new GFCommand( (char*)_label_btn_hgd_sel.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_APP                = new GFCommand( (char*)_label_btn_app.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_ALT_HLD            = new GFCommand( (char*)_label_btn_alt_hld.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_VS                 = new GFCommand( (char*)_label_btn_vs.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_AP_Disengage       = new GFCommand( (char*)_label_btn_ap_disengage.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_FD_Right           = new GFCommand( (char*)_label_btn_fd_right.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_speed ] = &GFMCPPro_Buttons::_action_btn_speed;
+	_btn_LVL_CHG            = new GFCommand( (char*)_label_btn_lvl_chg.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_lvl_chg ] = &GFMCPPro_Buttons::_action_btn_lvl_chg;
+	_btn_HDG_SEL            = new GFCommand( (char*)_label_btn_hdg_sel.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_hdg_sel ] = &GFMCPPro_Buttons::_action_btn_hdg_sel;
+	_btn_APP                = new GFCommand( (char*)_label_btn_app.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_app ] = &GFMCPPro_Buttons::_action_btn_app;
+	_btn_ALT_HLD            = new GFCommand( (char*)_label_btn_alt_hld.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_alt_hld ] = &GFMCPPro_Buttons::_action_btn_alt_hld;
+	_btn_VS                 = new GFCommand( (char*)_label_btn_vs.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_vs ] = &GFMCPPro_Buttons::_action_btn_vs;
+	_btn_AP_Disengage       = new GFCommand( (char*)_label_btn_ap_disengage.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_ap_disengage ] = &GFMCPPro_Buttons::_action_btn_ap_disengage;
+	_btn_FD_Right           = new GFCommand( (char*)_label_btn_fd_right.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_fd_right ] = &GFMCPPro_Buttons::_action_btn_fd_right;
 
-    _btn_ALT_INV            = new GFCommand( (char*)_label_btn_alt_inv.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_CWS_A              = new GFCommand( (char*)_label_btn_cws_a.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_CWS_B              = new GFCommand( (char*)_label_btn_cws_b.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_IAS_Dial           = new GFCommand( (char*)_label_btn_ias_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_HDG_Dial           = new GFCommand( (char*)_label_btn_hdg_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_ALT_Dial           = new GFCommand( (char*)_label_btn_alt_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_FD_Left            = new GFCommand( (char*)_label_btn_fd_left.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_N1                 = new GFCommand( (char*)_label_btn_n1.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_ALT_INV            = new GFCommand( (char*)_label_btn_alt_inv.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_alt_inv ] = &GFMCPPro_Buttons::_action_btn_alt_inv;
+	_btn_CWS_A              = new GFCommand( (char*)_label_btn_cws_a.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_cws_a ] = &GFMCPPro_Buttons::_action_btn_cws_a;
+	_btn_CWS_B              = new GFCommand( (char*)_label_btn_cws_b.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_cws_b ] = &GFMCPPro_Buttons::_action_btn_cws_b;
 
-    _btn_VNAV               = new GFCommand( (char*)_label_btn_vnav.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_LNAV               = new GFCommand( (char*)_label_btn_lnav.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_CMD_A              = new GFCommand( (char*)_label_btn_cmd_a.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_CMD_B              = new GFCommand( (char*)_label_btn_cmd_b.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_AT_Arm             = new GFCommand( (char*)_label_btn_at_arm.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_CO                 = new GFCommand( (char*)_label_btn_co.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_SPD_INTV           = new GFCommand( (char*)_label_btn_spd_intv.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_VOR_LOC            = new GFCommand( (char*)_label_btn_vor_loc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	/*
+	_btn_IAS_Dial           = new GFCommand( (char*)_label_btn_ias_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_ias_dial ] = &GFMCPPro_Buttons::_action_btn_ias_dial;
+	_btn_HDG_Dial           = new GFCommand( (char*)_label_btn_hdg_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_hdg_dial ] = &GFMCPPro_Buttons::_action_btn_hdg_dial;
+	_btn_ALT_Dial           = new GFCommand( (char*)_label_btn_alt_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_alt_dial ] = &GFMCPPro_Buttons::_action_btn_alt_dial;
+	*/
+
+	_btn_FD_Left            = new GFCommand( (char*)_label_btn_fd_left.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_fd_left ] = &GFMCPPro_Buttons::_action_btn_fd_left;
+	_btn_N1                 = new GFCommand( (char*)_label_btn_n1.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_n1 ] = &GFMCPPro_Buttons::_action_btn_n1;
+
+	_btn_VNAV               = new GFCommand( (char*)_label_btn_vnav.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_vnav ] = &GFMCPPro_Buttons::_action_btn_vnav;
+	_btn_LNAV               = new GFCommand( (char*)_label_btn_lnav.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_lnav ] = &GFMCPPro_Buttons::_action_btn_lnav;
+	_btn_CMD_A              = new GFCommand( (char*)_label_btn_cmd_a.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_cmd_a ] = &GFMCPPro_Buttons::_action_btn_cmd_a;
+	_btn_CMD_B              = new GFCommand( (char*)_label_btn_cmd_b.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_cmd_b ] = &GFMCPPro_Buttons::_action_btn_cmd_b;
+	_btn_AT_Arm             = new GFCommand( (char*)_label_btn_at_arm.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_at_arm ] = &GFMCPPro_Buttons::_action_btn_at_arm;
+	_btn_CO                 = new GFCommand( (char*)_label_btn_co.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_co ] = &GFMCPPro_Buttons::_action_btn_co;
+	_btn_SPD_INTV           = new GFCommand( (char*)_label_btn_spd_intv.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_spd_intv ] = &GFMCPPro_Buttons::_action_btn_spd_intv;
+	_btn_VOR_LOC            = new GFCommand( (char*)_label_btn_vor_loc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_btn_vor_loc ] = &GFMCPPro_Buttons::_action_btn_vor_loc;
 
 
 
-    // Create commands for Scroll Wheels and Rotary Knobs.
+	// Create commands for Scroll Wheels and Rotary Knobs.
     _btn_crs_left_inc = new GFCommand( (char*)_label_crs_left_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
     _btn_crs_left_dec = new GFCommand( (char*)_label_crs_left_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-
-    _btn_ias_mach_inc = new GFCommand( (char*)_label_ias_mach_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_crs_left_inc ] = &GFMCPPro_Buttons::_action_crs_left_inc;
+	_action_map[ _label_crs_left_dec ] = &GFMCPPro_Buttons::_action_crs_left_dec;
+	
+	
+	_btn_ias_mach_inc = new GFCommand( (char*)_label_ias_mach_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
     _btn_ias_mach_dec = new GFCommand( (char*)_label_ias_mach_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-
-
+	_action_map[ _label_ias_mach_inc ] = &GFMCPPro_Buttons::_action_ias_mach_inc;
+	_action_map[ _label_ias_mach_dec ] = &GFMCPPro_Buttons::_action_ias_mach_dec;
 
 
     _btn_heading_inc = new GFCommand( (char*)_label_heading_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
     _btn_heading_dec = new GFCommand( (char*)_label_heading_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-	_action_map[ std::string(_label_heading_inc) ] = &GFMCPPro_Buttons::_action_heading_inc;
-	_action_map[ std::string(_label_heading_dec) ] = &GFMCPPro_Buttons::_action_heading_dec;
+	_action_map[ _label_heading_inc ] = &GFMCPPro_Buttons::_action_heading_inc;
+	_action_map[ _label_heading_dec ] = &GFMCPPro_Buttons::_action_heading_dec;
+
 
 	_btn_altitude_inc = new GFCommand( (char*)_label_altitude_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
     _btn_altitude_dec = new GFCommand( (char*)_label_altitude_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-	_action_map[ std::string(_label_altitude_inc) ] = &GFMCPPro_Buttons::_action_altitude_inc;
-	_action_map[ std::string(_label_altitude_dec) ] = &GFMCPPro_Buttons::_action_altitude_dec;
+	_action_map[ _label_altitude_inc ] = &GFMCPPro_Buttons::_action_altitude_inc;
+	_action_map[ _label_altitude_dec ] = &GFMCPPro_Buttons::_action_altitude_dec;
 
-	
-	
 	
     _btn_vert_speed_inc = new GFCommand( (char*)_label_vert_speed_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
     _btn_vert_speed_dec = new GFCommand( (char*)_label_vert_speed_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_vert_speed_inc ] = &GFMCPPro_Buttons::_action_vert_speed_inc;
+	_action_map[ _label_vert_speed_dec ] = &GFMCPPro_Buttons::_action_vert_speed_dec;
 
+	
     _btn_crs_right_inc = new GFCommand( (char*)_label_crs_right_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
     _btn_crs_right_dec = new GFCommand( (char*)_label_crs_right_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_action_map[ _label_crs_right_inc ] = &GFMCPPro_Buttons::_action_crs_right_inc;
+	_action_map[ _label_crs_right_dec ] = &GFMCPPro_Buttons::_action_crs_right_dec;
 
 }
 
@@ -181,16 +216,344 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 
 
 
-int GFMCPPro_Buttons::_action_altitude_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_altitude->_int_value--;
+int GFMCPPro_Buttons::_action_btn_speed( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_speed->_int_value ){
+		mcp_state->_dref_leds_speed->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_speed->_int_value = 1;
+	}
+
 	return 0;
 }
 
-int GFMCPPro_Buttons::_action_altitude_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_altitude->_int_value++;
+int GFMCPPro_Buttons::_action_btn_lvl_chg( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_lvl_chg->_int_value ){
+		mcp_state->_dref_leds_lvl_chg->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_lvl_chg->_int_value = 1;
+	}
+	
 	return 0;
 }
 
+int GFMCPPro_Buttons::_action_btn_hdg_sel( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_hdg_sel->_int_value ){
+		mcp_state->_dref_leds_hdg_sel->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_hdg_sel->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_btn_app( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_app->_int_value ){
+		mcp_state->_dref_leds_app->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_app->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_alt_hld( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_alt_hld->_int_value ){
+		mcp_state->_dref_leds_alt_hld->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_alt_hld->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_vs( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_vs->_int_value ){
+		mcp_state->_dref_leds_vs->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_vs->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_ap_disengage( GFMCPPro_State* mcp_state ){
+
+	/*
+	if( mcp_state->_dref_leds_ap_disengage->_int_value ){
+		mcp_state->_dref_leds_ap_disengage->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_ap_disengage->_int_value = 1;
+	}
+	*/
+
+	//FIXME: trigger built in xp ap dis command ?
+
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_fd_right( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_fd_right->_int_value ){
+		mcp_state->_dref_leds_fd_right->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_fd_right->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_alt_inv( GFMCPPro_State* mcp_state ){
+
+	/*
+	if( mcp_state->_dref_leds_alt_inv->_int_value ){
+		mcp_state->_dref_leds_alt_inv->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_alt_inv->_int_value = 1;
+	}
+	 */
+
+	//FIXME: clarify purpose of alt inv button
+	//cam: "It does not have an LED. It's a small red button. I think it's NG specific"
+
+	/*
+	[11/05/2016 12:39:09 pm] Cameron: http://www.flaps2approach.com/journal/2013/2/20/speed-altitude-intervention-spd-intv-alt-intv-v-nav-how-to-u.html
+[11/05/2016 12:39:40 pm] Cameron: Engaging speed intervention you will immediately observe that the MCP speed window becomes active iand displays your current speed.  Dial in into the speed window the new speed requirement of 280 kias.  Notice on the PFD that the speed indicator value above the speed tape has changed from 300 kias to the new speed of 280 kias.  If you cross check with the cruise altitude (INDEX/PERF INT/CRZ ALT) in the CDU it will still indicate the cruise speed of 300 kias.
+[11/05/2016 12:40:23 pm] Cameron: ALT INTV is even more fun
+[11/05/2016 12:40:24 pm] Cameron: http://www.flaps2approach.com/storage/post-images/2013-posts/altitude-speed-intervention/alpha.jpg?__SQUARESPACE_CACHEVERSION=1361007752444
+[11/05/2016 12:40:50 pm] Cameron: Anyways, that's basically up to a developer of an aircraft to code logic for
+	 */
+
+	return 0;
+}
+
+
+int GFMCPPro_Buttons::_action_btn_cws_a( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_cws_a->_int_value ){
+		mcp_state->_dref_leds_cws_a->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cws_a->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+int GFMCPPro_Buttons::_action_btn_cws_b( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_cws_b->_int_value ){
+		mcp_state->_dref_leds_cws_b->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cws_b->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_fd_left( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_fd_left->_int_value ){
+		mcp_state->_dref_leds_fd_left->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_fd_left->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_n1( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_n1->_int_value ){
+		mcp_state->_dref_leds_n1->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_n1->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_vnav( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_vnav->_int_value ){
+		mcp_state->_dref_leds_vnav->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_vnav->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_lnav( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_lnav->_int_value ){
+		mcp_state->_dref_leds_lnav->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_lnav->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_cmd_a( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_cmd_a->_int_value ){
+		mcp_state->_dref_leds_cmd_a->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cmd_a->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+int GFMCPPro_Buttons::_action_btn_cmd_b( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_cmd_b->_int_value ){
+		mcp_state->_dref_leds_cmd_b->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cmd_b->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_at_arm( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_at_arm->_int_value ){
+		mcp_state->_dref_leds_at_arm->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_at_arm->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_co( GFMCPPro_State* mcp_state ){
+	
+	/*
+	if( mcp_state->_dref_leds_co->_int_value ){
+		mcp_state->_dref_leds_co->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_co->_int_value = 1;
+	}
+	 */
+
+	//FIXME: clarify purpose of CO button
+	//switch between IAS and Mach
+	
+	return 0;
+}
+
+
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_spd_intv( GFMCPPro_State* mcp_state ){
+
+	/*
+	if( mcp_state->_dref_leds_spd_intv->_int_value ){
+		mcp_state->_dref_leds_spd_intv->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_spd_intv->_int_value = 1;
+	}
+	*/
+
+	//FIXME: see alt intv
+
+	return 0;
+}
+
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_vor_loc( GFMCPPro_State* mcp_state ){
+	
+	if( mcp_state->_dref_leds_vor_loc->_int_value ){
+		mcp_state->_dref_leds_vor_loc->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_vor_loc->_int_value = 1;
+	}
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+/// ---- knobs and dials ---
+
+
+
+int GFMCPPro_Buttons::_action_crs_left_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_left->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_crs_left_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_left->_int_value++;
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_ias_mach_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_ias_mach->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_ias_mach_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_ias_mach->_int_value++;
+	return 0;
+}
 
 
 
@@ -203,6 +566,47 @@ int GFMCPPro_Buttons::_action_heading_inc( GFMCPPro_State* mcp_state ){
 	mcp_state->_dref_heading->_int_value++;
 	return 0;
 }
+
+
+
+int GFMCPPro_Buttons::_action_altitude_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_altitude->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_altitude_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_altitude->_int_value++;
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_vert_speed_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_vert_speed->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_vert_speed_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_vert_speed->_int_value++;
+	return 0;
+}
+
+
+int GFMCPPro_Buttons::_action_crs_right_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_right->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_crs_right_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_right->_int_value++;
+	return 0;
+}
+
+
+
+
+
+
 
 
 
@@ -311,9 +715,9 @@ void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
     buf[6] & 1 ? _btn_ALT_INV->Begin()          : _btn_ALT_INV->Stop();
     buf[6] & 2 ? _btn_CWS_A->Begin()            : _btn_CWS_A->Stop();
     buf[6] & 4 ? _btn_CWS_B->Begin()            : _btn_CWS_B->Stop();
-    buf[6] & 8 ? _btn_IAS_Dial->Begin()         : _btn_IAS_Dial->Stop(); // -- Dial --
-    buf[6] & 16 ? _btn_HDG_Dial->Begin()        : _btn_HDG_Dial->Stop(); // -- Dial --
-    buf[6] & 32 ? _btn_ALT_Dial->Begin()        : _btn_ALT_Dial->Stop(); // -- Dial --
+    //buf[6] & 8 ? _btn_IAS_Dial->Begin()         : _btn_IAS_Dial->Stop(); // -- Dial --
+    //buf[6] & 16 ? _btn_HDG_Dial->Begin()        : _btn_HDG_Dial->Stop(); // -- Dial --
+    //buf[6] & 32 ? _btn_ALT_Dial->Begin()        : _btn_ALT_Dial->Stop(); // -- Dial --
     buf[6] & 64 ? _btn_FD_Left->Begin()         : _btn_FD_Left->Stop();
     buf[6] & 128 ? _btn_N1->Begin()             : _btn_N1->Stop();
 
