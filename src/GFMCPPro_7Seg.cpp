@@ -36,61 +36,54 @@ void GFMCPPro_7Seg::write(){
 //write dataref state to 7 seg LED's
 void GFMCPPro_7Seg::_write_override_state(){
 
-	//FIXME: does not read back bytes from datarefs.
-
-	unsigned char caTmp[16];
+	// Override Mode.
+	// Reads back bytes from dataref contents and pushes them to the 7seg displays.
 
 	//CRS Left
-	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_left->_int_value );
 	GFUtils::set3f(
 			_handle,
 			GFMCPPro_7Seg::_usb_report_crs_left,
-			caTmp
+			_mcp_state->_dref_crs_left->_blob
 	);
 
 
 	//IAS Mach
-	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_ias_mach->_int_value );
 	GFUtils::set5f(
 			_handle,
 			GFMCPPro_7Seg::_usb_report_ias,
-			caTmp
+			_mcp_state->_dref_ias_mach->_blob
 	);
 
 
 	//Heading
-	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_heading->_int_value );
 	GFUtils::set3f(
 			_handle,
 			GFMCPPro_7Seg::_usb_report_hdg,
-			caTmp
+			_mcp_state->_dref_heading->_blob
 	);
 
 
 	//Altitude
-	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_altitude->_int_value );
 	GFUtils::set5f(
 			_handle,
 			GFMCPPro_7Seg::_usb_report_alt,
-			caTmp
+			_mcp_state->_dref_altitude->_blob
 	);
 
 
 	//Vert Speed
-	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_vert_speed->_int_value );
 	GFUtils::set5f(
 			_handle,
 			GFMCPPro_7Seg::_usb_report_vs,
-			caTmp
+			_mcp_state->_dref_vert_speed->_blob
 	);
 
 
 	//CRS Right
-	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_right->_int_value );
 	GFUtils::set3f(
 			_handle,
 			GFMCPPro_7Seg::_usb_report_crs_right,
-			caTmp
+			_mcp_state->_dref_crs_right->_blob
 	);
 
 }
