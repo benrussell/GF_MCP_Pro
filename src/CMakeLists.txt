@@ -4,6 +4,13 @@ project(GF_MCP_Pro)
 
 
 set( BINARY_NAME "GF_MCP_Pro_DEFAULT" )
+set( EXTRA_LIBS "" )
+
+
+add_definitions( -DXPLM200=1 -DXPLM210=1 )
+set( XP_SDK "${CMAKE_HOME_DIRECTORY}/../../XP_SDK_213" )
+message( ${XP_SDK} )
+
 
 
 
@@ -14,8 +21,11 @@ IF( APPLE )
     add_definitions( -DAPL=1 )
 
     set( MAC_FRAMEWORKS "-framework IOKit -framework Carbon" )
+
     set( CMAKE_SHARED_LINKER_FLAGS "${MAC_FRAMEWORKS} -undefined warning -flat_namespace -v" )
-    #set( CMAKE_EXE_LINKER_FLAGS "${MAC_FRAMEWORKS}" )
+
+    #set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
+
 
     set( HID_C_FILE "${CMAKE_HOME_DIRECTORY}/../../hidapi/mac/hid.c" )
 
@@ -29,26 +39,38 @@ IF(CMAKE_SYSTEM_NAME STREQUAL Windows)
 
     add_definitions( -DIBM=1 )
 
+    LINK_DIRECTORIES(
+            "C:/Program Files (x86)/Windows Kits/8.0/Lib/win8/um/x64"
+            "${XP_SDK}/Libraries/Win"
+    )
+
+    set( EXTRA_LIBS
+            XPLM_64.lib
+            XPWidgets_64.lib
+            hid.lib
+
+            )
+
+    #set( CMAKE_SHARED_LINKER_FLAGS "-v" )
+
     set( HID_C_FILE "${CMAKE_HOME_DIRECTORY}/../../hidapi/windows/hid.c" )
 
 ENDIF(CMAKE_SYSTEM_NAME STREQUAL Windows)
 
 
 
-set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
 
 
 
 
 
 
-add_definitions( -DXPLM200=1 -DXPLM210=1 )
+
+
 
 set( HID_API_FOLDER "${CMAKE_HOME_DIRECTORY}/../../hidapi/hidapi/" )
 message( ${HID_API_FOLDER} )
 
-set( XP_SDK "${CMAKE_HOME_DIRECTORY}/../../XP_SDK_213" )
-message( ${XP_SDK} )
 
 
 # Configure our include paths.
@@ -80,5 +102,5 @@ SET_TARGET_PROPERTIES(${OUTPUT_FILENAME} PROPERTIES SUFFIX ".xpl")
 
 
 # Perform actual compile and link.
-target_link_libraries( ${OUTPUT_FILENAME}  )
+target_link_libraries( ${OUTPUT_FILENAME} ${EXTRA_LIBS} )
 
