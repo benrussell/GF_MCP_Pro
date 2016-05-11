@@ -195,6 +195,14 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 	}
 
 
+
+	if( 1 == _mcp_state->_dref_mcp_override->_int_value ){
+		//we can ignore all the buttons!
+		return 0;
+	}
+
+
+
 	// Use the command string to find the action function in a std::map.
 
 	std::map<std::string, GF_action_func>::iterator it = _action_map.find( cmd->_name );
