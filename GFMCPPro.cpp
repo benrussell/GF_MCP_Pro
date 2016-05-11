@@ -13,12 +13,13 @@
 
 GFMCPPro::GFMCPPro() {
 
+	_handle = 0;
+
 	_mcp_state = new GFMCPPro_State();
 
 	_mcp_leds = new GFMCPPro_LEDS( _mcp_state );
 	_mcp_7seg = new GFMCPPro_7Seg( _mcp_state );
     _mcp_buttons = new GFMCPPro_Buttons( _mcp_state );
-
 
 	_create_xp_root_menu();
 
@@ -141,7 +142,7 @@ int GFMCPPro::_open_usb_dev() {
 
 void GFMCPPro::flcb() {
 
-    if( _handle == 0 ) {
+    if( 0 == _handle ) {
         //_handle is null, ignore!
         //TODO: set dref to 0 to indicate disconnect?
 

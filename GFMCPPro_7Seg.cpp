@@ -9,6 +9,8 @@
 
 GFMCPPro_7Seg::GFMCPPro_7Seg( GFMCPPro_State* state ){
 
+	_handle = 0;
+
 	_mcp_state = state;
 
 }
