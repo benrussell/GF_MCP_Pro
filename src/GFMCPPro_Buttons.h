@@ -178,7 +178,7 @@ private:
 
 	const std::string _label_btn_n1           = "goflight/mcp_pro/emit/btn_n1";
 	static int _action_btn_n1( GFMCPPro_State* );
-	
+
 	const std::string _label_btn_vnav         = "goflight/mcp_pro/emit/btn_vnav";
 	static int _action_btn_vnav( GFMCPPro_State* );
 
@@ -202,14 +202,14 @@ private:
 
 	const std::string _label_btn_vor_loc      = "goflight/mcp_pro/emit/btn_vor_loc";
 	static int _action_btn_vor_loc( GFMCPPro_State* );
-	
-	
+
+
 
 
 
 	// Dials and knobs..
 
-	
+
 	const std::string _label_crs_left_inc     = "goflight/mcp_pro/emit/crs_left_inc";
     const std::string _label_crs_left_dec     = "goflight/mcp_pro/emit/crs_left_dec";
 	static int _action_crs_left_dec( GFMCPPro_State* );
