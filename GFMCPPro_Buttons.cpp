@@ -129,9 +129,13 @@ GFMCPPro_Buttons::~GFMCPPro_Buttons(){
 	delete(_btn_ALT_INV);
 	delete(_btn_CWS_A);
 	delete(_btn_CWS_B);
+
+	/*
 	delete(_btn_IAS_Dial);
 	delete(_btn_HDG_Dial);
 	delete(_btn_ALT_Dial);
+	*/
+
 	delete(_btn_FD_Left);
 	delete(_btn_N1);
 
@@ -618,6 +622,11 @@ int GFMCPPro_Buttons::_action_crs_right_inc( GFMCPPro_State* mcp_state ){
 
 
 void GFMCPPro_Buttons::_read_usb() {
+
+	if( 0 == _handle ){
+		GFUtils::Log("USB Read Failed: Invalid device handle.\n");
+		return;
+	}
 
     const int buf_size=16;
     unsigned char buf[buf_size];

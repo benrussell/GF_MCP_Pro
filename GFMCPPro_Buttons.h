@@ -99,9 +99,13 @@ private:
 	GFCommand* _btn_ALT_INV;
 	GFCommand* _btn_CWS_A;
 	GFCommand* _btn_CWS_B;
+
+	/*
 	GFCommand* _btn_IAS_Dial;
 	GFCommand* _btn_HDG_Dial;
 	GFCommand* _btn_ALT_Dial;
+	*/
+
 	GFCommand* _btn_FD_Left;
 	GFCommand* _btn_N1;
 
@@ -124,14 +128,19 @@ private:
 
     const std::string _label_btn_speed        = "goflight/mcp_pro/emit/btn_speed";
 	static int _action_btn_speed( GFMCPPro_State* );
-    const std::string _label_btn_lvl_chg      = "goflight/mcp_pro/emit/btn_lvl_chg";
+
+	const std::string _label_btn_lvl_chg      = "goflight/mcp_pro/emit/btn_lvl_chg";
 	static int _action_btn_lvl_chg( GFMCPPro_State* );
+
 	const std::string _label_btn_hdg_sel      = "goflight/mcp_pro/emit/btn_hdg_sel";
 	static int _action_btn_hdg_sel( GFMCPPro_State* );
+
 	const std::string _label_btn_app          = "goflight/mcp_pro/emit/btn_app";
 	static int _action_btn_app( GFMCPPro_State* );
+
 	const std::string _label_btn_alt_hld      = "goflight/mcp_pro/emit/btn_alt_hld";
 	static int _action_btn_alt_hld( GFMCPPro_State* );
+
 	const std::string _label_btn_vs           = "goflight/mcp_pro/emit/btn_vs";
 	static int _action_btn_vs( GFMCPPro_State* );
 
@@ -146,39 +155,51 @@ private:
 
 	const std::string _label_btn_alt_inv      = "goflight/mcp_pro/emit/btn_alt_inv";
 	static int _action_btn_alt_inv( GFMCPPro_State* );
+
 	const std::string _label_btn_cws_a        = "goflight/mcp_pro/emit/btn_cws_a";
 	static int _action_btn_cws_a( GFMCPPro_State* );
+
 	const std::string _label_btn_cws_b        = "goflight/mcp_pro/emit/btn_cws_b";
 	static int _action_btn_cws_b( GFMCPPro_State* );
 
 	/*
 	const std::string _label_btn_ias_dial     = "goflight/mcp_pro/emit/btn_ias_dial";
 	static int _action_btn_ias_dial( GFMCPPro_State* );
-	const std::string _label_btn_hdg_dial     = "goflight/mcp_pro/emit/btn_hdg_dial";
+
+	 const std::string _label_btn_hdg_dial     = "goflight/mcp_pro/emit/btn_hdg_dial";
 	static int _action_btn_hdg_dial( GFMCPPro_State* );
-	const std::string _label_btn_alt_dial     = "goflight/mcp_pro/emit/btn_alt_dial";
+
+	 const std::string _label_btn_alt_dial     = "goflight/mcp_pro/emit/btn_alt_dial";
 	static int _action_btn_alt_dial( GFMCPPro_State* );
 	*/
 
 	const std::string _label_btn_fd_left      = "goflight/mcp_pro/emit/btn_fd_left";
 	static int _action_btn_fd_left( GFMCPPro_State* );
+
 	const std::string _label_btn_n1           = "goflight/mcp_pro/emit/btn_n1";
 	static int _action_btn_n1( GFMCPPro_State* );
 	
 	const std::string _label_btn_vnav         = "goflight/mcp_pro/emit/btn_vnav";
 	static int _action_btn_vnav( GFMCPPro_State* );
+
 	const std::string _label_btn_lnav         = "goflight/mcp_pro/emit/btn_lnav";
 	static int _action_btn_lnav( GFMCPPro_State* );
+
 	const std::string _label_btn_cmd_a        = "goflight/mcp_pro/emit/btn_cmd_a";
 	static int _action_btn_cmd_a( GFMCPPro_State* );
+
 	const std::string _label_btn_cmd_b        = "goflight/mcp_pro/emit/btn_cmd_b";
 	static int _action_btn_cmd_b( GFMCPPro_State* );
+
 	const std::string _label_btn_at_arm       = "goflight/mcp_pro/emit/btn_at_arm";
 	static int _action_btn_at_arm( GFMCPPro_State* );
+
 	const std::string _label_btn_co           = "goflight/mcp_pro/emit/btn_co";
 	static int _action_btn_co( GFMCPPro_State* );
+
 	const std::string _label_btn_spd_intv     = "goflight/mcp_pro/emit/btn_spd_intv";
 	static int _action_btn_spd_intv( GFMCPPro_State* );
+
 	const std::string _label_btn_vor_loc      = "goflight/mcp_pro/emit/btn_vor_loc";
 	static int _action_btn_vor_loc( GFMCPPro_State* );
 	
@@ -186,14 +207,14 @@ private:
 
 
 
-
-
+	// Dials and knobs..
 
 	
 	const std::string _label_crs_left_inc     = "goflight/mcp_pro/emit/crs_left_inc";
     const std::string _label_crs_left_dec     = "goflight/mcp_pro/emit/crs_left_dec";
 	static int _action_crs_left_dec( GFMCPPro_State* );
 	static int _action_crs_left_inc( GFMCPPro_State* );
+
 
     const std::string _label_ias_mach_inc     = "goflight/mcp_pro/emit/ias_mach_inc";
     const std::string _label_ias_mach_dec     = "goflight/mcp_pro/emit/ias_mach_dec";
@@ -207,18 +228,17 @@ private:
 	static int _action_heading_inc( GFMCPPro_State* );
 
 
-
     const std::string _label_altitude_inc     = "goflight/mcp_pro/emit/altitude_inc";
 	const std::string _label_altitude_dec     = "goflight/mcp_pro/emit/altitude_dec";
 	static int _action_altitude_dec( GFMCPPro_State* );
 	static int _action_altitude_inc( GFMCPPro_State* );
 
 
-
     const std::string _label_vert_speed_inc   = "goflight/mcp_pro/emit/vert_speed_inc";
     const std::string _label_vert_speed_dec   = "goflight/mcp_pro/emit/vert_speed_dec";
 	static int _action_vert_speed_dec( GFMCPPro_State* );
 	static int _action_vert_speed_inc( GFMCPPro_State* );
+
 
     const std::string _label_crs_right_inc    = "goflight/mcp_pro/emit/crs_right_inc";
     const std::string _label_crs_right_dec    = "goflight/mcp_pro/emit/crs_right_dec";
