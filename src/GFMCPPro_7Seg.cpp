@@ -208,3 +208,21 @@ void GFMCPPro_7Seg::_write_light_test(){
 	);
 
 }
+
+
+
+
+
+const unsigned char GFMCPPro_7Seg::_usb_report_crs_left   = 3;
+const unsigned char GFMCPPro_7Seg::_usb_report_ias        = 5;
+const unsigned char GFMCPPro_7Seg::_usb_report_hdg        = 7;
+const unsigned char GFMCPPro_7Seg::_usb_report_alt        = 9;
+const unsigned char GFMCPPro_7Seg::_usb_report_vs         = 11;
+const unsigned char GFMCPPro_7Seg::_usb_report_crs_right  = 13;
+
+
+
+
+
+
+//eof
