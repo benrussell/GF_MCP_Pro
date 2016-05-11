@@ -74,50 +74,38 @@ public:
 
 private:
 
-
-	const char* label_override      = "goflight/mcp_pro/override";
-	const char* label_light_test    = "goflight/mcp_pro/light_test";
-
-
-
+	static const char* label_override;
+	static const char* label_light_test;
 
 	// --------- 7 Seg ---------
-
-	const char* label_crs_left      = "goflight/mcp_pro/7seg/crs_left";
-	const char* label_ias_mach      = "goflight/mcp_pro/7seg/ias_mach";
-	const char* label_heading       = "goflight/mcp_pro/7seg/heading";
-	const char* label_altitude      = "goflight/mcp_pro/7seg/altitude";
-	const char* label_vert_speed    = "goflight/mcp_pro/7seg/vert_speed";
-	const char* label_crs_right     = "goflight/mcp_pro/7seg/crs_right";
-
-
-
-
+	static const char* label_crs_left;
+	static const char* label_ias_mach;
+	static const char* label_heading;
+	static const char* label_altitude;
+	static const char* label_vert_speed;
+	static const char* label_crs_right;
 
 	// ------ Lights and buttons ---------
-
 	//dataref names
-	const char* label_vnav          = "goflight/mcp_pro/leds/vnav";
-	const char* label_lnav          = "goflight/mcp_pro/leds/lnav";
-	const char* label_cmd_a      = "goflight/mcp_pro/leds/cmd_a";
-	const char* label_cmd_b      = "goflight/mcp_pro/leds/cmd_b";
-	const char* label_at_arm        = "goflight/mcp_pro/leds/at_arm";
-	const char* label_vor_loc       = "goflight/mcp_pro/leds/vor_loc";
+	static const char* label_vnav;
+	static const char* label_lnav;
+	static const char* label_cmd_a;
+	static const char* label_cmd_b;
+	static const char* label_at_arm;
+	static const char* label_vor_loc;
 
-	const char* label_cws_a      = "goflight/mcp_pro/leds/cws_a";
-	const char* label_cws_b      = "goflight/mcp_pro/leds/cws_b";
-	const char* label_fd_left     = "goflight/mcp_pro/leds/fd_left";
-	const char* label_n1            = "goflight/mcp_pro/leds/n1";
+	static const char* label_cws_a;
+	static const char* label_cws_b;
+	static const char* label_fd_left;
+	static const char* label_n1;
 
-	const char* label_speed         = "goflight/mcp_pro/leds/speed";
-	const char* label_lvl_chg       = "goflight/mcp_pro/leds/lvl_chg";
-	const char* label_hdg_sel       = "goflight/mcp_pro/leds/hdg_sel";
-	const char* label_app           = "goflight/mcp_pro/leds/app";
-	const char* label_alt_hld       = "goflight/mcp_pro/leds/alt_hld";
-	const char* label_vs            = "goflight/mcp_pro/leds/vs";
-	const char* label_fd_right     = "goflight/mcp_pro/leds/fd_right";
-
-
+	static const char* label_speed;
+	static const char* label_lvl_chg;
+	static const char* label_hdg_sel;
+	static const char* label_app;
+	static const char* label_alt_hld;
+	static const char* label_vs;
+	static const char* label_fd_right;
 
 
 
