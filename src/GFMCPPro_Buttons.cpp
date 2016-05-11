@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <hidapi.h>
 
+#include "Windows_snprintf.h"
+
 
 
 GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){

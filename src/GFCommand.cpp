@@ -8,6 +8,8 @@
 
 #include "GFUtils.h"
 
+#include "Windows_snprintf.h"
+
 
 GFCommand::GFCommand( char *cmd_name, char* cmd_description, void* button_router ) {
 

@@ -6,6 +6,8 @@
 
 #include <string.h>
 
+#include "Windows_snprintf.h"
+
 
 GFMCPPro_7Seg::GFMCPPro_7Seg( GFMCPPro_State* state ){
 

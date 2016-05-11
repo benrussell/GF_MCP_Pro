@@ -9,9 +9,9 @@
 
 #include <XPLMProcessing.h>
 
-
-
 #include "GFMCPPro.h"
+
+#include "Windows_snprintf.h"
 
 
 
