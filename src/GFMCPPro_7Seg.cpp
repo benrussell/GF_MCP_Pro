@@ -23,12 +23,18 @@ void GFMCPPro_7Seg::write(){
 
 	if( 1 == _mcp_state->_dref_mcp_light_test->_int_value ){
 		_write_light_test();
+
 	}else{
-		if( 1 == _mcp_state->_dref_mcp_override->_int_value ){
-			_write_override_state();
-		}else{
-			_write_auto_state();
+		if( 0 == _mcp_state->_dref_mcp_override->_int_value ){
+			// MCP is NOT in managed mode.
+			// We have state stored for the knobs and dials actions.
+			// This call will translate that state into char* data to push to the 7seg displays.
+			// Next call does not push to MCP, only updates dref blob data.
+			_update_7seg_drefs();
 		}
+
+		//always push the dref char* blob to the MCP.
+		_write_dref_state();
 	}
 
 }
@@ -36,7 +42,7 @@ void GFMCPPro_7Seg::write(){
 
 
 //write dataref state to 7 seg LED's
-void GFMCPPro_7Seg::_write_override_state(){
+void GFMCPPro_7Seg::_write_dref_state(){
 
 	// Override Mode.
 	// Reads back bytes from dataref contents and pushes them to the 7seg displays.
@@ -91,63 +97,29 @@ void GFMCPPro_7Seg::_write_override_state(){
 }
 
 
-//write managed state to 7 seg LED's
-void GFMCPPro_7Seg::_write_auto_state(){
 
-	unsigned char caTmp[16];
+//write managed state to the 7seg blob dref's
+void GFMCPPro_7Seg::_update_7seg_drefs(){
+	
+	const size_t max_bytes = (size_t)GFDataref::_blob_size;
 
 	//CRS Left
-	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_left->_int_value );
-	GFUtils::set3f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_crs_left,
-			caTmp
-	);
-
+	snprintf( (char*)_mcp_state->_dref_crs_left->_blob, max_bytes, "%03i", _mcp_state->_dref_crs_left->_int_value );
 
 	//IAS Mach
-	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_ias_mach->_int_value );
-	GFUtils::set5f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_ias,
-			caTmp
-	);
-
+	snprintf( (char*)_mcp_state->_dref_ias_mach->_blob, max_bytes, "%05i", _mcp_state->_dref_ias_mach->_int_value );
 
 	//Heading
-	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_heading->_int_value );
-	GFUtils::set3f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_hdg,
-			caTmp
-	);
-
+	snprintf( (char*)_mcp_state->_dref_heading->_blob, max_bytes, "%03i", _mcp_state->_dref_heading->_int_value );
 
 	//Altitude
-	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_altitude->_int_value );
-	GFUtils::set5f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_alt,
-			caTmp
-	);
-
+	snprintf( (char*)_mcp_state->_dref_altitude->_blob, max_bytes, "%05i", _mcp_state->_dref_altitude->_int_value );
 
 	//Vert Speed
-	snprintf( (char*)caTmp, 16, "%05i", _mcp_state->_dref_vert_speed->_int_value );
-	GFUtils::set5f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_vs,
-			caTmp
-	);
-
+	snprintf( (char*)_mcp_state->_dref_vert_speed->_blob, max_bytes, "%05i", _mcp_state->_dref_vert_speed->_int_value );
 
 	//CRS Right
-	snprintf( (char*)caTmp, 16, "%03i", _mcp_state->_dref_crs_right->_int_value );
-	GFUtils::set3f(
-			_handle,
-			GFMCPPro_7Seg::_usb_report_crs_right,
-			caTmp
-	);
+	snprintf( (char*)_mcp_state->_dref_crs_right->_blob, max_bytes, "%03i", _mcp_state->_dref_crs_right->_int_value );
 
 }
 

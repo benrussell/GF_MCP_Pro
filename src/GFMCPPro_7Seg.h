@@ -31,8 +31,8 @@ private:
 
 	GFMCPPro_State* _mcp_state;
 
-	void _write_override_state();
-	void _write_auto_state();
+	void _write_dref_state();
+	void _update_7seg_drefs();
 	void _write_light_test();
 
 
