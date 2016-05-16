@@ -152,11 +152,15 @@ unsigned char GFUtils::translateCharTo7Seg( unsigned char raw ) {
 
 
 
+#ifndef GOFLIGHT_XPL_PRODUCT_NAME
+#error No product defined.
+#endif
+
 
 void GFUtils::Log( const char *message ) {
 
 	//FIXME: per product #define for plugin name?
-	std::string sMessage = "GF_MCP_Pro: " + std::string(message);
+	std::string sMessage = std::string(GOFLIGHT_XPL_PRODUCT_NAME) + ": " + std::string(message);
 	XPLMDebugString( sMessage.c_str() );
 
 }

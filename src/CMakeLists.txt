@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 2.8)
 project(GF_MCP_Pro)
 
 
+add_definitions( -DGOFLIGHT_XPL_PRODUCT_NAME="${PROJECT_NAME}" )
 
-set( BINARY_NAME "GF_MCP_Pro_DEFAULT" )
+set( BINARY_NAME "${PROJECT_NAME}_DEFAULT" )
 set( EXTRA_LIBS "" )
 
 
@@ -13,10 +14,9 @@ message( ${XP_SDK} )
 
 
 
-
 IF( APPLE )
 
-    set( BINARY_NAME "GF_MCP_Pro_mac" )
+    set( BINARY_NAME "${PROJECT_NAME}_mac" )
 
     add_definitions( -DAPL=1 )
 
@@ -35,7 +35,7 @@ ENDIF( APPLE )
 
 IF(CMAKE_SYSTEM_NAME STREQUAL Windows)
 
-    set( BINARY_NAME "GF_MCP_Pro_win" )
+    set( BINARY_NAME "${PROJECT_NAME}_win" )
 
     add_definitions( -DIBM=1 )
 
@@ -59,15 +59,6 @@ ENDIF(CMAKE_SYSTEM_NAME STREQUAL Windows)
 
 
 
-
-
-
-
-
-
-
-
-
 set( HID_API_FOLDER "${CMAKE_HOME_DIRECTORY}/../../hidapi/hidapi/" )
 message( ${HID_API_FOLDER} )
 
@@ -83,11 +74,6 @@ message(${INC_XPLANE_SDK})
 
 
 include_directories( ${HID_API_FOLDER} ${INC_XPLANE_SDK} )
-
-
-
-
-
 
 
 
