@@ -36,6 +36,8 @@ GFDataref::GFDataref(char *dref_name) {
                     1, //writable
 
                     GFDataref::xp_getDatai,	GFDataref::xp_setDatai, //integer
+					//NULL, NULL //integers
+
                     NULL, NULL, //floats
                     NULL, NULL, //doubles
 
@@ -57,7 +59,7 @@ GFDataref::GFDataref(char *dref_name) {
 GFDataref::GFDataref(char *dref_name, int element_count) {
 
 	char caTmp[1024];
-	snprintf( caTmp, 1024, "Create dref:(%s[%i])\n", dref_name, element_count );
+	snprintf( caTmp, 1024, "dref:(%s[%i])\n", dref_name, element_count );
 	GFUtils::Log( caTmp );
 
 	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
@@ -72,11 +74,12 @@ GFDataref::GFDataref(char *dref_name, int element_count) {
 
 	_dref = XPLMRegisterDataAccessor(
                     dref_name, //name
-                    xplmType_Data, //type
+                    xplmType_Data | xplmType_Int, //type
                     1, //writable
 
-                    //GFDataref::xp_getDatai,	GFDataref::xp_setDatai,
-                    NULL, NULL, //integer
+                    GFDataref::xp_getDatai,	GFDataref::xp_setDatai, //integer
+                    //NULL, NULL, //integer
+
                     NULL, NULL, //floats
                     NULL, NULL, //doubles
 
@@ -84,6 +87,8 @@ GFDataref::GFDataref(char *dref_name, int element_count) {
                     NULL, NULL, //float vectors
 
                     GFDataref::xp_getBytes, GFDataref::xp_setBytes, //byte vectors
+					//NULL, NULL //byte vectors
+
 
                     (void *)this, //read refcon
                     (void *)this  //write refcon

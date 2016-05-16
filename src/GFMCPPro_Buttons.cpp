@@ -180,14 +180,12 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 		XPLMCommandPhase     inPhase,
 		GFCommand*               cmd){
 
-
 	// http://www.xsquawkbox.net/xpsdk/mediawiki/XPLMRegisterCommandHandler
 
 	if( inPhase != xplm_CommandBegin ) {
-		//
+		//we're only interested in the begin state, we dont have any hold or end events
 		return 1;
 	}
-
 
 
 	if( 1 == _mcp_state->_dref_mcp_override->_int_value ){
@@ -198,7 +196,6 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 
 
 	// Use the command string to find the action function in a std::map.
-
 	std::map<std::string, GF_action_func>::iterator it = _action_map.find( cmd->_name );
 
 	if( it != _action_map.end() ){

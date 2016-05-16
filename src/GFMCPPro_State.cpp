@@ -159,8 +159,4 @@ const std::string GFMCPPro_State::_label_vs            = "goflight/mcp_pro/leds/
 const std::string GFMCPPro_State::_label_fd_right     = "goflight/mcp_pro/leds/fd_right";
 
 
-
-
-
-
 //eof
