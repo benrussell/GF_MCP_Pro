@@ -80,12 +80,8 @@ GFMCPPro_State::~GFMCPPro_State() {
 	delete(_dref_crs_right);
 
 
-
-
 	// buttons and lights cleanup
-
 	//FIXME: no cleanup...
-
 
 
 }

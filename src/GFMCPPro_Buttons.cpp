@@ -457,7 +457,7 @@ void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
 
     // Print out the returned buffer.
     for (int i = 0; i < res; i++) {
-        printf("% 4d    ", buf[i]);
+        printf("%4d    ", buf[i]);
     }
     //if a report has been rxd and dumped, we should put a new line
     if (res > 0) {
