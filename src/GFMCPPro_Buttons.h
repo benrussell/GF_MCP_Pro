@@ -15,7 +15,7 @@
 #include <map>
 
 
-
+//action function to call when we detect and parse a button event
 typedef int (*GF_action_func)( GFMCPPro_State* ) ;
 
 
@@ -57,6 +57,11 @@ private:
 	void _proc_hid_packet( int res, unsigned char* buf );
 	void _proc_buttons( int res, unsigned char* buf );
 	void _proc_knobs( int res, unsigned char* buf );
+
+	int _is_knob_bitflag_activity( unsigned char bit_flags );
+
+	int _is_knob_left( unsigned char bit_flags );
+	int _is_knob_right( unsigned char bit_flags );
 
 
     void _dump_button_packet( int res, unsigned char* buf );
@@ -103,11 +108,6 @@ private:
 	GFCommand* _btn_CWS_A;
 	GFCommand* _btn_CWS_B;
 
-	/*
-	GFCommand* _btn_IAS_Dial;
-	GFCommand* _btn_HDG_Dial;
-	GFCommand* _btn_ALT_Dial;
-	*/
 
 	GFCommand* _btn_FD_Left;
 	GFCommand* _btn_N1;
@@ -202,7 +202,6 @@ private:
 
 
 	// Dials and knobs..
-
 
 	static const std::string _label_crs_left_inc;
     static const std::string _label_crs_left_dec;

@@ -26,7 +26,6 @@ public:
 
     static const int _blob_size = 8;
 
-
     int _int_value;
     unsigned char _blob[8];
 

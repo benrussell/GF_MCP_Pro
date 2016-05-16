@@ -44,14 +44,7 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_btn_CWS_B              = new GFCommand( (char*)_label_btn_cws_b.c_str(), (char*)_label_no_description.c_str(), (void*)this );
 	_action_map[ _label_btn_cws_b ] = &GFMCPPro_Buttons::_action_btn_cws_b;
 
-	/*
-	_btn_IAS_Dial           = new GFCommand( (char*)_label_btn_ias_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-	_action_map[ _label_btn_ias_dial ] = &GFMCPPro_Buttons::_action_btn_ias_dial;
-	_btn_HDG_Dial           = new GFCommand( (char*)_label_btn_hdg_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-	_action_map[ _label_btn_hdg_dial ] = &GFMCPPro_Buttons::_action_btn_hdg_dial;
-	_btn_ALT_Dial           = new GFCommand( (char*)_label_btn_alt_dial.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-	_action_map[ _label_btn_alt_dial ] = &GFMCPPro_Buttons::_action_btn_alt_dial;
-	*/
+
 
 	_btn_FD_Left            = new GFCommand( (char*)_label_btn_fd_left.c_str(), (char*)_label_no_description.c_str(), (void*)this );
 	_action_map[ _label_btn_fd_left ] = &GFMCPPro_Buttons::_action_btn_fd_left;
@@ -132,11 +125,7 @@ GFMCPPro_Buttons::~GFMCPPro_Buttons(){
 	delete(_btn_CWS_A);
 	delete(_btn_CWS_B);
 
-	/*
-	delete(_btn_IAS_Dial);
-	delete(_btn_HDG_Dial);
-	delete(_btn_ALT_Dial);
-	*/
+
 
 	delete(_btn_FD_Left);
 	delete(_btn_N1);
@@ -192,15 +181,18 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 		GFCommand*               cmd){
 
 
+	// http://www.xsquawkbox.net/xpsdk/mediawiki/XPLMRegisterCommandHandler
+
 	if( inPhase != xplm_CommandBegin ) {
-		return 0; //FIXME: what's the correct retval for a cmd handler
+		//
+		return 1;
 	}
 
 
 
 	if( 1 == _mcp_state->_dref_mcp_override->_int_value ){
 		//we can ignore all the buttons!
-		return 0;
+		return 1;
 	}
 
 
@@ -224,407 +216,9 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 	}
 
 
-	return 0;
+	return 1;
 
 }
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_speed( GFMCPPro_State* mcp_state ){
-
-	if( mcp_state->_dref_leds_speed->_int_value ){
-		mcp_state->_dref_leds_speed->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_speed->_int_value = 1;
-	}
-
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_btn_lvl_chg( GFMCPPro_State* mcp_state ){
-
-	if( mcp_state->_dref_leds_lvl_chg->_int_value ){
-		mcp_state->_dref_leds_lvl_chg->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_lvl_chg->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_btn_hdg_sel( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_hdg_sel->_int_value ){
-		mcp_state->_dref_leds_hdg_sel->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_hdg_sel->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_btn_app( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_app->_int_value ){
-		mcp_state->_dref_leds_app->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_app->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_alt_hld( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_alt_hld->_int_value ){
-		mcp_state->_dref_leds_alt_hld->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_alt_hld->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_vs( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_vs->_int_value ){
-		mcp_state->_dref_leds_vs->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_vs->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_btn_ap_disengage( GFMCPPro_State* mcp_state ){
-
-	/*
-	if( mcp_state->_dref_leds_ap_disengage->_int_value ){
-		mcp_state->_dref_leds_ap_disengage->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_ap_disengage->_int_value = 1;
-	}
-	*/
-
-	//FIXME: trigger built in xp ap dis command ?
-
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_btn_fd_right( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_fd_right->_int_value ){
-		mcp_state->_dref_leds_fd_right->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_fd_right->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_alt_inv( GFMCPPro_State* mcp_state ){
-
-	/*
-	if( mcp_state->_dref_leds_alt_inv->_int_value ){
-		mcp_state->_dref_leds_alt_inv->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_alt_inv->_int_value = 1;
-	}
-	 */
-
-	//FIXME: clarify purpose of alt inv button
-	//cam: "It does not have an LED. It's a small red button. I think it's NG specific"
-
-	/*
-	[11/05/2016 12:39:09 pm] Cameron: http://www.flaps2approach.com/journal/2013/2/20/speed-altitude-intervention-spd-intv-alt-intv-v-nav-how-to-u.html
-[11/05/2016 12:39:40 pm] Cameron: Engaging speed intervention you will immediately observe that the MCP speed window becomes active iand displays your current speed.  Dial in into the speed window the new speed requirement of 280 kias.  Notice on the PFD that the speed indicator value above the speed tape has changed from 300 kias to the new speed of 280 kias.  If you cross check with the cruise altitude (INDEX/PERF INT/CRZ ALT) in the CDU it will still indicate the cruise speed of 300 kias.
-[11/05/2016 12:40:23 pm] Cameron: ALT INTV is even more fun
-[11/05/2016 12:40:24 pm] Cameron: http://www.flaps2approach.com/storage/post-images/2013-posts/altitude-speed-intervention/alpha.jpg?__SQUARESPACE_CACHEVERSION=1361007752444
-[11/05/2016 12:40:50 pm] Cameron: Anyways, that's basically up to a developer of an aircraft to code logic for
-	 */
-
-	return 0;
-}
-
-
-int GFMCPPro_Buttons::_action_btn_cws_a( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_cws_a->_int_value ){
-		mcp_state->_dref_leds_cws_a->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_cws_a->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-int GFMCPPro_Buttons::_action_btn_cws_b( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_cws_b->_int_value ){
-		mcp_state->_dref_leds_cws_b->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_cws_b->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_btn_fd_left( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_fd_left->_int_value ){
-		mcp_state->_dref_leds_fd_left->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_fd_left->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_btn_n1( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_n1->_int_value ){
-		mcp_state->_dref_leds_n1->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_n1->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_vnav( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_vnav->_int_value ){
-		mcp_state->_dref_leds_vnav->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_vnav->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_lnav( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_lnav->_int_value ){
-		mcp_state->_dref_leds_lnav->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_lnav->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_cmd_a( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_cmd_a->_int_value ){
-		mcp_state->_dref_leds_cmd_a->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_cmd_a->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-int GFMCPPro_Buttons::_action_btn_cmd_b( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_cmd_b->_int_value ){
-		mcp_state->_dref_leds_cmd_b->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_cmd_b->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_at_arm( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_at_arm->_int_value ){
-		mcp_state->_dref_leds_at_arm->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_at_arm->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_co( GFMCPPro_State* mcp_state ){
-	
-	/*
-	if( mcp_state->_dref_leds_co->_int_value ){
-		mcp_state->_dref_leds_co->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_co->_int_value = 1;
-	}
-	 */
-
-	//FIXME: clarify purpose of CO button
-	//switch between IAS and Mach
-	
-	return 0;
-}
-
-
-
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_spd_intv( GFMCPPro_State* mcp_state ){
-
-	/*
-	if( mcp_state->_dref_leds_spd_intv->_int_value ){
-		mcp_state->_dref_leds_spd_intv->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_spd_intv->_int_value = 1;
-	}
-	*/
-
-	//FIXME: see alt intv
-
-	return 0;
-}
-
-
-
-
-
-
-int GFMCPPro_Buttons::_action_btn_vor_loc( GFMCPPro_State* mcp_state ){
-	
-	if( mcp_state->_dref_leds_vor_loc->_int_value ){
-		mcp_state->_dref_leds_vor_loc->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_vor_loc->_int_value = 1;
-	}
-	
-	return 0;
-}
-
-
-
-
-
-
-
-
-/// ---- knobs and dials ---
-
-
-
-int GFMCPPro_Buttons::_action_crs_left_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_crs_left->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_crs_left_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_crs_left->_int_value++;
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_ias_mach_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_ias_mach->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_ias_mach_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_ias_mach->_int_value++;
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_heading_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_heading->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_heading_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_heading->_int_value++;
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_altitude_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_altitude->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_altitude_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_altitude->_int_value++;
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_vert_speed_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_vert_speed->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_vert_speed_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_vert_speed->_int_value++;
-	return 0;
-}
-
-
-int GFMCPPro_Buttons::_action_crs_right_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_crs_right->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_crs_right_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_crs_right->_int_value++;
-	return 0;
-}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -680,37 +274,111 @@ void GFMCPPro_Buttons::_proc_hid_packet( int res, unsigned char* buf ) {
 }
 
 
+
+
+
+int GFMCPPro_Buttons::_is_knob_bitflag_activity( unsigned char bit_flags ) {
+
+	int activity_detected = 0;
+
+	if( bit_flags & 1 || bit_flags & 2 || bit_flags & 4 ){
+		//activity.
+		activity_detected = 1;
+	}
+
+	return activity_detected;
+
+}
+
+
+int GFMCPPro_Buttons::_is_knob_left( unsigned char bit_flags ) {
+
+	if( ! _is_knob_bitflag_activity( bit_flags ) ){
+		return 0;
+	}
+
+	// low bit on 4 indicates knob left.
+	if( bit_flags & 8 ){
+		return 0;
+	}
+	return 1;
+}
+
+
+
+int GFMCPPro_Buttons::_is_knob_right( unsigned char bit_flags ) {
+
+	if( ! _is_knob_bitflag_activity( bit_flags ) ){
+		return 0;
+	}
+
+	// high bit on 4 indicates knob right.
+	if( bit_flags & 8 ){
+		return 1;
+	}
+	return 0;
+}
+
+
+
+
+
+
 void GFMCPPro_Buttons::_proc_knobs( int res, unsigned char* buf ) {
 
-	// Channel
-	// packet, value
+	// raw bitflag data from logging.
+
+	// 1,2,3 -- max 7.
+	// 0000 0abc
+
+	// 14,15 -- max 15.
+	// 0000 1abc
+
+
+	// 16, 32, 48, 64
+	// 0dcb 0000
+
+	// 224, 240,
+	// 1dcb 0000
+
+
+	// we only need to look at 1 byte at a time. bit shifting also needed.
+	// single byte var much easier to use.
+	unsigned char btn_flags;
+
 
 	// Packet 1
 	// --------------------
 	// HDG
-	buf[1] & 14 ? _btn_heading_inc->Begin()         : _btn_heading_inc->Stop();
-	buf[1] & 1 ? _btn_heading_dec->Begin()          : _btn_heading_dec->Stop();
+	btn_flags = buf[1];
+	_is_knob_right( btn_flags ) ? _btn_heading_inc->Begin() : _btn_heading_inc->Stop();
+	_is_knob_left( btn_flags )  ? _btn_heading_dec->Begin() : _btn_heading_dec->Stop();
 	// CRS Left
-	buf[1] & 224 ? _btn_crs_left_inc->Begin()       : _btn_crs_left_inc->Stop();
-	buf[1] & 16 ? _btn_crs_left_dec->Begin()        : _btn_crs_left_dec->Stop();
+	btn_flags = buf[1] >> 4;
+	_is_knob_right( btn_flags ) ? _btn_crs_left_inc->Begin() : _btn_crs_left_inc->Stop();
+	_is_knob_left( btn_flags )  ? _btn_crs_left_dec->Begin() : _btn_crs_left_dec->Stop();
 
 	// Packet 2
 	// --------------------
 	// VS
-	buf[2] & 14 ? _btn_vert_speed_inc->Begin()         : _btn_vert_speed_inc->Stop();
-	buf[2] & 1 ? _btn_vert_speed_dec->Begin()          : _btn_vert_speed_dec->Stop();
+	btn_flags = buf[2];
+	_is_knob_right( btn_flags ) ? _btn_vert_speed_inc->Begin() : _btn_vert_speed_inc->Stop();
+	_is_knob_left( btn_flags )  ? _btn_vert_speed_dec->Begin() : _btn_vert_speed_dec->Stop();
 	// IAS
-	buf[2] & 224 ? _btn_ias_mach_inc->Begin()           : _btn_ias_mach_inc->Stop();
-	buf[2] & 16 ? _btn_ias_mach_dec->Begin()            : _btn_ias_mach_dec->Stop();
+	btn_flags = buf[2] >> 4;
+	_is_knob_right( btn_flags ) ? _btn_ias_mach_inc->Begin() : _btn_ias_mach_inc->Stop();
+	_is_knob_left( btn_flags )  ? _btn_ias_mach_dec->Begin() : _btn_ias_mach_dec->Stop();
 
 	// Packet 3
 	// --------------------
 	// CRS Right
-	buf[3] & 14 ? _btn_crs_right_inc->Begin()         : _btn_crs_right_inc->Stop();
-	buf[3] & 1 ? _btn_crs_right_dec->Begin()          : _btn_crs_right_dec->Stop();
+	btn_flags = buf[3];
+	_is_knob_right( btn_flags ) ? _btn_crs_right_inc->Begin() : _btn_crs_right_inc->Stop();
+	_is_knob_left( btn_flags )  ? _btn_crs_right_dec->Begin() : _btn_crs_right_dec->Stop();
 	// ALT
-	buf[3] & 224 ? _btn_altitude_inc->Begin()         : _btn_altitude_inc->Stop();
-	buf[3] & 16 ? _btn_altitude_dec->Begin()          : _btn_altitude_dec->Stop();
+	btn_flags = buf[3] >> 4;
+	_is_knob_right( btn_flags ) ? _btn_altitude_inc->Begin() : _btn_altitude_inc->Stop();
+	_is_knob_left( btn_flags )  ? _btn_altitude_dec->Begin() : _btn_altitude_dec->Stop();
 
 }
 
@@ -806,31 +474,31 @@ void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
 
 
 const std::string GFMCPPro_Buttons::_label_no_description = "No description.";
-const std::string GFMCPPro_Buttons::_label_btn_speed        = "goflight/mcp_pro/emit/btn_speed";
-const std::string GFMCPPro_Buttons::_label_btn_lvl_chg      = "goflight/mcp_pro/emit/btn_lvl_chg";
-const std::string GFMCPPro_Buttons::_label_btn_hdg_sel      = "goflight/mcp_pro/emit/btn_hdg_sel";
-const std::string GFMCPPro_Buttons::_label_btn_app          = "goflight/mcp_pro/emit/btn_app";
-const std::string GFMCPPro_Buttons::_label_btn_alt_hld      = "goflight/mcp_pro/emit/btn_alt_hld";
-const std::string GFMCPPro_Buttons::_label_btn_vs           = "goflight/mcp_pro/emit/btn_vs";
+const std::string GFMCPPro_Buttons::_label_btn_speed        = "goflight/mcp_pro/emit/btn/speed";
+const std::string GFMCPPro_Buttons::_label_btn_lvl_chg      = "goflight/mcp_pro/emit/btn/lvl_chg";
+const std::string GFMCPPro_Buttons::_label_btn_hdg_sel      = "goflight/mcp_pro/emit/btn/hdg_sel";
+const std::string GFMCPPro_Buttons::_label_btn_app          = "goflight/mcp_pro/emit/btn/app";
+const std::string GFMCPPro_Buttons::_label_btn_alt_hld      = "goflight/mcp_pro/emit/btn/alt_hld";
+const std::string GFMCPPro_Buttons::_label_btn_vs           = "goflight/mcp_pro/emit/btn/vs";
 
-const std::string GFMCPPro_Buttons::_label_btn_ap_disengage = "goflight/mcp_pro/emit/btn_ap_disengage";
+const std::string GFMCPPro_Buttons::_label_btn_ap_disengage = "goflight/mcp_pro/emit/btn/ap_disengage";
 
-const std::string GFMCPPro_Buttons::_label_btn_fd_right     = "goflight/mcp_pro/emit/btn_fd_right";
+const std::string GFMCPPro_Buttons::_label_btn_fd_right     = "goflight/mcp_pro/emit/btn/fd_right";
 
-const std::string GFMCPPro_Buttons::_label_btn_alt_inv      = "goflight/mcp_pro/emit/btn_alt_inv";
-const std::string GFMCPPro_Buttons::_label_btn_cws_a        = "goflight/mcp_pro/emit/btn_cws_a";
-const std::string GFMCPPro_Buttons::_label_btn_cws_b        = "goflight/mcp_pro/emit/btn_cws_b";
+const std::string GFMCPPro_Buttons::_label_btn_alt_inv      = "goflight/mcp_pro/emit/btn/alt_inv";
+const std::string GFMCPPro_Buttons::_label_btn_cws_a        = "goflight/mcp_pro/emit/btn/cws_a";
+const std::string GFMCPPro_Buttons::_label_btn_cws_b        = "goflight/mcp_pro/emit/btn/cws_b";
 
-const std::string GFMCPPro_Buttons::_label_btn_fd_left      = "goflight/mcp_pro/emit/btn_fd_left";
-const std::string GFMCPPro_Buttons::_label_btn_n1           = "goflight/mcp_pro/emit/btn_n1";
-const std::string GFMCPPro_Buttons::_label_btn_vnav         = "goflight/mcp_pro/emit/btn_vnav";
-const std::string GFMCPPro_Buttons::_label_btn_lnav         = "goflight/mcp_pro/emit/btn_lnav";
-const std::string GFMCPPro_Buttons::_label_btn_cmd_a        = "goflight/mcp_pro/emit/btn_cmd_a";
-const std::string GFMCPPro_Buttons::_label_btn_cmd_b        = "goflight/mcp_pro/emit/btn_cmd_b";
-const std::string GFMCPPro_Buttons::_label_btn_at_arm       = "goflight/mcp_pro/emit/btn_at_arm";
-const std::string GFMCPPro_Buttons::_label_btn_co           = "goflight/mcp_pro/emit/btn_co";
-const std::string GFMCPPro_Buttons::_label_btn_spd_intv     = "goflight/mcp_pro/emit/btn_spd_intv";
-const std::string GFMCPPro_Buttons::_label_btn_vor_loc      = "goflight/mcp_pro/emit/btn_vor_loc";
+const std::string GFMCPPro_Buttons::_label_btn_fd_left      = "goflight/mcp_pro/emit/btn/fd_left";
+const std::string GFMCPPro_Buttons::_label_btn_n1           = "goflight/mcp_pro/emit/btn/n1";
+const std::string GFMCPPro_Buttons::_label_btn_vnav         = "goflight/mcp_pro/emit/btn/vnav";
+const std::string GFMCPPro_Buttons::_label_btn_lnav         = "goflight/mcp_pro/emit/btn/lnav";
+const std::string GFMCPPro_Buttons::_label_btn_cmd_a        = "goflight/mcp_pro/emit/btn/cmd_a";
+const std::string GFMCPPro_Buttons::_label_btn_cmd_b        = "goflight/mcp_pro/emit/btn/cmd_b";
+const std::string GFMCPPro_Buttons::_label_btn_at_arm       = "goflight/mcp_pro/emit/btn/at_arm";
+const std::string GFMCPPro_Buttons::_label_btn_co           = "goflight/mcp_pro/emit/btn/co";
+const std::string GFMCPPro_Buttons::_label_btn_spd_intv     = "goflight/mcp_pro/emit/btn/spd_intv";
+const std::string GFMCPPro_Buttons::_label_btn_vor_loc      = "goflight/mcp_pro/emit/btn/vor_loc";
 
 
 // Dials and knobs..
@@ -853,6 +521,376 @@ const std::string GFMCPPro_Buttons::_label_crs_right_inc    = "goflight/mcp_pro/
 const std::string GFMCPPro_Buttons::_label_crs_right_dec    = "goflight/mcp_pro/emit/crs_right_dec";
 
 
+
+
+
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_speed( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_speed->_int_value ){
+		mcp_state->_dref_leds_speed->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_speed->_int_value = 1;
+	}
+
+	return 1;
+}
+
+int GFMCPPro_Buttons::_action_btn_lvl_chg( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_lvl_chg->_int_value ){
+		mcp_state->_dref_leds_lvl_chg->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_lvl_chg->_int_value = 1;
+	}
+
+	return 1;
+}
+
+int GFMCPPro_Buttons::_action_btn_hdg_sel( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_hdg_sel->_int_value ){
+		mcp_state->_dref_leds_hdg_sel->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_hdg_sel->_int_value = 1;
+	}
+
+	return 1;
+}
+
+int GFMCPPro_Buttons::_action_btn_app( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_app->_int_value ){
+		mcp_state->_dref_leds_app->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_app->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_alt_hld( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_alt_hld->_int_value ){
+		mcp_state->_dref_leds_alt_hld->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_alt_hld->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_vs( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_vs->_int_value ){
+		mcp_state->_dref_leds_vs->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_vs->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_ap_disengage( GFMCPPro_State* mcp_state ){
+
+	// There is no LED for this switch.
+
+	//FIXME: trigger built in xp ap dis command ?
+	// cant find the cmd string
+
+	return 1;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_fd_right( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_fd_right->_int_value ){
+		mcp_state->_dref_leds_fd_right->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_fd_right->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_alt_inv( GFMCPPro_State* mcp_state ){
+
+	// There is no LED for this button.
+
+	//FIXME: clarify purpose of alt inv button
+	//cam: "It does not have an LED. It's a small red button. I think it's NG specific"
+
+	/*
+	[11/05/2016 12:39:09 pm] Cameron: http://www.flaps2approach.com/journal/2013/2/20/speed-altitude-intervention-spd-intv-alt-intv-v-nav-how-to-u.html
+[11/05/2016 12:39:40 pm] Cameron: Engaging speed intervention you will immediately observe that the MCP speed window becomes active iand displays your current speed.  Dial in into the speed window the new speed requirement of 280 kias.  Notice on the PFD that the speed indicator value above the speed tape has changed from 300 kias to the new speed of 280 kias.  If you cross check with the cruise altitude (INDEX/PERF INT/CRZ ALT) in the CDU it will still indicate the cruise speed of 300 kias.
+[11/05/2016 12:40:23 pm] Cameron: ALT INTV is even more fun
+[11/05/2016 12:40:24 pm] Cameron: http://www.flaps2approach.com/storage/post-images/2013-posts/altitude-speed-intervention/alpha.jpg?__SQUARESPACE_CACHEVERSION=1361007752444
+[11/05/2016 12:40:50 pm] Cameron: Anyways, that's basically up to a developer of an aircraft to code logic for
+	 */
+
+	return 1;
+}
+
+
+int GFMCPPro_Buttons::_action_btn_cws_a( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_cws_a->_int_value ){
+		mcp_state->_dref_leds_cws_a->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cws_a->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+int GFMCPPro_Buttons::_action_btn_cws_b( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_cws_b->_int_value ){
+		mcp_state->_dref_leds_cws_b->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cws_b->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_fd_left( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_fd_left->_int_value ){
+		mcp_state->_dref_leds_fd_left->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_fd_left->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+int GFMCPPro_Buttons::_action_btn_n1( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_n1->_int_value ){
+		mcp_state->_dref_leds_n1->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_n1->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_vnav( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_vnav->_int_value ){
+		mcp_state->_dref_leds_vnav->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_vnav->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_lnav( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_lnav->_int_value ){
+		mcp_state->_dref_leds_lnav->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_lnav->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_cmd_a( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_cmd_a->_int_value ){
+		mcp_state->_dref_leds_cmd_a->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cmd_a->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+int GFMCPPro_Buttons::_action_btn_cmd_b( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_cmd_b->_int_value ){
+		mcp_state->_dref_leds_cmd_b->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_cmd_b->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_at_arm( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_at_arm->_int_value ){
+		mcp_state->_dref_leds_at_arm->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_at_arm->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_co( GFMCPPro_State* mcp_state ){
+
+	// There is no LED for this button.
+
+	//FIXME: clarify purpose of CO button
+	//switch between IAS and Mach
+
+	return 1;
+}
+
+
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_spd_intv( GFMCPPro_State* mcp_state ){
+
+	// There is no LED for this button.
+
+	//FIXME: see alt intv
+
+	return 1;
+}
+
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_vor_loc( GFMCPPro_State* mcp_state ){
+
+	if( mcp_state->_dref_leds_vor_loc->_int_value ){
+		mcp_state->_dref_leds_vor_loc->_int_value = 0;
+	}else{
+		mcp_state->_dref_leds_vor_loc->_int_value = 1;
+	}
+
+	return 1;
+}
+
+
+
+
+
+
+
+
+/// ---- knobs and dials ---
+
+
+
+int GFMCPPro_Buttons::_action_crs_left_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_left->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_crs_left_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_left->_int_value++;
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_ias_mach_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_ias_mach->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_ias_mach_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_ias_mach->_int_value++;
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_heading_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_heading->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_heading_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_heading->_int_value++;
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_altitude_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_altitude->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_altitude_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_altitude->_int_value++;
+	return 0;
+}
+
+
+
+int GFMCPPro_Buttons::_action_vert_speed_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_vert_speed->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_vert_speed_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_vert_speed->_int_value++;
+	return 0;
+}
+
+
+int GFMCPPro_Buttons::_action_crs_right_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_right->_int_value--;
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_crs_right_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_crs_right->_int_value++;
+	return 0;
+}
 
 
 

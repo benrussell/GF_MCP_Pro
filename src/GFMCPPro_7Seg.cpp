@@ -100,7 +100,7 @@ void GFMCPPro_7Seg::_write_dref_state(){
 
 //write managed state to the 7seg blob dref's
 void GFMCPPro_7Seg::_update_7seg_drefs(){
-	
+
 	const size_t max_bytes = (size_t)GFDataref::_blob_size;
 
 	//CRS Left
