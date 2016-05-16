@@ -54,9 +54,9 @@ private:
 
 	void _read_usb();
 
-	void _proc_hid_packet( int res, unsigned char* buf );
-	void _proc_buttons( int res, unsigned char* buf );
-	void _proc_knobs( int res, unsigned char* buf );
+	void _proc_hid_packet( unsigned char* buf );
+	void _proc_buttons( unsigned char* buf );
+	void _proc_knobs( unsigned char* buf );
 
 	int _is_knob_bitflag_activity( unsigned char bit_flags );
 

@@ -232,12 +232,9 @@ void GFMCPPro_Buttons::_read_usb() {
 		return;
 	}
 
-    const int buf_size=16;
+    const int buf_size=8;
     unsigned char buf[buf_size];
-	//unsigned char* buf = (unsigned char*)calloc( buf_size, 1 );
-
 	memset(buf, 0, buf_size);
-
 
 	// Read hardware state
 	int res = hid_read( _handle, buf, buf_size);
@@ -247,27 +244,24 @@ void GFMCPPro_Buttons::_read_usb() {
     } else {
 
         //_dump_button_packet( res, buf );
-        _proc_hid_packet( res, buf );
+        _proc_hid_packet( buf );
 
     } //checking for packet read
-
-
-	//free( buf );
 
 } // read_usb()
 
 
 
-void GFMCPPro_Buttons::_proc_hid_packet( int res, unsigned char* buf ) {
+void GFMCPPro_Buttons::_proc_hid_packet( unsigned char* buf ) {
 
 	// All knob events come through on channels 1,2,3.
 	if( buf[1] || buf[2] || buf[3] ){
 		// ------------------ Knobs ----------------
-		_proc_knobs( res, buf );
+		_proc_knobs( buf );
 
 	}else{
-		// ------------------ Buttons ----------------
-		_proc_buttons( res, buf );
+		// ------------------ Buttons --------------
+		_proc_buttons( buf );
 
 	}
 
@@ -324,7 +318,7 @@ int GFMCPPro_Buttons::_is_knob_right( unsigned char bit_flags ) {
 
 
 
-void GFMCPPro_Buttons::_proc_knobs( int res, unsigned char* buf ) {
+void GFMCPPro_Buttons::_proc_knobs( unsigned char* buf ) {
 
 	// raw bitflag data from logging.
 
@@ -384,7 +378,7 @@ void GFMCPPro_Buttons::_proc_knobs( int res, unsigned char* buf ) {
 
 
 
-void GFMCPPro_Buttons::_proc_buttons( int res, unsigned char* buf ){
+void GFMCPPro_Buttons::_proc_buttons( unsigned char* buf ){
 
 	// Channel
 	// packet, value
