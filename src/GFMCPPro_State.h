@@ -15,14 +15,11 @@ public:
 	~GFMCPPro_State();
 
 
-
 	GFDataref* _dref_mcp_override;
 	GFDataref* _dref_mcp_light_test;
 
 
-
 	// --------- 7 Seg displays ------------
-
 	// 7 Seg byte arrays.
 	GFDataref* _dref_crs_left;
 	GFDataref* _dref_ias_mach;
@@ -32,10 +29,7 @@ public:
 	GFDataref* _dref_crs_right;
 
 
-
-
 	// -------- Lights and buttons ---------
-
 	//LED top row
 	GFDataref* _dref_leds_vnav;
 	GFDataref* _dref_leds_lnav;
@@ -46,7 +40,6 @@ public:
 	// blank bit
 	GFDataref* _dref_leds_vor_loc;
 
-
 	//LED mid row
 	// blank bit
 	GFDataref* _dref_leds_cws_a;
@@ -56,7 +49,6 @@ public:
 	// blank bit
 	GFDataref* _dref_leds_fd_left;
 	GFDataref* _dref_leds_n1;
-
 
 	//LED bottom row
 	GFDataref* _dref_leds_speed;
@@ -70,42 +62,39 @@ public:
 
 
 
-
-
 private:
-
-	static const char* label_override;
-	static const char* label_light_test;
+	static const std::string _label_override;
+	static const std::string _label_light_test;
 
 	// --------- 7 Seg ---------
-	static const char* label_crs_left;
-	static const char* label_ias_mach;
-	static const char* label_heading;
-	static const char* label_altitude;
-	static const char* label_vert_speed;
-	static const char* label_crs_right;
+	static const std::string _label_crs_left;
+	static const std::string _label_ias_mach;
+	static const std::string _label_heading;
+	static const std::string _label_altitude;
+	static const std::string _label_vert_speed;
+	static const std::string _label_crs_right;
 
 	// ------ Lights and buttons ---------
 	//dataref names
-	static const char* label_vnav;
-	static const char* label_lnav;
-	static const char* label_cmd_a;
-	static const char* label_cmd_b;
-	static const char* label_at_arm;
-	static const char* label_vor_loc;
+	static const std::string _label_vnav;
+	static const std::string _label_lnav;
+	static const std::string _label_cmd_a;
+	static const std::string _label_cmd_b;
+	static const std::string _label_at_arm;
+	static const std::string _label_vor_loc;
 
-	static const char* label_cws_a;
-	static const char* label_cws_b;
-	static const char* label_fd_left;
-	static const char* label_n1;
+	static const std::string _label_cws_a;
+	static const std::string _label_cws_b;
+	static const std::string _label_fd_left;
+	static const std::string _label_n1;
 
-	static const char* label_speed;
-	static const char* label_lvl_chg;
-	static const char* label_hdg_sel;
-	static const char* label_app;
-	static const char* label_alt_hld;
-	static const char* label_vs;
-	static const char* label_fd_right;
+	static const std::string _label_speed;
+	static const std::string _label_lvl_chg;
+	static const std::string _label_hdg_sel;
+	static const std::string _label_app;
+	static const std::string _label_alt_hld;
+	static const std::string _label_vs;
+	static const std::string _label_fd_right;
 
 
 
