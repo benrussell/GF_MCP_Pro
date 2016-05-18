@@ -21,7 +21,7 @@ public:
     GFCommand( const std::string cmd_name, const std::string cmd_description, void* _button_router );
 
     std::string _name;
-    std::string _description;
+    //std::string _description;
 
 
     void Begin();

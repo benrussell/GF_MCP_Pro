@@ -21,7 +21,7 @@ GFCommand::GFCommand( const std::string cmd_name, const std::string cmd_descript
 
 
     _name = cmd_name;
-    _description = cmd_description;
+    //_description = cmd_description;
 
     _cmd = XPLMCreateCommand( cmd_name.c_str(), cmd_description.c_str() );
 

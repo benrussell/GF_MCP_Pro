@@ -16,6 +16,18 @@ std::vector<std::string*> GFDataref::_deferred_DRE_registration_pool;
 
 
 GFDataref::GFDataref( const std::string dref_name ) {
+	//default to creating writeable datarefs..
+	GFDataref::GFDataref( dref_name, true );
+}
+
+
+GFDataref::GFDataref( const std::string dref_name, bool writeable ) {
+
+	//convert bool argument into int var usable for XP SDK.
+	//cant use int var in sig because conflics with element_count sig for creating arrays.
+	int _writeable;
+	writeable ? _writeable = 1 : _writeable = 0;
+
 
 	char caTmp[1024];
 	snprintf( caTmp, 1024, "Create dref:(%s)\n", dref_name.c_str() );
@@ -33,7 +45,7 @@ GFDataref::GFDataref( const std::string dref_name ) {
             XPLMRegisterDataAccessor(
                     dref_name.c_str(), //name
                     xplmType_Int, //type
-                    1, //writable
+					_writeable, //1, //writable
 
                     GFDataref::xp_getDatai,	GFDataref::xp_setDatai, //integer
 					//NULL, NULL //integers
@@ -56,7 +68,7 @@ GFDataref::GFDataref( const std::string dref_name ) {
 
 
 
-GFDataref::GFDataref( const std::string dref_name, int element_count) {
+GFDataref::GFDataref( const std::string dref_name, int element_count ) {
 
 	char caTmp[1024];
 	snprintf( caTmp, 1024, "dref:(%s[%i])\n", dref_name.c_str(), element_count );
@@ -75,7 +87,7 @@ GFDataref::GFDataref( const std::string dref_name, int element_count) {
 	_dref = XPLMRegisterDataAccessor(
                     dref_name.c_str(), //name
                     xplmType_Data | xplmType_Int, //type
-                    1, //writable
+					1, //writable
 
                     GFDataref::xp_getDatai,	GFDataref::xp_setDatai, //integer
                     //NULL, NULL, //integer

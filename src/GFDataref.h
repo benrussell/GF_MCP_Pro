@@ -14,19 +14,19 @@
 
 class GFDataref {
 public:
-    GFDataref( const std::string dref_name );
+	GFDataref( const std::string dref_name );
+	GFDataref( const std::string dref_name, bool read_only );
     GFDataref( const std::string dref_name, int element_count );
 
 
 	//stores a handle to the registered custom dref.
     XPLMDataRef _dref;
 
-
     std::string _name;
 
-    static const int _blob_size = 8;
+	int _int_value;
 
-    int _int_value;
+	static const int _blob_size = 8;
     unsigned char _blob[8];
 
 

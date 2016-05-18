@@ -16,7 +16,8 @@ GFMCPPro_State::GFMCPPro_State() {
 	_wants_disconnection = 0;
 
 	// Connect state
-	_dref_connected     = new GFDataref( GFMCPPro_State::_drname_connected );
+	// Read-Only.
+	_dref_connected     = new GFDataref( GFMCPPro_State::_drname_connected, false );
 
 	// Control override.
 	_dref_override     	= new GFDataref( GFMCPPro_State::_drname_override );
@@ -76,6 +77,8 @@ GFMCPPro_State::GFMCPPro_State() {
 
 GFMCPPro_State::~GFMCPPro_State() {
 
+	// Connection state.
+	delete(_dref_connected);
 
 	// Control override.
 	delete(_dref_override);
