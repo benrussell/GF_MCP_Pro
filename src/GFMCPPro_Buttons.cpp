@@ -469,61 +469,54 @@ void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
 
 
 
-
-
-
-
 const std::string GFMCPPro_Buttons::_label_no_description 	   = "No description.";
 
-const std::string GFMCPPro_Buttons::_cmd_name_btn_connect      = "goflight/mcp_pro/connect";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_disconnect   = "goflight/mcp_pro/disconnect";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_connect      = "goflight/mcp_pro/usb/connect";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_disconnect   = "goflight/mcp_pro/usb/disconnect";
 
 
-const std::string GFMCPPro_Buttons::_cmd_name_btn_speed        = "goflight/mcp_pro/emit/btn/speed";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_lvl_chg      = "goflight/mcp_pro/emit/btn/lvl_chg";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_hdg_sel      = "goflight/mcp_pro/emit/btn/hdg_sel";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_app          = "goflight/mcp_pro/emit/btn/app";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_alt_hld      = "goflight/mcp_pro/emit/btn/alt_hld";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_vs           = "goflight/mcp_pro/emit/btn/vs";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_speed        = "goflight/mcp_pro/btn/speed";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_lvl_chg      = "goflight/mcp_pro/btn/lvl_chg";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_hdg_sel      = "goflight/mcp_pro/btn/hdg_sel";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_app          = "goflight/mcp_pro/btn/app";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_alt_hld      = "goflight/mcp_pro/btn/alt_hld";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_vs           = "goflight/mcp_pro/btn/vs";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_ap_disengage = "goflight/mcp_pro/btn/ap_disengage";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_fd_right     = "goflight/mcp_pro/btn/fd_right";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_alt_inv      = "goflight/mcp_pro/btn/alt_inv";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_cws_a        = "goflight/mcp_pro/btn/cws_a";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_cws_b        = "goflight/mcp_pro/btn/cws_b";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_fd_left      = "goflight/mcp_pro/btn/fd_left";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_n1           = "goflight/mcp_pro/btn/n1";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_vnav         = "goflight/mcp_pro/btn/vnav";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_lnav         = "goflight/mcp_pro/btn/lnav";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_cmd_a        = "goflight/mcp_pro/btn/cmd_a";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_cmd_b        = "goflight/mcp_pro/btn/cmd_b";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_at_arm       = "goflight/mcp_pro/btn/at_arm";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_co           = "goflight/mcp_pro/btn/co";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_spd_intv     = "goflight/mcp_pro/btn/spd_intv";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_vor_loc      = "goflight/mcp_pro/btn/vor_loc";
 
-const std::string GFMCPPro_Buttons::_cmd_name_btn_ap_disengage = "goflight/mcp_pro/emit/btn/ap_disengage";
-
-const std::string GFMCPPro_Buttons::_cmd_name_btn_fd_right     = "goflight/mcp_pro/emit/btn/fd_right";
-
-const std::string GFMCPPro_Buttons::_cmd_name_btn_alt_inv      = "goflight/mcp_pro/emit/btn/alt_inv";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cws_a        = "goflight/mcp_pro/emit/btn/cws_a";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cws_b        = "goflight/mcp_pro/emit/btn/cws_b";
-
-const std::string GFMCPPro_Buttons::_cmd_name_btn_fd_left      = "goflight/mcp_pro/emit/btn/fd_left";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_n1           = "goflight/mcp_pro/emit/btn/n1";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_vnav         = "goflight/mcp_pro/emit/btn/vnav";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_lnav         = "goflight/mcp_pro/emit/btn/lnav";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cmd_a        = "goflight/mcp_pro/emit/btn/cmd_a";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cmd_b        = "goflight/mcp_pro/emit/btn/cmd_b";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_at_arm       = "goflight/mcp_pro/emit/btn/at_arm";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_co           = "goflight/mcp_pro/emit/btn/co";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_spd_intv     = "goflight/mcp_pro/emit/btn/spd_intv";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_vor_loc      = "goflight/mcp_pro/emit/btn/vor_loc";
 
 
 // Dials and knobs..
-const std::string GFMCPPro_Buttons::_cmd_name_crs_left_inc     = "goflight/mcp_pro/emit/crs_left_inc";
-const std::string GFMCPPro_Buttons::_cmd_name_crs_left_dec     = "goflight/mcp_pro/emit/crs_left_dec";
+const std::string GFMCPPro_Buttons::_cmd_name_crs_left_inc     = "goflight/mcp_pro/knob/crs_left_inc";
+const std::string GFMCPPro_Buttons::_cmd_name_crs_left_dec     = "goflight/mcp_pro/knob/crs_left_dec";
 
-const std::string GFMCPPro_Buttons::_cmd_name_ias_mach_inc     = "goflight/mcp_pro/emit/ias_mach_inc";
-const std::string GFMCPPro_Buttons::_cmd_name_ias_mach_dec     = "goflight/mcp_pro/emit/ias_mach_dec";
+const std::string GFMCPPro_Buttons::_cmd_name_ias_mach_inc     = "goflight/mcp_pro/knob/ias_mach_inc";
+const std::string GFMCPPro_Buttons::_cmd_name_ias_mach_dec     = "goflight/mcp_pro/knob/ias_mach_dec";
 
-const std::string GFMCPPro_Buttons::_cmd_name_heading_inc      = "goflight/mcp_pro/emit/heading_inc";
-const std::string GFMCPPro_Buttons::_cmd_name_heading_dec      = "goflight/mcp_pro/emit/heading_dec";
+const std::string GFMCPPro_Buttons::_cmd_name_heading_inc      = "goflight/mcp_pro/knob/heading_inc";
+const std::string GFMCPPro_Buttons::_cmd_name_heading_dec      = "goflight/mcp_pro/knob/heading_dec";
 
-const std::string GFMCPPro_Buttons::_cmd_name_altitude_inc     = "goflight/mcp_pro/emit/altitude_inc";
-const std::string GFMCPPro_Buttons::_cmd_name_altitude_dec     = "goflight/mcp_pro/emit/altitude_dec";
+const std::string GFMCPPro_Buttons::_cmd_name_altitude_inc     = "goflight/mcp_pro/knob/altitude_inc";
+const std::string GFMCPPro_Buttons::_cmd_name_altitude_dec     = "goflight/mcp_pro/knob/altitude_dec";
 
-const std::string GFMCPPro_Buttons::_cmd_name_vert_speed_inc   = "goflight/mcp_pro/emit/vert_speed_inc";
-const std::string GFMCPPro_Buttons::_cmd_name_vert_speed_dec   = "goflight/mcp_pro/emit/vert_speed_dec";
+const std::string GFMCPPro_Buttons::_cmd_name_vert_speed_inc   = "goflight/mcp_pro/knob/vert_speed_inc";
+const std::string GFMCPPro_Buttons::_cmd_name_vert_speed_dec   = "goflight/mcp_pro/knob/vert_speed_dec";
 
-const std::string GFMCPPro_Buttons::_cmd_name_crs_right_inc    = "goflight/mcp_pro/emit/crs_right_inc";
-const std::string GFMCPPro_Buttons::_cmd_name_crs_right_dec    = "goflight/mcp_pro/emit/crs_right_dec";
+const std::string GFMCPPro_Buttons::_cmd_name_crs_right_inc    = "goflight/mcp_pro/knob/crs_right_inc";
+const std::string GFMCPPro_Buttons::_cmd_name_crs_right_dec    = "goflight/mcp_pro/knob/crs_right_dec";
 
 
 
@@ -533,7 +526,6 @@ const std::string GFMCPPro_Buttons::_cmd_name_crs_right_dec    = "goflight/mcp_p
 int GFMCPPro_Buttons::_action_btn_connect( GFMCPPro_State* mcp_state ){
 
 	GFUtils::Log("cmd: Connection request..");
-
 	mcp_state->_wants_connection = 1;
 
 	return 1;
@@ -542,7 +534,6 @@ int GFMCPPro_Buttons::_action_btn_connect( GFMCPPro_State* mcp_state ){
 int GFMCPPro_Buttons::_action_btn_disconnect( GFMCPPro_State* mcp_state ){
 
 	GFUtils::Log("cmd: Disconnection request..");
-
 	mcp_state->_wants_disconnection = 1;
 
 	return 1;
