@@ -18,10 +18,15 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_mcp_state = state;
 
 
-	_btn_Connect            = new GFCommand( _cmd_name_btn_connect, _label_no_description, (void*)this );
-	_action_map[ _cmd_name_btn_connect ] = &GFMCPPro_Buttons::_action_btn_connect;
-	_btn_Disconnect         = new GFCommand( _cmd_name_btn_disconnect, _label_no_description, (void*)this );
-	_action_map[ _cmd_name_btn_disconnect ] = &GFMCPPro_Buttons::_action_btn_disconnect;
+	_btn_Connect            = new GFCommand( _cmd_name_device_connect, _label_no_description, (void*)this );
+	_action_map[ _cmd_name_device_connect ] = &GFMCPPro_Buttons::_action_btn_connect;
+	_btn_Disconnect         = new GFCommand( _cmd_name_device_disconnect, _label_no_description, (void*)this );
+	_action_map[ _cmd_name_device_disconnect ] = &GFMCPPro_Buttons::_action_btn_disconnect;
+
+
+	_btn_LightTest         = new GFCommand( _cmd_name_device_light_test, _label_no_description, (void*)this );
+	_action_map[ _cmd_name_device_light_test ] = &GFMCPPro_Buttons::_action_btn_light_test;
+
 
 
 
@@ -120,6 +125,11 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 
 GFMCPPro_Buttons::~GFMCPPro_Buttons(){
 
+	delete(_btn_Connect);
+	delete(_btn_Disconnect);
+
+	delete(_btn_LightTest);
+
 	delete(_btn_Speed);
 	delete(_btn_LVL_CHG);
 	delete(_btn_HDG_SEL);
@@ -132,8 +142,6 @@ GFMCPPro_Buttons::~GFMCPPro_Buttons(){
 	delete(_btn_ALT_INV);
 	delete(_btn_CWS_A);
 	delete(_btn_CWS_B);
-
-
 
 	delete(_btn_FD_Left);
 	delete(_btn_N1);
@@ -149,6 +157,7 @@ GFMCPPro_Buttons::~GFMCPPro_Buttons(){
 
 
 
+	//knobs
 	delete(_btn_crs_left_inc);
 	delete(_btn_crs_left_dec);
 
@@ -471,8 +480,12 @@ void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
 
 const std::string GFMCPPro_Buttons::_label_no_description 	   = "No description.";
 
-const std::string GFMCPPro_Buttons::_cmd_name_btn_connect      = "goflight/mcp_pro/usb/connect";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_disconnect   = "goflight/mcp_pro/usb/disconnect";
+
+
+const std::string GFMCPPro_Buttons::_cmd_name_device_connect      = "goflight/mcp_pro/device/connect";
+const std::string GFMCPPro_Buttons::_cmd_name_device_disconnect   = "goflight/mcp_pro/device/disconnect";
+
+const std::string GFMCPPro_Buttons::_cmd_name_device_light_test   = "goflight/mcp_pro/device/light_test";
 
 
 const std::string GFMCPPro_Buttons::_cmd_name_btn_speed        = "goflight/mcp_pro/btn/speed";
@@ -539,6 +552,17 @@ int GFMCPPro_Buttons::_action_btn_disconnect( GFMCPPro_State* mcp_state ){
 	return 1;
 }
 
+
+
+
+int GFMCPPro_Buttons::_action_btn_light_test( GFMCPPro_State* mcp_state ){
+
+	GFUtils::Log("cmd: Light Test..");
+	//FIXME: light test cycle needs a timer
+	mcp_state->_dref_light_test->_int_value = 1;
+
+	return 1;
+}
 
 
 

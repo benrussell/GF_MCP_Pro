@@ -30,7 +30,6 @@ public:
 	void read( hid_device* handle );
 
 
-
 	//consume and act on sim-command actions in an MCP specific manner.
 	int  xp_cmd_action_handler(
 			XPLMCommandRef        inCommand,
@@ -39,7 +38,6 @@ public:
 
 
 	std::map<std::string, GF_action_func> _action_map;
-
 
 
 
@@ -68,6 +66,7 @@ private:
 	GFCommand* _btn_Connect;
 	GFCommand* _btn_Disconnect;
 
+	GFCommand* _btn_LightTest;
 
 
 
@@ -129,11 +128,16 @@ private:
 	static const std::string  _label_no_description;
 
 
-	static const std::string _cmd_name_btn_connect;
+	static const std::string _cmd_name_device_connect;
 	static int _action_btn_connect( GFMCPPro_State* );
 
-	static const std::string _cmd_name_btn_disconnect;
+	static const std::string _cmd_name_device_disconnect;
 	static int _action_btn_disconnect( GFMCPPro_State* );
+
+
+	static const std::string _cmd_name_device_light_test;
+	static int _action_btn_light_test( GFMCPPro_State* );
+
 
 
 
