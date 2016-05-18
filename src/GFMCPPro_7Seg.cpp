@@ -21,11 +21,11 @@ GFMCPPro_7Seg::GFMCPPro_7Seg( GFMCPPro_State* state ){
 
 void GFMCPPro_7Seg::write(){
 
-	if( 1 == _mcp_state->_dref_mcp_light_test->_int_value ){
+	if( 1 == _mcp_state->_dref_light_test->_int_value ){
 		_write_light_test();
 
 	}else{
-		if( 0 == _mcp_state->_dref_mcp_override->_int_value ){
+		if( 0 == _mcp_state->_dref_override->_int_value ){
 			// MCP is NOT in managed mode.
 			// We have state stored for the knobs and dials actions.
 			// This call will translate that state into char* data to push to the 7seg displays.

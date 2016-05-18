@@ -15,8 +15,9 @@ public:
 	~GFMCPPro_State();
 
 
-	GFDataref* _dref_mcp_override;
-	GFDataref* _dref_mcp_light_test;
+	GFDataref* _dref_connected;
+	GFDataref* _dref_override;
+	GFDataref* _dref_light_test;
 
 
 	// --------- 7 Seg displays ------------
@@ -63,6 +64,7 @@ public:
 
 
 private:
+	static const std::string _label_connected;
 	static const std::string _label_override;
 	static const std::string _label_light_test;
 

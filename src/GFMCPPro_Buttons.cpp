@@ -188,7 +188,7 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 	}
 
 
-	if( 1 == _mcp_state->_dref_mcp_override->_int_value ){
+	if( 1 == _mcp_state->_dref_override->_int_value ){
 		//we can ignore all the buttons!
 		return 1;
 	}
@@ -236,6 +236,7 @@ void GFMCPPro_Buttons::_read_usb() {
 	// Read hardware state
 	int res = hid_read( _handle, buf, buf_size);
     if (res < 0) {
+		//FIXME: propagate failure mode!!
 		GFUtils::Log("USB Read Failed.\n");
 
     } else {

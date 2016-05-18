@@ -50,11 +50,14 @@ void GFMCPPro::Connect() {
 		GFUtils::Log("Device not available.\n");
 		XPLMSpeakString("There was an error connecting to the MCP unit.");
 
+		_mcp_state->_dref_connected->_int_value = 0;
+
 		return;
 	}
 
 
 	GFUtils::Log("Connected.\n");
+	_mcp_state->_dref_connected->_int_value = 1;
 
 
 	//update menu item with a check mark
@@ -72,6 +75,9 @@ void GFMCPPro::Disconnect() {
 
 	GFUtils::Log("Disconnecting from USB device.\n");
     this->_close_usb_dev();
+
+	_mcp_state->_dref_connected->_int_value = 0;
+
 
 	XPLMCheckMenuItem(
 			_mnu_root, //XPLMMenuID

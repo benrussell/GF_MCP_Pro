@@ -159,7 +159,6 @@ unsigned char GFUtils::translateCharTo7Seg( unsigned char raw ) {
 
 void GFUtils::Log( const char *message ) {
 
-	//FIXME: per product #define for plugin name?
 	std::string sMessage = std::string(GOFLIGHT_XPL_PRODUCT_NAME) + ": " + std::string(message);
 	XPLMDebugString( sMessage.c_str() );
 

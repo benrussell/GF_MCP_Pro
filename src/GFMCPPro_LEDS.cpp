@@ -86,7 +86,7 @@ void GFMCPPro_LEDS::_get_led_blob( unsigned char ret[3] ){
 
 
 	// Light test flag is active.
-	if( 1 == _mcp_state->_dref_mcp_light_test->_int_value ){
+	if( 1 == _mcp_state->_dref_light_test->_int_value ){
 		//set all lights to on.
 		memset( ret, 0xFF, 3 );
 	}

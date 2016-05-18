@@ -11,11 +11,14 @@ GFMCPPro_State::GFMCPPro_State() {
 
 	// Create datarefs..
 
+	// Connect state
+	_dref_connected     = new GFDataref( (char*)GFMCPPro_State::_label_connected.c_str()  );
+
 	// Control override.
-	_dref_mcp_override     = new GFDataref( (char*)GFMCPPro_State::_label_override.c_str()  );
+	_dref_override     = new GFDataref( (char*)GFMCPPro_State::_label_override.c_str()  );
 
 	// Light test
-	_dref_mcp_light_test   = new GFDataref( (char*)GFMCPPro_State::_label_light_test.c_str()  );
+	_dref_light_test   = new GFDataref( (char*)GFMCPPro_State::_label_light_test.c_str()  );
 
 
 	// ------- 7 Segs --------
@@ -25,7 +28,9 @@ GFMCPPro_State::GFMCPPro_State() {
 	_dref_altitude      = new GFDataref( (char*)GFMCPPro_State::_label_altitude.c_str(),   5);
 	_dref_vert_speed    = new GFDataref( (char*)GFMCPPro_State::_label_vert_speed.c_str(), 5);
 	_dref_crs_right     = new GFDataref( (char*)GFMCPPro_State::_label_crs_right.c_str(),  3);
-	//FIXME: more drefs for indi state.
+
+	//FIXME: more drefs for independent state control.
+	// new drefs will track the values managed by this plugin for the heading/crs/etc. as ints instead of byte arrays.
 
 
 
@@ -69,10 +74,10 @@ GFMCPPro_State::~GFMCPPro_State() {
 
 
 	// Control override.
-	delete(_dref_mcp_override);
+	delete(_dref_override);
 
 	// Light test
-	delete(_dref_mcp_light_test);
+	delete(_dref_light_test);
 
 	// 7 seg cleanup
 	delete(_dref_crs_left);
@@ -121,6 +126,8 @@ GFMCPPro_State::~GFMCPPro_State() {
 }
 
 
+
+const std::string GFMCPPro_State::_label_connected      = "goflight/mcp_pro/connected";
 
 const std::string GFMCPPro_State::_label_override      = "goflight/mcp_pro/override";
 
