@@ -62,8 +62,14 @@ public:
 	GFDataref* _dref_leds_fd_right;
 
 
+	// action request flags... triggered by XPLMCommand requests.
+	int _wants_connection;
+	int _wants_disconnection;
+
+
 
 private:
+	// --- General State ---
 	static const std::string _drname_connected;
 	static const std::string _drname_override;
 	static const std::string _drname_light_test;

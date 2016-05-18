@@ -19,6 +19,7 @@ GFCommand::GFCommand( const std::string cmd_name, const std::string cmd_descript
 
 	_button_router = button_router;
 
+
     _name = cmd_name;
     _description = cmd_description;
 

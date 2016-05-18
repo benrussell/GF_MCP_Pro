@@ -11,6 +11,10 @@ GFMCPPro_State::GFMCPPro_State() {
 
 	// Create datarefs..
 
+	// request flags..
+	_wants_connection = 0;
+	_wants_disconnection = 0;
+
 	// Connect state
 	_dref_connected     = new GFDataref( GFMCPPro_State::_drname_connected );
 

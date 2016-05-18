@@ -31,8 +31,8 @@ GFMCPPro::GFMCPPro() {
 GFMCPPro::~GFMCPPro() {
 
     delete( _mcp_buttons );
-    delete( _mcp_leds );
     delete( _mcp_7seg );
+	delete( _mcp_leds );
 
 	delete( _mcp_state );
 
@@ -150,8 +150,15 @@ int GFMCPPro::_open_usb_dev() {
 void GFMCPPro::flcb() {
 
     if( 0 == _handle ) {
-        //_handle is null, ignore!
-        //TODO: set dref to 0 to indicate disconnect?
+        // disconnected state.
+
+		_mcp_state->_dref_connected = 0;
+
+		// check to see if a connection request has been filed.
+		if( 1 == _mcp_state->_wants_connection ){
+			_mcp_state->_wants_connection = 0;
+			Connect();
+		}
 
     }else {
 
@@ -166,7 +173,15 @@ void GFMCPPro::flcb() {
         _mcp_leds->write();
         _mcp_7seg->write();
 
-    }
+
+		// check to see if a disconnection request has been filed.
+		if( 1 == _mcp_state->_wants_disconnection ){
+			_mcp_state->_wants_disconnection = 0;
+			Disconnect();
+		}
+
+
+	}
 
 }
 

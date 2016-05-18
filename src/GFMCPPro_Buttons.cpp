@@ -19,7 +19,17 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 
 	_mcp_state = state;
 
-    // Create commands for buttons and switches.
+
+
+
+	_btn_Connect            = new GFCommand( _cmd_name_btn_connect, _label_no_description, (void*)this );
+	_action_map[ _cmd_name_btn_connect ] = &GFMCPPro_Buttons::_action_btn_connect;
+	_btn_Disconnect         = new GFCommand( _cmd_name_btn_disconnect, _label_no_description, (void*)this );
+	_action_map[ _cmd_name_btn_disconnect ] = &GFMCPPro_Buttons::_action_btn_disconnect;
+
+
+
+	// Create commands for buttons and switches.
     _btn_Speed              = new GFCommand( _cmd_name_btn_speed, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_speed ] = &GFMCPPro_Buttons::_action_btn_speed;
 	_btn_LVL_CHG            = new GFCommand( _cmd_name_btn_lvl_chg, _label_no_description, (void*)this );
@@ -67,6 +77,8 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_action_map[ _cmd_name_btn_spd_intv ] = &GFMCPPro_Buttons::_action_btn_spd_intv;
 	_btn_VOR_LOC            = new GFCommand( _cmd_name_btn_vor_loc, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_vor_loc ] = &GFMCPPro_Buttons::_action_btn_vor_loc;
+
+
 
 
 
@@ -465,7 +477,12 @@ void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
 
 
 
-const std::string GFMCPPro_Buttons::_label_no_description = "No description.";
+const std::string GFMCPPro_Buttons::_label_no_description 	   = "No description.";
+
+const std::string GFMCPPro_Buttons::_cmd_name_btn_connect      = "goflight/mcp_pro/connect";
+const std::string GFMCPPro_Buttons::_cmd_name_btn_disconnect   = "goflight/mcp_pro/disconnect";
+
+
 const std::string GFMCPPro_Buttons::_cmd_name_btn_speed        = "goflight/mcp_pro/emit/btn/speed";
 const std::string GFMCPPro_Buttons::_cmd_name_btn_lvl_chg      = "goflight/mcp_pro/emit/btn/lvl_chg";
 const std::string GFMCPPro_Buttons::_cmd_name_btn_hdg_sel      = "goflight/mcp_pro/emit/btn/hdg_sel";
@@ -511,6 +528,29 @@ const std::string GFMCPPro_Buttons::_cmd_name_vert_speed_dec   = "goflight/mcp_p
 
 const std::string GFMCPPro_Buttons::_cmd_name_crs_right_inc    = "goflight/mcp_pro/emit/crs_right_inc";
 const std::string GFMCPPro_Buttons::_cmd_name_crs_right_dec    = "goflight/mcp_pro/emit/crs_right_dec";
+
+
+
+
+
+
+int GFMCPPro_Buttons::_action_btn_connect( GFMCPPro_State* mcp_state ){
+
+	GFUtils::Log("cmd: Connection request..");
+
+	mcp_state->_wants_connection = 1;
+
+	return 1;
+}
+
+int GFMCPPro_Buttons::_action_btn_disconnect( GFMCPPro_State* mcp_state ){
+
+	GFUtils::Log("cmd: Disconnection request..");
+
+	mcp_state->_wants_disconnection = 1;
+
+	return 1;
+}
 
 
 

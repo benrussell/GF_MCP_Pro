@@ -46,10 +46,8 @@ public:
 
 
 private:
-
 	//needed to route into button press handler code.
 	GFMCPPro_State* _mcp_state;
-
 
 
 	void _read_usb();
@@ -65,6 +63,44 @@ private:
 
 
     void _dump_button_packet( int res, unsigned char* buf );
+
+
+
+
+	GFCommand* _btn_Connect;
+	GFCommand* _btn_Disconnect;
+
+
+
+
+	// ---- Buttons and Switches ----
+	// USB Report Packet 5
+	GFCommand* _btn_Speed;
+	GFCommand* _btn_LVL_CHG;
+	GFCommand* _btn_HDG_SEL;
+	GFCommand* _btn_APP;
+	GFCommand* _btn_ALT_HLD;
+	GFCommand* _btn_VS;
+	GFCommand* _btn_AP_Disengage;
+	GFCommand* _btn_FD_Right;
+
+	// USB Report Packet 6
+	GFCommand* _btn_ALT_INV;
+	GFCommand* _btn_CWS_A;
+	GFCommand* _btn_CWS_B;
+	GFCommand* _btn_FD_Left;
+	GFCommand* _btn_N1;
+
+	// USB Report Packet 7
+	GFCommand* _btn_VNAV;
+	GFCommand* _btn_LNAV;
+	GFCommand* _btn_CMD_A;
+	GFCommand* _btn_CMD_B;
+	GFCommand* _btn_AT_Arm;
+	GFCommand* _btn_CO;
+	GFCommand* _btn_SPD_INTV;
+	GFCommand* _btn_VOR_LOC;
+
 
 
 
@@ -92,44 +128,18 @@ private:
 
 
 
-	// ---- Buttons and Switches ----
-	// USB Report Packet 5
-	GFCommand* _btn_Speed;
-	GFCommand* _btn_LVL_CHG;
-	GFCommand* _btn_HDG_SEL;
-	GFCommand* _btn_APP;
-	GFCommand* _btn_ALT_HLD;
-	GFCommand* _btn_VS;
-	GFCommand* _btn_AP_Disengage;
-	GFCommand* _btn_FD_Right;
-
-	// USB Report Packet 6
-	GFCommand* _btn_ALT_INV;
-	GFCommand* _btn_CWS_A;
-	GFCommand* _btn_CWS_B;
-
-
-	GFCommand* _btn_FD_Left;
-	GFCommand* _btn_N1;
-
-	// USB Report Packet 7
-	GFCommand* _btn_VNAV;
-	GFCommand* _btn_LNAV;
-	GFCommand* _btn_CMD_A;
-	GFCommand* _btn_CMD_B;
-	GFCommand* _btn_AT_Arm;
-	GFCommand* _btn_CO;
-	GFCommand* _btn_SPD_INTV;
-	GFCommand* _btn_VOR_LOC;
-
-
-
-
-
 	static const std::string  _label_no_description;
 
 
-    static const std::string _cmd_name_btn_speed;
+	static const std::string _cmd_name_btn_connect;
+	static int _action_btn_connect( GFMCPPro_State* );
+
+	static const std::string _cmd_name_btn_disconnect;
+	static int _action_btn_disconnect( GFMCPPro_State* );
+
+
+
+	static const std::string _cmd_name_btn_speed;
 	static int _action_btn_speed( GFMCPPro_State* );
 
 	static const std::string _cmd_name_btn_lvl_chg;
@@ -147,14 +157,11 @@ private:
 	static const std::string _cmd_name_btn_vs;
 	static int _action_btn_vs( GFMCPPro_State* );
 
-
 	static const std::string _cmd_name_btn_ap_disengage;
 	static int _action_btn_ap_disengage( GFMCPPro_State* );
 
-
 	static const std::string _cmd_name_btn_fd_right;
 	static int _action_btn_fd_right( GFMCPPro_State* );
-
 
 	static const std::string _cmd_name_btn_alt_inv;
 	static int _action_btn_alt_inv( GFMCPPro_State* );
@@ -164,8 +171,6 @@ private:
 
 	static const std::string _cmd_name_btn_cws_b;
 	static int _action_btn_cws_b( GFMCPPro_State* );
-
-	
 
 	static const std::string _cmd_name_btn_fd_left;
 	static int _action_btn_fd_left( GFMCPPro_State* );
@@ -199,39 +204,31 @@ private:
 
 
 
-
-
 	// Dials and knobs..
-
 	static const std::string _cmd_name_crs_left_inc;
     static const std::string _cmd_name_crs_left_dec;
 	static int _action_crs_left_dec( GFMCPPro_State* );
 	static int _action_crs_left_inc( GFMCPPro_State* );
-
 
     static const std::string _cmd_name_ias_mach_inc;
     static const std::string _cmd_name_ias_mach_dec;
 	static int _action_ias_mach_dec( GFMCPPro_State* );
 	static int _action_ias_mach_inc( GFMCPPro_State* );
 
-
     static const std::string _cmd_name_heading_inc;
 	static const std::string _cmd_name_heading_dec;
 	static int _action_heading_dec( GFMCPPro_State* );
 	static int _action_heading_inc( GFMCPPro_State* );
-
 
     static const std::string _cmd_name_altitude_inc;
 	static const std::string _cmd_name_altitude_dec;
 	static int _action_altitude_dec( GFMCPPro_State* );
 	static int _action_altitude_inc( GFMCPPro_State* );
 
-
     static const std::string _cmd_name_vert_speed_inc;
     static const std::string _cmd_name_vert_speed_dec;
 	static int _action_vert_speed_dec( GFMCPPro_State* );
 	static int _action_vert_speed_inc( GFMCPPro_State* );
-
 
     static const std::string _cmd_name_crs_right_inc;
     static const std::string _cmd_name_crs_right_dec;
