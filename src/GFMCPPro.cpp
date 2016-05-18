@@ -14,7 +14,7 @@
 
 GFMCPPro::GFMCPPro() {
 
-	_handle = 0;
+	_handle = 0; //init GFMCPPro
 
 	_mcp_state = new GFMCPPro_State();
 
@@ -93,7 +93,7 @@ void GFMCPPro::Disconnect() {
 int GFMCPPro::_close_usb_dev() {
 
     hid_close( _handle );
-    _handle = 0;
+    _handle = 0; //_close_usb_deb()
 
     return 0;
 
@@ -105,17 +105,12 @@ int GFMCPPro::_open_usb_dev() {
 
     int res; //ops results.
 
-    _handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL );
-    if( _handle == 0 ){
+    _handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL ); //_open_usb_dev()
+    if( 0 == _handle ){ //check hid_open call response..
         return 0;
     }
 
 	hid_set_nonblocking(_handle, 1);
-
-    //Push the usb device handle into sub modules so they can write via GFUtils
-    _mcp_buttons->_handle = _handle;
-    _mcp_leds->_handle = _handle;
-    _mcp_7seg->_handle = _handle;
 
 
 
@@ -149,7 +144,7 @@ int GFMCPPro::_open_usb_dev() {
 
 void GFMCPPro::flcb() {
 
-    if( 0 == _handle ) {
+    if( 0 == _handle ) { //flcb check handle is valid..
         // disconnected state.
 
 		_mcp_state->_dref_connected = 0;
@@ -167,11 +162,11 @@ void GFMCPPro::flcb() {
 		// no ops needed to update/interchange.
 
 		//buttons and dials affect state changes, read them in before updating the displays
-		_mcp_buttons->read();
+		_mcp_buttons->read( _handle );
 
 		//all state changes are now effective, push current to hardware.
-        _mcp_leds->write();
-        _mcp_7seg->write();
+        _mcp_leds->write( _handle );
+        _mcp_7seg->write( _handle );
 
 
 		// check to see if a disconnection request has been filed.

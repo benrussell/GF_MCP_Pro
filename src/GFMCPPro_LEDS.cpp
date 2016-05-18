@@ -14,12 +14,12 @@ GFMCPPro_LEDS::GFMCPPro_LEDS( GFMCPPro_State* state ){
 
 
 
-void GFMCPPro_LEDS::write(){
+void GFMCPPro_LEDS::write( hid_device* handle ){
 
     unsigned char tmp[3];
     _get_led_blob( tmp );
 
-    GFUtils::set_leds( _handle, 15, tmp );
+    GFUtils::set_leds( handle, 15, tmp );
 
 
 }
