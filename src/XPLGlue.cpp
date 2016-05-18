@@ -25,7 +25,7 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GoFlight MCP Pro v0.0.122";
+	const char* name = "GoFlight MCP Pro v0.0.128";
 	const char* sig = "goflightinc.com/mcp_pro";
 	const char* desc = "Built: " __DATE__ " " __TIME__;
 
@@ -52,7 +52,6 @@ PLUGIN_API int XPluginStart(
 PLUGIN_API void XPluginStop(void){
 
 	GFUtils::Log("XPluginStrop\n");
-
     delete( mcp_pro );
 
 }
@@ -61,8 +60,6 @@ PLUGIN_API void XPluginStop(void){
 
 PLUGIN_API int XPluginEnable(void) {
 
-    //mcp_pro->Connect();
-
     return 1; //allow start.
 
 }
@@ -70,8 +67,6 @@ PLUGIN_API int XPluginEnable(void) {
 
 
 PLUGIN_API void XPluginDisable(void) {
-
-    //mcp_pro->Disconnect();
 
 }
 

@@ -18,7 +18,7 @@
 void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *value ){
 
 	if( 0 == handle ){
-		GFUtils::Log("GFUtils::set3f(..) write failure.\n");
+		GFUtils::Log("GFUtils::set3f(..) write failure. handle is 0.\n");
 		return;
 	}
 
@@ -37,8 +37,9 @@ void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *va
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
     res = hid_write( handle, buf, 8 );
-    if (res < 0)
-        printf("Unable to write 3f..\n");
+    if (res < 0) {
+		GFUtils::Log("GFUtils::set3f(..) : Unable to write 3f..\n"); //FIXME: Propagate
+	}
 
 }
 
@@ -73,9 +74,9 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
     res = hid_write( handle, buf, 8 );
-    if (res < 0)
-        printf("Unable to write 5f..\n");
-
+	if (res < 0) {
+		GFUtils::Log("GFUtils::set5f(..) : Unable to write 5f..\n"); //FIXME: Propagate
+	}
 
 }
 
@@ -114,7 +115,10 @@ void GFUtils::set_leds( hid_device *handle, unsigned char target, unsigned char 
     buf[5] = 0;
 
 
-    hid_write( handle, buf, 16 );
+    int res = hid_write( handle, buf, 16 );
+	if (res < 0) {
+		GFUtils::Log("GFUtils::set_leds(..) : Unable to write packet..\n"); //FIXME: Propagate
+	}
 
 }
 

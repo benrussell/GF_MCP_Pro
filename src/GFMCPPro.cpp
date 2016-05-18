@@ -103,8 +103,6 @@ int GFMCPPro::_close_usb_dev() {
 
 int GFMCPPro::_open_usb_dev() {
 
-    int res; //ops results.
-
     _handle = hid_open( USB_GOFLIGHT, USB_GOFLIGHT__MCP_PRO, NULL ); //_open_usb_dev()
     if( 0 == _handle ){ //check hid_open call response..
         return 0;
