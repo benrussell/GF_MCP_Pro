@@ -635,7 +635,7 @@ int GFMCPPro_Buttons::_action_btn_ap_disengage( GFMCPPro_State* mcp_state ){
 
 	// There is no LED for this switch.
 
-	//FIXME: trigger built in xp ap dis command ?
+	//TODO: trigger built in xp ap dis command ? emit gf cmd sig only?
 	// cant find the cmd string
 
 	return 1;
@@ -661,7 +661,7 @@ int GFMCPPro_Buttons::_action_btn_alt_inv( GFMCPPro_State* mcp_state ){
 
 	// There is no LED for this button.
 
-	//FIXME: clarify purpose of alt inv button
+	//TODO: clarify purpose of alt inv button
 	//cam: "It does not have an LED. It's a small red button. I think it's NG specific"
 
 	/*
@@ -803,7 +803,7 @@ int GFMCPPro_Buttons::_action_btn_co( GFMCPPro_State* mcp_state ){
 
 	// There is no LED for this button.
 
-	//FIXME: clarify purpose of CO button
+	//TODO: clarify purpose of CO button
 	//switch between IAS and Mach
 
 	return 1;
@@ -819,7 +819,7 @@ int GFMCPPro_Buttons::_action_btn_spd_intv( GFMCPPro_State* mcp_state ){
 
 	// There is no LED for this button.
 
-	//FIXME: see alt intv
+	//TODO: see alt intv
 
 	return 1;
 }
