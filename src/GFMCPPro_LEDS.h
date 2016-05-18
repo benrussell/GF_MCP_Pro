@@ -19,10 +19,8 @@ public:
 	GFMCPPro_LEDS( GFMCPPro_State* state );
 
 	//called by parent.
-    void write();
+    void write( hid_device* handle );
 
-	//set by parent.
-	hid_device* _handle;
 
 private:
 	//get blob for export to hware unit

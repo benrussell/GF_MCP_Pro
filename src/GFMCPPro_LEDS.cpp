@@ -14,12 +14,12 @@ GFMCPPro_LEDS::GFMCPPro_LEDS( GFMCPPro_State* state ){
 
 
 
-void GFMCPPro_LEDS::write(){
+void GFMCPPro_LEDS::write( hid_device* handle ){
 
     unsigned char tmp[3];
     _get_led_blob( tmp );
 
-    GFUtils::set_leds( _handle, 15, tmp );
+    GFUtils::set_leds( handle, 15, tmp );
 
 
 }
@@ -64,20 +64,20 @@ void GFMCPPro_LEDS::_get_led_blob( unsigned char ret[3] ){
 
     // Construct bit field for middle row --------------------
     //blank bit: a
-    _mcp_state->_dref_leds_cws_a->_int_value 	? ret[1] = ret[1] | b : 0;
-    _mcp_state->_dref_leds_cws_b->_int_value 	? ret[1] = ret[1] | c : 0;
+    _mcp_state->_dref_leds_cws_a->_int_value 		? ret[1] = ret[1] | b : 0;
+    _mcp_state->_dref_leds_cws_b->_int_value 		? ret[1] = ret[1] | c : 0;
     //blank bit: d
     //blank bit: e
     //blank bit: f
-    _mcp_state->_dref_leds_fd_left->_int_value 	? ret[1] = ret[1] | g : 0;
+    _mcp_state->_dref_leds_fd_left->_int_value 		? ret[1] = ret[1] | g : 0;
     _mcp_state->_dref_leds_n1->_int_value 			? ret[1] = ret[1] | h : 0;
 
 
     // Construct bit field for top row -----------------------
     _mcp_state->_dref_leds_vnav->_int_value 		? ret[2] = ret[2] | a : 0;
     _mcp_state->_dref_leds_lnav->_int_value 		? ret[2] = ret[2] | b : 0;
-    _mcp_state->_dref_leds_cmd_a->_int_value 	? ret[2] = ret[2] | c : 0;
-    _mcp_state->_dref_leds_cmd_b->_int_value 	? ret[2] = ret[2] | d : 0;
+    _mcp_state->_dref_leds_cmd_a->_int_value 		? ret[2] = ret[2] | c : 0;
+    _mcp_state->_dref_leds_cmd_b->_int_value 		? ret[2] = ret[2] | d : 0;
     _mcp_state->_dref_leds_at_arm->_int_value 		? ret[2] = ret[2] | e : 0;
     //blank bit: f
     //blank bit: g

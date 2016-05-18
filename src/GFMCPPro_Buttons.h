@@ -27,10 +27,8 @@ public:
 
 
 	//read usb report and decode into various action
-	void read();
+	void read( hid_device* handle );
 
-	//need USB handle for read ops
-	hid_device* _handle;
 
 
 	//consume and act on sim-command actions in an MCP specific manner.
@@ -50,7 +48,7 @@ private:
 	GFMCPPro_State* _mcp_state;
 
 
-	void _read_usb();
+	void _read_usb( hid_device* handle );
 
 	void _proc_hid_packet( unsigned char* buf );
 	void _proc_buttons( unsigned char* buf );

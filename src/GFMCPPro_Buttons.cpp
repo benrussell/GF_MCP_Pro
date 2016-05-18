@@ -15,11 +15,7 @@
 
 GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 
-	_handle = 0;
-
 	_mcp_state = state;
-
-
 
 
 	_btn_Connect            = new GFCommand( _cmd_name_btn_connect, _label_no_description, (void*)this );
@@ -177,9 +173,9 @@ GFMCPPro_Buttons::~GFMCPPro_Buttons(){
 
 
 
-void GFMCPPro_Buttons::read() {
+void GFMCPPro_Buttons::read( hid_device* handle ) {
 
-    _read_usb();
+    _read_usb( handle );
 
 }
 
@@ -234,9 +230,9 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 
 
 
-void GFMCPPro_Buttons::_read_usb() {
+void GFMCPPro_Buttons::_read_usb( hid_device* handle ) {
 
-	if( 0 == _handle ){
+	if( 0 == handle ){
 		GFUtils::Log("USB Read Failed: Invalid device handle.\n");
 		return;
 	}
@@ -246,10 +242,10 @@ void GFMCPPro_Buttons::_read_usb() {
 	memset(buf, 0, buf_size);
 
 	// Read hardware state
-	int res = hid_read( _handle, buf, buf_size);
+	int res = hid_read( handle, buf, buf_size);
     if (res < 0) {
-		//FIXME: propagate failure mode!!
 		GFUtils::Log("USB Read Failed.\n");
+		_mcp_state->_dref_connected->_int_value = 0;
 
     } else {
 

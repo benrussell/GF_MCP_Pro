@@ -21,19 +21,16 @@ public:
 	GFMCPPro_7Seg( GFMCPPro_State* state );
 
 	//called by parent.
-    void write();
-
-	//set by parent.
-	hid_device* _handle;
+    void write( hid_device* handle );
 
 
 private:
 
 	GFMCPPro_State* _mcp_state;
 
-	void _write_dref_state();
+	void _write_dref_state( hid_device* handle );
 	void _update_7seg_drefs();
-	void _write_light_test();
+	void _write_light_test( hid_device* handle );
 
 
 	// USB Endpoint Targets

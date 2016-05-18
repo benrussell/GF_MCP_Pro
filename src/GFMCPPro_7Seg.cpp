@@ -11,18 +11,16 @@
 
 GFMCPPro_7Seg::GFMCPPro_7Seg( GFMCPPro_State* state ){
 
-	_handle = 0;
-
 	_mcp_state = state;
 
 }
 
 
 
-void GFMCPPro_7Seg::write(){
+void GFMCPPro_7Seg::write( hid_device* handle ){
 
 	if( 1 == _mcp_state->_dref_light_test->_int_value ){
-		_write_light_test();
+		_write_light_test( handle );
 
 	}else{
 		if( 0 == _mcp_state->_dref_override->_int_value ){
@@ -34,7 +32,7 @@ void GFMCPPro_7Seg::write(){
 		}
 
 		//always push the dref char* blob to the MCP.
-		_write_dref_state();
+		_write_dref_state( handle );
 	}
 
 }
@@ -42,14 +40,14 @@ void GFMCPPro_7Seg::write(){
 
 
 //write dataref state to 7 seg LED's
-void GFMCPPro_7Seg::_write_dref_state(){
+void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 
 	// Override Mode.
 	// Reads back bytes from dataref contents and pushes them to the 7seg displays.
 
 	//CRS Left
 	GFUtils::set3f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_crs_left,
 			_mcp_state->_dref_crs_left->_blob
 	);
@@ -57,7 +55,7 @@ void GFMCPPro_7Seg::_write_dref_state(){
 
 	//IAS Mach
 	GFUtils::set5f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_ias,
 			_mcp_state->_dref_ias_mach->_blob
 	);
@@ -65,7 +63,7 @@ void GFMCPPro_7Seg::_write_dref_state(){
 
 	//Heading
 	GFUtils::set3f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_hdg,
 			_mcp_state->_dref_heading->_blob
 	);
@@ -73,7 +71,7 @@ void GFMCPPro_7Seg::_write_dref_state(){
 
 	//Altitude
 	GFUtils::set5f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_alt,
 			_mcp_state->_dref_altitude->_blob
 	);
@@ -81,7 +79,7 @@ void GFMCPPro_7Seg::_write_dref_state(){
 
 	//Vert Speed
 	GFUtils::set5f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_vs,
 			_mcp_state->_dref_vert_speed->_blob
 	);
@@ -89,7 +87,7 @@ void GFMCPPro_7Seg::_write_dref_state(){
 
 	//CRS Right
 	GFUtils::set3f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_crs_right,
 			_mcp_state->_dref_crs_right->_blob
 	);
@@ -125,7 +123,7 @@ void GFMCPPro_7Seg::_update_7seg_drefs(){
 
 
 //write light test data to 7 seg LED's
-void GFMCPPro_7Seg::_write_light_test(){
+void GFMCPPro_7Seg::_write_light_test( hid_device* handle ){
 
 	unsigned char caTmp[16];
 
@@ -134,7 +132,7 @@ void GFMCPPro_7Seg::_write_light_test(){
 
 	//CRS Left
 	GFUtils::set3f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_crs_left,
 			caTmp
 	);
@@ -142,7 +140,7 @@ void GFMCPPro_7Seg::_write_light_test(){
 
 	//IAS Mach
 	GFUtils::set5f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_ias,
 			caTmp
 	);
@@ -150,7 +148,7 @@ void GFMCPPro_7Seg::_write_light_test(){
 
 	//Heading
 	GFUtils::set3f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_hdg,
 			caTmp
 	);
@@ -158,7 +156,7 @@ void GFMCPPro_7Seg::_write_light_test(){
 
 	//Altitude
 	GFUtils::set5f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_alt,
 			caTmp
 	);
@@ -166,7 +164,7 @@ void GFMCPPro_7Seg::_write_light_test(){
 
 	//Vert Speed
 	GFUtils::set5f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_vs,
 			caTmp
 	);
@@ -174,7 +172,7 @@ void GFMCPPro_7Seg::_write_light_test(){
 
 	//CRS Right
 	GFUtils::set3f(
-			_handle,
+			handle,
 			GFMCPPro_7Seg::_usb_report_crs_right,
 			caTmp
 	);
