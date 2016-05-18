@@ -241,6 +241,7 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 void GFMCPPro_Buttons::_read_usb( hid_device* handle ) {
 
 	if( 0 == handle ){
+		//FIXME: usb read fail, propagate.
 		GFUtils::Log("USB Read Failed: Invalid device handle.\n");
 		return;
 	}

@@ -109,9 +109,9 @@ float GFMCPPro_flcb(
 		const int MSG_ADD_DATAREF = 0x01000000;
 
 		std::string* tmp_string;
-		for( size_t x=0; x < GFDataref::_deferred_DRE_registration_pool.size(); x++ ){
+		for( size_t x=0; x < GFDataref::_deferred_registration_pool.size(); x++ ){
 
-			tmp_string = GFDataref::_deferred_DRE_registration_pool[x];
+			tmp_string = GFDataref::_deferred_registration_pool[x];
 			XPLMSendMessageToPlugin( XPLM_NO_PLUGIN_ID, MSG_ADD_DATAREF, (void*)tmp_string->c_str() );
 
 		}

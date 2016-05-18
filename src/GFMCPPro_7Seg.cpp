@@ -99,7 +99,7 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 //write managed state to the 7seg blob dref's
 void GFMCPPro_7Seg::_update_7seg_drefs(){
 
-	const size_t max_bytes = (size_t)GFDataref::_blob_size;
+	const size_t max_bytes = GFDataref::_blob_size;
 
 	//CRS Left
 	snprintf( (char*)_mcp_state->_dref_crs_left->_blob, max_bytes, "%03i", _mcp_state->_dref_crs_left->_int_value );
@@ -125,10 +125,10 @@ void GFMCPPro_7Seg::_update_7seg_drefs(){
 //write light test data to 7 seg LED's
 void GFMCPPro_7Seg::_write_light_test( hid_device* handle ){
 
-	unsigned char caTmp[16];
+	unsigned char caTmp[8];
 
 	//write a full set of 8's to the display buffer.
-	snprintf( (char*)caTmp, 16, "88888" );
+	snprintf( (char*)caTmp, 8, "88888" );
 
 	//CRS Left
 	GFUtils::set3f(

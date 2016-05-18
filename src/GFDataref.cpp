@@ -12,28 +12,21 @@
 
 
 
-std::vector<std::string*> GFDataref::_deferred_DRE_registration_pool;
+std::vector<std::string*> GFDataref::_deferred_registration_pool;
 
 
-GFDataref::GFDataref( const std::string dref_name ) {
-	//default to creating writeable datarefs..
-	GFDataref::GFDataref( dref_name, true );
-}
 
 
-GFDataref::GFDataref( const std::string dref_name, bool writeable ) {
+GFDataref::GFDataref( const std::string dref_name ){
 
 	//convert bool argument into int var usable for XP SDK.
 	//cant use int var in sig because conflics with element_count sig for creating arrays.
-	int _writeable;
-	writeable ? _writeable = 1 : _writeable = 0;
-
 
 	char caTmp[1024];
-	snprintf( caTmp, 1024, "Create dref:(%s)\n", dref_name.c_str() );
+	snprintf( caTmp, 1024, "dref:(%s)\n", dref_name.c_str() );
 	GFUtils::Log( caTmp );
 
-	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
+	_deferred_registration_pool.push_back( new std::string(dref_name) );
 
     _name = dref_name;
 
@@ -41,11 +34,13 @@ GFDataref::GFDataref( const std::string dref_name, bool writeable ) {
 
 	_int_value = 0;
 
+	snprintf( (char*)_blob, GFDataref::_blob_size, "12345" );
+
     _dref =
             XPLMRegisterDataAccessor(
                     dref_name.c_str(), //name
                     xplmType_Int, //type
-					_writeable, //1, //writable
+					1, //writable
 
                     GFDataref::xp_getDatai,	GFDataref::xp_setDatai, //integer
 					//NULL, NULL //integers
@@ -74,7 +69,7 @@ GFDataref::GFDataref( const std::string dref_name, int element_count ) {
 	snprintf( caTmp, 1024, "dref:(%s[%i])\n", dref_name.c_str(), element_count );
 	GFUtils::Log( caTmp );
 
-	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
+	_deferred_registration_pool.push_back( new std::string(dref_name) );
 
     _name = dref_name;
 
@@ -82,7 +77,7 @@ GFDataref::GFDataref( const std::string dref_name, int element_count ) {
 
 	_int_value = 0;
 
-	snprintf( (char*)_blob, 8, "88888" );
+	snprintf( (char*)_blob, GFDataref::_blob_size, "88888" );
 
 	_dref = XPLMRegisterDataAccessor(
                     dref_name.c_str(), //name
@@ -147,9 +142,9 @@ int GFDataref::xp_getBytes(
 
     GFDataref *tmp = (GFDataref*)inRefcon;
 
-	size_t bytes_to_copy = (size_t)GFDataref::_blob_size - inOffset;
+	size_t bytes_to_copy = GFDataref::_blob_size - inOffset;
 
-    if( inOffset > GFDataref::_blob_size ){
+    if( inOffset > (int)GFDataref::_blob_size ){
         // overflow..
 		GFUtils::Log("byte-dataref read for OOB data. Aborted.\n");
 
@@ -173,7 +168,7 @@ void GFDataref::xp_setBytes(
     GFDataref *tmp = (GFDataref*)inRefcon;
 
     int max_byte_offset = inOffset+inCount;
-    if( max_byte_offset > GFDataref::_blob_size ){
+    if( max_byte_offset > (int)GFDataref::_blob_size ){
         //do nothing
 		GFUtils::Log("byte-dataref write for OOB data. Aborted.\n");
         return;

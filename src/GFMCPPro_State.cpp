@@ -9,15 +9,15 @@
 
 GFMCPPro_State::GFMCPPro_State() {
 
-	// Create datarefs..
-
 	// request flags..
 	_wants_connection = 0;
 	_wants_disconnection = 0;
 
+
+	// Create datarefs..
+
 	// Connect state
-	// Read-Only.
-	_dref_connected     = new GFDataref( GFMCPPro_State::_drname_connected, false );
+	_dref_connected     = new GFDataref( GFMCPPro_State::_drname_connected );
 
 	// Control override.
 	_dref_override     	= new GFDataref( GFMCPPro_State::_drname_override );
@@ -134,10 +134,9 @@ GFMCPPro_State::~GFMCPPro_State() {
 
 
 
-const std::string GFMCPPro_State::_drname_connected      = "goflight/mcp_pro/connected";
+const std::string GFMCPPro_State::_drname_connected     = "goflight/mcp_pro/connected";
 
 const std::string GFMCPPro_State::_drname_override      = "goflight/mcp_pro/override";
-
 const std::string GFMCPPro_State::_drname_light_test    = "goflight/mcp_pro/light_test";
 
 
@@ -154,14 +153,14 @@ const std::string GFMCPPro_State::_drname_crs_right     = "goflight/mcp_pro/7seg
 //dataref names
 const std::string GFMCPPro_State::_drname_vnav          = "goflight/mcp_pro/leds/vnav";
 const std::string GFMCPPro_State::_drname_lnav          = "goflight/mcp_pro/leds/lnav";
-const std::string GFMCPPro_State::_drname_cmd_a      = "goflight/mcp_pro/leds/cmd_a";
-const std::string GFMCPPro_State::_drname_cmd_b      = "goflight/mcp_pro/leds/cmd_b";
+const std::string GFMCPPro_State::_drname_cmd_a      	= "goflight/mcp_pro/leds/cmd_a";
+const std::string GFMCPPro_State::_drname_cmd_b      	= "goflight/mcp_pro/leds/cmd_b";
 const std::string GFMCPPro_State::_drname_at_arm        = "goflight/mcp_pro/leds/at_arm";
 const std::string GFMCPPro_State::_drname_vor_loc       = "goflight/mcp_pro/leds/vor_loc";
 
-const std::string GFMCPPro_State::_drname_cws_a      = "goflight/mcp_pro/leds/cws_a";
-const std::string GFMCPPro_State::_drname_cws_b      = "goflight/mcp_pro/leds/cws_b";
-const std::string GFMCPPro_State::_drname_fd_left     = "goflight/mcp_pro/leds/fd_left";
+const std::string GFMCPPro_State::_drname_cws_a      	= "goflight/mcp_pro/leds/cws_a";
+const std::string GFMCPPro_State::_drname_cws_b      	= "goflight/mcp_pro/leds/cws_b";
+const std::string GFMCPPro_State::_drname_fd_left     	= "goflight/mcp_pro/leds/fd_left";
 const std::string GFMCPPro_State::_drname_n1            = "goflight/mcp_pro/leds/n1";
 
 const std::string GFMCPPro_State::_drname_speed         = "goflight/mcp_pro/leds/speed";
@@ -170,7 +169,7 @@ const std::string GFMCPPro_State::_drname_hdg_sel       = "goflight/mcp_pro/leds
 const std::string GFMCPPro_State::_drname_app           = "goflight/mcp_pro/leds/app";
 const std::string GFMCPPro_State::_drname_alt_hld       = "goflight/mcp_pro/leds/alt_hld";
 const std::string GFMCPPro_State::_drname_vs            = "goflight/mcp_pro/leds/vs";
-const std::string GFMCPPro_State::_drname_fd_right     = "goflight/mcp_pro/leds/fd_right";
+const std::string GFMCPPro_State::_drname_fd_right     	= "goflight/mcp_pro/leds/fd_right";
 
 
 //eof
