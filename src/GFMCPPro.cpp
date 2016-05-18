@@ -95,7 +95,7 @@ int GFMCPPro::_close_usb_dev() {
     hid_close( _handle );
     _handle = 0; //_close_usb_deb()
 
-    return 0;
+    return 1;
 
 }
 
@@ -146,8 +146,7 @@ void GFMCPPro::flcb() {
 
     if( 0 == _handle ) { //flcb check handle is valid..
         // disconnected state.
-
-		_mcp_state->_dref_connected = 0;
+		_mcp_state->_dref_connected->_int_value = 0;
 
 		// check to see if a connection request has been filed.
 		if( 1 == _mcp_state->_wants_connection ){
@@ -156,10 +155,10 @@ void GFMCPPro::flcb() {
 		}
 
     }else {
-
 		// all state is stored in x-p datarefs.
 		// any external state changes are automatically in the dataref storage already.
 		// no ops needed to update/interchange.
+		_mcp_state->_dref_connected->_int_value = 1;
 
 		//buttons and dials affect state changes, read them in before updating the displays
 		_mcp_buttons->read( _handle );
