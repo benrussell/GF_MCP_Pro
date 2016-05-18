@@ -17,7 +17,13 @@
 //use this for MCP_CRS_LEFT || MCP_CRS_RIGHT || MCP_HDG
 void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *value ){
 
-    int res;
+	if( 0 == handle ){
+		GFUtils::Log("GFUtils::set3f(..) write failure.\n");
+		return;
+	}
+
+
+	int res;
 
     unsigned char buf[buf_size];
 
@@ -44,6 +50,12 @@ void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *va
 
 // MCP_IAS || MCP_ALT || MCP_VS
 void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *value ){
+
+	if( 0 == handle ){
+		GFUtils::Log("GFUtils::set5f(..) write failure.\n");
+		return;
+	}
+
 
     int res;
 
@@ -74,6 +86,12 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
 
 void GFUtils::set_leds( hid_device *handle, unsigned char target, unsigned char *values ){
 
+	if( 0 == handle ){
+		GFUtils::Log("GFUtils::set_leds(..) write failure.\n");
+		return;
+	}
+
+
     unsigned char a,b,c;
     a = values[0];
     b = values[1];
@@ -94,6 +112,7 @@ void GFUtils::set_leds( hid_device *handle, unsigned char target, unsigned char 
     buf[4] = c;// top row of LED's
 
     buf[5] = 0;
+
 
     hid_write( handle, buf, 16 );
 
