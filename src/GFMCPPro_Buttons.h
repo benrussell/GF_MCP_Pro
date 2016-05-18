@@ -129,72 +129,72 @@ private:
 	static const std::string  _label_no_description;
 
 
-    static const std::string _label_btn_speed;
+    static const std::string _cmd_name_btn_speed;
 	static int _action_btn_speed( GFMCPPro_State* );
 
-	static const std::string _label_btn_lvl_chg;
+	static const std::string _cmd_name_btn_lvl_chg;
 	static int _action_btn_lvl_chg( GFMCPPro_State* );
 
-	static const std::string _label_btn_hdg_sel;
+	static const std::string _cmd_name_btn_hdg_sel;
 	static int _action_btn_hdg_sel( GFMCPPro_State* );
 
-	static const std::string _label_btn_app;
+	static const std::string _cmd_name_btn_app;
 	static int _action_btn_app( GFMCPPro_State* );
 
-	static const std::string _label_btn_alt_hld;
+	static const std::string _cmd_name_btn_alt_hld;
 	static int _action_btn_alt_hld( GFMCPPro_State* );
 
-	static const std::string _label_btn_vs;
+	static const std::string _cmd_name_btn_vs;
 	static int _action_btn_vs( GFMCPPro_State* );
 
 
-	static const std::string _label_btn_ap_disengage;
+	static const std::string _cmd_name_btn_ap_disengage;
 	static int _action_btn_ap_disengage( GFMCPPro_State* );
 
 
-	static const std::string _label_btn_fd_right;
+	static const std::string _cmd_name_btn_fd_right;
 	static int _action_btn_fd_right( GFMCPPro_State* );
 
 
-	static const std::string _label_btn_alt_inv;
+	static const std::string _cmd_name_btn_alt_inv;
 	static int _action_btn_alt_inv( GFMCPPro_State* );
 
-	static const std::string _label_btn_cws_a;
+	static const std::string _cmd_name_btn_cws_a;
 	static int _action_btn_cws_a( GFMCPPro_State* );
 
-	static const std::string _label_btn_cws_b;
+	static const std::string _cmd_name_btn_cws_b;
 	static int _action_btn_cws_b( GFMCPPro_State* );
 
 	
 
-	static const std::string _label_btn_fd_left;
+	static const std::string _cmd_name_btn_fd_left;
 	static int _action_btn_fd_left( GFMCPPro_State* );
 
-	static const std::string _label_btn_n1;
+	static const std::string _cmd_name_btn_n1;
 	static int _action_btn_n1( GFMCPPro_State* );
 
-	static const std::string _label_btn_vnav;
+	static const std::string _cmd_name_btn_vnav;
 	static int _action_btn_vnav( GFMCPPro_State* );
 
-	static const std::string _label_btn_lnav;
+	static const std::string _cmd_name_btn_lnav;
 	static int _action_btn_lnav( GFMCPPro_State* );
 
-	static const std::string _label_btn_cmd_a;
+	static const std::string _cmd_name_btn_cmd_a;
 	static int _action_btn_cmd_a( GFMCPPro_State* );
 
-	static const std::string _label_btn_cmd_b;
+	static const std::string _cmd_name_btn_cmd_b;
 	static int _action_btn_cmd_b( GFMCPPro_State* );
 
-	static const std::string _label_btn_at_arm;
+	static const std::string _cmd_name_btn_at_arm;
 	static int _action_btn_at_arm( GFMCPPro_State* );
 
-	static const std::string _label_btn_co;
+	static const std::string _cmd_name_btn_co;
 	static int _action_btn_co( GFMCPPro_State* );
 
-	static const std::string _label_btn_spd_intv;
+	static const std::string _cmd_name_btn_spd_intv;
 	static int _action_btn_spd_intv( GFMCPPro_State* );
 
-	static const std::string _label_btn_vor_loc;
+	static const std::string _cmd_name_btn_vor_loc;
 	static int _action_btn_vor_loc( GFMCPPro_State* );
 
 
@@ -203,38 +203,38 @@ private:
 
 	// Dials and knobs..
 
-	static const std::string _label_crs_left_inc;
-    static const std::string _label_crs_left_dec;
+	static const std::string _cmd_name_crs_left_inc;
+    static const std::string _cmd_name_crs_left_dec;
 	static int _action_crs_left_dec( GFMCPPro_State* );
 	static int _action_crs_left_inc( GFMCPPro_State* );
 
 
-    static const std::string _label_ias_mach_inc;
-    static const std::string _label_ias_mach_dec;
+    static const std::string _cmd_name_ias_mach_inc;
+    static const std::string _cmd_name_ias_mach_dec;
 	static int _action_ias_mach_dec( GFMCPPro_State* );
 	static int _action_ias_mach_inc( GFMCPPro_State* );
 
 
-    static const std::string _label_heading_inc;
-	static const std::string _label_heading_dec;
+    static const std::string _cmd_name_heading_inc;
+	static const std::string _cmd_name_heading_dec;
 	static int _action_heading_dec( GFMCPPro_State* );
 	static int _action_heading_inc( GFMCPPro_State* );
 
 
-    static const std::string _label_altitude_inc;
-	static const std::string _label_altitude_dec;
+    static const std::string _cmd_name_altitude_inc;
+	static const std::string _cmd_name_altitude_dec;
 	static int _action_altitude_dec( GFMCPPro_State* );
 	static int _action_altitude_inc( GFMCPPro_State* );
 
 
-    static const std::string _label_vert_speed_inc;
-    static const std::string _label_vert_speed_dec;
+    static const std::string _cmd_name_vert_speed_inc;
+    static const std::string _cmd_name_vert_speed_dec;
 	static int _action_vert_speed_dec( GFMCPPro_State* );
 	static int _action_vert_speed_inc( GFMCPPro_State* );
 
 
-    static const std::string _label_crs_right_inc;
-    static const std::string _label_crs_right_dec;
+    static const std::string _cmd_name_crs_right_inc;
+    static const std::string _cmd_name_crs_right_dec;
 	static int _action_crs_right_dec( GFMCPPro_State* );
 	static int _action_crs_right_inc( GFMCPPro_State* );
 

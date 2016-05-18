@@ -64,39 +64,39 @@ public:
 
 
 private:
-	static const std::string _label_connected;
-	static const std::string _label_override;
-	static const std::string _label_light_test;
+	static const std::string _drname_connected;
+	static const std::string _drname_override;
+	static const std::string _drname_light_test;
 
 	// --------- 7 Seg ---------
-	static const std::string _label_crs_left;
-	static const std::string _label_ias_mach;
-	static const std::string _label_heading;
-	static const std::string _label_altitude;
-	static const std::string _label_vert_speed;
-	static const std::string _label_crs_right;
+	static const std::string _drname_crs_left;
+	static const std::string _drname_ias_mach;
+	static const std::string _drname_heading;
+	static const std::string _drname_altitude;
+	static const std::string _drname_vert_speed;
+	static const std::string _drname_crs_right;
 
 	// ------ Lights and buttons ---------
 	//dataref names
-	static const std::string _label_vnav;
-	static const std::string _label_lnav;
-	static const std::string _label_cmd_a;
-	static const std::string _label_cmd_b;
-	static const std::string _label_at_arm;
-	static const std::string _label_vor_loc;
+	static const std::string _drname_vnav;
+	static const std::string _drname_lnav;
+	static const std::string _drname_cmd_a;
+	static const std::string _drname_cmd_b;
+	static const std::string _drname_at_arm;
+	static const std::string _drname_vor_loc;
 
-	static const std::string _label_cws_a;
-	static const std::string _label_cws_b;
-	static const std::string _label_fd_left;
-	static const std::string _label_n1;
+	static const std::string _drname_cws_a;
+	static const std::string _drname_cws_b;
+	static const std::string _drname_fd_left;
+	static const std::string _drname_n1;
 
-	static const std::string _label_speed;
-	static const std::string _label_lvl_chg;
-	static const std::string _label_hdg_sel;
-	static const std::string _label_app;
-	static const std::string _label_alt_hld;
-	static const std::string _label_vs;
-	static const std::string _label_fd_right;
+	static const std::string _drname_speed;
+	static const std::string _drname_lvl_chg;
+	static const std::string _drname_hdg_sel;
+	static const std::string _drname_app;
+	static const std::string _drname_alt_hld;
+	static const std::string _drname_vs;
+	static const std::string _drname_fd_right;
 
 
 
