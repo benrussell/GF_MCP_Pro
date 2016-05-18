@@ -145,7 +145,7 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
 #endif
 
 
-	return btn_router->xp_cmd_action_handler( inCommand, inPhase, cmd );
+	return btn_router->xp_cmd_action_handler( inPhase, cmd );
 
 
 }

@@ -32,12 +32,11 @@ public:
 
 	//consume and act on sim-command actions in an MCP specific manner.
 	int  xp_cmd_action_handler(
-			XPLMCommandRef        inCommand,
 			XPLMCommandPhase     inPhase,
-			GFCommand*               cmd);
+			GFCommand*               inCmd);
 
 
-	std::map<std::string, GF_action_func> _action_map;
+	std::map<GFCommand*, GF_action_func> _action_map;
 
 
 
