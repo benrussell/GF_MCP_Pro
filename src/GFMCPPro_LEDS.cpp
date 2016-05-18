@@ -19,8 +19,12 @@ void GFMCPPro_LEDS::write( hid_device* handle ){
     unsigned char tmp[3];
     _get_led_blob( tmp );
 
-    GFUtils::set_leds( handle, 15, tmp );
 
+    GFUtils::set_leds(
+			handle, //device handle
+			15,     //usb report number - device specific.
+			tmp     //byte payload to send.
+	);
 
 }
 
