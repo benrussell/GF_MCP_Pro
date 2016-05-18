@@ -15,15 +15,15 @@
 std::vector<std::string*> GFDataref::_deferred_DRE_registration_pool;
 
 
-GFDataref::GFDataref(char *dref_name) {
+GFDataref::GFDataref( const std::string dref_name ) {
 
 	char caTmp[1024];
-	snprintf( caTmp, 1024, "Create dref:(%s)\n", dref_name );
+	snprintf( caTmp, 1024, "Create dref:(%s)\n", dref_name.c_str() );
 	GFUtils::Log( caTmp );
 
 	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
 
-    _name = std::string( dref_name );
+    _name = dref_name;
 
     _element_count = -1;
 
@@ -31,7 +31,7 @@ GFDataref::GFDataref(char *dref_name) {
 
     _dref =
             XPLMRegisterDataAccessor(
-                    dref_name, //name
+                    dref_name.c_str(), //name
                     xplmType_Int, //type
                     1, //writable
 
@@ -56,15 +56,15 @@ GFDataref::GFDataref(char *dref_name) {
 
 
 
-GFDataref::GFDataref(char *dref_name, int element_count) {
+GFDataref::GFDataref( const std::string dref_name, int element_count) {
 
 	char caTmp[1024];
-	snprintf( caTmp, 1024, "dref:(%s[%i])\n", dref_name, element_count );
+	snprintf( caTmp, 1024, "dref:(%s[%i])\n", dref_name.c_str(), element_count );
 	GFUtils::Log( caTmp );
 
 	_deferred_DRE_registration_pool.push_back( new std::string(dref_name) );
 
-    _name = std::string( dref_name );
+    _name = dref_name;
 
     _element_count = element_count;
 
@@ -73,7 +73,7 @@ GFDataref::GFDataref(char *dref_name, int element_count) {
 	snprintf( (char*)_blob, 8, "88888" );
 
 	_dref = XPLMRegisterDataAccessor(
-                    dref_name, //name
+                    dref_name.c_str(), //name
                     xplmType_Data | xplmType_Int, //type
                     1, //writable
 

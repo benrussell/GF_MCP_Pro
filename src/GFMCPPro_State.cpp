@@ -12,22 +12,22 @@ GFMCPPro_State::GFMCPPro_State() {
 	// Create datarefs..
 
 	// Connect state
-	_dref_connected     = new GFDataref( (char*)GFMCPPro_State::_drname_connected.c_str()  );
+	_dref_connected     = new GFDataref( GFMCPPro_State::_drname_connected );
 
 	// Control override.
-	_dref_override     = new GFDataref( (char*)GFMCPPro_State::_drname_override.c_str()  );
+	_dref_override     	= new GFDataref( GFMCPPro_State::_drname_override );
 
 	// Light test
-	_dref_light_test   = new GFDataref( (char*)GFMCPPro_State::_drname_light_test.c_str()  );
+	_dref_light_test   	= new GFDataref( GFMCPPro_State::_drname_light_test );
 
 
 	// ------- 7 Segs --------
-	_dref_crs_left      = new GFDataref( (char*)GFMCPPro_State::_drname_crs_left.c_str(),   3);
-	_dref_ias_mach      = new GFDataref( (char*)GFMCPPro_State::_drname_ias_mach.c_str(),   5);
-	_dref_heading       = new GFDataref( (char*)GFMCPPro_State::_drname_heading.c_str(),    3);
-	_dref_altitude      = new GFDataref( (char*)GFMCPPro_State::_drname_altitude.c_str(),   5);
-	_dref_vert_speed    = new GFDataref( (char*)GFMCPPro_State::_drname_vert_speed.c_str(), 5);
-	_dref_crs_right     = new GFDataref( (char*)GFMCPPro_State::_drname_crs_right.c_str(),  3);
+	_dref_crs_left      = new GFDataref( GFMCPPro_State::_drname_crs_left,   3);
+	_dref_ias_mach      = new GFDataref( GFMCPPro_State::_drname_ias_mach,   5);
+	_dref_heading       = new GFDataref( GFMCPPro_State::_drname_heading,    3);
+	_dref_altitude      = new GFDataref( GFMCPPro_State::_drname_altitude,   5);
+	_dref_vert_speed    = new GFDataref( GFMCPPro_State::_drname_vert_speed, 5);
+	_dref_crs_right     = new GFDataref( GFMCPPro_State::_drname_crs_right,  3);
 
 	//FIXME: more drefs for independent state control.
 	// new drefs will track the values managed by this plugin for the heading/crs/etc. as ints instead of byte arrays.
@@ -36,36 +36,36 @@ GFMCPPro_State::GFMCPPro_State() {
 
 	// ------- Lights and buttons --------
 	// Top Row
-	_dref_leds_vnav         = new GFDataref( (char*)GFMCPPro_State::_drname_vnav.c_str()  );
-	_dref_leds_lnav         = new GFDataref( (char*)GFMCPPro_State::_drname_lnav.c_str() );
-	_dref_leds_cmd_a     	= new GFDataref( (char*)GFMCPPro_State::_drname_cmd_a.c_str() );
-	_dref_leds_cmd_b     	= new GFDataref( (char*)GFMCPPro_State::_drname_cmd_b.c_str() );
-	_dref_leds_at_arm       = new GFDataref( (char*)GFMCPPro_State::_drname_at_arm.c_str() );
+	_dref_leds_vnav         = new GFDataref( GFMCPPro_State::_drname_vnav  );
+	_dref_leds_lnav         = new GFDataref( GFMCPPro_State::_drname_lnav );
+	_dref_leds_cmd_a     	= new GFDataref( GFMCPPro_State::_drname_cmd_a );
+	_dref_leds_cmd_b     	= new GFDataref( GFMCPPro_State::_drname_cmd_b );
+	_dref_leds_at_arm       = new GFDataref( GFMCPPro_State::_drname_at_arm );
 	// blank bit
 	// blank bit
-	_dref_leds_vor_loc      = new GFDataref( (char*)GFMCPPro_State::_drname_vor_loc.c_str() );
+	_dref_leds_vor_loc      = new GFDataref( GFMCPPro_State::_drname_vor_loc );
 
 
 	// Mid Row
 	// blank bit
-	_dref_leds_cws_a     	= new GFDataref( (char*)GFMCPPro_State::_drname_cws_a.c_str()  );
-	_dref_leds_cws_b     	= new GFDataref( (char*)GFMCPPro_State::_drname_cws_b.c_str() );
+	_dref_leds_cws_a     	= new GFDataref( GFMCPPro_State::_drname_cws_a  );
+	_dref_leds_cws_b     	= new GFDataref( GFMCPPro_State::_drname_cws_b );
 	// blank bit
 	// blank bit
 	// blank bit
-	_dref_leds_fd_left    	= new GFDataref( (char*)GFMCPPro_State::_drname_fd_left.c_str() );
-	_dref_leds_n1           = new GFDataref( (char*)GFMCPPro_State::_drname_n1.c_str() );
+	_dref_leds_fd_left    	= new GFDataref( GFMCPPro_State::_drname_fd_left );
+	_dref_leds_n1           = new GFDataref( GFMCPPro_State::_drname_n1 );
 
 
 	// Bottom Row
-	_dref_leds_speed        = new GFDataref( (char*)GFMCPPro_State::_drname_speed.c_str()  );
-	_dref_leds_lvl_chg      = new GFDataref( (char*)GFMCPPro_State::_drname_lvl_chg.c_str() );
-	_dref_leds_hdg_sel      = new GFDataref( (char*)GFMCPPro_State::_drname_hdg_sel.c_str()  );
-	_dref_leds_app          = new GFDataref( (char*)GFMCPPro_State::_drname_app.c_str() );
-	_dref_leds_alt_hld      = new GFDataref( (char*)GFMCPPro_State::_drname_alt_hld.c_str()  );
-	_dref_leds_vs           = new GFDataref( (char*)GFMCPPro_State::_drname_vs.c_str() );
+	_dref_leds_speed        = new GFDataref( GFMCPPro_State::_drname_speed  );
+	_dref_leds_lvl_chg      = new GFDataref( GFMCPPro_State::_drname_lvl_chg );
+	_dref_leds_hdg_sel      = new GFDataref( GFMCPPro_State::_drname_hdg_sel  );
+	_dref_leds_app          = new GFDataref( GFMCPPro_State::_drname_app );
+	_dref_leds_alt_hld      = new GFDataref( GFMCPPro_State::_drname_alt_hld  );
+	_dref_leds_vs           = new GFDataref( GFMCPPro_State::_drname_vs );
 	// blank bit
-	_dref_leds_fd_right    = new GFDataref( (char*)GFMCPPro_State::_drname_fd_right.c_str()  );
+	_dref_leds_fd_right    = new GFDataref( GFMCPPro_State::_drname_fd_right  );
 
 }
 

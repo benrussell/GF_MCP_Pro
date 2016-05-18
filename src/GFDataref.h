@@ -14,8 +14,8 @@
 
 class GFDataref {
 public:
-    GFDataref( char* dref_name );
-    GFDataref( char* dref_name, int element_count );
+    GFDataref( const std::string dref_name );
+    GFDataref( const std::string dref_name, int element_count );
 
 
 	//stores a handle to the registered custom dref.
