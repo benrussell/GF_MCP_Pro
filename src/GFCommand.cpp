@@ -11,18 +11,18 @@
 #include "Windows_snprintf.h"
 
 
-GFCommand::GFCommand( char *cmd_name, char* cmd_description, void* button_router ) {
+GFCommand::GFCommand( const std::string cmd_name, const std::string cmd_description, void* button_router ) {
 
 	char caTmp[1024];
-	snprintf( caTmp, 1024, " cmd:(%s)\n", cmd_name );
+	snprintf( caTmp, 1024, " cmd:(%s)\n", cmd_name.c_str() );
 	GFUtils::Log( caTmp );
 
 	_button_router = button_router;
 
-    _name = std::string( cmd_name );
-    _description = std::string( cmd_description );
+    _name = cmd_name;
+    _description = cmd_description;
 
-    _cmd = XPLMCreateCommand( cmd_name, cmd_description );
+    _cmd = XPLMCreateCommand( cmd_name.c_str(), cmd_description.c_str() );
 
 
     XPLMRegisterCommandHandler( _cmd,              // in Command name

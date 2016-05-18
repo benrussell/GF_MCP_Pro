@@ -20,89 +20,89 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_mcp_state = state;
 
     // Create commands for buttons and switches.
-    _btn_Speed              = new GFCommand( (char*)_cmd_name_btn_speed.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+    _btn_Speed              = new GFCommand( _cmd_name_btn_speed, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_speed ] = &GFMCPPro_Buttons::_action_btn_speed;
-	_btn_LVL_CHG            = new GFCommand( (char*)_cmd_name_btn_lvl_chg.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_LVL_CHG            = new GFCommand( _cmd_name_btn_lvl_chg, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_lvl_chg ] = &GFMCPPro_Buttons::_action_btn_lvl_chg;
-	_btn_HDG_SEL            = new GFCommand( (char*)_cmd_name_btn_hdg_sel.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_HDG_SEL            = new GFCommand( _cmd_name_btn_hdg_sel, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_hdg_sel ] = &GFMCPPro_Buttons::_action_btn_hdg_sel;
-	_btn_APP                = new GFCommand( (char*)_cmd_name_btn_app.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_APP                = new GFCommand( _cmd_name_btn_app, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_app ] = &GFMCPPro_Buttons::_action_btn_app;
-	_btn_ALT_HLD            = new GFCommand( (char*)_cmd_name_btn_alt_hld.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_ALT_HLD            = new GFCommand( _cmd_name_btn_alt_hld, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_alt_hld ] = &GFMCPPro_Buttons::_action_btn_alt_hld;
-	_btn_VS                 = new GFCommand( (char*)_cmd_name_btn_vs.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_VS                 = new GFCommand( _cmd_name_btn_vs, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_vs ] = &GFMCPPro_Buttons::_action_btn_vs;
-	_btn_AP_Disengage       = new GFCommand( (char*)_cmd_name_btn_ap_disengage.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_AP_Disengage       = new GFCommand( _cmd_name_btn_ap_disengage, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_ap_disengage ] = &GFMCPPro_Buttons::_action_btn_ap_disengage;
-	_btn_FD_Right           = new GFCommand( (char*)_cmd_name_btn_fd_right.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_FD_Right           = new GFCommand( _cmd_name_btn_fd_right, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_fd_right ] = &GFMCPPro_Buttons::_action_btn_fd_right;
 
-	_btn_ALT_INV            = new GFCommand( (char*)_cmd_name_btn_alt_inv.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_ALT_INV            = new GFCommand( _cmd_name_btn_alt_inv, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_alt_inv ] = &GFMCPPro_Buttons::_action_btn_alt_inv;
-	_btn_CWS_A              = new GFCommand( (char*)_cmd_name_btn_cws_a.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_CWS_A              = new GFCommand( _cmd_name_btn_cws_a, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_cws_a ] = &GFMCPPro_Buttons::_action_btn_cws_a;
-	_btn_CWS_B              = new GFCommand( (char*)_cmd_name_btn_cws_b.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_CWS_B              = new GFCommand( _cmd_name_btn_cws_b, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_cws_b ] = &GFMCPPro_Buttons::_action_btn_cws_b;
 
 
 
-	_btn_FD_Left            = new GFCommand( (char*)_cmd_name_btn_fd_left.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_FD_Left            = new GFCommand( _cmd_name_btn_fd_left, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_fd_left ] = &GFMCPPro_Buttons::_action_btn_fd_left;
-	_btn_N1                 = new GFCommand( (char*)_cmd_name_btn_n1.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_N1                 = new GFCommand( _cmd_name_btn_n1, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_n1 ] = &GFMCPPro_Buttons::_action_btn_n1;
 
-	_btn_VNAV               = new GFCommand( (char*)_cmd_name_btn_vnav.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_VNAV               = new GFCommand( _cmd_name_btn_vnav, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_vnav ] = &GFMCPPro_Buttons::_action_btn_vnav;
-	_btn_LNAV               = new GFCommand( (char*)_cmd_name_btn_lnav.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_LNAV               = new GFCommand( _cmd_name_btn_lnav, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_lnav ] = &GFMCPPro_Buttons::_action_btn_lnav;
-	_btn_CMD_A              = new GFCommand( (char*)_cmd_name_btn_cmd_a.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_CMD_A              = new GFCommand( _cmd_name_btn_cmd_a, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_cmd_a ] = &GFMCPPro_Buttons::_action_btn_cmd_a;
-	_btn_CMD_B              = new GFCommand( (char*)_cmd_name_btn_cmd_b.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_CMD_B              = new GFCommand( _cmd_name_btn_cmd_b, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_cmd_b ] = &GFMCPPro_Buttons::_action_btn_cmd_b;
-	_btn_AT_Arm             = new GFCommand( (char*)_cmd_name_btn_at_arm.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_AT_Arm             = new GFCommand( _cmd_name_btn_at_arm, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_at_arm ] = &GFMCPPro_Buttons::_action_btn_at_arm;
-	_btn_CO                 = new GFCommand( (char*)_cmd_name_btn_co.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_CO                 = new GFCommand( _cmd_name_btn_co, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_co ] = &GFMCPPro_Buttons::_action_btn_co;
-	_btn_SPD_INTV           = new GFCommand( (char*)_cmd_name_btn_spd_intv.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_SPD_INTV           = new GFCommand( _cmd_name_btn_spd_intv, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_spd_intv ] = &GFMCPPro_Buttons::_action_btn_spd_intv;
-	_btn_VOR_LOC            = new GFCommand( (char*)_cmd_name_btn_vor_loc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_VOR_LOC            = new GFCommand( _cmd_name_btn_vor_loc, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_btn_vor_loc ] = &GFMCPPro_Buttons::_action_btn_vor_loc;
 
 
 
 	// Create commands for Scroll Wheels and Rotary Knobs.
-    _btn_crs_left_inc = new GFCommand( (char*)_cmd_name_crs_left_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_crs_left_dec = new GFCommand( (char*)_cmd_name_crs_left_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+    _btn_crs_left_inc = new GFCommand( _cmd_name_crs_left_inc, _label_no_description, (void*)this );
+    _btn_crs_left_dec = new GFCommand( _cmd_name_crs_left_dec, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_crs_left_inc ] = &GFMCPPro_Buttons::_action_crs_left_inc;
 	_action_map[ _cmd_name_crs_left_dec ] = &GFMCPPro_Buttons::_action_crs_left_dec;
 	
 	
-	_btn_ias_mach_inc = new GFCommand( (char*)_cmd_name_ias_mach_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_ias_mach_dec = new GFCommand( (char*)_cmd_name_ias_mach_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_ias_mach_inc = new GFCommand( _cmd_name_ias_mach_inc, _label_no_description, (void*)this );
+    _btn_ias_mach_dec = new GFCommand( _cmd_name_ias_mach_dec, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_ias_mach_inc ] = &GFMCPPro_Buttons::_action_ias_mach_inc;
 	_action_map[ _cmd_name_ias_mach_dec ] = &GFMCPPro_Buttons::_action_ias_mach_dec;
 
 
-    _btn_heading_inc = new GFCommand( (char*)_cmd_name_heading_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_heading_dec = new GFCommand( (char*)_cmd_name_heading_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+    _btn_heading_inc = new GFCommand( _cmd_name_heading_inc, _label_no_description, (void*)this );
+    _btn_heading_dec = new GFCommand( _cmd_name_heading_dec, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_heading_inc ] = &GFMCPPro_Buttons::_action_heading_inc;
 	_action_map[ _cmd_name_heading_dec ] = &GFMCPPro_Buttons::_action_heading_dec;
 
 
-	_btn_altitude_inc = new GFCommand( (char*)_cmd_name_altitude_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_altitude_dec = new GFCommand( (char*)_cmd_name_altitude_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+	_btn_altitude_inc = new GFCommand( _cmd_name_altitude_inc, _label_no_description, (void*)this );
+    _btn_altitude_dec = new GFCommand( _cmd_name_altitude_dec, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_altitude_inc ] = &GFMCPPro_Buttons::_action_altitude_inc;
 	_action_map[ _cmd_name_altitude_dec ] = &GFMCPPro_Buttons::_action_altitude_dec;
 
 	
-    _btn_vert_speed_inc = new GFCommand( (char*)_cmd_name_vert_speed_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_vert_speed_dec = new GFCommand( (char*)_cmd_name_vert_speed_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+    _btn_vert_speed_inc = new GFCommand( _cmd_name_vert_speed_inc, _label_no_description, (void*)this );
+    _btn_vert_speed_dec = new GFCommand( _cmd_name_vert_speed_dec, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_vert_speed_inc ] = &GFMCPPro_Buttons::_action_vert_speed_inc;
 	_action_map[ _cmd_name_vert_speed_dec ] = &GFMCPPro_Buttons::_action_vert_speed_dec;
 
 	
-    _btn_crs_right_inc = new GFCommand( (char*)_cmd_name_crs_right_inc.c_str(), (char*)_label_no_description.c_str(), (void*)this );
-    _btn_crs_right_dec = new GFCommand( (char*)_cmd_name_crs_right_dec.c_str(), (char*)_label_no_description.c_str(), (void*)this );
+    _btn_crs_right_inc = new GFCommand( _cmd_name_crs_right_inc, _label_no_description, (void*)this );
+    _btn_crs_right_dec = new GFCommand( _cmd_name_crs_right_dec, _label_no_description, (void*)this );
 	_action_map[ _cmd_name_crs_right_inc ] = &GFMCPPro_Buttons::_action_crs_right_inc;
 	_action_map[ _cmd_name_crs_right_dec ] = &GFMCPPro_Buttons::_action_crs_right_dec;
 
