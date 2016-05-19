@@ -135,14 +135,14 @@ unsigned char GFUtils::translateCharTo7Seg( unsigned char raw ) {
 
 
     return  ret;
-	
+
 } //unsigned char GFUtils::translateCharTo7Seg( unsigned char raw )
 
 
 
 
 #ifndef GOFLIGHT_XPL_PRODUCT_NAME
-#error No product defined.
+#error GOFLIGHT_XPL_PRODUCT_NAME is not defined.
 #endif
 
 
