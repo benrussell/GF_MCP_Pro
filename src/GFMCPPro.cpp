@@ -118,6 +118,8 @@ int GFMCPPro::_open_usb_dev() {
 
 	char caTmp[1024];
 
+	int res; //tracks responses from hid read ops below.
+
     // Read the Manufacturer String
     res = hid_get_manufacturer_string(_handle, wstr, MAX_STR);
     snprintf(caTmp, 1024, "Manufacturer: (%ls)\n", wstr);
