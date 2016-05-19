@@ -49,7 +49,7 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 	GFUtils::set3f(
 			handle,
 			GFMCPPro_7Seg::_usb_report_crs_left,
-			_mcp_state->_dref_crs_left->_blob
+			_mcp_state->_dref_7seg_crs_left->_blob
 	);
 
 
@@ -57,7 +57,7 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 	GFUtils::set5f(
 			handle,
 			GFMCPPro_7Seg::_usb_report_ias,
-			_mcp_state->_dref_ias_mach->_blob
+			_mcp_state->_dref_7seg_ias_mach->_blob
 	);
 
 
@@ -65,7 +65,7 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 	GFUtils::set3f(
 			handle,
 			GFMCPPro_7Seg::_usb_report_hdg,
-			_mcp_state->_dref_heading->_blob
+			_mcp_state->_dref_7seg_heading->_blob
 	);
 
 
@@ -73,7 +73,7 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 	GFUtils::set5f(
 			handle,
 			GFMCPPro_7Seg::_usb_report_alt,
-			_mcp_state->_dref_altitude->_blob
+			_mcp_state->_dref_7seg_altitude->_blob
 	);
 
 
@@ -81,7 +81,7 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 	GFUtils::set5f(
 			handle,
 			GFMCPPro_7Seg::_usb_report_vs,
-			_mcp_state->_dref_vert_speed->_blob
+			_mcp_state->_dref_7seg_vert_speed->_blob
 	);
 
 
@@ -89,7 +89,7 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 	GFUtils::set3f(
 			handle,
 			GFMCPPro_7Seg::_usb_report_crs_right,
-			_mcp_state->_dref_crs_right->_blob
+			_mcp_state->_dref_7seg_crs_right->_blob
 	);
 
 }
@@ -102,22 +102,22 @@ void GFMCPPro_7Seg::_update_7seg_drefs(){
 	const size_t max_bytes = GFDataref::_blob_size;
 
 	//CRS Left
-	snprintf( (char*)_mcp_state->_dref_crs_left->_blob, max_bytes, "%03i", _mcp_state->_dref_crs_left->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_crs_left->_blob, max_bytes, "%03i", _mcp_state->_dref_7seg_crs_left->_int_value );
 
 	//IAS Mach
-	snprintf( (char*)_mcp_state->_dref_ias_mach->_blob, max_bytes, "%05i", _mcp_state->_dref_ias_mach->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_ias_mach->_blob, max_bytes, "%05i", _mcp_state->_dref_7seg_ias_mach->_int_value );
 
 	//Heading
-	snprintf( (char*)_mcp_state->_dref_heading->_blob, max_bytes, "%03i", _mcp_state->_dref_heading->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_heading->_blob, max_bytes, "%03i", _mcp_state->_dref_7seg_heading->_int_value );
 
 	//Altitude
-	snprintf( (char*)_mcp_state->_dref_altitude->_blob, max_bytes, "%05i", _mcp_state->_dref_altitude->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_altitude->_blob, max_bytes, "%05i", _mcp_state->_dref_7seg_altitude->_int_value );
 
 	//Vert Speed
-	snprintf( (char*)_mcp_state->_dref_vert_speed->_blob, max_bytes, "%05i", _mcp_state->_dref_vert_speed->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_vert_speed->_blob, max_bytes, "%05i", _mcp_state->_dref_7seg_vert_speed->_int_value );
 
 	//CRS Right
-	snprintf( (char*)_mcp_state->_dref_crs_right->_blob, max_bytes, "%03i", _mcp_state->_dref_crs_right->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_crs_right->_blob, max_bytes, "%03i", _mcp_state->_dref_7seg_crs_right->_int_value );
 
 }
 

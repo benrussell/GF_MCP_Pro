@@ -27,12 +27,12 @@ GFMCPPro_State::GFMCPPro_State() {
 
 
 	// ------- 7 Segs --------
-	_dref_crs_left      = new GFDataref( GFMCPPro_State::_drname_crs_left,   3);
-	_dref_ias_mach      = new GFDataref( GFMCPPro_State::_drname_ias_mach,   5);
-	_dref_heading       = new GFDataref( GFMCPPro_State::_drname_heading,    3);
-	_dref_altitude      = new GFDataref( GFMCPPro_State::_drname_altitude,   5);
-	_dref_vert_speed    = new GFDataref( GFMCPPro_State::_drname_vert_speed, 5);
-	_dref_crs_right     = new GFDataref( GFMCPPro_State::_drname_crs_right,  3);
+	_dref_7seg_crs_left      = new GFDataref( GFMCPPro_State::_drname_crs_left,   3);
+	_dref_7seg_ias_mach      = new GFDataref( GFMCPPro_State::_drname_ias_mach,   5);
+	_dref_7seg_heading       = new GFDataref( GFMCPPro_State::_drname_heading,    3);
+	_dref_7seg_altitude      = new GFDataref( GFMCPPro_State::_drname_altitude,   5);
+	_dref_7seg_vert_speed    = new GFDataref( GFMCPPro_State::_drname_vert_speed, 5);
+	_dref_7seg_crs_right     = new GFDataref( GFMCPPro_State::_drname_crs_right,  3);
 
 	//FIXME: more drefs for independent state control.
 	// new drefs will track the values managed by this plugin for the heading/crs/etc. as ints instead of byte arrays.
@@ -87,12 +87,12 @@ GFMCPPro_State::~GFMCPPro_State() {
 	delete(_dref_light_test);
 
 	// 7 seg cleanup
-	delete(_dref_crs_left);
-	delete(_dref_ias_mach);
-	delete(_dref_heading);
-	delete(_dref_altitude);
-	delete(_dref_vert_speed);
-	delete(_dref_crs_right);
+	delete(_dref_7seg_crs_left);
+	delete(_dref_7seg_ias_mach);
+	delete(_dref_7seg_heading);
+	delete(_dref_7seg_altitude);
+	delete(_dref_7seg_vert_speed);
+	delete(_dref_7seg_crs_right);
 
 
 

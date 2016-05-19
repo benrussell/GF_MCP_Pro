@@ -22,12 +22,12 @@ public:
 
 	// --------- 7 Seg displays ------------
 	// 7 Seg byte arrays.
-	GFDataref* _dref_crs_left;
-	GFDataref* _dref_ias_mach;
-	GFDataref* _dref_heading;
-	GFDataref* _dref_altitude;
-	GFDataref* _dref_vert_speed;
-	GFDataref* _dref_crs_right;
+	GFDataref* _dref_7seg_crs_left;
+	GFDataref* _dref_7seg_ias_mach;
+	GFDataref* _dref_7seg_heading;
+	GFDataref* _dref_7seg_altitude;
+	GFDataref* _dref_7seg_vert_speed;
+	GFDataref* _dref_7seg_crs_right;
 
 
 	// -------- Lights and buttons ---------
