@@ -817,7 +817,6 @@ int GFMCPPro_Buttons::_action_btn_at_arm( GFMCPPro_State* mcp_state ){
 int GFMCPPro_Buttons::_action_btn_co( GFMCPPro_State* mcp_state ){
 
 	// There is no LED for this button.
-
 	//TODO: clarify purpose of CO button
 	//switch between IAS and Mach
 
@@ -833,7 +832,6 @@ int GFMCPPro_Buttons::_action_btn_co( GFMCPPro_State* mcp_state ){
 int GFMCPPro_Buttons::_action_btn_spd_intv( GFMCPPro_State* mcp_state ){
 
 	// There is no LED for this button.
-
 	//TODO: see alt intv
 
 	return 1;
@@ -863,75 +861,72 @@ int GFMCPPro_Buttons::_action_btn_vor_loc( GFMCPPro_State* mcp_state ){
 
 
 /// ---- knobs and dials ---
-
-
-
 int GFMCPPro_Buttons::_action_crs_left_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_crs_left->_int_value--;
+	mcp_state->_dref_managed_crs_left->_int_value--;
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_crs_left_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_crs_left->_int_value++;
+	mcp_state->_dref_managed_crs_left->_int_value++;
 	return 0;
 }
 
 
 
 int GFMCPPro_Buttons::_action_ias_mach_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_ias_mach->_int_value--;
+	mcp_state->_dref_managed_ias_mach->_int_value--;
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_ias_mach_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_ias_mach->_int_value++;
+	mcp_state->_dref_managed_ias_mach->_int_value++;
 	return 0;
 }
 
 
 
 int GFMCPPro_Buttons::_action_heading_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_heading->_int_value--;
+	mcp_state->_dref_managed_heading->_int_value--;
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_heading_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_heading->_int_value++;
+	mcp_state->_dref_managed_heading->_int_value++;
 	return 0;
 }
 
 
 
 int GFMCPPro_Buttons::_action_altitude_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_altitude->_int_value--;
+	mcp_state->_dref_managed_altitude->_int_value--;
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_altitude_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_altitude->_int_value++;
+	mcp_state->_dref_managed_altitude->_int_value++;
 	return 0;
 }
 
 
 
 int GFMCPPro_Buttons::_action_vert_speed_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_vert_speed->_int_value--;
+	mcp_state->_dref_managed_vert_speed->_int_value--;
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_vert_speed_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_vert_speed->_int_value++;
+	mcp_state->_dref_managed_vert_speed->_int_value++;
 	return 0;
 }
 
 
 int GFMCPPro_Buttons::_action_crs_right_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_crs_right->_int_value--;
+	mcp_state->_dref_managed_crs_right->_int_value--;
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_crs_right_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_7seg_crs_right->_int_value++;
+	mcp_state->_dref_managed_crs_right->_int_value++;
 	return 0;
 }
 

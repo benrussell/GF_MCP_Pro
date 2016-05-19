@@ -81,7 +81,7 @@ GFDataref::GFDataref( const std::string dref_name, int element_count ) {
 
 	_dref = XPLMRegisterDataAccessor(
                     dref_name.c_str(), //name
-                    xplmType_Data | xplmType_Int, //type
+                    xplmType_Data, // | xplmType_Int, //type
 					1, //writable
 
                     GFDataref::xp_getDatai,	GFDataref::xp_setDatai, //integer

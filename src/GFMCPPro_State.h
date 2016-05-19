@@ -28,8 +28,20 @@ public:
 	GFDataref* _dref_7seg_altitude;
 	GFDataref* _dref_7seg_vert_speed;
 	GFDataref* _dref_7seg_crs_right;
-
-
+	
+	
+	// --------- managed 7 Seg values for knobs ------------
+	// 7 Seg byte arrays.
+	GFDataref* _dref_managed_crs_left;
+	GFDataref* _dref_managed_ias_mach;
+	GFDataref* _dref_managed_heading;
+	GFDataref* _dref_managed_altitude;
+	GFDataref* _dref_managed_vert_speed;
+	GFDataref* _dref_managed_crs_right;
+	
+	
+	
+	
 	// -------- Lights and buttons ---------
 	//LED top row
 	GFDataref* _dref_leds_vnav;
@@ -75,13 +87,25 @@ private:
 	static const std::string _drname_light_test;
 
 	// --------- 7 Seg ---------
-	static const std::string _drname_crs_left;
-	static const std::string _drname_ias_mach;
-	static const std::string _drname_heading;
-	static const std::string _drname_altitude;
-	static const std::string _drname_vert_speed;
-	static const std::string _drname_crs_right;
-
+	static const std::string _drname_7seg_crs_left;
+	static const std::string _drname_7seg_ias_mach;
+	static const std::string _drname_7seg_heading;
+	static const std::string _drname_7seg_altitude;
+	static const std::string _drname_7seg_vert_speed;
+	static const std::string _drname_7seg_crs_right;
+	
+	
+	// --------- 7 Seg ---------
+	static const std::string _drname_managed_crs_left;
+	static const std::string _drname_managed_ias_mach;
+	static const std::string _drname_managed_heading;
+	static const std::string _drname_managed_altitude;
+	static const std::string _drname_managed_vert_speed;
+	static const std::string _drname_managed_crs_right;
+	
+	
+	
+	
 	// ------ Lights and buttons ---------
 	//dataref names
 	static const std::string _drname_vnav;

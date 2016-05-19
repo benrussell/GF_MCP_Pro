@@ -27,16 +27,22 @@ GFMCPPro_State::GFMCPPro_State() {
 
 
 	// ------- 7 Segs --------
-	_dref_7seg_crs_left      = new GFDataref( GFMCPPro_State::_drname_crs_left,   3);
-	_dref_7seg_ias_mach      = new GFDataref( GFMCPPro_State::_drname_ias_mach,   5);
-	_dref_7seg_heading       = new GFDataref( GFMCPPro_State::_drname_heading,    3);
-	_dref_7seg_altitude      = new GFDataref( GFMCPPro_State::_drname_altitude,   5);
-	_dref_7seg_vert_speed    = new GFDataref( GFMCPPro_State::_drname_vert_speed, 5);
-	_dref_7seg_crs_right     = new GFDataref( GFMCPPro_State::_drname_crs_right,  3);
+	_dref_7seg_crs_left      = new GFDataref( GFMCPPro_State::_drname_7seg_crs_left,   3);
+	_dref_7seg_ias_mach      = new GFDataref( GFMCPPro_State::_drname_7seg_ias_mach,   5);
+	_dref_7seg_heading       = new GFDataref( GFMCPPro_State::_drname_7seg_heading,    3);
+	_dref_7seg_altitude      = new GFDataref( GFMCPPro_State::_drname_7seg_altitude,   5);
+	_dref_7seg_vert_speed    = new GFDataref( GFMCPPro_State::_drname_7seg_vert_speed, 5);
+	_dref_7seg_crs_right     = new GFDataref( GFMCPPro_State::_drname_7seg_crs_right,  3);
 
-	//FIXME: more drefs for independent state control.
-	// new drefs will track the values managed by this plugin for the heading/crs/etc. as ints instead of byte arrays.
 
+	// --------- 7 Seg Managed ---------
+	// drefs track the values managed by this plugin for the heading/crs/etc. as ints instead of byte arrays.
+	_dref_managed_crs_left      = new GFDataref( GFMCPPro_State::_drname_managed_crs_left );
+	_dref_managed_ias_mach      = new GFDataref( GFMCPPro_State::_drname_managed_ias_mach );
+	_dref_managed_heading       = new GFDataref( GFMCPPro_State::_drname_managed_heading );
+	_dref_managed_altitude      = new GFDataref( GFMCPPro_State::_drname_managed_altitude );
+	_dref_managed_vert_speed    = new GFDataref( GFMCPPro_State::_drname_managed_vert_speed );
+	_dref_managed_crs_right     = new GFDataref( GFMCPPro_State::_drname_managed_crs_right );
 
 
 	// ------- Lights and buttons --------
@@ -141,12 +147,23 @@ const std::string GFMCPPro_State::_drname_light_test    = "goflight/mcp_pro/ligh
 
 
 // --------- 7 Seg ---------
-const std::string GFMCPPro_State::_drname_crs_left      = "goflight/mcp_pro/7seg/crs_left";
-const std::string GFMCPPro_State::_drname_ias_mach      = "goflight/mcp_pro/7seg/ias_mach";
-const std::string GFMCPPro_State::_drname_heading       = "goflight/mcp_pro/7seg/heading";
-const std::string GFMCPPro_State::_drname_altitude      = "goflight/mcp_pro/7seg/altitude";
-const std::string GFMCPPro_State::_drname_vert_speed    = "goflight/mcp_pro/7seg/vert_speed";
-const std::string GFMCPPro_State::_drname_crs_right     = "goflight/mcp_pro/7seg/crs_right";
+const std::string GFMCPPro_State::_drname_7seg_crs_left      = "goflight/mcp_pro/7seg/crs_left";
+const std::string GFMCPPro_State::_drname_7seg_ias_mach      = "goflight/mcp_pro/7seg/ias_mach";
+const std::string GFMCPPro_State::_drname_7seg_heading       = "goflight/mcp_pro/7seg/heading";
+const std::string GFMCPPro_State::_drname_7seg_altitude      = "goflight/mcp_pro/7seg/altitude";
+const std::string GFMCPPro_State::_drname_7seg_vert_speed    = "goflight/mcp_pro/7seg/vert_speed";
+const std::string GFMCPPro_State::_drname_7seg_crs_right     = "goflight/mcp_pro/7seg/crs_right";
+
+
+// --------- 7 Seg Managed ---------
+const std::string GFMCPPro_State::_drname_managed_crs_left      = "goflight/mcp_pro/crs_left";
+const std::string GFMCPPro_State::_drname_managed_ias_mach      = "goflight/mcp_pro/ias_mach";
+const std::string GFMCPPro_State::_drname_managed_heading       = "goflight/mcp_pro/heading";
+const std::string GFMCPPro_State::_drname_managed_altitude      = "goflight/mcp_pro/altitude";
+const std::string GFMCPPro_State::_drname_managed_vert_speed    = "goflight/mcp_pro/vert_speed";
+const std::string GFMCPPro_State::_drname_managed_crs_right     = "goflight/mcp_pro/crs_right";
+
+
 
 
 // ------ Lights and buttons ---------
