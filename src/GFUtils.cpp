@@ -10,7 +10,7 @@
 
 
 //USB tmp buffer
-#define buf_size 16
+#define GF_usb_buffer_size 8
 
 
 
@@ -23,11 +23,9 @@ void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *va
 	}
 
 
-	int res;
+    unsigned char buf[GF_usb_buffer_size];
 
-    unsigned char buf[buf_size];
-
-    memset( buf, 0, buf_size );
+    memset( buf, 0, GF_usb_buffer_size );
     buf[0] = target; //MCP_CRS_LEFT;
 
     buf[1] = GFUtils::translateCharTo7Seg( value[0] );
@@ -36,9 +34,9 @@ void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *va
 
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
-    res = hid_write( handle, buf, 8 );
+    int res = hid_write( handle, buf, 8 );
     if (res < 0) {
-		GFUtils::Log("GFUtils::set3f(..) : Unable to write 3f..\n"); //FIXME: Propagate
+		GFUtils::Log("GFUtils::set3f(..) : Unable to write 3f..\n"); //FIXME: usb write fail, propagate
 	}
 
 }
@@ -58,11 +56,9 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
 	}
 
 
-    int res;
+    unsigned char buf[GF_usb_buffer_size];
 
-    unsigned char buf[buf_size];
-
-    memset( buf, 0, buf_size );
+    memset( buf, 0, GF_usb_buffer_size );
     buf[0] = target; //MCP_CRS_LEFT;
 
     buf[1] = GFUtils::translateCharTo7Seg( value[0] );
@@ -73,9 +69,9 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
 
     //printf("buf: 0x%02x : %02x %02x %02x %02x %02x\n", buf[0], buf[1],buf[2],buf[3],buf[4],buf[5] );
 
-    res = hid_write( handle, buf, 8 );
+	int res = hid_write( handle, buf, 8 );
 	if (res < 0) {
-		GFUtils::Log("GFUtils::set5f(..) : Unable to write 5f..\n"); //FIXME: Propagate
+		GFUtils::Log("GFUtils::set5f(..) : Unable to write 5f..\n"); //FIXME: usb write fail, propagate
 	}
 
 }
@@ -99,25 +95,23 @@ void GFUtils::set_leds( hid_device *handle, unsigned char target, unsigned char 
     c = values[2];
 
 
-    unsigned char buf[buf_size];
+    unsigned char buf[GF_usb_buffer_size];
+    memset( buf, 0, GF_usb_buffer_size );
 
-
-    memset( buf, 0, buf_size );
     buf[0] = target;
-
     buf[1] = 0;
 
     //byte ordering makes no sense relative to physical layout
-    buf[2] = a;// lower
-    buf[3] = b;// midde
-    buf[4] = c;// top row of LED's
+    buf[2] = a; // lower
+    buf[3] = b; // midde
+    buf[4] = c; // top row of LED's
 
     buf[5] = 0;
 
 
     int res = hid_write( handle, buf, 16 );
 	if (res < 0) {
-		GFUtils::Log("GFUtils::set_leds(..) : Unable to write packet..\n"); //FIXME: Propagate
+		GFUtils::Log("GFUtils::set_leds(..) : Unable to write packet..\n"); //FIXME: usb write fail, propagate
 	}
 
 }
