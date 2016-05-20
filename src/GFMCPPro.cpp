@@ -144,6 +144,14 @@ int GFMCPPro::_open_usb_dev() {
 
 void GFMCPPro::flcb() {
 
+
+	#if 0
+	//translate managed values into 7seg values...
+	//normally handled automatically by _mcp_7seg->write();
+	_mcp_7seg->_update_7seg_drefs();
+	#endif
+
+
     if( 0 == _handle ) { //flcb check handle is valid..
         // disconnected state.
 		_mcp_state->_dref_connected->_int_value = 0;
@@ -173,7 +181,6 @@ void GFMCPPro::flcb() {
 			_mcp_state->_wants_disconnection = 0;
 			this->Disconnect();
 		}
-
 
 	}
 

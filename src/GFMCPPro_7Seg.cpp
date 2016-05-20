@@ -99,25 +99,27 @@ void GFMCPPro_7Seg::_write_dref_state( hid_device* handle ){
 //write managed state to the 7seg blob dref's
 void GFMCPPro_7Seg::_update_7seg_drefs(){
 
+	// Translates 'managed' datarefs into byte arrays for easy 7seg display.
+
 	const size_t max_bytes = GFDataref::_blob_size;
 
 	//CRS Left
-	snprintf( (char*)_mcp_state->_dref_7seg_crs_left->_blob, max_bytes, "%03i", _mcp_state->_dref_7seg_crs_left->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_crs_left->_blob, max_bytes, "%03i", _mcp_state->_dref_managed_crs_left->_int_value );
 
 	//IAS Mach
-	snprintf( (char*)_mcp_state->_dref_7seg_ias_mach->_blob, max_bytes, "%05i", _mcp_state->_dref_7seg_ias_mach->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_ias_mach->_blob, max_bytes, "%05i", _mcp_state->_dref_managed_ias_mach->_int_value );
 
 	//Heading
-	snprintf( (char*)_mcp_state->_dref_7seg_heading->_blob, max_bytes, "%03i", _mcp_state->_dref_7seg_heading->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_heading->_blob, max_bytes, "%03i", _mcp_state->_dref_managed_heading->_int_value );
 
 	//Altitude
-	snprintf( (char*)_mcp_state->_dref_7seg_altitude->_blob, max_bytes, "%05i", _mcp_state->_dref_7seg_altitude->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_altitude->_blob, max_bytes, "%05i", _mcp_state->_dref_managed_altitude->_int_value );
 
 	//Vert Speed
-	snprintf( (char*)_mcp_state->_dref_7seg_vert_speed->_blob, max_bytes, "%05i", _mcp_state->_dref_7seg_vert_speed->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_vert_speed->_blob, max_bytes, "%05i", _mcp_state->_dref_managed_vert_speed->_int_value );
 
 	//CRS Right
-	snprintf( (char*)_mcp_state->_dref_7seg_crs_right->_blob, max_bytes, "%03i", _mcp_state->_dref_7seg_crs_right->_int_value );
+	snprintf( (char*)_mcp_state->_dref_7seg_crs_right->_blob, max_bytes, "%03i", _mcp_state->_dref_managed_crs_right->_int_value );
 
 }
 

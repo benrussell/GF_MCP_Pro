@@ -23,13 +23,14 @@ public:
 	//called by parent.
     void write( hid_device* handle );
 
+	void _update_7seg_drefs();
+
 
 private:
 
 	GFMCPPro_State* _mcp_state;
 
 	void _write_dref_state( hid_device* handle );
-	void _update_7seg_drefs();
 	void _write_light_test( hid_device* handle );
 
 
