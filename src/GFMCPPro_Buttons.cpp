@@ -556,8 +556,8 @@ int GFMCPPro_Buttons::_action_btn_disconnect( GFMCPPro_State* mcp_state ){
 int GFMCPPro_Buttons::_action_btn_light_test( GFMCPPro_State* mcp_state ){
 
 	GFUtils::Log("cmd: Light Test..");
-	//FIXME: light test cycle needs a timer
 	mcp_state->_dref_light_test->_int_value = 1;
+
 
 	return 1;
 }

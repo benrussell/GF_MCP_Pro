@@ -63,7 +63,7 @@ private:
 	int _close_usb_dev();
 
 
-	GFTimer_LightTest _tmr_LightTest;
+	GFTimer_LightTest* _tmr_LightTest;
 
 
 	//boring little menu item to make it easier to mess with connection state.

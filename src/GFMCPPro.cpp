@@ -18,6 +18,8 @@ GFMCPPro::GFMCPPro() {
 
 	_mcp_state = new GFMCPPro_State();
 
+	_tmr_LightTest = new GFTimer_LightTest( _mcp_state );
+
 	_mcp_leds = new GFMCPPro_LEDS( _mcp_state );
 	_mcp_7seg = new GFMCPPro_7Seg( _mcp_state );
     _mcp_buttons = new GFMCPPro_Buttons( _mcp_state );
@@ -34,6 +36,8 @@ GFMCPPro::~GFMCPPro() {
     delete( _mcp_7seg );
 	delete( _mcp_leds );
 
+	delete( _tmr_LightTest );
+
 	delete( _mcp_state );
 
 }
@@ -44,6 +48,8 @@ void GFMCPPro::Connect() {
 
 	GFUtils::Log("Connecting to USB device..\n");
     int res = this->_open_usb_dev();
+
+
 
 	if( 0 == res ){
 		//open failed.
@@ -60,8 +66,9 @@ void GFMCPPro::Connect() {
 
 
 	// Init light test.
+	GFUtils::Log("Starting Light-Test..\n");
 	_mcp_state->_dref_light_test->_int_value = 1;
-	_tmr_LightTest.reset();
+	_tmr_LightTest->reset();
 
 
 	//update menu item with a check mark
@@ -150,13 +157,15 @@ void GFMCPPro::flcb() {
 
 
 	#if 0
+	//debug code:
 	//translate managed values into 7seg values...
 	//normally handled automatically by _mcp_7seg->write();
 	_mcp_7seg->_update_7seg_drefs();
 	#endif
 
 
-    if( 0 == _handle ) { //flcb check handle is valid..
+
+	if( 0 == _handle ) { //flcb check handle is valid..
         // disconnected state.
 		_mcp_state->_dref_connected->_int_value = 0;
 
@@ -172,9 +181,19 @@ void GFMCPPro::flcb() {
 		// no ops needed to update/interchange.
 		_mcp_state->_dref_connected->_int_value = 1;
 
-
 		// update the light_test timer
-		_tmr_LightTest.run();
+		if( _tmr_LightTest->_enabled ){
+			_tmr_LightTest->run();
+		}else{
+			//FIXME: this flag detection will enforce a timer on any external logic trying to run a light test by taking the flag high.
+			// we have effectively disabled any chance of a custom light test period.
+			// expose duration of light test via dataref?
+			if( 1 == _mcp_state->_dref_light_test->_int_value ){
+				//this only runs if we're currently disabled.
+				//it will enable us so we do not run this branch again.
+				_tmr_LightTest->reset();
+			}
+		}
 
 
 		//buttons and dials affect state changes, read them in before updating the displays
