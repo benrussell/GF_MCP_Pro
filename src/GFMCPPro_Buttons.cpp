@@ -252,12 +252,10 @@ void GFMCPPro_Buttons::_read_usb( hid_device* handle ) {
 	// Read hardware state
 	int res = hid_read( handle, buf, buf_size);
     if (res < 0) {
-		//FIXME: usb read fail, propagate.
-		GFUtils::Log("USB Read Failed.\n");
+		GFUtils::Log("USB Read Failed.\n"); //FIXME: use read fail, propagate.
 		_mcp_state->_dref_connected->_int_value = 0;
 
     } else {
-
         //_dump_button_packet( res, buf );
         _proc_hid_packet( buf );
 
@@ -431,9 +429,9 @@ void GFMCPPro_Buttons::_proc_buttons( unsigned char* buf ){
     buf[6] & 1 ? _btn_ALT_INV->Begin()          : _btn_ALT_INV->Stop();
     buf[6] & 2 ? _btn_CWS_A->Begin()            : _btn_CWS_A->Stop();
     buf[6] & 4 ? _btn_CWS_B->Begin()            : _btn_CWS_B->Stop();
-    //buf[6] & 8 ? _btn_IAS_Dial->Begin()         : _btn_IAS_Dial->Stop(); // -- Dial --
-    //buf[6] & 16 ? _btn_HDG_Dial->Begin()        : _btn_HDG_Dial->Stop(); // -- Dial --
-    //buf[6] & 32 ? _btn_ALT_Dial->Begin()        : _btn_ALT_Dial->Stop(); // -- Dial --
+    // 		 8  not used
+    // 		 16 not used
+    // 		 32 not used
     buf[6] & 64 ? _btn_FD_Left->Begin()         : _btn_FD_Left->Stop();
     buf[6] & 128 ? _btn_N1->Begin()             : _btn_N1->Stop();
 
