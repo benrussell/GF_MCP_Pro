@@ -4,9 +4,9 @@
 
 #include "GFMCPPro.h"
 
-#include <XPLMUtilities.h>
+//#include <XPLMUtilities.h>
 
-#include <string.h>
+//#include <string.h>
 
 #include "Windows_snprintf.h"
 
@@ -58,7 +58,11 @@ void GFMCPPro::Connect() {
 	GFUtils::Log("Connected.\n");
 	_mcp_state->_dref_connected->_int_value = 1;
 
-	//FIXME: Init light test.
+
+	// Init light test.
+	_mcp_state->_dref_light_test->_int_value = 1;
+	_tmr_LightTest.reset();
+
 
 	//update menu item with a check mark
 	XPLMCheckMenuItem(
@@ -167,6 +171,11 @@ void GFMCPPro::flcb() {
 		// any external state changes are automatically in the dataref storage already.
 		// no ops needed to update/interchange.
 		_mcp_state->_dref_connected->_int_value = 1;
+
+
+		// update the light_test timer
+		_tmr_LightTest.run();
+
 
 		//buttons and dials affect state changes, read them in before updating the displays
 		_mcp_buttons->read( _handle );

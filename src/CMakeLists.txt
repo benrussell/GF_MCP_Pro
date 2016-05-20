@@ -77,7 +77,7 @@ include_directories( ${HID_API_FOLDER} ${INC_XPLANE_SDK} )
 
 
 
-set(SOURCE_FILES ${HID_C_FILE} XPLGlue.cpp XPLGlue.h GFUtils.cpp GFUtils.h GFMCPPro.cpp GFMCPPro.h GFDataref.cpp GFDataref.h GFCommand.cpp GFCommand.h GFMCPPro_LEDS.cpp GFMCPPro_LEDS.h GFMCPPro_Buttons.cpp GFMCPPro_Buttons.h GFMCPPro_7Seg.cpp GFMCPPro_7Seg.h GFMCPPro_State.cpp GFMCPPro_State.h Windows_snprintf.h GFTimer.cpp GFTimer.h)
+set(SOURCE_FILES ${HID_C_FILE} XPLGlue.cpp XPLGlue.h GFUtils.cpp GFUtils.h GFMCPPro.cpp GFMCPPro.h GFDataref.cpp GFDataref.h GFCommand.cpp GFCommand.h GFMCPPro_LEDS.cpp GFMCPPro_LEDS.h GFMCPPro_Buttons.cpp GFMCPPro_Buttons.h GFMCPPro_7Seg.cpp GFMCPPro_7Seg.h GFMCPPro_State.cpp GFMCPPro_State.h Windows_snprintf.h GFTimer.cpp GFTimer.h GFTimer_LightTest.cpp GFTimer_LightTest.h)
 
 SET( OUTPUT_FILENAME ${BINARY_NAME} )
 

@@ -13,6 +13,9 @@
 #include "GFCommand.h"
 #include "GFDataref.h"
 
+//General Utils
+#include "GFTimer_LightTest.h"
+
 
 #include "GFMCPPro_7Seg.h"
 #include "GFMCPPro_LEDS.h"
@@ -20,7 +23,6 @@
 #include "GFMCPPro_Buttons.h"
 
 #include "GFMCPPro_State.h"
-
 
 #include "XPLGlue.h"
 
@@ -60,6 +62,8 @@ private:
 	int _open_usb_dev();
 	int _close_usb_dev();
 
+
+	GFTimer_LightTest _tmr_LightTest;
 
 
 	//boring little menu item to make it easier to mess with connection state.
