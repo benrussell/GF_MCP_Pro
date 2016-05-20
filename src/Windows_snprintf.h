@@ -6,6 +6,13 @@
 #define GF_MCP_PRO_PARENT_WINDOWS_SNPRINTF_H
 
 
+// Linux
+#if LIN
+#include <stdio.h>
+#endif
+
+
+
 // Windows MS VC++ work around for no snprintf function.
 
 

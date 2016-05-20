@@ -14,29 +14,31 @@ message( ${XP_SDK} )
 
 
 
+
+# Linux
+IF(CMAKE_SYSTEM_NAME STREQUAL Linux)
+    set( BINARY_NAME "${PROJECT_NAME}_lin" )
+    add_definitions( -DLIN=1 )
+    set( CMAKE_SHARED_LINKER_FLAGS "-v" )
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall") #-std=c++11" )
+    set( HID_C_FILE "${CMAKE_HOME_DIRECTORY}/../../hidapi/linux/hid.c" )
+ENDIF(CMAKE_SYSTEM_NAME STREQUAL Linux)
+
+
+
 IF( APPLE )
-
     set( BINARY_NAME "${PROJECT_NAME}_mac" )
-
     add_definitions( -DAPL=1 )
-
     set( MAC_FRAMEWORKS "-framework IOKit -framework Carbon" )
-
     set( CMAKE_SHARED_LINKER_FLAGS "${MAC_FRAMEWORKS} -undefined warning -flat_namespace -v" )
-
-    #set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
-
-
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall") # -std=c++11" )
     set( HID_C_FILE "${CMAKE_HOME_DIRECTORY}/../../hidapi/mac/hid.c" )
-
 ENDIF( APPLE )
 
 
 
 IF(CMAKE_SYSTEM_NAME STREQUAL Windows)
-
     set( BINARY_NAME "${PROJECT_NAME}_win" )
-
     add_definitions( -DIBM=1 )
 
     LINK_DIRECTORIES(
@@ -51,8 +53,7 @@ IF(CMAKE_SYSTEM_NAME STREQUAL Windows)
             setupapi.lib
             )
 
-    #set( CMAKE_SHARED_LINKER_FLAGS "-v" )
-
+    set( CMAKE_SHARED_LINKER_FLAGS "-v" )
     set( HID_C_FILE "${CMAKE_HOME_DIRECTORY}/../../hidapi/windows/hid.c" )
 
 ENDIF(CMAKE_SYSTEM_NAME STREQUAL Windows)

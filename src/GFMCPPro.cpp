@@ -6,7 +6,6 @@
 
 //#include <XPLMUtilities.h>
 
-//#include <string.h>
 
 #include "Windows_snprintf.h"
 
@@ -145,6 +144,11 @@ int GFMCPPro::_open_usb_dev() {
     res = hid_get_serial_number_string(_handle, wstr, MAX_STR);
 	snprintf(caTmp, 1024, "    Serial #: (%ls)\n", wstr);
 	GFUtils::Log( caTmp );
+
+
+	//blank statement to mute compiler warning.
+	if( res ){}
+
 
 
     return 1;
