@@ -12,6 +12,7 @@
 class GFTimer_LightTest : public GFTimer {
 public:
 	GFTimer_LightTest( GFMCPPro_State* mcp_state );
+	~GFTimer_LightTest();
 	virtual void _run_action();
 
 private:

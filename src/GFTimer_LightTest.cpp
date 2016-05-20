@@ -12,6 +12,11 @@ GFTimer_LightTest::GFTimer_LightTest( GFMCPPro_State* mcp_state ){
 }
 
 
+GFTimer_LightTest::~GFTimer_LightTest(){
+	//empty destructor
+}
+
+
 void GFTimer_LightTest::_run_action() {
 
 	// This function will only be called once by the trigger logic.

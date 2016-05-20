@@ -12,7 +12,7 @@
 class GFTimer {
 public:
 	GFTimer();
-	~GFTimer();
+	virtual ~GFTimer();
 
 	void run();
 	void reset();
