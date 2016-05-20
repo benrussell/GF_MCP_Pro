@@ -25,6 +25,10 @@ GFTimer::~GFTimer(){
 
 void GFTimer::run() {
 
+	if( ! _enabled ){
+		return;
+	}
+
 	float marker_delta = _now() - _start_marker;
 
 	if( marker_delta > _duration ){
@@ -38,6 +42,7 @@ void GFTimer::run() {
 
 void GFTimer::reset() {
 
+	//GFUtils::Log("GFTimer::reset()\n");
 	_start_marker = _now();
 	_enabled = true;
 

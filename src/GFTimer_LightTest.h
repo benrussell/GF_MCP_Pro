@@ -7,10 +7,15 @@
 
 #include "GFTimer.h"
 
+#include "GFMCPPro_State.h"
 
 class GFTimer_LightTest : public GFTimer {
 public:
+	GFTimer_LightTest( GFMCPPro_State* mcp_state );
 	virtual void _run_action();
+
+private:
+	GFMCPPro_State* _mcp_state;
 
 };
 
