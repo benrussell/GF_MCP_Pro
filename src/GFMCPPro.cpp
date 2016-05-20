@@ -55,10 +55,10 @@ void GFMCPPro::Connect() {
 		return;
 	}
 
-
 	GFUtils::Log("Connected.\n");
 	_mcp_state->_dref_connected->_int_value = 1;
 
+	//FIXME: Init light test.
 
 	//update menu item with a check mark
 	XPLMCheckMenuItem(
@@ -78,13 +78,13 @@ void GFMCPPro::Disconnect() {
 
 	_mcp_state->_dref_connected->_int_value = 0;
 
+	//FIXME: Kill light test.
 
 	XPLMCheckMenuItem(
 			_mnu_root, //XPLMMenuID
 			0, //menu id number
 			xplm_Menu_Unchecked //XPLMMenuCheck * flag state
 	);
-
 
 }
 
