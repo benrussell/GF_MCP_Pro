@@ -304,11 +304,11 @@ int GFMCPPro_Buttons::_is_knob_left( unsigned char bit_flags ) {
 		return 0;
 	}
 
-	// low bit on 4 indicates knob left.
+	// high bit on 4 indicates knob left.
 	if( bit_flags & 8 ){
-		return 0;
+		return 1;
 	}
-	return 1;
+	return 0;
 }
 
 
@@ -319,11 +319,11 @@ int GFMCPPro_Buttons::_is_knob_right( unsigned char bit_flags ) {
 		return 0;
 	}
 
-	// high bit on 4 indicates knob right.
+	// low bit on 4 indicates knob right.
 	if( bit_flags & 8 ){
-		return 1;
+		return 0;
 	}
-	return 0;
+	return 1;
 }
 
 
