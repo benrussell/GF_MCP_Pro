@@ -274,6 +274,15 @@ void GFMCPPro_Buttons::_proc_hid_packet( unsigned char* buf ) {
 
 	}else{
 		// ------------------ Buttons --------------
+
+		//FIXME: Hack to get switch states working better.
+		//Force all switch state vars to 0.
+		//If the switch is on it will be detected below and the value will go high again.
+		_mcp_state->_dref_leds_fd_right->_int_value = 0;
+		_mcp_state->_dref_leds_fd_left->_int_value = 0;
+		_mcp_state->_dref_leds_at_arm->_int_value = 0;
+
+
 		_proc_buttons( buf );
 
 	}
@@ -304,13 +313,12 @@ int GFMCPPro_Buttons::_is_knob_left( unsigned char bit_flags ) {
 		return 0;
 	}
 
-	// high bit on 4 indicates knob left.
+	// high on bit 4 indicates knob left.
 	if( bit_flags & 8 ){
 		return 1;
 	}
 	return 0;
 }
-
 
 
 int GFMCPPro_Buttons::_is_knob_right( unsigned char bit_flags ) {
@@ -319,7 +327,7 @@ int GFMCPPro_Buttons::_is_knob_right( unsigned char bit_flags ) {
 		return 0;
 	}
 
-	// low bit on 4 indicates knob right.
+	// low on bit 4 indicates knob right.
 	if( bit_flags & 8 ){
 		return 0;
 	}
@@ -414,7 +422,7 @@ void GFMCPPro_Buttons::_proc_buttons( unsigned char* buf ){
     buf[5] & 16 ? _btn_ALT_HLD->Begin()         : _btn_ALT_HLD->Stop();
     buf[5] & 32 ? _btn_VS->Begin()              : _btn_VS->Stop();
     buf[5] & 64 ? _btn_AP_Disengage->Begin()    : _btn_AP_Disengage->Stop();
-    buf[5] & 128 ? _btn_FD_Right->Begin()       : _btn_FD_Right->Stop();
+    buf[5] & 128 ? _btn_FD_Right->Begin()       : _btn_FD_Right->Stop(); // ------------------ switch
 
     // Packet 6
     // --------------------
@@ -432,7 +440,7 @@ void GFMCPPro_Buttons::_proc_buttons( unsigned char* buf ){
     // 		 8  not used
     // 		 16 not used
     // 		 32 not used
-    buf[6] & 64 ? _btn_FD_Left->Begin()         : _btn_FD_Left->Stop();
+    buf[6] & 64 ? _btn_FD_Left->Begin()         : _btn_FD_Left->Stop(); // ------------------ switch
     buf[6] & 128 ? _btn_N1->Begin()             : _btn_N1->Stop();
 
     // Packet 7
@@ -449,7 +457,7 @@ void GFMCPPro_Buttons::_proc_buttons( unsigned char* buf ){
     buf[7] & 2 ? _btn_LNAV->Begin()             : _btn_LNAV->Stop();
     buf[7] & 4 ? _btn_CMD_A->Begin()            : _btn_CMD_A->Stop();
     buf[7] & 8 ? _btn_CMD_B->Begin()            : _btn_CMD_B->Stop();
-    buf[7] & 16 ? _btn_AT_Arm->Begin()          : _btn_AT_Arm->Stop();
+    buf[7] & 16 ? _btn_AT_Arm->Begin()          : _btn_AT_Arm->Stop(); // ------------------ switch
     buf[7] & 32 ? _btn_CO->Begin()              : _btn_CO->Stop();
     buf[7] & 64 ? _btn_SPD_INTV->Begin()        : _btn_SPD_INTV->Stop();
     buf[7] & 128 ? _btn_VOR_LOC->Begin()        : _btn_VOR_LOC->Stop();
@@ -658,11 +666,17 @@ int GFMCPPro_Buttons::_action_btn_ap_disengage( GFMCPPro_State* mcp_state ){
 
 int GFMCPPro_Buttons::_action_btn_fd_right( GFMCPPro_State* mcp_state ){
 
+	//attempt to improve switch state handling.
+
+	mcp_state->_dref_leds_fd_right->_int_value = 1;
+
+	/*
 	if( mcp_state->_dref_leds_fd_right->_int_value ){
 		mcp_state->_dref_leds_fd_right->_int_value = 0;
 	}else{
 		mcp_state->_dref_leds_fd_right->_int_value = 1;
 	}
+	*/
 
 	return 1;
 }
@@ -716,11 +730,7 @@ int GFMCPPro_Buttons::_action_btn_cws_b( GFMCPPro_State* mcp_state ){
 
 int GFMCPPro_Buttons::_action_btn_fd_left( GFMCPPro_State* mcp_state ){
 
-	if( mcp_state->_dref_leds_fd_left->_int_value ){
-		mcp_state->_dref_leds_fd_left->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_fd_left->_int_value = 1;
-	}
+	mcp_state->_dref_leds_fd_left->_int_value = 1;
 
 	return 1;
 }
@@ -800,11 +810,7 @@ int GFMCPPro_Buttons::_action_btn_cmd_b( GFMCPPro_State* mcp_state ){
 
 int GFMCPPro_Buttons::_action_btn_at_arm( GFMCPPro_State* mcp_state ){
 
-	if( mcp_state->_dref_leds_at_arm->_int_value ){
-		mcp_state->_dref_leds_at_arm->_int_value = 0;
-	}else{
-		mcp_state->_dref_leds_at_arm->_int_value = 1;
-	}
+	mcp_state->_dref_leds_at_arm->_int_value = 1;
 
 	return 1;
 }
