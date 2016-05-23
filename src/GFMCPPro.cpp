@@ -17,7 +17,9 @@ GFMCPPro::GFMCPPro() {
 
 	_mcp_state = new GFMCPPro_State();
 
+	#if  LIGHT_TEST_ENABLE
 	_tmr_LightTest = new GFTimer_LightTest( _mcp_state );
+	#endif //  LIGHT_TEST_ENABLE
 
 	_mcp_leds = new GFMCPPro_LEDS( _mcp_state );
 	_mcp_7seg = new GFMCPPro_7Seg( _mcp_state );
@@ -35,7 +37,9 @@ GFMCPPro::~GFMCPPro() {
     delete( _mcp_7seg );
 	delete( _mcp_leds );
 
+	#if  LIGHT_TEST_ENABLE
 	delete( _tmr_LightTest );
+	#endif //  LIGHT_TEST_ENABLE
 
 	delete( _mcp_state );
 
@@ -64,10 +68,12 @@ void GFMCPPro::Connect() {
 	_mcp_state->_dref_connected->_int_value = 1;
 
 
+	#if  LIGHT_TEST_ENABLE
 	// Init light test.
 	GFUtils::Log("Starting Light-Test..\n");
 	_mcp_state->_dref_light_test->_int_value = 1;
 	_tmr_LightTest->reset();
+	#endif //  LIGHT_TEST_ENABLE
 
 
 	//update menu item with a check mark
@@ -185,6 +191,7 @@ void GFMCPPro::flcb() {
 		// no ops needed to update/interchange.
 		_mcp_state->_dref_connected->_int_value = 1;
 
+		#if LIGHT_TEST_ENABLE
 		// update the light_test timer
 		if( _tmr_LightTest->_enabled ){
 			_tmr_LightTest->run();
@@ -198,6 +205,7 @@ void GFMCPPro::flcb() {
 				_tmr_LightTest->reset();
 			}
 		}
+		#endif //  LIGHT_TEST_ENABLE
 
 
 		//buttons and dials affect state changes, read them in before updating the displays

@@ -63,7 +63,9 @@ private:
 	int _close_usb_dev();
 
 
+	#if  LIGHT_TEST_ENABLE
 	GFTimer_LightTest* _tmr_LightTest;
+	#endif //  LIGHT_TEST_ENABLE
 
 
 	//boring little menu item to make it easier to mess with connection state.
