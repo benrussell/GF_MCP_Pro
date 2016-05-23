@@ -89,6 +89,10 @@ void GFMCPPro::Connect() {
 
 void GFMCPPro::Disconnect() {
 
+
+
+
+
 	GFUtils::Log("Disconnecting from USB device.\n");
     this->_close_usb_dev();
 
@@ -252,7 +256,7 @@ void GFMCPPro::_create_xp_root_menu() {
 	//id:0
 	XPLMAppendMenuItem(
 			_mnu_root,
-			"Connected",
+			"Connect",
 			(void *) "mnu_connected", //item ref
 			1 //force english
 	);
