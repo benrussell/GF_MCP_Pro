@@ -156,5 +156,29 @@ void GFUtils::Log( const char *message ) {
 
 
 
+// compass wrapping function
+int GFUtils::hdg_wrap(int new_hdg) {
+
+	//default to pass through.
+	int ret = new_hdg;
+
+
+	if( new_hdg > 359 ){
+		//wrap around to 0
+		ret = 0;
+
+	}else if( new_hdg < 0 ){
+		//wrap around to 359
+		ret = 359;
+
+	}
+
+
+	return ret;
+
+}
+
+
+
 
 //eof

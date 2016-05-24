@@ -29,6 +29,11 @@ public:
 
 	static void Log( const char* message );
 
+
+
+	static int hdg_wrap( int new_hdg );
+
+
 };
 
 

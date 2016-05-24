@@ -865,76 +865,127 @@ int GFMCPPro_Buttons::_action_btn_vor_loc( GFMCPPro_State* mcp_state ){
 
 
 /// ---- knobs and dials ---
+
+
+// 3 digit
 int GFMCPPro_Buttons::_action_crs_left_dec( GFMCPPro_State* mcp_state ){
 	mcp_state->_dref_managed_crs_left->_int_value--;
+	mcp_state->_dref_managed_crs_left->_int_value = GFUtils::hdg_wrap( mcp_state->_dref_managed_crs_left->_int_value );
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_crs_left_inc( GFMCPPro_State* mcp_state ){
 	mcp_state->_dref_managed_crs_left->_int_value++;
+	mcp_state->_dref_managed_crs_left->_int_value = GFUtils::hdg_wrap( mcp_state->_dref_managed_crs_left->_int_value );
 	return 0;
 }
 
 
-
-int GFMCPPro_Buttons::_action_ias_mach_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_ias_mach->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_ias_mach_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_ias_mach->_int_value++;
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_heading_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_heading->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_heading_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_heading->_int_value++;
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_altitude_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_altitude->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_altitude_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_altitude->_int_value++;
-	return 0;
-}
-
-
-
-int GFMCPPro_Buttons::_action_vert_speed_dec( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_vert_speed->_int_value--;
-	return 0;
-}
-
-int GFMCPPro_Buttons::_action_vert_speed_inc( GFMCPPro_State* mcp_state ){
-	mcp_state->_dref_managed_vert_speed->_int_value++;
-	return 0;
-}
-
-
+// 3 digit
 int GFMCPPro_Buttons::_action_crs_right_dec( GFMCPPro_State* mcp_state ){
 	mcp_state->_dref_managed_crs_right->_int_value--;
+	mcp_state->_dref_managed_crs_right->_int_value = GFUtils::hdg_wrap( mcp_state->_dref_managed_crs_right->_int_value );
 	return 0;
 }
 
 int GFMCPPro_Buttons::_action_crs_right_inc( GFMCPPro_State* mcp_state ){
 	mcp_state->_dref_managed_crs_right->_int_value++;
+	mcp_state->_dref_managed_crs_right->_int_value = GFUtils::hdg_wrap( mcp_state->_dref_managed_crs_right->_int_value );
 	return 0;
 }
 
 
+// 3 digit
+int GFMCPPro_Buttons::_action_heading_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_heading->_int_value--;
+	mcp_state->_dref_managed_heading->_int_value = GFUtils::hdg_wrap( mcp_state->_dref_managed_heading->_int_value );
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_heading_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_heading->_int_value++;
+	mcp_state->_dref_managed_heading->_int_value = GFUtils::hdg_wrap( mcp_state->_dref_managed_heading->_int_value );
+	return 0;
+}
+
+
+
+
+
+// 5 digit - ias/mach
+int GFMCPPro_Buttons::_action_ias_mach_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_ias_mach->_int_value--;
+
+	//do not allow neg airspeed selections
+	if( mcp_state->_dref_managed_ias_mach->_int_value < 0 ){
+		mcp_state->_dref_managed_ias_mach->_int_value = 0;
+	}
+
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_ias_mach_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_ias_mach->_int_value++;
+
+	//do not allow airspeed select over 99,999
+	if( mcp_state->_dref_managed_ias_mach->_int_value > 99999 ){
+		mcp_state->_dref_managed_ias_mach->_int_value = 99999;
+	}
+
+	return 0;
+}
+
+
+
+
+ // 5 digit - alt
+int GFMCPPro_Buttons::_action_altitude_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_altitude->_int_value--;
+
+	//do not allow neg airspeed selections
+	if( mcp_state->_dref_managed_altitude->_int_value < 0 ){
+	 mcp_state->_dref_managed_altitude->_int_value = 0;
+	}
+
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_altitude_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_altitude->_int_value++;
+
+	//do not allow airspeed select over 99,999
+	if( mcp_state->_dref_managed_altitude->_int_value > 99999 ){
+		mcp_state->_dref_managed_altitude->_int_value = 99999;
+	}
+
+	return 0;
+}
+
+
+
+
+// 5 digit - vs
+int GFMCPPro_Buttons::_action_vert_speed_dec( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_vert_speed->_int_value--;
+
+	//cap neg select
+	if( mcp_state->_dref_managed_vert_speed->_int_value < -9999 ){
+		mcp_state->_dref_managed_vert_speed->_int_value = -9999;
+	}
+
+	return 0;
+}
+
+int GFMCPPro_Buttons::_action_vert_speed_inc( GFMCPPro_State* mcp_state ){
+	mcp_state->_dref_managed_vert_speed->_int_value++;
+
+	//cap pos select
+	if( mcp_state->_dref_managed_vert_speed->_int_value > 99999 ){
+		mcp_state->_dref_managed_vert_speed->_int_value = 99999;
+	}
+
+	return 0;
+}
 
 
 
