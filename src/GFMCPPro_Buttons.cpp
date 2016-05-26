@@ -45,7 +45,9 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_action_map[ _btn_VS ] = &GFMCPPro_Buttons::_action_btn_vs;
 	_btn_AP_Disengage       = new GFCommand( _cmd_name_btn_ap_disengage, _label_no_description, (void*)this );
 	_action_map[ _btn_AP_Disengage ] = &GFMCPPro_Buttons::_action_btn_ap_disengage;
-	_btn_FD_Right           = new GFCommand( _cmd_name_btn_fd_right, _label_no_description, (void*)this );
+
+	//switch
+	_btn_FD_Right           = new GFCommand_Switch( _cmd_name_btn_fd_right, _label_no_description, (void*)this );
 	_action_map[ _btn_FD_Right ] = &GFMCPPro_Buttons::_action_btn_fd_right;
 
 	_btn_ALT_INV            = new GFCommand( _cmd_name_btn_alt_inv, _label_no_description, (void*)this );
@@ -56,9 +58,11 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_action_map[ _btn_CWS_B ] = &GFMCPPro_Buttons::_action_btn_cws_b;
 
 
-
-	_btn_FD_Left            = new GFCommand( _cmd_name_btn_fd_left, _label_no_description, (void*)this );
+	//Switch
+	_btn_FD_Left            = new GFCommand_Switch( _cmd_name_btn_fd_left, _label_no_description, (void*)this );
 	_action_map[ _btn_FD_Left ] = &GFMCPPro_Buttons::_action_btn_fd_left;
+
+
 	_btn_N1                 = new GFCommand( _cmd_name_btn_n1, _label_no_description, (void*)this );
 	_action_map[ _btn_N1 ] = &GFMCPPro_Buttons::_action_btn_n1;
 
@@ -70,8 +74,11 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_action_map[ _btn_CMD_A ] = &GFMCPPro_Buttons::_action_btn_cmd_a;
 	_btn_CMD_B              = new GFCommand( _cmd_name_btn_cmd_b, _label_no_description, (void*)this );
 	_action_map[ _btn_CMD_B ] = &GFMCPPro_Buttons::_action_btn_cmd_b;
-	_btn_AT_Arm             = new GFCommand( _cmd_name_btn_at_arm, _label_no_description, (void*)this );
+
+	//Switch
+	_btn_AT_Arm             = new GFCommand_Switch( _cmd_name_btn_at_arm, _label_no_description, (void*)this );
 	_action_map[ _btn_AT_Arm ] = &GFMCPPro_Buttons::_action_btn_at_arm;
+
 	_btn_CO                 = new GFCommand( _cmd_name_btn_co, _label_no_description, (void*)this );
 	_action_map[ _btn_CO ] = &GFMCPPro_Buttons::_action_btn_co;
 	_btn_SPD_INTV           = new GFCommand( _cmd_name_btn_spd_intv, _label_no_description, (void*)this );
@@ -422,6 +429,7 @@ void GFMCPPro_Buttons::_proc_buttons( unsigned char* buf ){
     buf[5] & 16 ? _btn_ALT_HLD->Begin()         : _btn_ALT_HLD->Stop();
     buf[5] & 32 ? _btn_VS->Begin()              : _btn_VS->Stop();
     buf[5] & 64 ? _btn_AP_Disengage->Begin()    : _btn_AP_Disengage->Stop();
+
     buf[5] & 128 ? _btn_FD_Right->Begin()       : _btn_FD_Right->Stop(); // ------------------ switch
 
     // Packet 6

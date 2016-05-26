@@ -78,13 +78,13 @@ private:
 	GFCommand* _btn_ALT_HLD;
 	GFCommand* _btn_VS;
 	GFCommand* _btn_AP_Disengage;
-	GFCommand* _btn_FD_Right;
+	GFCommand_Switch* _btn_FD_Right;
 
 	// USB Report Packet 6
 	GFCommand* _btn_ALT_INV;
 	GFCommand* _btn_CWS_A;
 	GFCommand* _btn_CWS_B;
-	GFCommand* _btn_FD_Left;
+	GFCommand_Switch* _btn_FD_Left;
 	GFCommand* _btn_N1;
 
 	// USB Report Packet 7
@@ -92,7 +92,7 @@ private:
 	GFCommand* _btn_LNAV;
 	GFCommand* _btn_CMD_A;
 	GFCommand* _btn_CMD_B;
-	GFCommand* _btn_AT_Arm;
+	GFCommand_Switch* _btn_AT_Arm;
 	GFCommand* _btn_CO;
 	GFCommand* _btn_SPD_INTV;
 	GFCommand* _btn_VOR_LOC;
