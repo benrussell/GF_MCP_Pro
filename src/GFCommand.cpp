@@ -19,6 +19,7 @@ GFCommand::GFCommand( const std::string cmd_name, const std::string cmd_descript
 
 	_button_router = button_router;
 
+	_is_multi_phase = 0;
 
     _name = cmd_name;
     //_description = cmd_description;
@@ -59,8 +60,11 @@ void GFCommand::Stop() {
 GFCommand_Switch::GFCommand_Switch( const std::string cmd_name, const std::string cmd_description, void* _button_router )
 		: GFCommand( cmd_name, cmd_description, _button_router ){
 
-	GFUtils::Log("\t\tGFCommand_Switch:\n");
+	GFUtils::Log("\t\tGFCommand_Switch: Requesting multi phase..\n");
 
+	_last_switch_state = 0;
+
+	_is_multi_phase = 1;
 
 };
 

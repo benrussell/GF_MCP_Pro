@@ -25,6 +25,7 @@ public:
 
     std::string _name;
 
+	int _is_multi_phase;
 
 	//std::string _description;
 

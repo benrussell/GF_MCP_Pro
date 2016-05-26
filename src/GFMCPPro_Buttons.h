@@ -36,7 +36,8 @@ public:
 			GFCommand*               inCmd);
 
 
-	std::map<GFCommand*, GF_action_func> _action_map;
+	std::map<GFCommand*, GF_action_func> _action_map__begin;
+	std::map<GFCommand*, GF_action_func> _action_map__end;
 
 
 
@@ -139,6 +140,20 @@ private:
 
 
 
+	static const std::string _cmd_name_btn_fd_right;
+	static int _action_btn_fd_right__begin( GFMCPPro_State* );
+	static int _action_btn_fd_right__end( GFMCPPro_State* );
+
+	static const std::string _cmd_name_btn_fd_left;
+	static int _action_btn_fd_left__begin( GFMCPPro_State* );
+	static int _action_btn_fd_left__end( GFMCPPro_State* );
+
+	static const std::string _cmd_name_btn_at_arm;
+	static int _action_btn_at_arm__begin( GFMCPPro_State* );
+	static int _action_btn_at_arm__end( GFMCPPro_State* );
+
+
+
 
 	static const std::string _cmd_name_btn_speed;
 	static int _action_btn_speed( GFMCPPro_State* );
@@ -161,9 +176,6 @@ private:
 	static const std::string _cmd_name_btn_ap_disengage;
 	static int _action_btn_ap_disengage( GFMCPPro_State* );
 
-	static const std::string _cmd_name_btn_fd_right;
-	static int _action_btn_fd_right( GFMCPPro_State* );
-
 	static const std::string _cmd_name_btn_alt_inv;
 	static int _action_btn_alt_inv( GFMCPPro_State* );
 
@@ -172,9 +184,6 @@ private:
 
 	static const std::string _cmd_name_btn_cws_b;
 	static int _action_btn_cws_b( GFMCPPro_State* );
-
-	static const std::string _cmd_name_btn_fd_left;
-	static int _action_btn_fd_left( GFMCPPro_State* );
 
 	static const std::string _cmd_name_btn_n1;
 	static int _action_btn_n1( GFMCPPro_State* );
@@ -190,9 +199,6 @@ private:
 
 	static const std::string _cmd_name_btn_cmd_b;
 	static int _action_btn_cmd_b( GFMCPPro_State* );
-
-	static const std::string _cmd_name_btn_at_arm;
-	static int _action_btn_at_arm( GFMCPPro_State* );
 
 	static const std::string _cmd_name_btn_co;
 	static int _action_btn_co( GFMCPPro_State* );
