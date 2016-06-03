@@ -25,7 +25,7 @@ public:
 
     std::string _name;
 
-	int _is_multi_phase;
+	int _is_switch;
 
 	//std::string _description;
 

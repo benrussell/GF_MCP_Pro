@@ -25,7 +25,7 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GoFlight MCP Pro v0.1.150";
+	const char* name = "GoFlight MCP Pro v16.6.3.1700";
 	const char* sig = "goflightinc.com/mcp_pro";
 	const char* desc = "Built: " __DATE__ " " __TIME__;
 
@@ -133,7 +133,7 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
 	GFMCPPro_Buttons *btn_router = (GFMCPPro_Buttons*)cmd->_button_router;
 
 
-#if 1
+#if 0
 	char caTmp[1024];
 	snprintf( caTmp, 1024, "phase:%i cmdHandler: %s\n", inPhase, cmd->_name.c_str() );
 	GFUtils::Log( caTmp );

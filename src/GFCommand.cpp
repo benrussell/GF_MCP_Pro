@@ -19,7 +19,7 @@ GFCommand::GFCommand( const std::string cmd_name, const std::string cmd_descript
 
 	_button_router = button_router;
 
-	_is_multi_phase = 0;
+	_is_switch = 0;
 
     _name = cmd_name;
     //_description = cmd_description;
@@ -30,7 +30,9 @@ GFCommand::GFCommand( const std::string cmd_name, const std::string cmd_descript
     XPLMRegisterCommandHandler( _xpcmd,              // in Command name
                                 GFMCPPro_cmdHandler,       // in Handler
                                 1,                      // Receive input before plugin windows.
-                                (void *)this
+
+								//explicit cast here because we have derived classes, unsure of how they map.
+                                (void *) static_cast <GFCommand*>(this)
 								);
 
 }
@@ -64,7 +66,7 @@ GFCommand_Switch::GFCommand_Switch( const std::string cmd_name, const std::strin
 
 	_last_switch_state = 0;
 
-	_is_multi_phase = 1;
+	_is_switch = 1;
 
 };
 

@@ -33,16 +33,16 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	//create commands for switches
 	//switches
 	_btn_FD_Right           = new GFCommand_Switch( _cmd_name_btn_fd_right, _label_no_description, (void*)this );
-	_action_map__begin[ _btn_FD_Right ] = &GFMCPPro_Buttons::_action_btn_fd_right__begin;
-	_action_map__end[ _btn_FD_Right ] = &GFMCPPro_Buttons::_action_btn_fd_right__end;
+	_action_map__begin[ static_cast <GFCommand*>(_btn_FD_Right) ] = &GFMCPPro_Buttons::_action_btn_fd_right__begin;
+	_action_map__end[ static_cast <GFCommand*>(_btn_FD_Right) ] = &GFMCPPro_Buttons::_action_btn_fd_right__end;
 
 	_btn_FD_Left            = new GFCommand_Switch( _cmd_name_btn_fd_left, _label_no_description, (void*)this );
-	_action_map__begin[ _btn_FD_Left ] = &GFMCPPro_Buttons::_action_btn_fd_left__begin;
-	_action_map__end[ _btn_FD_Left ] = &GFMCPPro_Buttons::_action_btn_fd_left__end;
+	_action_map__begin[ static_cast <GFCommand*>(_btn_FD_Left) ] = &GFMCPPro_Buttons::_action_btn_fd_left__begin;
+	_action_map__end[ static_cast <GFCommand*>(_btn_FD_Left) ] = &GFMCPPro_Buttons::_action_btn_fd_left__end;
 
 	_btn_AT_Arm             = new GFCommand_Switch( _cmd_name_btn_at_arm, _label_no_description, (void*)this );
-	_action_map__begin[ _btn_AT_Arm ] = &GFMCPPro_Buttons::_action_btn_at_arm__begin;
-	_action_map__end[ _btn_AT_Arm ] = &GFMCPPro_Buttons::_action_btn_at_arm__end;
+	_action_map__begin[ static_cast <GFCommand*>(_btn_AT_Arm) ] = &GFMCPPro_Buttons::_action_btn_at_arm__begin;
+	_action_map__end[ static_cast <GFCommand*>(_btn_AT_Arm) ] = &GFMCPPro_Buttons::_action_btn_at_arm__end;
 
 
 
@@ -225,7 +225,7 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 
 			}else{
 				char caTmp[1024];
-				snprintf( caTmp, 1024, "Undefined action for cmd string:(%s)\n", inCmd->_name.c_str() );
+				snprintf( caTmp, 1024, "Undefined action_begin for cmd string:(%s)\n", inCmd->_name.c_str() );
 				GFUtils::Log( caTmp );
 
 			}
@@ -234,22 +234,22 @@ int  GFMCPPro_Buttons::xp_cmd_action_handler(
 		}
 		break;
 
-
+		#if 0
 		case xplm_CommandContinue:
 		{
 			//hold, not used.
 		}
 		break;
-
+		#endif
 
 		case xplm_CommandEnd:
 		{
 			//end, used by switches only.
 
-			if( 1 == inCmd->_is_multi_phase ) {
+			if( 1 == inCmd->_is_switch ) {
 
 				// Use the command string to find the action function in a std::map.
-				std::map<GFCommand *, GF_action_func>::iterator it = _action_map__end.find(inCmd);
+				std::map<GFCommand *, GF_action_func>::iterator it = _action_map__end.find( inCmd );
 
 				if (it != _action_map__end.end()) {
 					// deref to actual type for no reason other than clarity of purpose.
@@ -299,8 +299,11 @@ void GFMCPPro_Buttons::_read_usb( hid_device* handle ) {
 		_mcp_state->_dref_connected->_int_value = 0;
 
     } else {
-        //_dump_button_packet( res, buf );
-        _proc_hid_packet( buf );
+		// response packet size of 0 is legal but useless.
+		if( res > 0 ) {
+			//_dump_button_packet( res, buf );
+			_proc_hid_packet(buf);
+		} //res > 0
 
     } //checking for packet read
 
@@ -317,7 +320,6 @@ void GFMCPPro_Buttons::_proc_hid_packet( unsigned char* buf ) {
 
 	}else{
 		// ------------------ Buttons --------------
-
 		_proc_buttons( buf );
 
 	}
@@ -702,12 +704,18 @@ int GFMCPPro_Buttons::_action_btn_ap_disengage( GFMCPPro_State* mcp_state ){
 
 int GFMCPPro_Buttons::_action_btn_fd_right__begin( GFMCPPro_State* mcp_state ){
 	//attempt to improve switch state handling.
+
+	GFUtils::Log("fd_right_begin\n");
+
 	mcp_state->_dref_leds_fd_right->_int_value = 1;
 	return 1;
 }
 
 int GFMCPPro_Buttons::_action_btn_fd_right__end( GFMCPPro_State* mcp_state ){
 	//attempt to improve switch state handling.
+
+	GFUtils::Log("fd_right_end\n");
+
 	mcp_state->_dref_leds_fd_right->_int_value = 0;
 	return 1;
 }
@@ -759,11 +767,17 @@ int GFMCPPro_Buttons::_action_btn_cws_b( GFMCPPro_State* mcp_state ){
 
 
 int GFMCPPro_Buttons::_action_btn_fd_left__begin( GFMCPPro_State* mcp_state ){
+
+	GFUtils::Log("fd_left_begin\n");
+
 	mcp_state->_dref_leds_fd_left->_int_value = 1;
 	return 1;
 }
 
 int GFMCPPro_Buttons::_action_btn_fd_left__end( GFMCPPro_State* mcp_state ){
+
+	GFUtils::Log("fd_left_end\n");
+
 	mcp_state->_dref_leds_fd_left->_int_value = 0;
 	return 1;
 }
@@ -844,11 +858,17 @@ int GFMCPPro_Buttons::_action_btn_cmd_b( GFMCPPro_State* mcp_state ){
 
 
 int GFMCPPro_Buttons::_action_btn_at_arm__begin( GFMCPPro_State* mcp_state ){
+
+	GFUtils::Log("at_arm_begin\n");
+
 	mcp_state->_dref_leds_at_arm->_int_value = 1;
 	return 1;
 }
 
 int GFMCPPro_Buttons::_action_btn_at_arm__end( GFMCPPro_State* mcp_state ){
+
+	GFUtils::Log("at_arm_end\n");
+
 	mcp_state->_dref_leds_at_arm->_int_value = 0;
 	return 1;
 }
