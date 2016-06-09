@@ -107,7 +107,7 @@ float GFMCPPro_flcb(
 		for( size_t x=0; x < GFDataref::_deferred_registration_pool.size(); x++ ){
 
 			tmp_string = GFDataref::_deferred_registration_pool[x];
-			XPLMSendMessageToPlugin( XPLM_NO_PLUGIN_ID, MSG_ADD_DATAREF, reinterpret_cast<void*>(tmp_string->c_str()) );
+			XPLMSendMessageToPlugin( XPLM_NO_PLUGIN_ID, MSG_ADD_DATAREF, (void*)(tmp_string->c_str()) );
 
 		}
 
