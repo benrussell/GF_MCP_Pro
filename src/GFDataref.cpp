@@ -115,7 +115,7 @@ GFDataref::GFDataref( const std::string dref_name, int element_count ) {
 
 int GFDataref::xp_getDatai(void *inRefcon) {
     //get
-    GFDataref *tmp = (GFDataref*)inRefcon;
+    GFDataref *tmp = static_cast<GFDataref*>(inRefcon);
 
     return tmp->_int_value;
 }
@@ -123,7 +123,7 @@ int GFDataref::xp_getDatai(void *inRefcon) {
 
 void GFDataref::xp_setDatai(void * inRefcon, int inValue){
     //set
-    GFDataref *tmp = (GFDataref*)inRefcon;
+    GFDataref *tmp = static_cast<GFDataref*>(inRefcon);
 
     tmp->_int_value = inValue;
 
@@ -140,7 +140,7 @@ int GFDataref::xp_getBytes(
         int inMax
 ){
 
-    GFDataref *tmp = (GFDataref*)inRefcon;
+    GFDataref *tmp = static_cast<GFDataref*>(inRefcon);
 
 	size_t bytes_to_copy = GFDataref::_blob_size - inOffset;
 
@@ -151,7 +151,9 @@ int GFDataref::xp_getBytes(
 		return 0;
     }
 
-    memcpy( outValues, tmp->_blob+inOffset, bytes_to_copy );
+    if( outValues != NULL ) {
+        memcpy(outValues, tmp->_blob + inOffset, bytes_to_copy);
+    }
 
     return tmp->_element_count;
 }
@@ -165,7 +167,7 @@ void GFDataref::xp_setBytes(
         int inCount
 ){
 
-    GFDataref *tmp = (GFDataref*)inRefcon;
+    GFDataref *tmp = static_cast<GFDataref*>(inRefcon);
 
     int max_byte_offset = inOffset+inCount;
     if( max_byte_offset > (int)GFDataref::_blob_size ){
@@ -174,6 +176,7 @@ void GFDataref::xp_setBytes(
         return;
     }
 
-    memcpy( tmp->_blob + inOffset, inValues, (size_t)inCount );
-
+    if( inValues != NULL ) {
+        memcpy(tmp->_blob + inOffset, inValues, (size_t) inCount);
+    }
 }
