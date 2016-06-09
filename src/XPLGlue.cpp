@@ -25,7 +25,7 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GoFlight MCP Pro v16.6.3.1700";
+	const char* name = "GoFlight MCP Pro v16.06.10.0857";
 	const char* sig = "goflightinc.com/mcp_pro";
 	const char* desc = "Built: " __DATE__ " " __TIME__;
 
@@ -107,7 +107,7 @@ float GFMCPPro_flcb(
 		for( size_t x=0; x < GFDataref::_deferred_registration_pool.size(); x++ ){
 
 			tmp_string = GFDataref::_deferred_registration_pool[x];
-			XPLMSendMessageToPlugin( XPLM_NO_PLUGIN_ID, MSG_ADD_DATAREF, (void*)tmp_string->c_str() );
+			XPLMSendMessageToPlugin( XPLM_NO_PLUGIN_ID, MSG_ADD_DATAREF, reinterpret_cast<void*>(tmp_string->c_str()) );
 
 		}
 
@@ -118,7 +118,7 @@ float GFMCPPro_flcb(
 
     mcp_pro->flcb();
 
-    return -1.f;
+    return 0.1f;
 
 }
 
@@ -128,9 +128,9 @@ int GFMCPPro_cmdHandler(    XPLMCommandRef        inCommand,
                             XPLMCommandPhase     inPhase,
                             void *               inRefcon) {
 
-    GFCommand *cmd = (GFCommand*)inRefcon;
+    GFCommand *cmd = static_cast<GFCommand*>(inRefcon);
 
-	GFMCPPro_Buttons *btn_router = (GFMCPPro_Buttons*)cmd->_button_router;
+	GFMCPPro_Buttons *btn_router = static_cast<GFMCPPro_Buttons*>(cmd->_button_router);
 
 
 #if 0

@@ -18,13 +18,13 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 	_mcp_state = state;
 
 
-	_btn_Connect            = new GFCommand( _cmd_name_device_connect, _label_no_description, (void*)this );
+	_btn_Connect            = new GFCommand( _cmd_name_device_connect, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_Connect ] = &GFMCPPro_Buttons::_action_btn_connect;
-	_btn_Disconnect         = new GFCommand( _cmd_name_device_disconnect, _label_no_description, (void*)this );
+	_btn_Disconnect         = new GFCommand( _cmd_name_device_disconnect, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_Disconnect ] = &GFMCPPro_Buttons::_action_btn_disconnect;
 
 
-	_btn_LightTest         = new GFCommand( _cmd_name_device_light_test, _label_no_description, (void*)this );
+	_btn_LightTest         = new GFCommand( _cmd_name_device_light_test, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_LightTest ] = &GFMCPPro_Buttons::_action_btn_light_test;
 
 
@@ -32,15 +32,15 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 
 	//create commands for switches
 	//switches
-	_btn_FD_Right           = new GFCommand_Switch( _cmd_name_btn_fd_right, _label_no_description, (void*)this );
+	_btn_FD_Right           = new GFCommand_Switch( _cmd_name_btn_fd_right, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ static_cast <GFCommand*>(_btn_FD_Right) ] = &GFMCPPro_Buttons::_action_btn_fd_right__begin;
 	_action_map__end[ static_cast <GFCommand*>(_btn_FD_Right) ] = &GFMCPPro_Buttons::_action_btn_fd_right__end;
 
-	_btn_FD_Left            = new GFCommand_Switch( _cmd_name_btn_fd_left, _label_no_description, (void*)this );
+	_btn_FD_Left            = new GFCommand_Switch( _cmd_name_btn_fd_left, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ static_cast <GFCommand*>(_btn_FD_Left) ] = &GFMCPPro_Buttons::_action_btn_fd_left__begin;
 	_action_map__end[ static_cast <GFCommand*>(_btn_FD_Left) ] = &GFMCPPro_Buttons::_action_btn_fd_left__end;
 
-	_btn_AT_Arm             = new GFCommand_Switch( _cmd_name_btn_at_arm, _label_no_description, (void*)this );
+	_btn_AT_Arm             = new GFCommand_Switch( _cmd_name_btn_at_arm, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ static_cast <GFCommand*>(_btn_AT_Arm) ] = &GFMCPPro_Buttons::_action_btn_at_arm__begin;
 	_action_map__end[ static_cast <GFCommand*>(_btn_AT_Arm) ] = &GFMCPPro_Buttons::_action_btn_at_arm__end;
 
@@ -48,77 +48,77 @@ GFMCPPro_Buttons::GFMCPPro_Buttons( GFMCPPro_State* state ){
 
 
 	// Create commands for buttons
-    _btn_Speed              = new GFCommand( _cmd_name_btn_speed, _label_no_description, (void*)this );
+    _btn_Speed              = new GFCommand( _cmd_name_btn_speed, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_Speed ] = &GFMCPPro_Buttons::_action_btn_speed;
-	_btn_LVL_CHG            = new GFCommand( _cmd_name_btn_lvl_chg, _label_no_description, (void*)this );
+	_btn_LVL_CHG            = new GFCommand( _cmd_name_btn_lvl_chg, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_LVL_CHG ] = &GFMCPPro_Buttons::_action_btn_lvl_chg;
-	_btn_HDG_SEL            = new GFCommand( _cmd_name_btn_hdg_sel, _label_no_description, (void*)this );
+	_btn_HDG_SEL            = new GFCommand( _cmd_name_btn_hdg_sel, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_HDG_SEL ] = &GFMCPPro_Buttons::_action_btn_hdg_sel;
-	_btn_APP                = new GFCommand( _cmd_name_btn_app, _label_no_description, (void*)this );
+	_btn_APP                = new GFCommand( _cmd_name_btn_app, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_APP ] = &GFMCPPro_Buttons::_action_btn_app;
-	_btn_ALT_HLD            = new GFCommand( _cmd_name_btn_alt_hld, _label_no_description, (void*)this );
+	_btn_ALT_HLD            = new GFCommand( _cmd_name_btn_alt_hld, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_ALT_HLD ] = &GFMCPPro_Buttons::_action_btn_alt_hld;
-	_btn_VS                 = new GFCommand( _cmd_name_btn_vs, _label_no_description, (void*)this );
+	_btn_VS                 = new GFCommand( _cmd_name_btn_vs, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_VS ] = &GFMCPPro_Buttons::_action_btn_vs;
-	_btn_AP_Disengage       = new GFCommand( _cmd_name_btn_ap_disengage, _label_no_description, (void*)this );
+	_btn_AP_Disengage       = new GFCommand( _cmd_name_btn_ap_disengage, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_AP_Disengage ] = &GFMCPPro_Buttons::_action_btn_ap_disengage;
-	_btn_ALT_INV            = new GFCommand( _cmd_name_btn_alt_inv, _label_no_description, (void*)this );
+	_btn_ALT_INV            = new GFCommand( _cmd_name_btn_alt_inv, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_ALT_INV ] = &GFMCPPro_Buttons::_action_btn_alt_inv;
-	_btn_CWS_A              = new GFCommand( _cmd_name_btn_cws_a, _label_no_description, (void*)this );
+	_btn_CWS_A              = new GFCommand( _cmd_name_btn_cws_a, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_CWS_A ] = &GFMCPPro_Buttons::_action_btn_cws_a;
-	_btn_CWS_B              = new GFCommand( _cmd_name_btn_cws_b, _label_no_description, (void*)this );
+	_btn_CWS_B              = new GFCommand( _cmd_name_btn_cws_b, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_CWS_B ] = &GFMCPPro_Buttons::_action_btn_cws_b;
-	_btn_N1                 = new GFCommand( _cmd_name_btn_n1, _label_no_description, (void*)this );
+	_btn_N1                 = new GFCommand( _cmd_name_btn_n1, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_N1 ] = &GFMCPPro_Buttons::_action_btn_n1;
-	_btn_VNAV               = new GFCommand( _cmd_name_btn_vnav, _label_no_description, (void*)this );
+	_btn_VNAV               = new GFCommand( _cmd_name_btn_vnav, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_VNAV ] = &GFMCPPro_Buttons::_action_btn_vnav;
-	_btn_LNAV               = new GFCommand( _cmd_name_btn_lnav, _label_no_description, (void*)this );
+	_btn_LNAV               = new GFCommand( _cmd_name_btn_lnav, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_LNAV ] = &GFMCPPro_Buttons::_action_btn_lnav;
-	_btn_CMD_A              = new GFCommand( _cmd_name_btn_cmd_a, _label_no_description, (void*)this );
+	_btn_CMD_A              = new GFCommand( _cmd_name_btn_cmd_a, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_CMD_A ] = &GFMCPPro_Buttons::_action_btn_cmd_a;
-	_btn_CMD_B              = new GFCommand( _cmd_name_btn_cmd_b, _label_no_description, (void*)this );
+	_btn_CMD_B              = new GFCommand( _cmd_name_btn_cmd_b, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_CMD_B ] = &GFMCPPro_Buttons::_action_btn_cmd_b;
-	_btn_CO                 = new GFCommand( _cmd_name_btn_co, _label_no_description, (void*)this );
+	_btn_CO                 = new GFCommand( _cmd_name_btn_co, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_CO ] = &GFMCPPro_Buttons::_action_btn_co;
-	_btn_SPD_INTV           = new GFCommand( _cmd_name_btn_spd_intv, _label_no_description, (void*)this );
+	_btn_SPD_INTV           = new GFCommand( _cmd_name_btn_spd_intv, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_SPD_INTV ] = &GFMCPPro_Buttons::_action_btn_spd_intv;
-	_btn_VOR_LOC            = new GFCommand( _cmd_name_btn_vor_loc, _label_no_description, (void*)this );
+	_btn_VOR_LOC            = new GFCommand( _cmd_name_btn_vor_loc, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_VOR_LOC ] = &GFMCPPro_Buttons::_action_btn_vor_loc;
 
 
 	// Create commands for Scroll Wheels and Rotary Knobs.
-    _btn_crs_left_inc = new GFCommand( _cmd_name_crs_left_inc, _label_no_description, (void*)this );
-    _btn_crs_left_dec = new GFCommand( _cmd_name_crs_left_dec, _label_no_description, (void*)this );
+    _btn_crs_left_inc = new GFCommand( _cmd_name_crs_left_inc, _label_no_description, reinterpret_cast<void*>(this) );
+    _btn_crs_left_dec = new GFCommand( _cmd_name_crs_left_dec, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_crs_left_inc ] = &GFMCPPro_Buttons::_action_crs_left_inc;
 	_action_map__begin[ _btn_crs_left_dec ] = &GFMCPPro_Buttons::_action_crs_left_dec;
 	
 	
-	_btn_ias_mach_inc = new GFCommand( _cmd_name_ias_mach_inc, _label_no_description, (void*)this );
-    _btn_ias_mach_dec = new GFCommand( _cmd_name_ias_mach_dec, _label_no_description, (void*)this );
+	_btn_ias_mach_inc = new GFCommand( _cmd_name_ias_mach_inc, _label_no_description, reinterpret_cast<void*>(this) );
+    _btn_ias_mach_dec = new GFCommand( _cmd_name_ias_mach_dec, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_ias_mach_inc ] = &GFMCPPro_Buttons::_action_ias_mach_inc;
 	_action_map__begin[ _btn_ias_mach_dec ] = &GFMCPPro_Buttons::_action_ias_mach_dec;
 
 
-    _btn_heading_inc = new GFCommand( _cmd_name_heading_inc, _label_no_description, (void*)this );
-    _btn_heading_dec = new GFCommand( _cmd_name_heading_dec, _label_no_description, (void*)this );
+    _btn_heading_inc = new GFCommand( _cmd_name_heading_inc, _label_no_description, reinterpret_cast<void*>(this) );
+    _btn_heading_dec = new GFCommand( _cmd_name_heading_dec, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_heading_inc ] = &GFMCPPro_Buttons::_action_heading_inc;
 	_action_map__begin[ _btn_heading_dec ] = &GFMCPPro_Buttons::_action_heading_dec;
 
 
-	_btn_altitude_inc = new GFCommand( _cmd_name_altitude_inc, _label_no_description, (void*)this );
-    _btn_altitude_dec = new GFCommand( _cmd_name_altitude_dec, _label_no_description, (void*)this );
+	_btn_altitude_inc = new GFCommand( _cmd_name_altitude_inc, _label_no_description, reinterpret_cast<void*>(this) );
+    _btn_altitude_dec = new GFCommand( _cmd_name_altitude_dec, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_altitude_inc ] = &GFMCPPro_Buttons::_action_altitude_inc;
 	_action_map__begin[ _btn_altitude_dec ] = &GFMCPPro_Buttons::_action_altitude_dec;
 
 	
-    _btn_vert_speed_inc = new GFCommand( _cmd_name_vert_speed_inc, _label_no_description, (void*)this );
-    _btn_vert_speed_dec = new GFCommand( _cmd_name_vert_speed_dec, _label_no_description, (void*)this );
+    _btn_vert_speed_inc = new GFCommand( _cmd_name_vert_speed_inc, _label_no_description, reinterpret_cast<void*>(this) );
+    _btn_vert_speed_dec = new GFCommand( _cmd_name_vert_speed_dec, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_vert_speed_inc ] = &GFMCPPro_Buttons::_action_vert_speed_inc;
 	_action_map__begin[ _btn_vert_speed_dec ] = &GFMCPPro_Buttons::_action_vert_speed_dec;
 
 	
-    _btn_crs_right_inc = new GFCommand( _cmd_name_crs_right_inc, _label_no_description, (void*)this );
-    _btn_crs_right_dec = new GFCommand( _cmd_name_crs_right_dec, _label_no_description, (void*)this );
+    _btn_crs_right_inc = new GFCommand( _cmd_name_crs_right_inc, _label_no_description, reinterpret_cast<void*>(this) );
+    _btn_crs_right_dec = new GFCommand( _cmd_name_crs_right_dec, _label_no_description, reinterpret_cast<void*>(this) );
 	_action_map__begin[ _btn_crs_right_inc ] = &GFMCPPro_Buttons::_action_crs_right_inc;
 	_action_map__begin[ _btn_crs_right_dec ] = &GFMCPPro_Buttons::_action_crs_right_dec;
 
@@ -522,37 +522,37 @@ void GFMCPPro_Buttons::_dump_button_packet( int res, unsigned char* buf ){
 
 
 
-const std::string GFMCPPro_Buttons::_label_no_description 	   = "No description.";
+const std::string GFMCPPro_Buttons::_labbel_no_description 	   = "No description.";
 
 
 
-const std::string GFMCPPro_Buttons::_cmd_name_device_connect      = "goflight/mcp_pro/device/connect";
-const std::string GFMCPPro_Buttons::_cmd_name_device_disconnect   = "goflight/mcp_pro/device/disconnect";
+const std::string GFMCPPro_Buttons::_cmdd_name_device_connect      = "goflight/mcp_pro/device/connect";
+const std::string GFMCPPro_Buttons::_cmdd_name_device_disconnect   = "goflight/mcp_pro/device/disconnect";
 
-const std::string GFMCPPro_Buttons::_cmd_name_device_light_test   = "goflight/mcp_pro/device/light_test";
+const std::string GFMCPPro_Buttons::_cmdd_name_device_light_test   = "goflight/mcp_pro/device/light_test";
 
 
-const std::string GFMCPPro_Buttons::_cmd_name_btn_speed        = "goflight/mcp_pro/btn/speed";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_lvl_chg      = "goflight/mcp_pro/btn/lvl_chg";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_hdg_sel      = "goflight/mcp_pro/btn/hdg_sel";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_app          = "goflight/mcp_pro/btn/app";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_alt_hld      = "goflight/mcp_pro/btn/alt_hld";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_vs           = "goflight/mcp_pro/btn/vs";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_ap_disengage = "goflight/mcp_pro/btn/ap_disengage";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_fd_right     = "goflight/mcp_pro/btn/fd_right";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_alt_inv      = "goflight/mcp_pro/btn/alt_inv";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cws_a        = "goflight/mcp_pro/btn/cws_a";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cws_b        = "goflight/mcp_pro/btn/cws_b";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_fd_left      = "goflight/mcp_pro/btn/fd_left";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_n1           = "goflight/mcp_pro/btn/n1";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_vnav         = "goflight/mcp_pro/btn/vnav";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_lnav         = "goflight/mcp_pro/btn/lnav";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cmd_a        = "goflight/mcp_pro/btn/cmd_a";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_cmd_b        = "goflight/mcp_pro/btn/cmd_b";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_at_arm       = "goflight/mcp_pro/btn/at_arm";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_co           = "goflight/mcp_pro/btn/co";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_spd_intv     = "goflight/mcp_pro/btn/spd_intv";
-const std::string GFMCPPro_Buttons::_cmd_name_btn_vor_loc      = "goflight/mcp_pro/btn/vor_loc";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_speed        = "goflight/mcp_pro/btn/speed";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_lvl_chg      = "goflight/mcp_pro/btn/lvl_chg";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_hdg_sel      = "goflight/mcp_pro/btn/hdg_sel";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_app          = "goflight/mcp_pro/btn/app";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_alt_hld      = "goflight/mcp_pro/btn/alt_hld";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_vs           = "goflight/mcp_pro/btn/vs";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_ap_disengage = "goflight/mcp_pro/btn/ap_disengage";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_fd_right     = "goflight/mcp_pro/btn/fd_right";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_alt_inv      = "goflight/mcp_pro/btn/alt_inv";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_cws_a        = "goflight/mcp_pro/btn/cws_a";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_cws_b        = "goflight/mcp_pro/btn/cws_b";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_fd_left      = "goflight/mcp_pro/btn/fd_left";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_n1           = "goflight/mcp_pro/btn/n1";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_vnav         = "goflight/mcp_pro/btn/vnav";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_lnav         = "goflight/mcp_pro/btn/lnav";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_cmd_a        = "goflight/mcp_pro/btn/cmd_a";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_cmd_b        = "goflight/mcp_pro/btn/cmd_b";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_at_arm       = "goflight/mcp_pro/btn/at_arm";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_co           = "goflight/mcp_pro/btn/co";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_spd_intv     = "goflight/mcp_pro/btn/spd_intv";
+const std::string GFMCPPro_Buttons::_cmdd_name_btn_vor_loc      = "goflight/mcp_pro/btn/vor_loc";
 
 
 

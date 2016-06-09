@@ -55,8 +55,8 @@ GFDataref::GFDataref( const std::string dref_name ){
                     //GFDataref::xp_getBytes, GFDataref::xp_setBytes, //byte vectors
 
 
-                    (void *)this, //read refcon
-                    (void *)this  //write refcon
+                    reinterpret_cast<void*>(this), //read refcon
+                    reinterpret_cast<void*>(this)  //write refcon
             );
 
 }
@@ -97,8 +97,8 @@ GFDataref::GFDataref( const std::string dref_name, int element_count ) {
 					//NULL, NULL //byte vectors
 
 
-                    (void *)this, //read refcon
-                    (void *)this  //write refcon
+                    reinterpret_cast<void*>(this), //read refcon
+                    reinterpret_cast<void*>(this)  //write refcon
             );
 
 }
