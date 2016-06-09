@@ -17,6 +17,14 @@
 //use this for MCP_CRS_LEFT || MCP_CRS_RIGHT || MCP_HDG
 void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *value ){
 
+	const size_t seg_size = 3;
+	static unsigned char last_val_map[256][seg_size];
+	if (memcmp(value, last_val_map[target], seg_size) == 0) {
+		//this is a repeat packet, the MCP already has it.
+		return;
+	}
+	memcpy(last_val_map[target], value, seg_size);
+
 	if( 0 == handle ){
 		GFUtils::Log("GFUtils::set3f(..) write failure. handle is 0.\n");
 		return;
@@ -43,6 +51,14 @@ void GFUtils::set3f( hid_device *handle, unsigned char target, unsigned char *va
 
 // MCP_IAS || MCP_ALT || MCP_VS
 void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *value ){
+
+	const size_t seg_size = 5;
+	static unsigned char last_val_map[256][seg_size];
+	if (memcmp(value, last_val_map[target], seg_size) == 0) {
+		//this is a repeat packet, the MCP already has it.
+		return;
+	}
+	memcpy(last_val_map[target], value, seg_size);
 
 	if( 0 == handle ){
 		GFUtils::Log("GFUtils::set5f(..) write failure.\n");
