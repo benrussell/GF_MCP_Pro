@@ -21,6 +21,7 @@ GFMCPPro_State::GFMCPPro_State() {
 
 	// Control override.
 	_dref_override     	= new GFDataref( GFMCPPro_State::_drname_override );
+	_dref_override_7seg     	= new GFDataref( GFMCPPro_State::_drname_override_7seg );
 
 	// Light test
 	_dref_light_test   	= new GFDataref( GFMCPPro_State::_drname_light_test );
@@ -143,6 +144,7 @@ GFMCPPro_State::~GFMCPPro_State() {
 const std::string GFMCPPro_State::_drname_connected     = "goflight/mcp_pro/connected";
 
 const std::string GFMCPPro_State::_drname_override      = "goflight/mcp_pro/override";
+const std::string GFMCPPro_State::_drname_override_7seg      = "goflight/mcp_pro/override_7seg";
 const std::string GFMCPPro_State::_drname_light_test    = "goflight/mcp_pro/light_test";
 
 

@@ -25,7 +25,7 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GoFlight MCP Pro v16.06.10.1033";
+	const char* name = "GoFlight MCP Pro v16.06.10.1040";
 	const char* sig = "goflightinc.com/mcp_pro";
 	const char* desc = "Built: " __DATE__ " " __TIME__;
 

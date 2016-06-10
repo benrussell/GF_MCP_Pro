@@ -23,11 +23,8 @@ void GFMCPPro_7Seg::write( hid_device* handle ){
 		_write_light_test( handle );
 
 	}else{
-		if( 0 == _mcp_state->_dref_override->_int_value ){
-			// MCP is NOT in managed mode.
-			// We have state stored for the knobs and dials actions.
-			// This call will translate that state into char* data to push to the 7seg displays.
-			// Next call does not push to MCP, only updates dref blob data.
+		if( 0 == _mcp_state->_dref_override_7seg->_int_value ){
+			//automatically write the contents of the 7seg displays based on the managed dataref values.
 			_update_7seg_drefs();
 		}
 

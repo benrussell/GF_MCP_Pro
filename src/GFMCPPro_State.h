@@ -17,6 +17,7 @@ public:
 
 	GFDataref* _dref_connected;
 	GFDataref* _dref_override;
+	GFDataref* _dref_override_7seg;
 	GFDataref* _dref_light_test;
 
 
@@ -84,6 +85,7 @@ private:
 	// --- General State ---
 	static const std::string _drname_connected;
 	static const std::string _drname_override;
+	static const std::string _drname_override_7seg;
 	static const std::string _drname_light_test;
 
 	// --------- 7 Seg ---------
