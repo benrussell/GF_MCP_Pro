@@ -19,22 +19,12 @@ void GFMCPPro_LEDS::write( hid_device* handle ){
     unsigned char tmp[3];
     _get_led_blob( tmp );
 
-	//noise reduction for LED packet.
-	static unsigned char last_led_packet[3];
+    GFUtils::set_leds(
+        handle, //device handle
+        15,     //usb report number - device specific.
+        tmp     //byte payload to send.
+    );
 
-	if (memcmp(tmp, last_led_packet, 3) == 0) {
-		//RAM buffers are the same, ignore.
-	}else {
-		//this is a new packet, take a copy for comparison and send this one.
-		memcpy(last_led_packet, tmp, 3);
-
-		GFUtils::set_leds(
-			handle, //device handle
-			15,     //usb report number - device specific.
-			tmp     //byte payload to send.
-		);
-
-	}
 }
 
 

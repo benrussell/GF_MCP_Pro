@@ -60,6 +60,7 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
 	}
 	memcpy(last_val_map[target], value, seg_size);
 
+
 	if( 0 == handle ){
 		GFUtils::Log("GFUtils::set5f(..) write failure.\n");
 		return;
@@ -87,6 +88,16 @@ void GFUtils::set5f( hid_device *handle, unsigned char target, unsigned char *va
 
 
 void GFUtils::set_leds( hid_device *handle, unsigned char target, unsigned char *values ){
+
+	//incoming packing is always 3 bytes.
+	const size_t seg_size = 3;
+	static unsigned char last_val_map[256][seg_size];
+	if (memcmp(values, last_val_map[target], seg_size) == 0) {
+		//this is a repeat packet, the MCP already has it.
+		return;
+	}
+	memcpy(last_val_map[target], values, seg_size);
+
 
 	if( 0 == handle ){
 		GFUtils::Log("GFUtils::set_leds(..) write failure.\n");
