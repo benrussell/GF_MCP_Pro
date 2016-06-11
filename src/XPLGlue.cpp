@@ -25,7 +25,7 @@ PLUGIN_API int XPluginStart(
         char *		outDesc) {
 
 
-	const char* name = "GoFlight MCP Pro v16.06.10.1040";
+	const char* name = "GoFlight MCP Pro v16.06.12.0104";
 	const char* sig = "goflightinc.com/mcp_pro";
 	const char* desc = "Built: " __DATE__ " " __TIME__;
 
@@ -118,7 +118,7 @@ float GFMCPPro_flcb(
 
     mcp_pro->flcb();
 
-    return 0.1f;
+    return -1.0f;
 
 }
 
